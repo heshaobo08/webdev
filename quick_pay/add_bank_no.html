@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0 user-scalable=no" />
+<title>新增银行卡</title>
+<link href="css/base.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<script src="js/jquery.js"></script>
+<script>
+$(function() {
+    /*阻止默认事件*/
+    var stopDefault = function(e) {
+        e.preventDefault();
+    }
+    $(".back").on("click",function() {
+        $("#cover").show();
+        $(".cancel").show();
+        $(window).on("touchmove",stopDefault);
+        
+    })
+    $(".cancel p span:eq(0)").on("click",function() {
+        $("#cover").hide();
+        $(".cancel").hide();
+        $(window).off("touchmove",stopDefault);
+    })
+    
+    $(".cancel p span:eq(1)").on("click",function() {
+        $("#cover").hide();
+        $(".cancel").hide();
+        $(window).off("touchmove",stopDefault);
+        window.location="payment.html";
+    })
+    
+   
+    //弹层函数
+    function appearDiv(str) {
+        $("#cover").show();
+        $(".phone_error").fadeIn(400).find('h4').text(str);
+        $(window).on("touchmove",stopDefault);
+    }
+    
+    $(".phone_error p").on("click",function() {
+        $("#cover").hide();
+        $(".phone_error").hide();
+        $(window).off("touchmove",stopDefault);
+    })
+    
+})    
+</script>
+</head>
+<body>
+<!--弹窗-->
+<div id="cover"></div>
+<div class="cancel">
+        <h4>是否放弃绑定银行卡？</h4>
+        <p><span>否</span><span>是</span></p>
+</div>
+<div class="phone_error">
+    <h4></h4>
+    <p>确定</p>
+</div>
+<div id="wapper">
+    <!--头部开始-->
+    <div id="header">
+        <a href="javascript:void(0)" class="back">取消</a>
+        <p>新增银行卡</p>
+    </div>
+    <!--头部结束-->
+    <!--内容开始-->
+    <div id=content>
+        <div class="bank_card">
+            <h6>请绑定持卡人本人的银行卡</h6>
+            <h5></h5>
+            <p>持卡人<span>战三</span></p>
+            <h5></h5>
+            <p>卡号码<span>5454 4343 3434 3345</span></p>
+            <h5></h5>
+            <a href="bank_type.html"><p>卡类型<span class="bank_tx">请选择银行卡类型</span><img src="images/next.png" class="next_tip"></p></a>
+            <h5></h5>
+        </div>
+    </div>
+    <!--内容结束-->
+    <!--尾部开始-->
+    <div id=footer></div>
+    <!--尾部结束-->
+</div>
+</body>
+</html>
