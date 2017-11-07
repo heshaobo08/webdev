@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0 user-scalable=no" />
+    <title>汇收银收款模拟</title>
+    <link href="css/base.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <script src="js/jquery.js"></script>
+    <script>
+        $(function () {
+            $(".pay_money input").on("focus", function () {
+                $(".pay_btn input").addClass("input_focus");
+            })
+
+            $(".pay_money input").on("blur", function () {
+                if (!$(this).val()) {
+                    $(".pay_btn input").removeClass("input_focus");
+                }
+
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <!-- 头部开始-->
+    <div class="payment_header">
+        <h3><a href="##" class="back_step"><img src="images/icon_left.png"/></a> <span>汇收银收款模拟</span></h3>
+    </div>
+    <!--内容开始 -->
+    <div class="payment_content">
+        <p class="pay_username">好运便利店（中关村店）</p>
+        <p class="pay_money">
+            <label>消费金额：<em>￥</em></label>
+            <input type="tel" />
+        </p>
+        <p class="pay_btn">
+            <input type="button" value="支付" />
+        </p>
+    </div>
+    <div class="payment_footer"></div>
+</body>
+
+</html>
