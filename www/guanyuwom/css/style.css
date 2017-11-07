@@ -1,0 +1,250 @@
+.clear{
+    clear: both;
+}
+.warpper{
+    width: 100%;
+    height: auto;
+}
+.login_header{
+    width: 100%;
+    height: 40px; 
+    background: #0d0537;
+}
+.login_header p{
+    width: 1000px;
+    margin: auto;
+    line-height: 40px;
+    font-size:12px;
+    background: #0d0537;
+}
+.login_header p a{
+    color:#aebbcb;
+}
+.login_header p a:hover{
+    color:#fff;
+}
+.help_center{
+    float: right;
+}
+.login_personal{
+    padding-left: 40px;
+}
+.login_header p span.login_hd_active a{
+     color:#fff;
+}
+
+
+.pay_header{
+    box-shadow:0px 1px 8px 0px rgba(0,0,0,0.2);
+    width:100%;
+    height:80px;
+}
+.pay_top{
+    width: 1000px;
+    margin: auto;
+}
+.pay_top p{
+    padding-top: 23px;
+}
+.pc_payhx{
+    background:#999999;
+    width:1px;
+    height:35px;
+    display: inline-block;
+    margin:0px 8px;
+}
+.pc_pay_name{
+    font-size:24px;
+    color:#333333;
+    position: relative;
+    bottom: 12px;
+}
+
+
+.about_bg{
+    background-color: #eee;
+}
+
+.aboutct{
+    width: 1000px;
+    margin:auto;
+    padding:50px 0px 240px 0px;
+}
+.about_left{
+    width: 249px;
+    height: 450px;
+    float: left;
+    background-color: #fdfdfd;
+    border-right: solid 1px #eee;
+}
+
+.left_box ul li{
+    font-size: 14px;
+    height: 40px;
+    line-height: 40px;
+    border-bottom: solid 1px #eee;
+    padding-left: 10px;
+    color: #333;
+    cursor: pointer;
+}
+.left_box ul li a{
+   color: #333; 
+}
+.left_box ul li.ative_on a{
+    color: #4287F5;
+}
+.left_box ul li span{
+    float: right;
+    padding-right: 10px;
+    
+}
+
+.about_right{
+    width: 750px;
+    height: 450px;
+    float: right;
+    background-color: #fdfdfd;
+}
+
+.hand_text{
+    font-size: 40px;
+    color: #666;
+    border-bottom: solid 1px #eee;
+    margin: 10px 20px;
+    padding-bottom: 20px;
+}
+.hand_text span{
+    font-size: 32px;
+    color: #ccc;
+    position: relative;
+    top:5px;
+    left:10px;
+}
+.text_list{
+     margin: 10px 20px;
+}
+.text_list ul li{
+    font-size: 14px;
+    color: #333;
+    padding-top: 20px;
+    line-height: 25px;
+}
+.text_list ul li span{
+    width: 6px;
+    height: 6px;
+    display: inline-block;
+    background: #4287F5;
+    border-radius: 50%;
+    margin-right: 10px;
+    
+}
+.text_list ul p{
+    font-size: 14px;
+    color: #333;
+    margin-left: 30px;
+    margin-top: 10px;
+}
+.text_list ul p em{
+    padding-right: 20px;
+}
+
+.contactct{
+    width: 1000px;
+    margin:auto;
+    padding:50px 0px 50px 0px;
+}
+.contact_left{
+    width: 249px;
+    height: 700px;
+    float: left;
+    background-color: #fdfdfd;
+    border-right: solid 1px #eee;
+}
+.contact_right{
+    width: 750px;
+    height: 700px;
+    float: right;
+    background-color: #fdfdfd;
+}
+
+.businessct{
+    width: 1000px;
+    margin:auto;
+    padding:50px 0px 240px 0px;
+}
+.business_left{
+    width: 249px;
+    height: 450px;
+    float: left;
+    background-color: #fdfdfd;
+    border-right: solid 1px #eee;
+}
+.business_right{
+    width: 750px;
+    height: 450px;
+    float: right;
+    background-color: #fdfdfd;
+}
+
+.partnerct{
+    width: 1000px;
+    margin:auto;
+    padding:50px 0px 50px 0px;
+}
+.partner_left{
+    width: 249px;
+    height: 1106px;
+    float: left;
+    background-color: #fdfdfd;
+    border-right: solid 1px #eee;
+}
+.partner_right{
+    width: 750px;
+    height: 1106px;
+    float: right;
+    background-color: #fdfdfd;
+}
+
+.partner_list{
+    margin: 10px 20px;
+}
+
+.partner_list p{
+    font-size: 14px;
+    color: #333;
+    font-weight: 600;
+}
+.partner_list p span{
+    width: 6px;
+    height: 6px;
+    display: inline-block;
+    background: #4287F5;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.partner_list ul li{
+    float: left;
+    margin-top: 10px;
+    margin-left: 15px;
+}
+
+
+
+/*尾部*/
+.login_footer{
+    background:#0d0537;
+    width: 100%;
+    height:220px;
+    min-width: 1000px;
+}
+.login_footer_ct{
+    width: 1000px;
+    margin: auto;
+    padding-top: 60px;
+}
+.login_footer_ct p{
+    font-size: 14px;
+    color: #fff;
+    text-align: center;
+    padding-top: 20px;
+}

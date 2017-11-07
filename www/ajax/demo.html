@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf8">
+<title>原生ajax</title>
+<script>
+window.onload=function(){
+    /*var div1=document.getElementById("div1");
+    var ajax=new XMLHttpRequest();
+    ajax.open("GET","1.php",true);
+    ajax.onreadystatechange=function(){
+        if(ajax.readyState==4){
+            if(ajax.status==200){
+                div1.innerHTML=ajax.responseText;
+            }else{
+                alert("失败");
+            }
+        }
+        
+    }
+    ajax.send();*/
+    var div1=document.getElementById("div1");
+    function getDate(re,url,fn){
+        var ajax = new XMLHttpRequest();
+        ajax.open(re,url,true);
+        ajax.onreadystatechange = function(){
+            if(ajax.readyState==4){
+                if(ajax.status==200){
+                    fn(ajax.responseText);
+                }else{
+                    alert("失败");
+                }
+            }
+        }
+        ajax.send();
+    }
+    
+    getDate("GET","1.php",function(re){
+       div1.innerHTML=re;
+    });
+    
+}
+</script>
+</head>
+<body>
+    <div id="div1"></div>
+</body>
+</html>

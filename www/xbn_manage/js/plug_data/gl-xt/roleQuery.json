@@ -1,0 +1,63 @@
+{
+	"statusCode" : "2000000",
+	"data"        : {
+		  "id": "40289eab4f2122e9014f21235b260000",
+		  "groupName": "ee0350fc567c47e29cc19088e17f1490",
+		  "isValid": "true",
+		  "remark": "Test data for edit ...",
+		  "createTime": "2015-08-12 05:08:09",
+		  "updateTime": "2015-08-12 05:08:42",
+		  "serviceList": [
+			{
+			  "id": "4028e4174e7af151014e7af3014a0000",
+			  "roleName": "501dd10c6cbc49d8972df5495799f770",
+			  "isValid": "true",
+			  "remark": "ServiceRoleController test ...",
+			  "createTime": "2015-07-11 10:07:22",
+			  "updateTime": "2015-07-11 10:07:22"
+			},
+			{
+			  "id": "4028e4174e7af151014e7af902a70001",
+			  "roleName": "bb603af21c94479f83e8558012f0811b",
+			  "isValid": "true",
+			  "remark": "ServiceRoleController test ...",
+			  "createTime": "2015-07-11 10:07:56",
+			  "updateTime": "2015-07-11 10:07:56"
+			}
+		  ],
+		  "serviceIds": "4028e4174e7af151014e7af3014a0000|4028e4174e7af151014e7af902a70001",
+		  "interList": [
+			{
+			  "id": 25,
+			  "name": "ffcb070703294dccbeda8296da9f51cd",
+			  "url": "b19d398733404fc5a536955325027925",
+			  "description": "65ada6e6916c4884867803775f6bae72",
+			  "createTime": "2015-08-12 04:08:38",
+			  "updateTime": "2015-08-12 04:08:17",
+			  "remark": "Test for remote update ...",
+			  "isValid": true
+			},
+			{
+			  "id": 26,
+			  "name": "f6c0c555f5aa40078a2e1d9dd62b87aa",
+			  "url": "565fbb228afd4bf0ab6972dedda8e083",
+			  "description": "767747f98388417aa4852afae263ca04",
+			  "createTime": "2015-08-12 04:08:38",
+			  "updateTime": "2015-08-12 04:08:17",
+			  "remark": "Test for remote update ...",
+			  "isValid": true
+			},
+			{
+			  "id": 27,
+			  "name": "4dc95c7f56bc4b81bc07cea9f68f0540",
+			  "url": "61ba9c13103d49c69361acfe1255ad92",
+			  "description": "7e4211cd4a1d4edcb8052c0a5a470e30",
+			  "createTime": "2015-08-12 04:08:38",
+			  "updateTime": "2015-08-12 04:08:17",
+			  "remark": "Test for remote update ...",
+			  "isValid": true
+			}
+		  ],
+		  "interIds": "25|26|27"
+	}
+}	

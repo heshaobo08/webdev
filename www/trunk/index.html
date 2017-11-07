@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>摇一摇</title>
+<link rel="stylesheet" href="css/bootstrap.min.css" />
+<link rel="stylesheet" href="css/layout.css" type="text/css">
+<link rel="stylesheet" href="css/datepicker_css/jquery.ui.css" type="text/css">
+<script src="js/vendor/require.min.js" data-main="js/main"></script>
+</head>
+<body>
+	<div id="cover"></div>
+   
+    <!--活动首页弹出层-->
+	<div class="coverSe">
+		
+	</div>
+    <div class="coverCon">
+        <div class="coverConTitle">
+            新增产品
+            <div class="iconClose"></div>
+            <div class="iconHelp"></div>
+        </div>
+        <div class="coverConCenter">
+            <ul>
+                <li class="oinput"><span>产品名称：</span><input type="text" placeholder="请输入名称"></li>
+                <li class="oinput"><span>所属电视台：</span><input type="text" placeholder="请输入名称"></li>
+                <li class="oinput"><span>所属业务类型：</span><input type="text"></li>
+                <li class="oinput"><span>产品状态：</span><input type="text"></li>
+                <li><button class="coverDel">删除</button><button class="coverSure">确定</button></li>
+            </ul>
+        </div>
+    </div>
+    <div class="coverCon">
+        <div class="coverConTitle">
+            <span>删除</span>
+            <div class="iconClose"></div>
+        </div>
+        <div class="coverConCenter">
+            <ul>
+                <li class="coverConCenterText coverDelete">确定永久删除此奖品？</li>
+                <li><p><button class="coverDel">取消</button><button class="coverSure">确定</button></p></li>
+            </ul>
+        </div>
+    </div>
+    <div class="coverCon">
+        <div class="coverConTitle">
+            <span>帮助</span>
+        </div>
+        <div class="coverConCenter">
+            <ul>
+                <li class="coverConCenterText"><p class="ac_prompt">帮助帮助帮助帮助帮助</p></li>
+                <li><p><button class="coverClose coverDel">关闭</button></p></li>
+            </ul>
+        </div>
+    </div>
+    <div class="coverCon">
+        <div class="coverConTitle">
+            错误提示
+        </div>
+        <div class="coverConCenter">
+            <ul>
+                <li class="coverConCenterText coverWrong">错误提示!错误提示!</li>
+                <li><p><button class="coverClose coverDel">关闭</button></p></li>
+            </ul>
+        </div>
+    </div>
+	<div class="coverCon">
+        <div class="coverConTitle">
+           <span>结束活动</span>
+            <!--<div class="iconClose"></div>-->
+        </div>
+        <div class="coverConCenter">
+            <ul>
+                <li class="coverConCenterText"><!--<img src="views/img/icon5.png" class="ac_end_img">--><p class="ac_prompt">确定永久删除此奖品？</p></li>
+                <li class="coverConCenterText"><p><button class="coverDel">取消</button><button class="coverSure">确定</button></p></li>
+            </ul>
+        </div>
+    </div>
+	<div id="header">
+    	<div class="headerTop clearfix">
+        	<div class="headerTopLeft">信诺平台| 最大的媒体融合平台plat.sinosns.cn</div>
+            <div class="headerTopRight"><span class="login">登录</span><span class="connectUs">联系我们</span></div>
+        </div>
+        <div class="topList">
+        	<div class="topListCon">
+            	<ul>
+                	<li>首页</li>
+                    <li>我是电视台</li>
+                    <li>我是代理商</li>
+                    <li>我是商户</li>
+                    <li class="topActive">我是运营编辑</li>
+                    <li>我是管理员</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="content" class="clearfix">
+    	<div class="conLeft">
+        	<ul>
+            	<li>
+                	<a href="javascript:void(0);"  class="arcDown"><span>摇一摇</span></a>
+                    <ul>
+                    	<li data-href="home"><a href="javascript:void(0);"><span>首页</span></a></li>
+                        <li data-href="app_management"><a href="javascript:void(0);"><span>应用管理</span></a></li>
+                        <li data-href="number_management"><a href="javascript:void(0);"><span>场次管理</span></a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+		<!--右侧-->
+        <div class="conRight">
+			
+		</div>
+		<!--右侧-->
+    </div>
+</body>
+</html>

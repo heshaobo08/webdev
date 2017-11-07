@@ -1,0 +1,13 @@
+{
+  "statusCode": "2000000",
+  "data":   
+    {
+      "id": "违禁词ID",
+      "keywordValue": "违禁词内容",
+      "creaTime": "2015-07-13 00:00:00",
+      "updateTime": null,
+      "platform": "2",
+      "exceptantUsers":"例外用户",
+      "status": "违禁词状态，是否被禁用"
+    } 
+}

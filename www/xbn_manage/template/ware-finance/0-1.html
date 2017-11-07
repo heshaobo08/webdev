@@ -1,0 +1,117 @@
+<div class="contsBox">
+    <div class="details">
+        <div class="stateText">
+            <p class="mB20">处理状态： <span>${getConstName("OwmsRefundApplyStatusEnum",source.status)}</span></p>
+        </div>
+        <h3 class="titleText">基本信息</h3>
+        <div class="mT20 pL280">
+            <dl class="textDl">
+                <input type="hidden" value="${source.id}" id="refundId"/>
+                <input type="hidden" value="${source.userId}" id="userId"/>
+                <dt>申请编号：</dt>
+                <dd>${source.applyCode}</dd>
+            </dl>
+            <dl class="textDl">
+                <dt>退款金额：</dt>
+                <dd>${source.refundAmount}</dd>
+            </dl>
+            {{if source.status==3}}
+            <dl class="textDl">
+                <dt>付款人开户银行：</dt>
+                <dd>${source.payBankName}</dd>
+            </dl>
+            <dl class="textDl">
+                <dt>付款人户名全称：</dt>
+                <dd>${source.payUserFullName}</dd>
+            </dl>
+            <dl class="textDl">
+                <dt>付款人银行账号：</dt>
+                <dd>${source.payBankAccount}</dd>
+            </dl>
+            {{/if}}
+            <dl class="textDl">
+                <dt>收款人开户银行：</dt>
+                <dd>${source.receiptBankName}</dd>
+            </dl>
+            <dl class="textDl">
+                <dt>收款人户名全称：</dt>
+                <dd>${source.receiptUserFullName}</dd>
+            </dl>
+            <dl class="textDl">
+                <dt>收款人银行账号：</dt>
+                <dd>${source.receiptBankAccount}</dd>
+            </dl>
+            {{if source.status==3}}
+            <dl class="textDl">
+                <dt>交易流水号：</dt>
+                <dd>${source.detailCode}</dd>
+            </dl>
+            <dl class="textDl">
+                <dt>付款时间：</dt>
+                <dd>${source.payTime}</dd>
+            </dl>
+            {{/if}}
+            <dl class="textDl">
+                <dt>退款原因：</dt>
+                <dd class="js-reason">${source.refundReason}</dd>
+            </dl>
+            <dl class="textDl">
+                <dt>未完成业务：</dt>
+                <dd>{{if source.isFinish}}无{{else}}有<a data-href="?m=xhr_id_20200000_20203000_detail&p=1&uid=${source.userId}&aid=${source.id}" data-title="海外仓财务管理-退款管理-详情-未完成业务" class="blue mL10">查看详情</a>{{/if}}</dd>
+            </dl>
+            {{if source.status==4}}
+            <dl class="textDl">
+                <dt>驳回原因：</dt>
+                <dd>${source.rejectInfo}</dd>
+            </dl>
+            {{/if}}
+        </div>
+    </div>
+    <div class="details">
+        <h3 class="titleText">修改信息</h3>
+        <div class="mT20 pL280">
+            <dl class="textDl">
+                <dt class="invoice_dt">申请人：</dt>
+                <dd class="invoice_dd">${source.applyUser}</dd>
+            </dl>
+            <dl class="textDl">
+                <dt class="invoice_dt">申请时间：</dt>
+                <dd class="invoice_dd">${source.applyTime}</dd>
+            </dl>
+            <dl class="textDl">
+                <dt class="invoice_dt">最后修改人：</dt>
+                <dd class="invoice_dd">${source.lastUpdateUser}</dd>
+            </dl>
+            <dl class="textDl">
+                <dt class="invoice_dt">最后修改时间：</dt>
+                <dd class="invoice_dd">${source.lastUpdateTime}</dd>
+            </dl>
+        </div>
+    </div>
+</div>
+<div class="btnMain">
+    {{if source.status==1}}
+    {{if source.operateData.moduleData && source.operateData.actionData && source.operateData.operate['HWC20203004'] && source.operateData.operate['HWC20203004'].childOpt['HWC20203005']}}
+    <a href="javascript:;" class="buttonText js-accept mR20">受理</a>
+    {{/if}}
+    {{/if}}
+    {{if source.status==2}}
+    {{if source.operateData.moduleData && source.operateData.actionData && source.operateData.operate['HWC20203004'] && source.operateData.operate['HWC20203004'].childOpt['HWC20203007']}}
+    <a data-title="海外仓系统管理-退款管理-退款" data-href="?m=xhr_id_20200000_20203000_refund&id=${source.id}" class="buttonText mR20">退款</a>
+    {{/if}}
+    {{/if}}
+    {{if source.status==1 || source.status==2}}
+    {{if source.operateData.moduleData && source.operateData.actionData && source.operateData.operate['HWC20203004'] && source.operateData.operate['HWC20203004'].childOpt['HWC20203006']}}
+    <a href="javascript:;" class="buttonText mR20 js-reject">驳回</a>
+    {{/if}}
+    {{/if}}
+    <a data-href="?m=xhr_id_20200000_20203000" href="javascript:;" class="buttonText" shref="javascript:history.go(-1);">返回</a>
+</div>
+<!-- 驳回 -->
+<script id='rejectReasonTmpl' type='text/x-jquery-tmpl'>
+<form id="rejectForm">
+    <div class="mL70 mT20">
+        <textarea class="textarea w390 h140" placeholder="驳回原因最多250个字" data-cnmax="250" name="rejectInfo"></textarea>
+    </div>
+</form>
+</script>

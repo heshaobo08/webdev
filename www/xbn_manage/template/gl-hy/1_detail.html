@@ -1,0 +1,222 @@
+	<div class="details">
+		<h3 class="titleText">关联会员</h3>
+		<div class="related">
+			<dl class="fL">
+				<dt>手机号：</dt>
+				<dd>${source.userDetail.mobile}</dd>
+			</dl>
+			<dl class="fR">
+				<dt>邮箱：</dt>
+				<dd>${source.userDetail.email}</dd>
+			</dl>
+		</div>
+	</div>
+	{{if source.companyType == 2}}
+	<div class="details">
+		<h3 class="titleText">基本信息</h3>
+		<div class="relatedBox">
+			<dl class="textDl">
+				<dt>入驻类型：</dt>
+				<dd>${source.companyType == 2 ? "个人" : "企业"}</dd>
+			</dl>
+			<dl class="textDl">
+				<dt>申请人姓名：</dt>
+				<dd>${source.companyName||"&nbsp;"}</dd>
+			</dl>
+			<dl class="textDl">
+				<dt>身份证号码：</dt>
+				<dd>${source.registeredNo||"&nbsp;"}</dd>
+			</dl>
+			<dl class="textDl editTXA">
+				<dt>身份证正面：</dt>
+				<dd>
+				{{if source.fileOriginalurl0}}
+					<img style="width:164px;height:113px;" src="${source.fileOriginalurl0}" data-id='' />
+				{{/if}}
+				</dd>
+			</dl>
+			<dl class="textDl editTXA">
+				<dt>身份证反面：</dt>
+				<dd>
+				{{if source.fileOriginalurl1}}
+					<img style="width:164px;height:113px;" src="${source.fileOriginalurl1}" data-id='' />
+				{{/if}}
+				</dd>
+			</dl>
+			<dl class="textDl editTXA">
+				<dt>手持身份证照：</dt>
+				<dd>
+				{{if source.fileOriginalurl2}}
+					<img style="width:164px;height:113px;" src="${source.fileOriginalurl2}" data-id='' />
+				{{/if}}
+				</dd>
+			</dl>
+			<dl class="textDl editTXA">
+				<dt>手持手稿照：</dt>
+				<dd>
+				{{if source.fileOriginalurl3}}
+					<img style="width:164px;height:113px;" src="${source.fileOriginalurl3}" data-id='' />
+				{{/if}}
+				</dd>
+			</dl>
+			<dl class="textDl">
+				<dt>联系地址：</dt>
+				<dd>${source.addressData} ${source.address}</dd>
+			</dl>
+		</div>
+	</div>
+	{{else}}
+	<div class="details">
+		<h3 class="titleText">基本信息</h3>
+		<div class="relatedBox">
+			<dl class="textDl">
+				<dt>入驻类型：</dt>
+				<dd>${source.companyType == 2 ? "个人" : "企业"}</dd>
+			</dl>
+			<dl class="textDl">
+				<dt>企业名称：</dt>
+				<dd>${source.companyName||"&nbsp;"}</dd>
+			</dl>
+			<dl class="textDl">
+				<dt>企业地址：</dt>
+				<dd>${source.addressData} ${source.address}</dd>
+			</dl>
+			<dl class="textDl">
+				<dt>邮编：</dt>
+				<dd>${source.postcode||"&nbsp;"}</dd>
+			</dl>
+			<dl class="textDl">
+				<dt>法人代表：</dt>
+				<dd>${source.legalRepresent||"&nbsp;"}</dd>
+			</dl>
+			<dl class="textDl">
+				<dt>工商注册号：</dt>
+				<dd>${source.registeredNo||"&nbsp;"}</dd>
+			</dl>
+			<dl class="textDl editTXA">
+				<dt>营业执照（副本）：</dt>
+				<dd>
+				{{if source.fileOriginalurl || source.businessLicense}}
+					<img src="${source.fileOriginalurl || source.businessLicense}" data-id='${source.businessLicense}' />
+				{{/if}}
+				</dd>
+			</dl>
+			<!-- <dl class="textDl">
+				<dt>企业性质：</dt>
+				<dd>${source.postcode||"&nbsp;"}</dd>
+			</dl> -->
+			<dl class="textDl">
+				<dt>单品SKU总量：</dt>
+				<dd>
+				${source.skuTotal||"&nbsp;"}
+				</dd>
+			</dl>
+			<dl class="textDl">
+				<dt>单品均价：</dt>
+				<dd>{{if source.averageSkuPrice=='1'}}1-100{{/if}}
+				{{if source.averageSkuPrice=='2'}}101-200{{/if}}
+				{{if source.averageSkuPrice=='3'}}201-300{{/if}}
+				{{if source.averageSkuPrice=='4'}}301-500{{/if}}
+				{{if source.averageSkuPrice=='5'}}501-1000{{/if}}
+				{{if source.averageSkuPrice=='6'}}1000以上{{/if}}</dd>
+
+			</dl>
+			<dl class="textDl">
+				<dt>企业简介：</dt>
+				<dd>${source.description||"&nbsp;"}</dd>
+			</dl>
+			<!-- <dl class="textDl">
+				<dt>第一联系人：</dt>
+				<dd>${source.postcode}</dd>
+			</dl>
+			<dl class="textDl">
+				<dt>手机号：</dt>
+				<dd>${source.postcode}</dd>
+			</dl>
+			<dl class="textDl">
+				<dt>电话：</dt>
+				<dd>${source.postcode}</dd>
+			</dl>
+			<dl class="textDl">
+				<dt>第二联系人：</dt>
+				<dd>${source.postcode}</dd>
+			</dl>
+			<dl class="textDl">
+				<dt>手机号：</dt>
+				<dd>${source.postcode}</dd>
+			</dl>
+			<dl class="textDl">
+				<dt>电话：</dt>
+				<dd>${source.postcode}</dd>
+			</dl>
+			<dl class="textDl">
+				<dt>传真：</dt>
+				<dd>${source.postcode}</dd>
+			</dl> -->
+		</div>
+	</div>
+	<div class="details">
+		<h3 class="titleText">银行信息</h3>
+		<div class="relatedBox">
+			<dl class="textDl">
+				<dt>开户银行：</dt>
+				<dd>{{if source.bankdata}}${source.bankdata.bank||"&nbsp;"}{{/if}}</dd>
+			</dl>
+			<dl class="textDl">
+				<dt>银行网点：</dt>
+				<dd>{{if source.bankdata}}${source.bankdata.branch||"&nbsp;"}{{/if}}</dd>
+			</dl>
+			<dl class="textDl">
+				<dt>开户名：</dt>
+				<dd>{{if source.bankdata}}${source.bankdata.accountName||"&nbsp;"}{{/if}}</dd>
+			</dl>
+			<dl class="textDl">
+				<dt>银行账号：</dt>
+				<dd>{{if source.bankdata}}${source.bankdata.bankAccount||"&nbsp;"}{{/if}}</dd>
+			</dl>
+			<dl class="editTXA">
+				<dt>银行开户许可证：</dt>
+				<dd>
+				{{if source.bankfileOriginalurl || source.bankdata ? source.bankdata.licence : false}}
+				<img src="${source.bankfileOriginalurl || source.bankdata ? source.bankdata.licence : ''}" data-id='${source.bankdata ? source.bankdata.licence : ''}' />
+				{{/if}}
+				</dd>
+			</dl>
+		</div>
+	</div>
+	{{/if}}
+	<div class="details">
+		<h3 class="titleText">权限信息</h3>
+		<div class="relatedBox">
+			<dl class="textDl">
+				<dt>权限角色：</dt>
+				<dd>{{if source.roleList[source.userDetail.groupId]}}${source.roleList[source.userDetail.groupId].groupName||"&nbsp;"}{{/if}}</dd>
+			</dl>
+			<dl class="textDl">
+				<dt>权限等级：</dt>
+				<dd>{{if source.levelList[source.userDetail.levelId]}}${source.levelList[source.userDetail.levelId].levelName||"&nbsp;"}{{/if}}</dd>
+			</dl>
+			<dl class="textDl">
+				<dt>eBay最大刊登量：</dt>
+				<dd>${source.userDetail.ebayListTotal||"&nbsp;"}</dd>
+			</dl>
+			<dl class="textDl">
+				<dt>UPC剩余量： </dt>
+				<dd>${source.userDetail.upcTotal||"&nbsp;"}</dd>
+			</dl>
+			<dl class="textDl">
+				<dt>授权站点：</dt>
+				<dd class="siteShow">
+					{{each(i,site) source.authdata}}
+					<a href="javascript:;">${site.cnName}</a>
+					{{/each}}
+				</dd>
+			</dl>
+		</div>
+	</div>
+	<!-- conts end -->
+	<!--中间内容区域 end-->
+	<div class="btnMain">
+		<a href="javascript:history.go(-1);" class="button" sdata-href='?m=xhr_id_33_42'  data-title='会员管理-入驻商家'>返回</a>
+		<!-- <a href="javascript:;" class="buttonText pad20">查看操作记录</a> -->
+	</div>

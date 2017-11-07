@@ -1,0 +1,323 @@
+<div class="serch">
+    <form id='publishSearchForm'>
+        <!-- tab 切换 begin -->
+        <div class="serch_tab">
+            <ul>
+                {{if source.operateData.moduleData && source.operateData.actionData &&
+                source.operateData.operate['h030501']}}
+                <li class="{{if source.platform=='1'}}on{{/if}}"><a href="javascript:;"
+                                                                    data-href='?m=xhr_id_95_144&p=1'>eBay</a></li>
+                {{/if}}
+                {{if source.operateData.moduleData && source.operateData.actionData &&
+                source.operateData.operate['h030502']}}
+                <li class="{{if source.platform=='2'}}on{{/if}}"><a href="javascript:;"
+                                                                    data-href='?m=xhr_id_95_144&p=2'>amazon</a></li>
+                {{/if}}
+                {{if source.operateData.moduleData && source.operateData.actionData &&
+                source.operateData.operate['h030503']}}
+                <li class="{{if source.platform=='3'}}on{{/if}}"><a href="javascript:;"
+                                                                    data-href='?m=xhr_id_95_144&p=3'>newegg</a></li>
+                {{/if}}
+
+            </ul>
+        </div>
+        <!-- tab 切换 end -->
+        <!-- serch begin -->
+        <div class="serch_main">
+            <div class="serch_conts">
+                <dl>
+                    <dt>刊登标题 :</dt>
+                    <dd><input type="text" value="" class="defaultInput" name='title'></dd>
+                </dl>
+                <dl>
+                    <dt>商品货号/SKU :</dt>
+                    <dd><input type="text" value="" class="defaultInput" name='sku'></dd>
+                </dl>
+                <dl>
+                    <dt>小笨鸟用户名 :</dt>
+                    <dd><input type="text" value="" class="defaultInput" name='userName'></dd>
+                </dl>
+            </div>
+            <div class="serch_conts">
+            <dl>
+                <dt>用户类型：</dt>
+                <dd>
+        					<div class="select w190">
+        						<input index-data="" type="hidden" value="请选择" name='userType'>
+        						<i class="" index-data="">请选择</i>
+        						<em class="icon-52"></em>
+        						<ul style="display: none;">
+        							<li index-data=""><span>请选择</span></li>
+        							<li index-data="1"><span>自营</span></li>
+        							<li index-data="2"><span>第三方商家(非自营)</span></li>
+        						</ul>
+        					</div>
+        				</dd>
+            </dl>
+        </div>
+            <div class="serch_conts">
+                <dl>
+                    <dt>规格：</dt>
+                    <dd>
+                        <div class="select w190">
+                            <input index-data="" type="hidden" value="请选择" name='variationType'>
+                            <i class="" index-data="">请选择</i>
+                            <em class="icon-52"></em>
+                            <ul style="display: none;">
+                                <li index-data=""><span>请选择</span></li>
+                                <li index-data="singleVariation"><span>单规格</span></li>
+                                <li index-data="multiVariation"><span>多规格</span></li>
+                            </ul>
+                        </div>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>编辑审核状态</dt>
+                    <dd>
+                        <div class="select w190">
+                            <input index-data="" type="hidden" value="请选择" name='status'>
+                            <i class="" index-data="">请选择</i>
+                            <em class="icon-52"></em>
+                            <ul style="display: none;">
+                                <li index-data=""><span>请选择</span></li>
+                                <li index-data="1"><span>待审核</span></li>
+                                <li index-data="2"><span>定时中</span></li>
+                                <li index-data="3"><span>审核驳回</span></li>
+                                <li index-data="4"><span>系统驳回</span></li>
+                            </ul>
+                        </div>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>站点：</dt>
+                    <dd>
+                        <div class="select w190">
+                            <input index-data="" type="hidden" value="请选择" name='site'>
+                            <i class="" index-data="">请选择</i>
+                            <em class="icon-52"></em>
+                            <ul style="display: none;">
+                                {{each(i,site) source.siteList}}
+                                <li index-data="${site.id}"><span>${site.cnName}</span></li>
+                                {{/each}}
+                            </ul>
+                        </div>
+                    </dd>
+                </dl>
+            </div>
+            <div class="serch_conts">
+                {{if source.platform=='1'}}
+                <dl>
+                    <dt>价格方式：</dt>
+                    <dd>
+                        <div class="select w190">
+                            <input index-data="" type="hidden" value="请选择" name='listingType'>
+                            <i class="" index-data="">请选择</i>
+                            <em class="icon-52"></em>
+                            <ul style="display: none;">
+                                <li index-data="FixedPriceItem"><span>固价</span></li>
+                                <li index-data="Chinese"><span>竞价</span></li>
+                            </ul>
+                        </div>
+                    </dd>
+                </dl>
+                {{/if}}
+                <dl>
+                    <dt>提交时间：</dt>
+                    <dd>
+                        <div class="defaultData">
+                            <div class="dataBegin">
+                                <span class="dataInput" id="sstartTime" name='startSubmitDate'></span>
+                                <a href="javascript:;" class="stimeStart icon-54"></a>
+                            </div>
+                            <span class="point"></span>
+
+                            <div class="dataEnd">
+                                <span class="dataInput" id="sendTime" name='endSubmitDate'></span>
+                                <a href="javascript:;" class="stimeEnd icon-54"></a>
+                            </div>
+                        </div>
+                    </dd>
+                </dl>
+            </div>
+            <div class="serch_conts">
+                <dl>
+                    <dt>编辑成功时间：</dt>
+                    <dd>
+                        <div class="defaultData">
+                            <div class="dataBegin">
+                                <span class="dataInput" id="startTime" name='startEditDate'></span>
+                                <a href="javascript:;" class="timeStart icon-54"></a>
+                            </div>
+                            <span class="point"></span>
+
+                            <div class="dataEnd">
+                                <span class="dataInput" id="endTime" name='endEditDate'></span>
+                                <a href="javascript:;" class="timeEnd icon-54"></a>
+                            </div>
+                        </div>
+                    </dd>
+                </dl>
+                <dl class="fL">
+                    <dt>&emsp;</dt>
+                    <dd>
+                        {{if source.platform=='1'}}
+                        {{if source.operateData.moduleData && source.operateData.actionData &&
+                        source.operateData.operate['h030501'] && source.operateData.operate['h030501'].childOpt &&
+                        source.operateData.operate['h030501'].childOpt['h03050101']}}
+                        <a href="javascript:" class="button js-publishSearch">Search</a>
+                        {{/if}}
+                        {{else source.platform=='2'}}
+                        {{if source.operateData.moduleData && source.operateData.actionData &&
+                        source.operateData.operate['h030502'] && source.operateData.operate['h030502'].childOpt &&
+                        source.operateData.operate['h030502'].childOpt['h03050201']}}
+                        <a href="javascript:" class="button js-publishSearch">Search</a>
+                        {{/if}}
+                        {{else source.platform=='3'}}
+                        {{if source.operateData.moduleData && source.operateData.actionData &&
+                        source.operateData.operate['h030503'] && source.operateData.operate['h030503'].childOpt &&
+                        source.operateData.operate['h030503'].childOpt['h03050301']}}
+                        <a href="javascript:" class="button js-publishSearch">Search</a>
+                        {{/if}}
+                        {{/if}}
+                    </dd>
+                </dl>
+            </div>
+        </div>
+        <!-- serch end -->
+        <div class="addbutton">
+            {{if source.platform=='1'}}
+            {{if source.operateData.moduleData && source.operateData.actionData && source.operateData.operate['h030501']
+            && source.operateData.operate['h030501'].childOpt &&
+            source.operateData.operate['h030501'].childOpt["h03050104"]}}
+            <a href="javascript:;" class="button js-checkupOtherBatch">批量审核</a>
+            {{/if}}
+            {{else source.platform=='2'}}
+            {{if source.operateData.moduleData && source.operateData.actionData && source.operateData.operate['h030502']
+            && source.operateData.operate['h030502'].childOpt &&
+            source.operateData.operate['h030502'].childOpt['h03050204']}}
+            <a href="javascript:;" class="button js-checkupOtherBatch">批量审核</a>
+            {{/if}}
+            {{else source.platform=='3'}}
+            {{if source.operateData.moduleData && source.operateData.actionData && source.operateData.operate['h030503']
+            && source.operateData.operate['h030503'].childOpt &&
+            source.operateData.operate['h030503'].childOpt['h03050304']}}
+            <a href="javascript:;" class="button js-checkupOtherBatch">批量审核</a>
+            {{/if}}
+            {{/if}}
+
+        </div>
+    </form>
+    <div class="addbutton none">您所搜索的，共有<i id="searchTotalCount">${source.page.totalCount}</i>条内容符合。</div>
+</div>
+
+<!-- conts begin -->
+<div class="contsBox">
+    <div class="bigTable">
+        <table class="layout" border="0" cellspacing="0" r-box="all">
+            <thead>
+            <tr>
+                <th width="3%"><input type="checkbox" value="1" name="all"></th>
+                <th width="7%">图片</th>
+                <th width="5%">规格</th>
+                <th width="10%">刊登标题</th>
+                <th width="10%">小笨鸟用户名</th>
+                <th width="3%"></th>
+                <th width="10%">商品货号/SKU</th>
+                <!-- <th width="3%"></th> -->
+                <th width="7%">站点</th>
+                <th width="5%">价格</th>
+                <th width="10%">提交时间</th>
+                <th width="10%">编辑成功时间</th>
+                <th width="10%">编辑审核状态</th>
+                <th width="10%">操作</th>
+            </tr>
+            </thead>
+            <tbody class="picOn" id='publishListCon'>
+            </tbody>
+        </table>
+    </div>
+    <div class="page" id="topPager">
+    </div>
+</div>
+<div class="layerCon"></div>
+
+<!-- 分页模板 -->
+<script id='pageListCon' type='text/x-jquery-tmpl'>
+    <a href="javascript:;" class="firstPage fL" data-displace="first">首页</a>
+    <a href="javascript:;" class="prve fL icon-56" data-displace="prev"></a>
+    <ul class="pagenumber" id="pager"></ul>
+    <a href="javascript:;" class="next fL icon-55" data-displace="next"></a>
+    <a href="javascript:;" class="lastPage" data-displace="last">尾页</a>
+
+</script>
+
+<script id='publishListTmpl' type='text/x-jquery-tmpl'>
+_[{if list.length}]_
+    _[{each(i,list) list}]_
+        <tr>
+            <td>
+              _[{if platform=='1'}]_
+                <input type="checkbox" value="$_[list.id]_" name='checkId' _[{if list.status==2 && list.operateType=='UpdateActive' && list.chkStatus=='0' && list.commodityCron==null }]_ _[{else}]_disabled='disabled'_[{/if}]_>
+              _[{else platform=='2'}]_
+              <!--Todo commodityCron未统一结构-->
+              <input type="checkbox" value="$_[list.id]_" name='checkId' _[{if list.status==3 && list.operateType=='UpdateActive' && list.chkStatus=='0' && list.commodityCron.cronStatus==null }]_ _[{else}]_disabled='disabled'_[{/if}]_ data-site='$_[list.site]_'>
+              _[{else platform=='3'}]_
+              <!--Todo commodityCron未统一结构-->
+              <input type="checkbox" value="$_[list.id]_" name='checkId'_[{if list.status==3 && list.operateType=='UpdateActive' && list.operateStage=='UpdateBaseInfo' && list.chkStatus=='0' && list.commodityCron.cronStatus==null}]_ _[{else}]_disabled='disabled'_[{/if}]_ data-site='$_[list.site]_'>
+              _[{/if}]_
+            </td>
+            <td>
+                <img src="images/defineImg.png"  data-defaultImg='images/defineImg.png' data-fileid='$_[list.id]_' data-type='0' class="imgBorder" width='50'/>
+
+            </td>
+            <td>_[{if list.variationType=='multiVariation'}]_ 多<span class="mL10">$_[list.variationCount]_</span>_[{else}]_ 单 _[{/if}]_</td>
+            <td class="white">$_[list.title]_</td>
+            <td>$_[list.userName]_</td>
+            <td><a href="javascript:;" class="blue mL10 js-publishDiscribe" data-id='$_[list.id]_'>描述</a></td>
+            <td>_[{if list.sku.indexOf('-')!='-1'}]_$_[list.sku.slice(list.sku.indexOf('-')+1)]__[{else}]_$_[list.sku]__[{/if}]_</td>
+            <!--<td>_[{if list.variationType=='multiVariation'}]_<a href="javascript:;" class="blue js-viewSku" data-id='$_[list.id]_'>全部</a>_[{/if}]_</td>-->
+            <td>_[{if siteList[list.site]}]_$_[siteList[list.site].cnName]__[{/if}]_</td>
+            <td>_[{if list.listingType=="listingType"}]_固价_[{else list.listingType=="Chinese"}]_竞价_[{/if}]_ $_[list.price]_</td>
+            <td>$_[list.submitDate]_</td>
+            <td>$_[list.editDate]_</td>
+            <td><span class="red">
+                $_[list.publishShowStatus]_
+            </span></td>
+            <td>
+                _[{if (platform=='1' && operateData.moduleData && operateData.actionData && operateData.operate['h030501'] && operateData.operate['h030501'].childOpt && operateData.operate['h030501'].childOpt['h03050102']) || (platform=='2' && operateData.moduleData && operateData.actionData && operateData.operate['h030502'] && operateData.operate['h030502'].childOpt && operateData.operate['h030502'].childOpt['h03050202']) || (platform=='3' && operateData.moduleData && operateData.actionData && operateData.operate['h030503'] && operateData.operate['h030503'].childOpt && operateData.operate['h030503'].childOpt['h03050302'])}]_
+                <a href="javascript:;" class="blue" data-href='?m=xhr_id_95_144_view&id=$_[list.id]_&p=$_[platform]_' data-title='商品管理-编辑商品审核-查看'>查看</a>
+                _[{/if}]_
+                _[{if (platform=='1' && operateData.moduleData && operateData.actionData && operateData.operate['h030501'] && operateData.operate['h030501'].childOpt && operateData.operate['h030501'].childOpt['h03050103']) || (platform=='2' && operateData.moduleData && operateData.actionData && operateData.operate['h030502'] && operateData.operate['h030502'].childOpt && operateData.operate['h030502'].childOpt['h03050203']) || (platform=='3' && operateData.moduleData && operateData.actionData && operateData.operate['h030503'] && operateData.operate['h030503'].childOpt && operateData.operate['h030503'].childOpt['h03050303'])}]_
+                    _[{if list.chkStatus=="0"}]_<a href="javascript:;" class="blue js-checkupOtherBatch mL10" data-id='$_[list.id]_'>审核</a>_[{/if}]_
+                _[{/if}]_
+                _[{if list.publishShowStatus == "审核驳回" || list.publishShowStatus == "在线审核驳回" || list.publishShowStatus == "在线系统驳回"}]_<a href="javascript:;" class="blue mL10 js-publishForbidView" data-reason='$_[list.chkReason || "暂无原因"]_'>原因</a>_[{/if}]_
+                
+                _[{if list.publishShowStatus == "系统驳回"}]_<a href="javascript:;" class="blue mL10 js-publishForbidView" data-reason='$_[list.failureReason || "暂无原因"]_'>原因</a>_[{/if}]_
+            </td>
+        </tr>
+    _[{/each}]_
+_[{else}]_
+    <tr><td colSpan='13'>暂无数据</td></tr>
+_[{/if}]_
+
+</script>
+
+
+<script id='layerBoxTmpl' type='text/x-jquery-tmpl'>
+<form id='productAuditLayerBox'>
+    <div class="checkupTips">
+     <dl class="editDl mB20">
+          <dt>审核操作：</dt>
+          <dd>
+               <em class="mR20"><input type="radio" name='audit' required class="mR10" value="passed" checked/>审核通过</em>
+               <em><input type="radio" class="mR10" name='audit' value="reject"/>驳回</em>
+          </dd>
+     </dl>
+     <div class='rejectBox none'>
+        <textarea name="chkReason" cols="30" rows="10" placeholder="驳回原因" class="reject"></textarea>
+     </div>
+</div>
+</form>
+
+</script>
+

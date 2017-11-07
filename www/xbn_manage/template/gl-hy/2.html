@@ -1,0 +1,183 @@
+<div class="serch">
+    <!-- serach begin -->
+    <form id="brandSearchFrom">
+        <div class="serch_main">
+            <div class="serch_conts">
+                <dl>
+                    <dt>中文名称 :</dt>
+                    <dd><input type="text" value="" class="defaultInput" name='cnName'/></dd>
+                </dl>
+                <dl>
+                    <dt>英文名称 :</dt>
+                    <dd><input type="text" value="" class="defaultInput" name='enName'/></dd>
+                </dl>
+                <dl>
+                    <dt>手机号 :</dt>
+                    <dd><input type="text" value="" class="defaultInput" name='relevanceAccount'/></dd>
+                </dl>
+                <dl>
+                    <dt>资质类型 :</dt>
+                    <dd>
+                        <div class="select w190" style="z-index: 100;">
+                            <input index-data="" type="hidden" value="请选择" name='qualificationType'>
+                            <i>请选择</i>
+                            <em class="icon-52"></em>
+                            <ul style="">
+                                <li index-data=""><span>请选择</span></li>
+                                <li index-data="own"><span>自有品牌</span></li>
+                                <li index-data="agent"><span>代理品牌</span></li>
+                            </ul>
+                        </div>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>会员名称 :</dt>
+                    <dd><input type="text" value="" class="defaultInput" name='companyName'/></dd>
+                </dl>
+            </div>
+            <div class="serch_conts">
+                <dl>
+                    <dt>资质状态 :</dt>
+                    <dd>
+                        <div class="select w190" style="z-index: 100;">
+                            <input index-data="" name='qualificationStatus' type="hidden" value="请选择">
+                            <i>请选择</i>
+                            <em class="icon-52"></em>
+                            <ul style="">
+                                <li index-data=""><span>请选择</span></li>
+                                <li index-data="2"><span>已授权</span></li>
+                                <li index-data="6"><span>已冻结</span></li>
+                                <li index-data="7"><span>已过期</span></li>
+                            </ul>
+                        </div>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>授权时间 :</dt>
+                    <dd>
+                        <div class="defaultData">
+                            <div class="dataBegin">
+                                <span class="dataInput" id="startTime" name='chkTime_start'></span>
+                                <a href="javascript:;" class="timeStart icon-54"></a>
+                            </div>
+                            <span class="point"></span>
+
+                            <div class="dataEnd">
+                                <span class="dataInput" id="endTime" name='chkTime_end'></span>
+                                <a href="javascript:;" class="timeEnd icon-54"></a>
+                            </div>
+                        </div>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>有效期 :</dt>
+                    <dd>
+                        <div class="defaultData">
+                            <div class="dataBegin">
+                                <span class="dataInput" id="sstartTime" name='beginExpireTime'></span>
+                                <a href="javascript:;" class="stimeStart icon-54"></a>
+                            </div>
+                            <span class="point"></span>
+
+                            <div class="dataEnd">
+                                <span class="dataInput" id="sendTime" name='endExpireTime'></span>
+                                <a href="javascript:;" class="stimeEnd icon-54"></a>
+                            </div>
+                        </div>
+                    </dd>
+                </dl>
+            </div>
+            <dl class="serchDl">
+                <dt>&emsp;</dt>
+                <dd><a href="javascript:;" class="button js-brandSearch">Search</a></dd>
+            </dl>
+        </div>
+    </form>
+    <div class="addbutton none">您所搜索的，共有<i id='searchTotalCount'>${source.totalCount}</i>条内容符合。</div>
+    <!-- search end -->
+</div>
+<!-- conts begin -->
+<div class="contsBox">
+    <div class="bigTable">
+        <table class="layout" border="0" cellspacing="0">
+            <thead>
+            <tr>
+                <th>中文名称</th>
+                <th>英文名称</th>
+                <th>资质类型</th>
+                <th>授权时间</th>
+                <th width="220">到期时间</th>
+                <th>会员名称</th>
+                <th>手机号</th>
+                <th>资质状态</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody id='brandListCon'>
+
+            </tbody>
+        </table>
+    </div>
+
+    <div class="page" id="topPager">
+    </div>
+
+</div>
+<!-- 分页模板 -->
+<script id='pageListCon' type='text/x-jquery-tmpl'>
+    <a href="javascript:;" class="firstPage fL" data-displace="first">首页</a>
+    <a href="javascript:;" class="prve fL icon-56" data-displace="prev"></a>
+    <ul class="pagenumber" id="pager"></ul>
+    <a href="javascript:;" class="next fL icon-55" data-displace="next"></a>
+    <a href="javascript:;" class="lastPage" data-displace="last">尾页</a>
+
+
+</script>
+
+<!-- 品牌列表模板 -->
+<script id='brandListTmpl' type='text/x-jquery-tmpl'>
+_[{if list}]_
+    _[{each(i,brand) list}]_
+        <tr>
+            <td>$_[brand.cnName]_</td>
+            <td>$_[brand.enName]_</td>
+            <td>_[{if brand.businessModel=='own'}]_ 自有品牌_[{else  brand.businessModel=='agent'}]_ 代理品牌_[{/if}]_</td>
+            <td>$_[brand.chkTime]_</td>
+            <td>$_[brand.brandExpireTime]_  _[{if brand.lastDay<=15 &&  brand.lastDay>0}]_<span class="red f12">（剩余$_[brand.lastDay]_天）</span>_[{/if}]_</td>
+
+            <td>$_[brand.companyName]_</td>
+            <td data-userid="$_[brand.userId]_">$_[brand.userMobile]_</td>
+
+            <td>_[{if brand.auditStatus=="1"}]_待审核 _[{else brand.auditStatus=="2"}]_已授权 _[{else brand.auditStatus=="3"}]_审核驳回 _[{else brand.auditStatus=="6"}]_已冻结 _[{else brand.auditStatus=="7"}]_ 已过期_[{/if}]_</td>
+
+            <td class="displayTd">
+                _[{if operateData.moduleData && operateData.actionData && operateData.operate['h02030102']}]_
+                    <a href="javascript:;"  data-href="?m=xhr_id_33_47_view&id=$_[brand.id]_" data-title='' data-title='会员管理-品牌管理-查看' class="blue mR10">$_[operateData.operate['h02030102'].menuName]_</a>
+                _[{/if}]_
+                _[{if brand.auditStatus=="2"}]_
+                    _[{if operateData.moduleData && operateData.actionData && operateData.operate['h02030104']}]_
+                        <a href="javascript:;" class="blue mR10 js-brandFreeze" data-id='$_[brand.id]_'>$_[operateData.operate['h02030104'].menuName]_</a>
+                    _[{/if}]_
+                    _[{if operateData.moduleData && operateData.actionData && operateData.operate['h02030103']}]_
+                    <a href='javascript:;' data-href="?m=xhr_id_33_47_edit&id=$_[brand.id]_" data-title='' data-title='会员管理-品牌管理-修改' class="blue mR10">$_[operateData.operate['h02030103'].menuName]_</a>
+                    _[{/if}]_
+                _[{else brand.auditStatus=="6"}]_
+                    _[{if operateData.moduleData && operateData.actionData && operateData.operate['h02030105']}]_
+                        <a href="javascript:;" class="blue mR10 js-brandUnfreeze" data-id='$_[brand.id]_'>$_[operateData.operate['h02030105'].menuName]_</a>
+                    _[{/if}]_
+                _[{else brand.auditStatus=="7"}]_
+                    _[{if operateData.moduleData && operateData.actionData && operateData.operate['h02030103']}]_
+                    <a href='javascript:;' data-href="?m=xhr_id_33_47_edit&id=$_[brand.id]_" data-title='会员管理-品牌管理-修改'  class="blue mR10">修改</a>
+                    _[{/if}]_
+                _[{/if}]_
+            </td>
+        </tr>
+    _[{/each}]_
+    _[{else}]_
+    <tr>
+        <td colspan="8">暂无数据</td>
+    </tr>
+_[{/if}]_
+
+
+</script>

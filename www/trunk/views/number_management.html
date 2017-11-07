@@ -1,0 +1,149 @@
+		<div class="app_location">
+			<p>位置：<a href="#">我是运营编辑</a>><a href="#">摇一摇</a>><span>场次管理</span></p>
+		</div>
+		<div class="app_serch">
+			 <div class="ipt_item number_item">
+				<label for="name">主题：</label>
+				<div class="numberCon">
+					<p><input type="text" id="name" placeholder="请输入主题"/></p>
+				</div>
+			</div>
+			 <div class="ipt_item number_item">
+				<label for="name">关键字：</label>
+				<div class="numberCon">
+					<p><input type="text" id="name" placeholder="请输入主题"/></p>
+				</div>
+			</div>
+			<div class="ipt_item number_item">
+					<label>时间：</label>
+					<div class="app_item_box number_time">
+						<div class="app_item_time">
+							<span><input type="text" class="twoToTwo" id="start_time1" name="start_time" ><a class="ac_time_hx">&nbsp;</a></span>
+							<span class="twoToTwoLine">至</span>
+							<span><input type="text" class="twoToTwo" id="end_time1" name="end_time"><a class="ac_time_hx">&nbsp;</a></span>
+						</div>
+					</div>
+			</div>
+			<div class="ipt_item number_item">
+				<label>应用：</label>
+				<div class="numbersect">
+					<select> 
+						<option>不限</option>
+						<option>辣椒圈</option> 
+						<option>我爱发明</option> 
+					</select> 
+				</div>
+			</div>
+			<div class="ipt_item number_item">
+				<label>倒计时：</label>
+				<div class="numbersect">
+					<select> 
+						<option>不限</option>
+						<option>30分钟</option> 
+						<option>15分钟</option> 
+					</select> 
+				</div>
+			</div>
+			<div class="ipt_item number_item">
+				<label>状态：</label>
+				<div class="numbersect">
+					<select> 
+						<option>不限</option>
+						<option>已发布</option> 
+						<option>未发布</option> 
+					</select> 
+				</div>
+			</div>
+			<div class="clearfix"></div>
+			<div class="ac_serch_btn number_btn"><p><a class="ac_ser_reset">重置</a><a class="ac_ser_btn">筛选</a></p></div>
+			<div class="clearfix"></div>
+		</div>
+		<div class="app_list">
+				<p class="ac_hd"><span>列表详情</span><a href="#/number_new" class="ac_bm_btn">新建场次</a></p>
+				<table class="tbl_content">
+					<thead>
+						<tr class="thead">
+							<input type="hidden" id="data_sort">
+							<td width="5%">选择</td>
+							<td width="8%">场次ID</td>
+							<td width="20%">主题</td>
+							<td width="18%">时间
+								<a class="ac_down" data-id="start_time-asc"></a>
+								<a class="ac_up" data-id="start_time-desc"></a>
+							</td>
+							<td width="6%">倒计时</td>
+							<td width="6%">库存</td>
+							<td width="6%">状态</td>
+							<td width="8%">订阅
+								<a class="ac_down" data-id="share-asc"></a>
+								<a class="ac_up" data-id="share-desc"></a>
+							</td>
+							<td width="6%">应用</td>
+							<td width="17%">操作</td>
+						</tr>
+					</thead>
+					<tbody class="address_list_comm">
+						<tr>
+							<td><input type="checkbox" name="app_box"></td>
+							<td>26555</td>
+							<td>已发布已发布已发布已发布已发布已发布</td>
+							<td>2015-01-01--5015-01-30</td>
+							<td>0:15</td>
+							<td>888</td>
+							<td>进行中</td>
+							<td>1122</td>
+							<td>辣椒圈</td>
+							<td><a href="">发布</a>&nbsp;&nbsp;<a href="">编辑</a>&nbsp;&nbsp;<a href="#/number_look">查看</a>&nbsp;&nbsp;<span class="app_online">删除</span></td>
+						</tr>
+						<tr>
+							<td><input type="checkbox" name="app_box"></td>
+							<td>26555</td>
+							<td>已发布已发布已发布已发布已发布已发布</td>
+							<td>2015-01-01--5015-01-30</td>
+							<td>0:15</td>
+							<td>888</td>
+							<td>进行中</td>
+							<td>1122</td>
+							<td>辣椒圈</td>
+							<td><a href="">下线</a>&nbsp;&nbsp;<a href="">编辑</a>&nbsp;&nbsp;<a href="#/number_look">查看</a>&nbsp;&nbsp;<span class="app_online">删除</span></td>
+						</tr>
+						<tr>
+							<td><input type="checkbox" name="app_box"></td>
+							<td>26555</td>
+							<td>已发布已发布已发布已发布已发布已发布</td>
+							<td>2015-01-01--5015-01-30</td>
+							<td>0:15</td>
+							<td>888</td>
+							<td>进行中</td>
+							<td>1122</td>
+							<td>辣椒圈</td>
+							<td><a href="">修改发布</a>&nbsp;&nbsp;<a href="">编辑</a>&nbsp;&nbsp;<a href="#/number_look">查看</a>&nbsp;&nbsp;<span class="app_online">删除</span></td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="app_allbox">
+					<span class="mass_box"><input type="checkbox" id="comm_all"></span>
+					<span class="mass" id="mass_up">发布</span>
+					<span class="mass" id="mass_down">下线</span>
+					<span class="prize_btn" id="mass_move">删除</span>
+				</div>
+				<div class="page_wper">
+				<div id="page_ct"><p>共有<span id="page_count"></span>条记录</p></div>
+				<div id="pageNav"></div>
+				<div id="page_chage">
+					<span>
+						<select id="page_nav"> 
+							<option value="10">10条</option>
+							<option value="20">20条</option> 
+							<option value="30">30条</option> 
+							<option value="40">40条</option> 
+						</select> 
+					</span>
+					<span class="page_number">
+						第<input type="text" id="page_num" value="1">页
+					</span>
+				</div>
+			</div>
+			<div style="clear:both"></div>
+		</div>
+		<script src="js/controllers/number_management_ctrl.js"></script>

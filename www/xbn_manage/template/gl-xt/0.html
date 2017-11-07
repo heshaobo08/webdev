@@ -1,0 +1,118 @@
+<div class="serch">
+    <form id="searchForm">
+    <!-- serch begin -->
+    <div class="serch_main">
+        <div class="serch_conts">
+            <dl>
+                <dt>角色名称：</dt>
+                <dd>
+                    <input type="text" class="defaultInput" name="roleName" />
+                </dd>
+            </dl>
+            <dl>
+                <dt>状态：</dt>
+                <dd>
+                    <div class="select w190">
+                        <input index-data="" type="hidden" name="isValid" />
+                        <i>请选择</i>
+                        <em class="icon-52"></em>
+                        <ul>
+                            <li index-data=""><span>请选择</span>
+                            </li>
+                            <li index-data="true"><span>启用</span>
+                            </li>
+                            <li index-data="false"><span>禁用</span>
+                            </li>
+                        </ul>
+                    </div>
+                </dd>
+            </dl>
+        </div>
+        <div class="serch_conts">
+            <dl>
+                <dt>创建时间：</dt>
+                <dd>
+                    <div class="defaultData">
+                        <div class="dataBegin">
+                            <span class="dataInput" id="startTime" data-startime="createTime_start"></span>
+                            <a href="javascript:;" class="timeStart icon-54"></a>
+                        </div>
+                        <span class="point"></span>
+                        <div class="dataEnd">
+                            <span class="dataInput" id="endTime" data-endtime="createTime_end"></span>
+                            <a href="javascript:;" class="timeEnd icon-54"></a>
+                        </div>
+                    </div>
+                </dd>
+            </dl>
+            <dl class="serchDl">
+                <dt>&emsp;</dt>
+                <dd>
+                    {{if source.operateData.moduleData && source.operateData.actionData && source.operateData.operate['h01010001']}}<a href="javascript:;" class="button js-search">Search</a>{{/if}}
+                </dd>
+            </dl>
+        </div>
+    </div>
+    <!-- serch end -->
+    </form>
+    <div class="addbutton">
+        {{if source.operateData.moduleData && source.operateData.actionData && source.operateData.operate['h01010002']}}
+        <a href="javascript:;" class="button js-add" data-href="?m=gl-xt-0-add" data-title="系统管理-管理员角色-新增">${source.operateData.operate['h01010002'].menuName}</a> {{/if}}
+        <em class="mL50 none">您所搜索的，共有<i id='searchTotalCount'>${source.totalCount}</i>条内容符合。</em>
+    </div>
+</div>
+<!-- conts begin -->
+<div class="contsBox">
+    <div class="bigTable">
+        <table border="0" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>角色名称</th>
+                    <th>创建时间</th>
+                    <th>状态</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody id="listCon">
+
+            </tbody>
+        </table>
+    </div>
+
+    <div class="page" id="topPager">
+
+    </div>
+
+</div>
+<script id='pageListCon' type='text/x-jquery-tmpl'>
+    <a href="javascript:;" class="firstPage fL" data-displace="first">首页</a>
+    <a href="javascript:;" class="prve fL icon-56" data-displace="prev"></a>
+    <ul class="pagenumber" id="pager"></ul>
+    <a href="javascript:;" class="next fL icon-55" data-displace="next"></a>
+    <a href="javascript:;" class="lastPage" data-displace="last">尾页</a>
+</script>
+<script id="list" type="text/x-jquery-tmpl">
+    _[{if list}]_
+    _[{each(i,c) list}]_
+    <tr>
+        <td>$_[c.roleName]_</td>
+        <td>$_[c.createTime]_</td>
+        <td>_[{if c.isValid == true}]_ 启用 _[{else}]_ 禁用 _[{/if}]_ </td>
+        <td>
+            <a href="javascript:;" class="blue mR10 js-isValid" data-id="$_[c.id]_">
+            _[{if c.isValid == true}]_
+            _[{if operateData.moduleData && operateData.actionData && operateData.operate['h01010004']}]_$_[operateData.operate['h01010004'].menuName]__[{/if}]_
+            _[{else}]_
+             _[{if operateData.moduleData && operateData.actionData && operateData.operate['h01010005']}]_$_[operateData.operate['h01010005'].menuName]__[{/if}]_
+            _[{/if}]_
+            </a>
+            _[{if operateData.moduleData && operateData.actionData && operateData.operate['h01010003']}]_<a href="javascript:void(0);" class="blue" data-href="?m=gl-xt-0-edit&id=$_[c.id]_" data-title="系统管理-管理员角色-修改">$_[operateData.operate['h01010003'].menuName]_</a>_[{/if}]_
+        </td>
+    </tr>
+    _[{/each}]_
+_[{else}]_
+    <tr>
+        <td colspan="4">暂无数据</td>
+    </tr>
+_[{/if}]_
+</script>

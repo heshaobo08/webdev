@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0 user-scalable=no" />
+    <title>汇付宝钱包</title>
+    <link href="css/base.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <script src="js/vendor/require.min.js" data-main="js/main"></script>
+</head>
+<body>
+    <!--弹窗-->
+    <div id="cover"></div>
+    <div class="cancel phone_succ">
+        <h4>确认手机号码</h4>
+        <h5>我们将发送验证码到：</h5>
+        <h5>18911799970</h5>
+        <p><span class="repeal">Cancel</span><span class="phone_ok">OK</span></p>
+    </div>
+    <div class="cancel yzm_succ">
+        <h4>确认手机号码</h4>
+        <h5>我们将发送验证码到：</h5>
+        <h5>18911799970</h5>
+        <p><span class="repeal">Cancel</span><span class="yzm_ok">OK</span></p>
+    </div>
+    <div class="cancel pwd_succ">
+        <div class="exception">
+            <h5 class="set_pwds">密码设置成功</h5>
+        </div>
+        <p><span class="go_index repeal">去首页</span><span class="after">返回</span></p>
+    </div>
+     <div class="cancel login_succ">
+        <div class="exception">
+            <h5 class="wallat_su"></h5>
+            <h5>是否现在设置登陆密码？</h5>
+        </div>
+        <p><span class="set_pwd repeal">去设置</span><span class="back_index">以后再说</span></p>
+    </div>
+    <div class="phone_error">
+        <h4>手机号码与银行预留不一致，请确认并重新输入。</h4>
+        <p>确定</p>
+    </div>
+    <div class="pay_yzm">
+        <h6 class="pay_hd">请输入短信验证码</h6>
+        <input type="tel" class="pay_pwd" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" maxlength="6">
+        <p class="error_pay"></p>
+        <p class="pay_btn"><span class="repeal_pay">取消</span><span class="pay_ok">确定</span></p>
+    </div>
+    <div class="pay_pwd_box">
+        <h6 class="pay_hd">请输入支付密码</h6>
+        <input type="password" class="pay_pwds">
+        <p class="error_pay"></p>
+        <p class="pay_btn"><span class="repeal_pay_pwd">取消</span><span class="pay_pwd_ok">确定</span></p>
+    </div>
+    <div id="wapper">
+
+    </div>
+</body>
+</html>

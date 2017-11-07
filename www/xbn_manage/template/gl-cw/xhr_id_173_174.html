@@ -1,0 +1,172 @@
+<!-- conts begin -->
+<div class="contsBox">
+    <form id='searchForm'>
+        <!-- serch begin -->
+        <div class="serch_main fix">
+            <div class="serch_conts">
+                <dl>
+                    <dt>用户名 :</dt>
+                    <dd><input type="text" name="name" class="defaultInput"></dd>
+                </dl>
+                <dl>
+                    <dt>银行账号 :</dt>
+                    <dd><input type="text" name="cardNo" maxlength="20" class="defaultInput"></dd>
+                </dl>
+                <dl>
+                    <dt>银行卡类型 :</dt>
+                    <dd>
+                        <div class="bankStyle select w190" style="z-index: 100;">
+                            <input index-data="" type="hidden" value="请选择" name="holderType">
+                            <i>请选择</i>
+                            <em class="icon-52"></em>
+                            <ul style="">
+                                <li index-data=""><span>请选择</span></li>
+                                <li index-data="0"><span>个人</span></li>
+                                <li index-data="1"><span>企业</span></li>
+                            </ul>
+                        </div>
+                    </dd>
+                </dl>
+            </div>
+            <div class="serch_conts">
+                <dl>
+                    <dt>所属银行 :</dt>
+                    <dd>
+                        <div class="select w190 banks" style="z-index: 100;">
+                            <input index-data="" type="hidden" value="请选择" name="banks">
+                            <i>请选择</i>
+                            <em class="icon-52"></em>
+                            <ul class="openBank">
+                                <li index-data=""><span>请选择</span></li>
+                                {{each(i,bank) source.bankData}}
+                                <li index-data="${bank.id}"><span>${bank.name}</span></li>
+                                {{/each}}
+                            </ul>
+                        </div>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>状态 :</dt>
+                    <dd>
+                        <div class="status select w190" style="z-index: 100;">
+                            <input index-data="" type="hidden" value="请选择" name="status">
+                            <i>请选择</i>
+                            <em class="icon-52"></em>
+                            <ul style="">
+                                <li index-data=""><span>请选择</span></li>
+                                <li index-data="1"><span>待审核</span></li>
+                                <li index-data="2"><span>已通过</span></li>
+                                <li index-data="3"><span>已驳回</span></li>
+                                <li index-data="0"><span>已删除</span></li>
+                            </ul>
+                        </div>
+                    </dd>
+                </dl>
+            </div>
+            <div class="serch_conts">
+                <dl>
+                    <dt>添加日期 :</dt>
+                    <dd>
+                        <div class="defaultData">
+                            <div class="dataBegin">
+                                <span class="dataInput" id="startTime" data-startime="createTime_start"></span>
+                                <a href="javascript:;" class="timeStart icon-54"></a>
+                            </div>
+                            <span class="point"></span>
+
+                            <div class="dataEnd">
+                                <span class="dataInput" id="endTime" data-endtime="createTime_end"></span>
+                                <a href="javascript:;" class="timeEnd icon-54"></a>
+                            </div>
+                        </div>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt> </dt>
+                    <dd>
+                        {{if source.operateData.moduleData && source.operateData.actionData &&
+                        source.operateData.operate['h05010001']}}
+                        <a href="javascript:;" class="button js-search">Search</a>
+                        {{/if}}
+                    </dd>
+                </dl>
+            </div>
+        </div>
+        <!-- serch end -->
+    </form>
+    <div class="addbutton none">您所搜索的，共有<i id="searchTotalCount">${source.totalCount}</i>条内容符合。</div>
+    <div class="bigTable">
+        <table class="" border="0" cellspacing="0">
+            <thead>
+            <tr>
+                <th>银行账号</th>
+                <th>所属银行</th>
+                <th>开户行</th>
+                <th>银行卡类型</th>
+                <th>用户名</th>
+                <th>添加时间</th>
+                <th>状态</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody id="listCon">
+
+            </tbody>
+        </table>
+    </div>
+    <div class="page" id="topPager">
+
+    </div>
+
+</div>
+<!-- conts end -->
+<script id='pageListCon' type='text/x-jquery-tmpl'>
+	<a href="javascript:;" class="firstPage fL" data-displace="first">首页</a>
+	<a href="javascript:;" class="prve fL icon-56" data-displace="prev"></a>
+	<ul class="pagenumber" id="pager"></ul>
+	<a href="javascript:;" class="next fL icon-55" data-displace="next"></a>
+	<a href="javascript:;" class="lastPage" data-displace="last">尾页</a>
+
+</script>
+<script id="list" type="text/x-jquery-tmpl">
+_[{if list.length}]_
+	_[{each(i,c) list}]_
+	<tr>
+		<td>$_[c.cardNo]_</td>
+		<td>
+        _[{if bankData[c.banks]}]_$_[bankData[c.banks].name]_ _[{/if}]_
+		</td>
+		<td>$_[c.bankName]_</td>
+		<td>_[{if c.holderType == "0"}]_ 个人 _[{else}]_ 企业 _[{/if}]_ </td>
+		<td>$_[c.userName]_</td>
+		<td>$_[c.creatTime]_</td>
+		<td>
+		_[{if c.status == "0"}]_
+			已删除
+		_[{/if}]_	
+		_[{if c.status == "1"}]_
+			待审核
+		_[{/if}]_	
+		_[{if c.status == "2"}]_
+			已通过
+		_[{/if}]_	
+		_[{if c.status == "3"}]_
+			已驳回
+		_[{/if}]_
+		</td>
+		<td>
+		_[{if c.status == "1"}]_
+            _[{if operateData.moduleData && operateData.actionData && operateData.operate['h05010003']}]_
+			<a href="javascript:;" class="blue mR10" data-id="$_[c.bankId]_" data-title="财务管理-银行账户管理-审核" data-href="?m=xhr_id_173_174_status&id=$_[c.bankId]_" >审核</a>
+            _[{/if}]_
+		_[{else}]_
+            <!--Todo 缺少权限-->
+			<a href="javascript:;" class="blue mR10" data-id="$_[c.bankId]_" data-title="财务管理-银行账户管理-查看" data-href="?m=xhr_id_173_174_status&id=$_[c.bankId]_" >查看</a>
+		_[{/if}]_
+		</td>
+	</tr>
+	_[{/each}]_
+_[{else}]_
+<tr><td colSpan="8">暂无数据</td></tr>
+_[{/if}]_
+</script>

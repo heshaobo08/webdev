@@ -1,0 +1,92 @@
+<div class="serch">
+	<form id="searchForm">
+    <div class="serch_main">
+        <div class="serch_conts">
+            <dl>
+                <dt>角色名称：</dt>
+                <dd><input type="text" name="groupName" class="defaultInput" /></dd>
+            </dl>
+            <dl class="serchDl">
+                <dt>&emsp;</dt>
+                <dd><a href="javascript:;" class="button js-search">Search</a></dd>
+            </dl>
+        </div>
+    </div>
+    </form>
+    <!-- serch end -->
+    <div class="addbutton">
+        {{if source.operateData.moduleData && source.operateData.actionData && source.operateData.operate['h01040005']}}
+        <a href="javascript:;" class="button"  data-href="?m=gl-xt-3-add" data-title="系统管理-会员角色管理-新增" >${source.operateData.operate['h01040005'].menuName}</a>
+        {{/if}}
+        <em class="mL50 none">您所搜索的，共有<i id='searchTotalCount'>${source.totalCount}</i>条内容符合。</em>
+    </div>
+</div>
+<!-- conts begin -->
+<div class="contsBox">
+    <div class="bigTable">
+        <table class="" border="0" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>角色名称</th>
+                    <th>角色描述</th>
+                    <th>创建时间</th>
+                    <th>状态</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody id="listCon">
+            	
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="page" id="topPager">
+        
+    </div>
+    
+</div>
+<!-- conts end -->
+<!--中间内容区域 end-->
+<script id='pageListCon' type='text/x-jquery-tmpl'>
+	<a href="javascript:;" class="firstPage fL" data-displace="first">首页</a>
+	<a href="javascript:;" class="prve fL icon-56" data-displace="prev"></a>
+	<ul class="pagenumber" id="pager"></ul>
+	<a href="javascript:;" class="next fL icon-55" data-displace="next"></a>
+	<a href="javascript:;" class="lastPage" data-displace="last">尾页</a>
+</script>
+<script id="list" type="text/x-jquery-tmpl">
+    _[{if list}]_
+	_[{each(i,c) list}]_
+	<tr>
+		<td>$_[c.groupName]_</td>
+		<td>$_[c.remark]_</td>
+		<td>$_[c.createTime]_</td>
+		<td>_[{if c.isValid == true}]_ 启用 _[{else}]_ 禁用 _[{/if}]_ </td>
+		<td>
+            _[{if c.isDefault}]_
+            <span class='mR10 red'>默认角色</span>
+            _[{else}]_
+			<a href="javascript:;" class="blue mR10 js-subStatus" data-id="$_[c.id]_">
+                _[{if c.isValid == true}]_ 
+                    _[{if operateData.moduleData && operateData.actionData && operateData.operate['h01040003']}]_
+                        $_[operateData.operate['h01040003'].menuName]_ 
+                    _[{/if}]_
+                _[{else}]_ 
+                    _[{if operateData.moduleData && operateData.actionData && operateData.operate['h01040004']}]_
+                        $_[operateData.operate['h01040004'].menuName]_ 
+                    _[{/if}]_
+                 _[{/if}]_ 
+             </a>
+             _[{/if}]_
+             _[{if operateData.moduleData && operateData.actionData && operateData.operate['h01040002']}]_
+			<a href="javascript:void(0);" class="blue mR10"  data-href="?m=gl-xt-3-edit&id=$_[c.id]_" data-title="系统管理-会员角色管理-编辑">$_[operateData.operate['h01040002'].menuName]_ </a>
+            _[{/if}]_
+		</td>
+	</tr>				
+	_[{/each}]_
+	    _[{else}]_
+    <tr>
+        <td colspan="5">暂无数据</td>
+    </tr>
+    _[{/if}]_
+</script>

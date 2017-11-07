@@ -1,0 +1,118 @@
+<div class="serch">
+    <!-- serch begin -->
+    <form id="searchForm">
+    <div class="serch_main">
+        <div class="serch_conts">
+            <dl>
+                <dt>用户名：</dt>
+                <dd><input type="text" name="userName" class="defaultInput" /></dd>
+            </dl>
+            <dl>
+                <dt>公司名称：</dt>
+                <dd><input type="text" name="corporateName" class="defaultInput" /></dd>
+            </dl>
+            <dl>
+                <dt>联系电话：</dt>
+                <dd><input type="text" name="contactPhone" class="defaultInput" /></dd>
+            </dl>
+            <dl>
+                <dt>总余额(CNY)：</dt>
+                <dd>
+                    <div class="defaultPrice">
+                        <input type="text" class="priceBegin" name="totalBalance" data-operator="ge" pattern="^([1-9]\d{0,9}|0)(\.\d{1,2})?$" />
+                        <span class="point"></span>
+                        <input type="text" class="priceEnd"  name="totalBalance" data-operator="le" pattern="^([1-9]\d{0,9}|0)(\.\d{1,2})?$"/>
+                    </div>
+                </dd>
+            </dl>
+            <dl>
+                <dt>可用余额(CNY)：</dt>
+                <dd>
+                    <div class="defaultPrice">
+                        <input type="text" value="" class="priceBegin" name="vailableBalance" data-operator="ge"  pattern="^([1-9]\d{0,9}|0)(\.\d{1,2})?$"/>
+                        <span class="point"></span>
+                        <input type="text" value="" class="priceEnd"  name="vailableBalance"  data-operator="le" pattern="^([1-9]\d{0,9}|0)(\.\d{1,2})?$"/>
+                    </div>
+                </dd>
+            </dl>
+            <dl>
+                <dt>冻结余额(CNY)：</dt>
+                <dd>
+                    <div class="defaultPrice">
+                        <input type="text" value="" class="priceBegin searchParamListEle" name="frozenBalance" data-operator="ge"  pattern="^([1-9]\d{0,9}|0)(\.\d{1,2})?$"/>
+                        <span class="point"></span>
+                        <input type="text" value="" class="priceEnd a1 searchParamListEle"  name="frozenBalance"  data-operator="le" pattern="^([1-9]\d{0,9}|0)(\.\d{1,2})?$"/>
+                    </div>
+                </dd>
+            </dl>
+            <dl class="serchDl">
+                <dt></dt>
+                <dd>
+                    <a href="javascript:;" class="button js-search">Search</a>
+                </dd>
+            </dl>
+        </div>
+    </div>
+    </form>
+    <em class="mL50 none">您所搜索的，共有<i id='searchTotalCount'>${source.totalCount}</i>条内容符合。</em>
+    <!-- serch end -->
+
+</div>
+<div class="contsBox">
+    <div class="bigTable">
+        <table class="" border="0" cellspacing="0" >
+            <thead>
+            <tr>
+                <th>用户名</th>
+                <th>公司名称</th>
+                <th>联系电话</th>
+                <th>总余额</th>
+                <th>可用余额</th>
+                <th>冻结余额</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody id="listCon">
+            </tbody>
+        </table>
+    </div>
+    <div class="page" id="topPager"></div>
+</div>
+
+<script id="listTmpl" type="text/x-jquery-tmpl">
+    _[{if list.length}]_
+    _[{each(i,c) list}]_
+    <tr>
+        <td>$_[c.userName]_</td>
+        <td>$_[c.corporateName]_</td>
+        <td>$_[c.contactPhone]_</td>
+        <td>_[{if c.totalBalance}]_ $_[getTwoPoint(c.totalBalance)]_ _[{else}]_ 0.00 _[{/if}]_</td>
+        <td>_[{if c.vailableBalance}]_ $_[getTwoPoint(c.vailableBalance)]_ _[{else}]_ 0.00 _[{/if}]_</td>
+        <td>
+            _[{if c.frozenBalance}]_
+                <span class="red">$_[getTwoPoint(c.frozenBalance)]_ CNY</span>
+            _[{else}]_
+                0.00 CNY
+            _[{/if}]_
+        </td>
+        <td>
+        _[{if operateData.moduleData && operateData.actionData && operateData.operate['HWC20201001']}]_
+            <a class="blue djs-detail" data-id="$_[c.id]_" data-user="$_[c.userId]_" data-href="?m=xhr_id_20200000_20201000_view&id=$_[c.id]_&uid=$_[c.userId]_" data-title="海外仓财务管理-账户管理管理-账户详情">详情</a>
+            _[{/if}]_
+        </td>
+    </tr>
+    _[{/each}]_
+        _[{else}]_
+        <tr>
+            <td colspan="7">暂无数据</td>
+        </tr>
+    _[{/if}]_
+</script>
+
+<script id='pageListTmpl' type='text/x-jquery-tmpl'>
+    <a href="javascript:;" class="firstPage fL" data-displace="first">首页</a>
+    <a href="javascript:;" class="prve fL icon-56" data-displace="prev"></a>
+    <ul class="pagenumber" id="pager"></ul>
+    <a href="javascript:;" class="next fL icon-55" data-displace="next"></a>
+    <a href="javascript:;" class="lastPage" data-displace="last">尾页</a>
+</script>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0 user-scalable=no" />
+<title></title>
+<link href="css/base.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<script src="js/jquery.min.js"></script>
+<script src="js/data.js"></script>
+<script src="js/select.js"></script>
+<script>
+$(function(){
+    $(".ct_btn span").on("click",function(){
+        
+        var province = $("select[name='province'] option:selected").text();
+		var city = $("select[name='city'] option:selected").text();
+		var district = $("select[name='district'] option:selected").text();
+		
+		if(province=='省/直辖市' || city=='市' || province=='' || city=='' || district=='区/县' || district==''){
+		    alert("请填写正确的省市区")
+			return false;
+		}
+    })
+});    
+</script>
+</head>
+<body>
+<div id="wapper">
+    <!--头部开始-->
+    <!--头部结束-->
+    <!--内容开始-->
+    <div class="tooth">
+        <div class="tooth_ct_one">
+            <p><img src="images/1.png"></p>
+            <p><img src="images/2.png"></p>
+            <h6>美牙仪神器登录中国市场，推出“你体验我买单”活动，限时秒杀！</h6>
+            <h5>&nbsp;&nbsp;&nbsp;&nbsp;价值299元的美牙仪，现在只需要支付产品（快递费、包装费、保价费）共49元即可获得！<em>每人仅限一个名额！</em></h5>
+            <h5>活动截止时间：2017年10月25日，活动截止回复原价299元</h5>
+        </div>
+        <div class="tooth_line"></div>
+        <div class="tooth_ct_two">
+            <p class="ct_two_hd">款式<span>*</span></p>
+            <p class="ct_two_r">
+                <input type="radio" name="ra" checked="checked">
+                <span>美牙仪领取1套（包邮+人工+打包+仓储）49元</span>
+            </p>
+            <p class="ct_two_r">
+                <input type="radio" name="ra">
+                <span>美牙仪领取2套送1套 共三套（包邮+人工+打包+仓储）98元</span>
+            </p>
+            <p class="ct_two_hd">收货人姓名<span>*</span></p>
+            <p class="ct_two_input"><input type="text"></p>
+            <p class="ct_two_hd">手机号码<span>*</span></p>
+            <p class="ct_two_input"><input type="text"></p>
+            <p class="ct_two_hd">收货地址<span>*</span></p>
+            <!--三级联动-->
+            <div data-toggle="distpicker" class="ct_two_selecct">
+                <select class="form-control tpl-province" name="province"><option value="" data-code="">省/直辖市</option></select>
+                <select class="form-control tpl-city" name="city"><option value="" data-code="">市</option></select>
+                <select class="form-control tpl-district" name="district"><option value="" data-code="">区/县</option></select>
+            </div>
+            <div style="clear:both"></div>
+            <!--三级联动-->
+            <p class="ct_two_input"><textarea rows="2" placeholder="详细地址"></textarea></p>
+            <h6 class="ct_two_tip">温馨提示</h6>
+            <p class="ct_two_text">填写正确的地址信息，点击确认提交。当天发货，5天左右到货，货到付款。请保持电话畅通！7天无理由退货！（新疆西藏不参与本次活动）</p>
+            <p class="ct_two_line"></p>
+            <h5 class="ct_btn"><span>填写好了 确认提交</span><em>举报</em></h5>
+        </div>
+    </div>
+    <!--内容结束-->
+    <!--尾部开始-->
+    <div id=footer></div>
+    <!--尾部结束-->
+</div>
+</body>
+</html>

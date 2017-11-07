@@ -1,0 +1,184 @@
+<div class="serch">
+    <form id="searchForm">
+        <div class="serch_main">
+            <div class="serch_conts">
+                <dl>
+                    <dt>仓库：</dt>
+                    <dd id="selectStore">
+                        <div class="select w190">
+                            <input index-data="" type="hidden" value="请选择" name="storeCode"/>
+                            <i>否</i>
+                            <em class="icon-52"></em>
+                            <ul>
+                                <li index-data=""><span>请选择</span></li>
+                                {{if source.stores.length}}
+                                {{each(i,item) source.stores}}
+                                <li index-data="${item.storeCode}"><span>${item.storeName}</span></li>
+                                {{/each}}
+                                {{/if}}
+                            </ul>
+                        </div>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>库存编码：</dt>
+                    <dd><input type="text" class="defaultInput" name="inventoryCode"/></dd>
+                </dl>
+                <dl>
+                    <dt>货主：</dt>
+                    <dd><input type="text" class="defaultInput" name="userName"/></dd>
+                </dl>
+                <dl>
+                    <dt>商家SKU：</dt>
+                    <dd><input type="text" class="defaultInput" name="merchantSku"/></dd>
+                </dl>
+                <dl>
+                    <dt>货品名称：</dt>
+                    <dd><input type="text" class="defaultInput" name="title"/></dd>
+                </dl>
+                <dl>
+                    <dt>规格型号：</dt>
+                    <dd><input type="text" class="defaultInput" name="specsModel"/></dd>
+                </dl>
+                <dl>
+                    <dt>在途数：</dt>
+                    <dd>
+                        <div class="defaultPrice">
+                            <input type="text" class="priceBegin" style="border-color: rgb(227, 227, 227);" pattern="^\d*$" name="onthewayNum-start"/>
+                            <span class="point"></span>
+                            <input type="text" class="priceEnd" style="border-color: rgb(227, 227, 227);" pattern="^\d*$" name="onthewayNum-end"/>
+                        </div>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>库存总数：</dt>
+                    <dd>
+                        <div class="defaultPrice">
+                            <input type="text" class="priceBegin" style="border-color: rgb(227, 227, 227);" pattern="^\d*$" name="totalNum-start"/>
+                            <span class="point"></span>
+                            <input type="text" class="priceEnd" style="border-color: rgb(227, 227, 227);" pattern="^\d*$" name="totalNum-end"/>
+                        </div>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>可售数：</dt>
+                    <dd>
+                        <div class="defaultPrice">
+                            <input type="text" class="priceBegin" style="border-color: rgb(227, 227, 227);" pattern="^\d*$" name="couldsellNum-start"/>
+                            <span class="point"></span>
+                            <input type="text" class="priceEnd" style="border-color: rgb(227, 227, 227);" pattern="^\d*$" name="couldsellNum-end"/>
+                        </div>
+                    </dd>
+                </dl>
+
+                <dl>
+                    <dt>预占数：</dt>
+                    <dd>
+                        <div class="defaultPrice">
+                            <input type="text" class="priceBegin" style="border-color: rgb(227, 227, 227);" pattern="^\d*$" name="distributeNum-start"/>
+                            <span class="point"></span>
+                            <input type="text" class="priceEnd" style="border-color: rgb(227, 227, 227);" pattern="^\d*$" name="distributeNum-end"/>
+                        </div>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>待上架数：</dt>
+                    <dd>
+                        <div class="defaultPrice">
+                            <input type="text" class="priceBegin" style="border-color: rgb(227, 227, 227);" pattern="^\d*$" name="waitingNum-start"/>
+                            <span class="point"></span>
+                            <input type="text" class="priceEnd" style="border-color: rgb(227, 227, 227);" pattern="^\d*$" name="waitingNum-end"/>
+                        </div>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>冻结数：</dt>
+                    <dd>
+                        <div class="defaultPrice">
+                            <input type="text" class="priceBegin" style="border-color: rgb(227, 227, 227);" pattern="^\d*$" name="freezeNum-start"/>
+                            <span class="point"></span>
+                            <input type="text" class="priceEnd" style="border-color: rgb(227, 227, 227);" pattern="^\d*$" name="freezeNum-end"/>
+                        </div>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>报废数：</dt>
+                    <dd>
+                        <div class="defaultPrice">
+                            <input type="text" class="priceBegin" style="border-color: rgb(227, 227, 227);" name="discardNum-start"/>
+                            <span class="point"></span>
+                            <input type="text" class="priceEnd" style="border-color: rgb(227, 227, 227);" name="discardNum-end"/>
+                        </div>
+                    </dd>
+                </dl>
+                <dl class="serchDl">
+                    <dt>&nbsp;</dt>
+                    <dd><a href="javascript:;" class="button js-search">Search</a></dd>
+                </dl>
+            </div>
+        </div>
+    </form>
+    <div class="addbutton none">
+        {{if source.operateData.moduleData && source.operateData.actionData && source.operateData.operate['HWC20103001']}}
+        <a class="button js-view" data-title="海外仓业务管理-库存管理-查看库存容量">查看仓库容量</a>
+        {{/if}}
+    </div>
+    <em class="mL50 none">您所搜索的，共有<i id='searchTotalCount'>${source.totalCount}</i>条内容符合。</em>
+</div>
+<div class="contsBox">
+    <div class="bigTable">
+        <table border="0" cellspacing="0">
+            <thead>
+            <tr>
+                <th width="10%">库存编码</th>
+                <th width="10%">货主</th>
+                <th width="10%">商家SKU</th>
+                <th width="20%">货品名称</th>
+                <th width="15%">规格型号</th>
+                <th width="5%">在途数</th>
+                <th width="5%">库存总数</th>
+                <th width="5%">可售数</th>
+                <th width="5%">预占数</th>
+                <th width="5%">待上架数</th>
+                <th width="5%">冻结数</th>
+                <th width="5%">报废数</th>
+            </tr>
+            </thead>
+            <tbody id="listCon"></tbody>
+        </table>
+    </div>
+    <div class="page" id="topPager"></div>
+</div>
+<script id="pageListTmpl" type="text/x-jquery-tmpl">
+    <a href="javascript:;" class="firstPage fL" data-displace="first">首页</a>
+    <a href="javascript:;" class="prve fL icon-56" data-displace="prev"></a>
+    <ul class="pagenumber" id="pager"></ul>
+    <a href="javascript:;" class="next fL icon-55" data-displace="next"></a>
+    <a href="javascript:;" class="lastPage" data-displace="last">尾页</a>
+
+</script>
+<script id="listTmpl" type="text/x-jquery-tmpl">
+    _[{if list.length}]_
+    _[{each(i,c) list}]_
+    <tr>
+        <td>$_[c.inventoryCode]_</td>
+        <td><span class="white inline_block" title="$_[c.userName || '暂无货主']_">$_[c.userName || '暂无货主']_</span></td>
+        <td><span class="white inline_block" title="$_[c.merchantSku || '暂无SKU']_">$_[c.merchantSku || '暂无SKU']_</span></td>
+        <td><span class="white inline_block" title="$_[c.title || '暂无货品名称']_">$_[c.title || '暂无货品名称']_</span></td>
+        <td><span class="white inline_block" title="$_[c.specsModel || '暂无规格']_">$_[c.specsModel || '暂无规格']_</span></td>
+        <td>$_[c.onthewayNum || 0]_</td>
+        <td>$_[c.totalNum || 0]_</td>
+        <td>$_[c.couldsellNum || 0]_</td>
+        <td>$_[c.distributeNum || 0]_</td>
+        <td>$_[c.waitingNum || 0]_</td>
+        <td>$_[c.freezeNum || 0]_</td>
+        <td>$_[c.discardNum || 0]_</td>
+    </tr>
+    _[{/each}]_
+        _[{else}]_
+    <tr>
+        <td colspan="11">暂无数据</td>
+    </tr>
+    _[{/if}]_
+
+</script>

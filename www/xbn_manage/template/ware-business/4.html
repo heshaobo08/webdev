@@ -1,0 +1,152 @@
+<div class="serch">
+    <form id="searchForm">
+        <div class="serch_main">
+            <div class="serch_conts">
+                <dl>
+                    <dt>称呼：</dt>
+                    <dd><input type="text" name="callName" class="defaultInput"/></dd>
+                </dl>
+                <dl>
+                    <dt>联系邮箱：</dt>
+                    <dd><input type="text" name="email" class="defaultInput"/></dd>
+                </dl>
+                <dl>
+                    <dt>联系电话：</dt>
+                    <dd><input type="text" name="telephone" class="defaultInput"/></dd>
+                </dl>
+            </div>
+            <div class="serch_conts">
+                <dl>
+                    <dt>是否已读：</dt>
+                    <dd>
+                        <div class="select w190">
+                            <input index-data="" type="hidden" value="请选择" name="isRead"/>
+                            <i>全部</i>
+                            <em class="icon-52"></em>
+                            <ul>
+                                <li index-data=""><span>全部</span></li>
+                                {{each(i,c) getConstName("OwmsSuggectIsReadStatusEnum")}}
+                                <li index-data="${i}"><span>${c}</span></li>
+                                {{/each}}
+                            </ul>
+                        </div>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>处理状态：</dt>
+                    <dd>
+                        <div class="select w190">
+                            <input index-data="" type="hidden" value="请选择" name="status"/>
+                            <i>全部</i>
+                            <em class="icon-52"></em>
+                            <ul>
+                                <li index-data=""><span>全部</span></li>
+                                {{each(i,c) getConstName("OwmsSuggectStatusEnum")}}
+                                <li index-data="${i}"><span>${c}</span></li>
+                                {{/each}}
+                            </ul>
+                        </div>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>意见等级：</dt>
+                    <dd>
+                        <div class="select w190">
+                            <input index-data="" type="hidden" value="请选择" name="suggestLevel"/>
+                            <i>全部</i>
+                            <em class="icon-52"></em>
+                            <ul>
+                                <li index-data=""><span>全部</span></li>
+                                {{each(i,c) getConstName("OwmsSuggectLevelEnum")}}
+                                <li index-data="${i}"><span>${c}</span></li>
+                                {{/each}}
+                            </ul>
+                        </div>
+                    </dd>
+                </dl>
+            </div>
+            <div class="serch_conts">
+                <dl>
+                    <dt>创建时间 :</dt>
+                    <dd>
+                        <div class="defaultData">
+                            <div class="dataBegin">
+                                <span class="dateInput" id="createTime-start"></span>
+                                <a href="javascript:;" class="icon-54 timeStart"></a>
+                            </div>
+                            <span class="point"></span>
+                            <div class="dataEnd">
+                                <span class="dateInput" id="createTime-end"></span>
+                                <a href="javascript:;" class="icon-54 timeEnd"></a>
+                            </div>
+                        </div>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>&nbsp;</dt>
+                    <dd><a href="javascript:;" class="button js-search">Search</a></dd>
+                </dl>
+            </div>
+        </div>
+    </form>
+    <em class="mL50 none">您所搜索的，共有<i id='searchTotalCount'>${source.totalCount}</i>条内容符合。</em>
+</div>
+<div class="contsBox">
+    <div class="bigTable">
+        <table class="" border="0" cellspacing="0">
+            <thead>
+            <tr>
+                <th>称呼</th>
+                <th>联系邮箱</th>
+                <th>联系电话</th>
+                <th>处理状态</th>
+                <th>是否已读</th>
+                <th>意见等级</th>
+                <th>创建时间</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody id="listCon"></tbody>
+        </table>
+    </div>
+    <div class="page" id="topPager"></div>
+</div>
+<script id="pageListTmpl" type="text/x-jquery-tmpl">
+    <a href="javascript:;" class="firstPage fL" data-displace="first">首页</a>
+    <a href="javascript:;" class="prve fL icon-56" data-displace="prev"></a>
+    <ul class="pagenumber" id="pager"></ul>
+    <a href="javascript:;" class="next fL icon-55" data-displace="next"></a>
+    <a href="javascript:;" class="lastPage" data-displace="last">尾页</a>
+
+</script>
+<script id="listTmpl" type="text/x-jquery-tmpl">
+    _[{if list.length}]_
+    _[{each(i,c) list}]_
+    <tr>
+        <td>$_[c.callName]_</td>
+        <td>$_[c.email]_</td>
+        <td>$_[c.telephone]_</td>
+        <td>$_[getConstName("OwmsSuggectStatusEnum",c.status)]_</td>
+        <td>_[{if c.isRead == 1}]_已读_[{else}]_<span class="isgreen">未读</span>_[{/if}]_</td>
+        <td class="rel" data-dealresult="$_[c.dealResult]_" data-id="$_[c.id]_">_[{if c.suggestLevel == 1}]_<a class="js-handle" href="javascript:;" style="color:#8a8a8a">一般</a>_[{else c.suggestLevel == 2}]_<a href="javascript:;" style="color:#f90" class="js-handle" >重要</a>_[{else c.suggestLevel == 3}]_<a style="color:#f16161" href="javascript:;" class="js-handle">非常重要</a>_[{else}]_<a  href="javascript:;" class="black js-handle">请选择</a>_[{/if}]_
+            <div class="abs grade_show none">
+                <p><a href="javascript:;" _[{if c.suggestLevel == 1}]_class="active"_[{/if}]_ data-level="1">一般</a></p>
+                <p><a href="javascript:;" _[{if c.suggestLevel == 2}]_class="active"_[{/if}]_ style="color:#f90" data-level="2">重要</a></p>
+                <p><a href="javascript:;" _[{if c.suggestLevel == 3}]_class="active"_[{/if}]_ style="color:#f16161" data-level="3">非常重要</a></p>
+            </div>
+        </td>
+        <td>$_[c.createTime]_</td>
+        <td>
+        _[{if operateData.moduleData && operateData.actionData && operateData.operate['HWC20109001']}]_
+            <a class="blue mR10" data-href="?m=xhr_id_20100000_20109000_view&id=$_[c.id]_" data-title="海外仓业务管理-意见管理-详情">详情</a>
+            _[{/if}]_
+        </td>
+    </tr>
+    _[{/each}]_
+        _[{else}]_
+    <tr>
+        <td colspan="8">暂无数据</td>
+    </tr>
+    _[{/if}]_
+
+</script>

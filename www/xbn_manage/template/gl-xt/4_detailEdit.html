@@ -1,0 +1,49 @@
+<!-- conts begin -->
+<div class="details">
+    <h3 class="titleText">等级权限</h3>
+    <div class="tablebox">
+        <div class="addbutton">
+            <a href="javascript:;" class="button js-add">添加权限</a>
+        </div>
+        <div class="smallTable">
+            <table class="" border="0" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>类型</th>
+                        <th>权限值</th>
+                        <th>创建时间</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+					<script id="list" type="text/x-jquery-tmpl">
+                    _[{if list}]_
+                        _[{each(i,c) list}]_
+                        <tr>						
+                            <td>
+							$_[c.typeName]_
+							</td>
+                            <td>$_[c.value]_</td>
+                            <td>$_[c.createTime]_</td>
+                            <td>
+                                <a href="javascript:void(0);" class="blue mR10 js-edit" data-id="$_[c.id]_" data-levelId="$_[c.levelId]_">编辑</a>
+                                <a href="javascript:;" class="blue mR10 js-del" data-id="$_[c.id]_" data-type='$_[c.typeId]_'>删除</a>
+                            </td>
+                        </tr>				
+                        _[{/each}]_
+                    _[{else}]_
+                        <tr>
+                        <td colspan="4">暂无数据</td>
+                        </tr>
+                    _[{/if}]_
+                    </script>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!-- conts end -->
+<!--中间内容区域 end-->
+<div class="btnMain">
+    <a href="javascript:history.go(-1);" class="buttonText pad20" sdata-href="?m=xhr_id_1_300" data-title="系统管理-等级管理">返回</a>
+</div>

@@ -1,0 +1,250 @@
+<div class="serch">
+    <!-- serch begin -->
+    <div class="serch_main">
+        <form id="searchForm">
+            <div class="serch_conts">
+            <dl>
+                <dt>申请编号：</dt>
+                <dd><input type="text" class="defaultInput" name="applyCode"/></dd>
+            </dl>
+            <dl>
+                <dt>申请人：</dt>
+                <dd><input type="text" class="defaultInput" name="applyUser"/></dd>
+            </dl>
+            <dl>
+                <dt>申请时间：</dt>
+                <dd>
+                    <div class="defaultData">
+                        <div class="dataBegin">
+                            <span class="dateInput" data-operator="ge" name="applyTime" id="time1"></span>
+                            <a href="javascript:;" class="timeIco icon-54"></a>
+                        </div>
+                        <span class="point"></span>
+                        <div class="dataEnd">
+                            <span class="dateInput" data-operator="le" name="applyTime" id="time2"></span>
+                            <a href="javascript:;" class="timeIco icon-54"></a>
+                        </div>
+                    </div>
+                </dd>
+            </dl>
+            <dl>
+                <dt>处理状态：</dt>
+                <dd>
+                    <div class="select w190" style="z-index: 0;">
+                        <input index-data="" type="hidden" value="" name="status"/>
+                        <i index-data="">请选择</i>
+                        <em class="icon-52"></em>
+                        <ul style="display: none;">
+                            <li index-data=""><span>请选择</span></li>
+                            {{each(i,e) getConstName("OwmsInvoiceApplyStatusEnum")}}
+                            <li index-data="${i}"><span>${e}</span></li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                </dd>
+            </dl>
+            <dl>
+                <dt>发票类型：</dt>
+                <dd>
+                    <div class="select w190" style="z-index: 0;">
+                        <input index-data="" type="hidden" value="" name="invoiceType"/>
+                        <i index-data="">请选择</i>
+                        <em class="icon-52"></em>
+                        <ul style="display: none;">
+                            <li index-data=""><span>请选择</span></li>
+                            {{each(i,e) getConstName("OwmsInvoiceApplyTypesEnum")}}
+                            <li index-data="${i}"><span>${e}</span></li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                </dd>
+            </dl>
+            <dl>
+                <dt>发票抬头：</dt>
+                <dd><input type="text" class="defaultInput" name="invoiceTitle"/></dd>
+            </dl>
+            <dl>
+                <dt>开票月份：</dt>
+                <dd>
+                    <div class="select fL" id="js-selYear" style="min-width:84px">
+                        <input index-data="" type="hidden" value="" data-target="js-selYear"/>
+                        <i index-data="">请选择</i>
+                        <em class="icon-52"></em>
+                        <ul style="display: none;">
+                            <li index-data=""><span>请选择</span></li>
+                            {{each(i,e) source.year}}
+                            <li index-data="${e}"><span>${e}年</span></li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                    <div class="select fL mL10" id="js-selMonth" style="min-width:84px">
+                        <input index-data="" type="hidden" value="" data-target="js-selMonth"/>
+                        <i index-data="">请选择</i>
+                        <em class="icon-52"></em>
+                        <ul style="display: none;">
+                            <li index-data=""><span>请选择</span></li>
+                            {{each(i,e) source.month}}
+                            <li index-data="${e}"><span>${e}月</span></li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                </dd>
+            </dl>
+            <dl>
+                <dt>开票金额：</dt>
+                <dd>
+                    <div class="defaultPrice">
+                        <input type="text" pattern="^([1-9]\d{0,9}|0)(\.\d{1,2})?$" data-operator="ge" name="invoiceAmount" class="priceBegin" value=""> <span class="point"></span><input type="text" pattern="^([1-9]\d{0,9}|0)(\.\d{1,2})?$" data-operator="le" name="invoiceAmount" class="priceEnd"/>
+                    </div>
+                </dd>
+            </dl>
+            <dl>
+                <dt>物流公司：</dt>
+                <dd><input type="text" name="logisticsCompany" class="defaultInput" data-cnmax="50"/></dd>
+            </dl>
+            <dl>
+                <dt>物流跟踪号：</dt>
+                <dd><input type="text" name="logisticsTrackingNumber" class="defaultInput" data-cnmax="50"/></dd>
+            </dl>
+            <dl>
+                <dt>寄出时间：</dt>
+                <dd>
+                    <div class="defaultData">
+                        <div class="dataBegin">
+                            <span class="dateInput" data-operator="ge" name="sendTime" id="time3"></span>
+                            <a href="javascript:;" class="timeIco icon-54"></a>
+                        </div>
+                        <span class="point"></span>
+                        <div class="dataEnd">
+                            <span class="dateInput" data-operator="le" name="sendTime" id="time4"></span>
+                            <a href="javascript:;" class="timeIco icon-54"></a>
+                        </div>
+                    </div>
+                </dd>
+            </dl>
+            <dl class="serchDl">
+                <dt>&nbsp;</dt>
+                <dd><a href="javascript:;" class="button js-search">Search</a></dd>
+            </dl>
+        </div>
+        </form>
+    </div>
+    <!-- serch end -->
+    <div class="addbutton">
+        {{if source.operateData.moduleData && source.operateData.actionData && source.operateData.operate['HWC20202001']}}
+        <a href="javascript:;" class="button mR20 js-batchAudit">受理</a>
+        {{/if}}
+        {{if source.operateData.moduleData && source.operateData.actionData && source.operateData.operate['HWC20202002']}}
+        <a href="javascript:;" data-href="" class="buttonText mR20 js-batchSend">寄出</a>
+        {{/if}}
+        {{if source.operateData.moduleData && source.operateData.actionData && source.operateData.operate['HWC20202003']}}
+        <a href="javascript:;" class="buttonText js-batchReject">驳回</a>
+        {{/if}}
+        <em class="mL50 none">您所搜索的，共有<i id='searchTotalCount'>${source.totalCount}</i>条内容符合。</em>
+    </div>
+</div>
+<!-- conts begin -->
+<div class="contsBox">
+    <div class="bigTable">
+        <table class="highTable" border="0" cellspacing="0" r-box="all">
+            <thead>
+                <tr>
+                    <th width="20"><input type="checkbox" name="all"></th>
+                    <th>申请编号</th>
+                    <th>申请人</th>
+                    <th>申请时间</th>
+                    <th>处理状态</th>
+                    <th>发票类型</th>
+                    <th>发票抬头</th>
+                    <th>开票月份</th>
+                    <th>开票金额</th>
+                    <th>物流公司</th>
+                    <th>物流跟踪号</th>
+                    <th>寄出时间</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody id="listCon"></tbody>
+        </table>
+    </div>
+    <div class="page" id="topPager"></div>
+</div>
+<script id='pageListTmpl' type='text/x-jquery-tmpl'>
+    <a href="javascript:;" class="firstPage fL" data-displace="first">首页</a>
+    <a href="javascript:;" class="prve fL icon-56" data-displace="prev"></a>
+    <ul class="pagenumber" id="pager"></ul>
+    <a href="javascript:;" class="next fL icon-55" data-displace="next"></a>
+    <a href="javascript:;" class="lastPage" data-displace="last">尾页</a>
+</script>
+<script id="listTmpl" type="text/x-jquery-tmpl">
+    _[{if list.length}]_
+    _[{each(i,c) list}]_
+    <tr data-id="$_[c.id]_" data-status="$_[c.status]_">
+        <td><input type="checkbox" name=""/></td>
+        <td class="applyCode">$_[c.applyCode]_</td>
+        <td>$_[c.applyUser]_</td>
+        <td>$_[c.applyTime]_</td>
+        <td>$_[getConstName("OwmsInvoiceApplyStatusEnum",c.status)]__[{if c.status==4}]_<a href="javascript:;" class="blue mL10 js-reason" data-reason="$_[c.rejectInfo]_">驳回原因</a>_[{/if}]_</td>
+        <td>$_[getConstName("OwmsInvoiceApplyTypesEnum",c.invoiceType)]_</td>
+        <td class="invoiceTitle">$_[c.invoiceTitle]_</td>
+        <td class="invoiceMonth">$_[c.invoiceMonth]_</td>
+        <td class="invoiceAmount">$_[c.invoiceAmount]_</td>
+        <td>$_[c.logisticsCompany]_</td>
+        <td>$_[c.logisticsTrackingNumber]_</td>
+        <td>$_[c.sendTime]_</td>
+        <td>
+        _[{if operateData.moduleData && operateData.actionData && operateData.operate['HWC20202007']}]_
+            <a class="blue mR10" data-href="?m=xhr_id_20200000_20202000_view&id=$_[c.id]_" data-title="海外仓财务管理-发票管理-发票申请详情">详情</a>
+            _[{/if}]_
+            _[{if c.status==1}]_
+            _[{if operateData.moduleData && operateData.actionData && operateData.operate['HWC20202004']}]_
+            <a class="blue mR10 js-audit" href="javascript:;" data-id="$_[c.id]_">受理</a>
+            _[{/if}]_
+            _[{if operateData.moduleData && operateData.actionData && operateData.operate['HWC20202006']}]_
+            <a class="blue mR10 js-reject" href="javascript:;" data-id="$_[c.id]_">驳回</a>
+            _[{/if}]_
+            _[{/if}]_
+            _[{if c.status==2}]_
+            _[{if operateData.moduleData && operateData.actionData && operateData.operate['HWC20202005']}]_
+            <a class="blue js-send" href="javascript:;" data-id="$_[c.id]_">寄出</a>
+            _[{/if}]_
+            _[{/if}]_
+        </td>
+    </tr>
+    _[{/each}]_
+        _[{else}]_
+        <tr>
+            <td colspan="13">暂无数据</td>
+        </tr>
+    _[{/if}]_
+</script>
+<!-- 驳回 -->
+<script id='rejectReasonTmpl' type='text/x-jquery-tmpl'>
+<form id="rejectForm">
+    <div class="mL70 mT20">
+        <textarea class="textarea w390 h140" placeholder="驳回原因最多250个字" data-cnmax="250" name="rejectInfo"></textarea>
+    </div>
+</form>
+</script>
+<script id="sendVoiceTmpl" type="text/x-jquery-tmpl">
+<form id="sendVoiceForm">
+    <div class="selectRole">
+        <dl class="changeDl">
+            <dt>物流公司：</dt>
+            <dd><input type="text" data-cnmax="50" required class="input w240" name="logisticsCompany2" value=""/></dd>
+        </dl>
+        <dl class="changeDl">
+            <dt>物流跟踪号：</dt>
+            <dd><input type="text" data-cnmax="50" required class="input w240" name="logisticsTrackingNumber2"/></dd>
+        </dl>
+        <dl class="changeDl">
+            <dt>寄出时间：</dt>
+            <dd>
+                <div class="deadline">
+                    <span id="sendTime" class="dateInput"></span><a href="javascript:;" class="icon-54 timeIco"></a>
+                </div>
+            </dd>
+        </dl>
+    </div>
+</form>
+</script>

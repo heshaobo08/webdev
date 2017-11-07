@@ -1,0 +1,108 @@
+<!-- serch begin -->
+<div class="serch">
+    <div class="serch_main">
+        <form id='saleProductForm'>
+            <div class="serch_conts">
+                <dl>
+                    <dt>产品名称 :</dt>
+                    <dd><input type="text" value="" class="defaultInput" placeholder="请输入产品内容" name='serviceName'></dd>
+                </dl>
+                <dl>
+                    <dt>创建时间 :</dt>
+                    <dd>
+                        <div class="defaultData">
+                            <div class="dataBegin">
+                                <span class="dataInput" id="startTime"></span>
+                                <input type="hidden" name='dataStart' id='dataStart'>
+                                <a href="javascript:;" class="timeStart icon-54"></a>
+                            </div>
+                            <span class="point"></span>
+
+                            <div class="dataEnd">
+                                <span class="dataInput" id="endTime"></span>
+                                <input type="hidden" name='dataEnd' id='dataEnd'>
+                                <a href="javascript:;" class="timeEnd icon-54"></a>
+                            </div>
+                        </div>
+                    </dd>
+                </dl>
+                <dl class="serchDl">
+                    <dt></dt>
+                    <dd>
+                        {{if source.operateData.moduleData && source.operateData.actionData &&
+                        source.operateData.operate['h06040001']}}
+                        <a href="javascript:;" class="button js-saleProductSearch">Search</a>
+                        {{/if}}
+                    </dd>
+                </dl>
+            </div>
+        </form>
+    </div>
+    <div class="addbutton">
+        {{if source.operateData.moduleData && source.operateData.actionData && source.operateData.operate['h06040003']}}
+        <a href="javascript:;" class="button" data-href='?m=xhr_id_199_222_edit' data-title='配置管理-销售产品管理-新增'>
+            新增产品
+        </a>
+        {{/if}}
+        <em class="mL50 none">您所搜索的，共有<i id="searchTotalCount">${source.totalCount}</i>条内容符合。</em>
+    </div>
+</div>
+<!-- serch end -->
+
+<!-- conts begin -->
+<div class="contsBox">
+    <div class="bigTable">
+        <table class="" border="0" cellspacing="0">
+            <thead>
+            <tr>
+                <th width="18%">产品名称</th>
+                <th>销售价格</th>
+                <th>管理员</th>
+                <th width="15%">创建时间</th>
+                <th width="15%">最后修改时间</th>
+                <th>状态</th>
+                <th>是否推荐产品</th>
+            </tr>
+            </thead>
+            <tbody id='productListCon'>
+
+            </tbody>
+        </table>
+    </div>
+    <!-- 翻页 begin -->
+    <div class="page" id="topPager">
+    </div>
+    <!--翻页 end-->
+</div>
+<!-- 分页模板 -->
+<script id='pageListCon' type='text/x-jquery-tmpl'>
+    <a href="javascript:;" class="firstPage fL" data-displace="first">首页</a>
+    <a href="javascript:;" class="prve fL icon-56" data-displace="prev"></a>
+    <ul class="pagenumber" id="pager"></ul>
+    <a href="javascript:;" class="next fL icon-55" data-displace="next"></a>
+    <a href="javascript:;" class="lastPage" data-displace="last">尾页</a>
+
+</script>
+<!-- 销售商品列表 -->
+<script id='productListTmpl' type='text/x-jquery-tmpl'>
+_[{if serviceList.length}]_
+    _[{each(i,list) serviceList}]_
+    <tr>
+        <td>
+            _[{if operateData.moduleData && operateData.actionData && operateData.operate['h06040002']}]_
+            <a href="javascript:;" class="blue"  data-code='$_[list.code]_' data-href='?m=xhr_id_199_222_edit&id=$_[list.serviceId]_' data-title='配置管理-销售产品管理-编辑'>$_[list.serviceName]_</a>
+            _[{/if}]_
+        </td>
+        <td>$_[list.price]_元/$_[list.unit]_</td>
+        <td>$_[list.lastUpdateBy]_</td>
+        <td>$_[list.createTime]_</td>
+        <td>$_[list.lastUpdateTime]_</td>
+        <td>_[{if list.productStatus=='1'}]_ 是 _[{else}]_ 否 _[{/if}]_</td>
+        <td>_[{if list.isRecommended=='1'}]_ 是 _[{else}]_ 否 _[{/if}]_</td>
+    </tr>
+    _[{/each}]_
+_[{else}]_
+<tr><td colSpan="7">暂无数据</td></tr>
+_[{/if}]_
+
+</script>

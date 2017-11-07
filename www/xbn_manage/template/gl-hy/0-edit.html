@@ -1,0 +1,51 @@
+<div class="details">
+	<form id="userAddForm" autocomplete='off'>
+<!-- 防止360浏览器自动填写保存的账号密码 勿删 -->  
+<input type="text" value=""  name="" class="none">
+<input type="password" value="" name="" class="none"/> 
+<!-- 防止360浏览器自动填写保存的账号密码 勿删 -->	
+		<h3 class="titleText">会员信息</h3>
+		<div class="initBox">
+			<dl class="editDl">
+				<dt><font>*</font>手机号：</dt>
+				<dd><input type="tel" value="" name="mobile" class="input w240 js-verify" pattern='^1[34578][0-9]\d{8}$'></dd>
+			</dl>
+			<dl class="editDl">
+				<dt><font>*</font>邮箱：</dt>
+				<dd><input type="email" name="email" value="" class="input w240  js-verify"  pattern="^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$" data-max='40'></dd>
+			</dl>
+			<dl class="editDl">
+				<dt><font>*</font>用户名：</dt>
+				<dd><input type="text" value="" class="input w240 js-verify" name='name' data-max="2、0" data-min="4" maxlength="20" pattern='^[a-zA-Z0-9]\w{3,20}$'></dd>
+			</dl>
+			<dl class="editDl">
+				<dt><font>*</font>登录密码：</dt>
+				<dd><input type="password" value="" name="password" class="input w240" data-max="20" data-min="6" maxlength="20" required pattern="^[^\s\u4e00-\u9fa5]+$"/></dd>
+			</dl>
+			<dl class="editDl">
+				<dt><font>*</font>确认密码：</dt>
+				<dd><input type="password" value="" name="repwd" class="input w240" maxlength="20" data-max="20" data-min="6" required /></dd>
+			</dl>
+			<dl class="editDl">
+				<dt><font>*</font>联系人姓名：</dt>
+				<dd><input type="text" value="" class="input w240" name="realName" maxlength="40" data-cnmax="40" pattern='^[\u4e00-\u9fa5\sa-zA-Z]+$'/></dd>
+			</dl>
+			<dl class="editDl">
+				<dt><font>*</font>性别：</dt>
+				<dd class="choiceRadio">
+					<label><input class="" name="gender" type="radio" value="0" required/>男</label>
+					<label><input class="" name="gender" type="radio" value="1"/>女</label>
+				</dd>
+			</dl>
+			<dl class="editDl">
+				<dt><font></font>联系电话：</dt>
+				<dd><input type="text" value="" name='phoneAreaCode' class="input w90" pattern="^\d{3,4}$" maxlength="4" />-<input type="text" value="" class="input w90" name='phoneNo'  pattern="^\d{7,8}$" data-max='8' maxlength="8" />-<input type="text" name='phoneExtension' value="" class="input w90" pattern="^\d{0,5}$" maxlength="4"  data-max='4'/></dd>
+			</dl>
+		</div>
+	</form>
+</div>
+<!-- conts end -->
+<!--中间内容区域 end-->
+<div class="btnMain">
+	<a href="javascript:;" class="button js-addUserSubmit">提交</a><a href="javascript:;" class="buttonText pad20" data-href='?m=xhr_id_33_34' data-title='会员管理-会员管理'>取消</a>
+</div>

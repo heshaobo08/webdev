@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>汇付宝</title>
+<link href="css/base.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<script src="js/jquery.js"></script>
+<script src="js/pc_pany_index.js"></script>
+</head>
+<body>
+    <div id="cover"></div>
+    <div class="bank_phone">
+        <p class="short_message">短信验证码<span><img src="images/short.png"></span></p>
+        <p class="short_input"><input type="text" placeholder="请输入验证码"><img src="images/short_del.png"><span>重新获取验证码</span></p>
+        <p class="short_text">验证码已发送至188****7599的手机，请注意查收</p>
+        <p class="short_btn">确定</p>
+    </div>
+    <div class="pc_pay_pop">
+        <h6 class="pc_pay_pop_hd">提示<em><img src="images/short.png"></em></h6>
+        <div class="pc_pay_pop_img"><!--<img src="images/refund_tip.png">--><img src="images/error_tip.png"></div>
+        <div class="pc_pay_pop_text">
+            <!--<p>银行卡账号错误，请重新输入</p>-->
+            <!--<p>银行卡信息填写错误，请重新输入</p>-->
+            <!--<p>交易失败</p>
+            <p><span>30分钟未完成支付</span></p>
+            <p><span>该订单已失效，请重新提交订单</span></p>-->
+            <p>支付失败</p>
+            <p><span>请重新选择支付方式</span></p>
+        </div>
+        <div class="clear"></div>
+        <h3 class="pc_pay_pop_btn">确认</h3>
+    </div>
+    <div class="pc_pay_pop_one">
+        <h6 class="pc_pay_pop_hd">提示<em><img src="images/short.png"></em></h6>
+        <h5>登录网上银行支付</h5>
+        <p>请您在新打开的网上银行页面进行支付</p>
+        <p>支付完成前，请不要关闭该窗口</p>
+        <h3><span class="pc_pay_pop_su">已完成支付</span><span class="pc_pay_pop_error">支付遇到问题</span></h3>
+    </div>
+    <div id="pc_pay">
+        <!--头部开始-->
+        <div class="pay_header">
+            <div class="pay_top">
+               <p>
+                    <img src="images/pc_logo.png">
+                    <span class="pc_payhx"></span>
+                    <span class="pc_pay_name">收银台</span>
+                </p> 
+            </div>
+            
+        </div>
+        <!--头部结束-->
+        
+        <!--内容开始-->
+        <div class="pay_content">
+            <div class="tie_ct">
+                <div class="tie_ct_l">
+                    <div class="tie_s"><img src="images/pc_s.png"></div>
+                    <div class="tie_text">
+                        <h6>订单提交成功，请您尽快付款！</h6>
+                        <p>请您在订单提交后<em>30分钟</em>内完成付款，否则订单会自动取消。</p>
+                        <p>收款方：XXXX电子商务有限公司</p>
+                        <p>订单号：201607121234567890</p>
+                    </div>
+                </div>
+                <div class="tie_ct_r">
+                    <h6>应付金额：<em>1000.00</em>元</h6>
+                    <p>订单详情<em><img src="images/tie_tip.png"></em></p>
+                </div>
+            </div>
+            <div class="clear"></div>
+            
+            <div class="credit_box">
+                <div class="credit_one">
+                    <p><img src="images/radio1.png"><em>银行卡支付</em><b class="back_bank">返回我的银行卡</b><span class="pany_number">支付<b>1000.00</b>元</span></p>
+                </div>
+                
+                <div class="pany_mode js_quick_pany">
+                    <p><img src="images/pany_img.png">快捷支付<img src="images/pany_ioc.png" class="js_quick_tip"></p>
+                </div>
+                <div class="quick_box">
+                    <div class="pany_bank">
+                        <p><input type="text" id="quick_pany" class="pany_bank_w b_color" placeholder="请输入银行卡号自动识别"><span>确定</span></p>
+                        <div class="pc_pay_bank"><img src="images/pc_pay_bank.png" width="139px" height="40px"></div>
+                        <div class="pc_pay_bank_number">
+                            <p>6217 **** **** ****123</p>
+                        </div>
+                    </div>
+                    <div class="pany_bank_list" style="margin-top:60px;">
+                        <p class="pany_bank_sel">或选择付款银行</p>
+                        <ul>
+                            <li><img src="images/bank_js.png"><p>支持 储蓄卡 信用卡</p><em></em></li>
+                            <li><img src="images/bank_gs.png"><p>支持 储蓄卡 信用卡</p><em></em></li>
+                            <li><img src="images/bank_ly.png"><p>支持 储蓄卡 信用卡</p><em></em></li>
+                            <li><img src="images/bank_china.png"><p>支持 储蓄卡 信用卡</p><em></em></li>
+                            <li><img src="images/bank_js.png"><p>支持 储蓄卡 信用卡</p><em></em></li>
+                            <li><img src="images/bank_gs.png"><p>支持 储蓄卡 信用卡</p><em></em></li>
+                            <li><img src="images/bank_ly.png"><p>支持 储蓄卡 信用卡</p><em></em></li>
+                            <li><img src="images/bank_china.png"><p>支持 储蓄卡 信用卡</p><em></em></li>
+                            <li><img src="images/bank_js.png"><p>支持 储蓄卡 信用卡</p><em></em></li>
+                            <li><img src="images/bank_gs.png"><p>支持 储蓄卡 信用卡</p><em></em></li>
+                            <li><img src="images/bank_ly.png"><p>支持 储蓄卡 信用卡</p><em></em></li>
+                            <li><span>更多银行</span></li>
+                        </ul>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="pany_modes">
+                    <p class="js_online_pany_one">个人网银<img src="images/pany_ioc1.png" class="js_online_tip"></p>
+                    <p class="js_online_pany_two">企业网银<img src="images/pany_ioc1.png" class="js_online_tip"></p>
+                    <div class="clear"></div>
+                </div>
+                <div class="online_box">
+                    <div class="pany_bank_query">
+                        <p class="radio_credit"><img src="images/account_add_tip.png"><label class="label_w bank_w">请选择卡类型：</label>
+                            <span><input type="radio" name="radio" value="信用卡" class="radio"><label class="radio"><em class="bank_query_name">信用卡</em></label></span>
+                            <input type="radio" name="radio" value="储蓄卡" class="radio" checked><label class="radio"><em class="bank_query_name">储蓄卡</em></label>
+                        </p>
+                        <p class="radio_credit"><img src="images/account_add_tip.png"><label class="label_w bank_w">请选择银行：</label></p>
+                    </div>
+                    <div class="pany_bank_list">
+                        <ul>
+                            <li><img src="images/bank_js.png"><p>支持 储蓄卡 信用卡</p><em></em></li>
+                            <li><img src="images/bank_gs.png"><p>支持 储蓄卡 信用卡</p><em></em></li>
+                            <li><img src="images/bank_ly.png"><p>支持 储蓄卡 信用卡</p><em></em></li>
+                            <li><img src="images/bank_china.png"><p>支持 储蓄卡 信用卡</p><em></em></li>
+                            <li><img src="images/bank_js.png"><p>支持 储蓄卡 信用卡</p><em></em></li>
+                            <li><img src="images/bank_gs.png"><p>支持 储蓄卡 信用卡</p><em></em></li>
+                            <li><img src="images/bank_ly.png"><p>支持 储蓄卡 信用卡</p><em></em></li>
+                            <li><img src="images/bank_china.png"><p>支持 储蓄卡 信用卡</p><em></em></li>
+                            <li><img src="images/bank_js.png"><p>支持 储蓄卡 信用卡</p><em></em></li>
+                            <li><img src="images/bank_gs.png"><p>支持 储蓄卡 信用卡</p><em></em></li>
+                            <li><img src="images/bank_ly.png"><p>支持 储蓄卡 信用卡</p><em></em></li>
+                            <li><span>更多银行</span></li>
+                        </ul>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                
+                <div class="online_boxs">
+                    <div class="pany_bank_list">
+                        <ul>
+                            <li><img src="images/bank_js.png"><p>支持 储蓄卡 信用卡</p><em></em></li>
+                            <li><img src="images/bank_gs.png"><p>支持 储蓄卡 信用卡</p><em></em></li>
+                            <li><img src="images/bank_ly.png"><p>支持 储蓄卡 信用卡</p><em></em></li>
+                            <li><img src="images/bank_china.png"><p>支持 储蓄卡 信用卡</p><em></em></li>
+                            <li><img src="images/bank_js.png"><p>支持 储蓄卡 信用卡</p><em></em></li>
+                            <li><img src="images/bank_gs.png"><p>支持 储蓄卡 信用卡</p><em></em></li>
+                            <li><img src="images/bank_ly.png"><p>支持 储蓄卡 信用卡</p><em></em></li>
+                            <li><img src="images/bank_china.png"><p>支持 储蓄卡 信用卡</p><em></em></li>
+                            <li><img src="images/bank_js.png"><p>支持 储蓄卡 信用卡</p><em></em></li>
+                            <li><img src="images/bank_gs.png"><p>支持 储蓄卡 信用卡</p><em></em></li>
+                            <li><img src="images/bank_ly.png"><p>支持 储蓄卡 信用卡</p><em></em></li>
+                            <li><span>更多银行</span></li>
+                        </ul>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                
+            </div>
+            
+        </div>
+        <!--内容结束-->
+        
+        <!--尾部开始-->
+        <div class="pay_footer">
+          
+        </div>
+        <!--尾部结束-->
+        
+    </div>
+</body>
+</html>

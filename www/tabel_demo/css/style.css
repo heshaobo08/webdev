@@ -1,0 +1,32 @@
+.box{
+    width: 1000px;
+    margin: auto;
+}
+.tbl_content{
+    width:100%;
+}
+.tbl_content thead td{
+    border-right:1px solid #d8d8d8;
+    border-top:1px solid #d8d8d8;
+    border-left:1px solid #d8d8d8;
+    background:#f7f7f7;
+    color:#333;
+    text-align:center;
+    padding:10px 5px;
+    font-size: 14px;
+}
+.tbl_content tr:nth-child(2n){ 
+    background:#f6f6f6; 
+}
+.tbl_content tbody tr:hover{ 
+    background:#f9f1f1;
+}
+.tbl_content tbody td{ 
+    text-align:center;
+    border:1px solid #d8d8d8;
+    color:#333; 
+    height:30px;
+    padding:5px 5px;
+    word-break: break-all;
+    font-size: 12px;
+}

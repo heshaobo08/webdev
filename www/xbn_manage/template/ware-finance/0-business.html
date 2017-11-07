@@ -1,0 +1,546 @@
+{{if source.activePos==1}}
+<div class="details pT20">
+    <input type="hidden" id="receId" value="${source.id}" />
+    <div class="stateText">
+        <p class="mB20">处理状态：<span>${getConstName("OwmsReceiptForecastStatusEnum",source.status)}</span></p>
+        <div class="details">
+            <div class="processTip fix">
+                <span class="proTipCont active">
+                    <em class="dot"></em>
+                    <i>创建</i>
+                </span>
+                <span class="proTipCont {{if source.status >= 3 && source.status != 11 && source.status != 21}}active{{/if}}">
+                    <em class="line"></em>
+                    <em class="dot"></em>
+                    <i>审核</i>
+                </span>
+                <span class="proTipCont {{if source.status >= 4 && source.status != 11 && source.status != 21}}active{{/if}}">
+                    <em class="line"></em>
+                    <em class="dot"></em>
+                    <i>商家发货</i>
+                </span>
+                <span class="proTipCont {{if source.status >= 6 && source.status != 11 && source.status != 21}}active{{/if}}">
+                    <em class="line"></em>
+                    <em class="dot"></em>
+                    <i>国际运输</i>
+                </span>
+                <span class="proTipCont {{if source.status >= 9 && source.status != 11 && source.status != 21}}active{{/if}}">
+                    <em class="line"></em>
+                    <em class="dot"></em>
+                    <i>入驻海外仓</i>
+                </span>
+            </div>
+            <div class="proDetails">
+                <a href="javascript:;" class="blue js-details">展开详情</a>
+                <div class="proList switch none">
+                    <em class="doc"></em>
+                    <em class="doc2"></em>
+                    {{each(i,e) source.track}}
+                    <p>${e.handleTime} <i class="mL10">${e.nodeName}</i></p>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="details">
+    <ul class="tabBtn mB15">
+        <li class="this"><a href="javascript:;">基本信息</a></li>
+        <li><a href="javascript:;">费用信息</a></li>
+        <li><a href="javascript:;">装箱信息</a></li>
+        <li><a href="javascript:;">货品信息</a></li>
+    </ul>
+    <div class="tabCon">
+        <div class="msg-con">
+            <div class="otherConts">
+                <div class="details_L">
+                    <dl>
+                        <dt>预报编码：</dt>
+                        <dd>${source.forecastCode}</dd>
+                    </dl>
+                    <dl>
+                        <dt>预报时间：</dt>
+                        <dd>${source.forecastTime}</dd>
+                    </dl>
+                    <dl>
+                        <dt>预报箱数：</dt>
+                        <dd>${source.forecastBoxNum}</dd>
+                    </dl>
+                    <dl>
+                        <dt>预报货品总数：</dt>
+                        <dd>${source.forecastCommodityNum}</dd>
+                    </dl>
+                    <dl>
+                        <dt>仓库实收箱数：</dt>
+                        <dd>${source.receiveBoxNum}</dd>
+                    </dl>
+                </div>
+                <div class="details_R">
+                    <dl>
+                        <dt>SKU总数：</dt>
+                        <dd>${source.skuNum}</dd>
+                    </dl>
+                    <dl>
+                        <dt>处理点实收箱数：</dt>
+                        <dd>${source.siteReceiveBoxNum}</dd>
+                    </dl>
+                    <dl>
+                        <dt>实收货品总数：</dt>
+                        <dd>${source.receiveCommodityNum}</dd>
+                    </dl>
+                    <dl>
+                        <dt>商家发货物流公司：</dt>
+                        <dd>${source.userLogisticsCompany}</dd>
+                    </dl>
+                    <dl>
+                        <dt>商家发货物流单号：</dt>
+                        <dd>${source.userLogisticsCode}</dd>
+                    </dl>
+                </div>
+            </div>
+            <div class="ordertable">
+                <table cellspacing="0" border="0" class="">
+                    <thead>
+                    <tr>
+                        <td>物流编码</td>
+                        <td>处理地点</td>
+                        <td>物流方式</td>
+                        <td>目的仓库</td>
+                        <td>截至下单时间</td>
+                        <td>截至收货时间</td>
+                        <td>预计到货日期</td>
+                        <td>始发站</td>
+                        <td>终点站</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="orderTr">
+                            <td>${source.plan.logisticsCode}</td>
+                            <td>${getConstName("OwmsDisposalSiteEnum",source.plan.disposalSite)}</td>
+                            <td>${getConstName("OwmsLogisticsServerTypeEnum",source.plan.logisticsType)}</td>
+                            <td>${source.plan.destinationStoreName}</td>
+                            <td>${source.plan.sendTimeLimit}</td>
+                            <td>${source.plan.receiveTimeLimit}</td>
+                            <td>${source.plan.expectedArrivalDate}</td>
+                            <td>${source.plan.startStation}</td>
+                            <td>${source.plan.lastStation}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="msg-con none">
+            <div class="otherConts">
+                <div class="details_L">
+                    <dl>
+                        <dt class="w80">总运费：</dt>
+                        <dd class="pL80">${source.totalFreight} CNY</dd>
+                    </dl>
+                    <i class="lh48 pR40 col_cccccc inline_block">
+                        1.海运运费按体积计算，如果总体积不足1CBN，按1CBM计算。 <br/>
+                        2.空运／快递运费按重量计算，如果体积重比实际重大，则按体
+                        积重计价。<br/>
+                        空运体积重＝长（cm）X宽（cm）X高（cm）／6000<br/>
+                        UPS/DHL体积重＝长（cm）X宽（cm）X高（cm）／5000
+                    </i>
+                    <dl>
+                        <dt class="w80">运费单价：</dt>
+                        <dd class="pL80">${source.freightPrice} CNY/CBM</dd>
+                    </dl>
+                    <dl>
+                        <dt class="w80">计费体积：</dt>
+                        <dd class="pL80">${source.paidVolume} CBM</dd>
+                    </dl>
+                    <dl>
+                        <dt class="w80">计费重量：</dt>
+                        <dd class="pL80">${source.paidWeight} KG</dd>
+                    </dl>
+                </div>
+                <div class="details_R">
+                    <dl>
+                        <dt class="w80">保费：</dt>
+                        <dd class="pL80">${source.premium} CNY</dd>
+                    </dl>
+                    <i class="lh48 pR40 col_cccccc inline_block">
+                        税金＝关税＋VAT/GST，其中：关税＝货值X关税税率 <br/>
+                        VAT/GST＝（货值＋运费＋关税）X VAT/GST税率 <br/>
+                        各国VAT/GST税率：英国20%    美国0%    德国21%    澳洲10%
+                    </i>
+                    <dl>
+                        <dt class="w80">保额：</dt>
+                        <dd class="pL80">${source.coverage} CNY</dd>
+                    </dl>
+                    <dl>
+                        <dt class="w80">保价系数：</dt>
+                        <dd class="pL80">${source.insuredCoefficient} KG</dd>
+                    </dl>
+                    <dl>
+                        <dt class="w80">实测重量：</dt>
+                        <dd class="pL80">${source.realWeigh} KG</dd>
+                    </dl>
+                    <dl>
+                        <dt class="w80">税金：</dt>
+                        <dd class="pL80">${source.tax} CNY</dd>
+                    </dl>
+                    <dl>
+                        <dt class="w80">关税：</dt>
+                        <dd class="pL80">${source.tariff} CNY（货值：${source.commodityValue} ${source.currencyUnit}，税率：${source.tariffRate}%）</dd>
+                    </dl>
+                    <dl>
+                        <dt class="w80">VAT/GST：</dt>
+                        <dd class="pL80">${source.vatGstRate} CNY（税率：${source.tariffRate}%）</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        <div class="msg-con none">
+            {{each(i,e) source.boxList}}
+            <div class="otherConts">
+                <h3 class="boxTitle">
+                    ${e.boxCode}号箱
+                </h3>
+                <div class="details_L">
+                    <dl>
+                        <dt>装箱单号：</dt>
+                        <dd>${e.boxOrderCode}</dd>
+                    </dl>
+                    <dl>
+                        <dt>货值：</dt>
+                        <dd>${e.commodityValue}${source.currencyUnit}</dd>
+                    </dl>
+                    <dl>
+                        <dt>SKU数量：</dt>
+                        <dd>${e.skuNum}</dd>
+                    </dl>
+                    <dl>
+                        <dt>处理状态：</dt>
+                        <dd>${getConstName("OwmsBoxStatusEnum",e.status)}</dd>
+                    </dl>
+                    <dl>
+                        <dt>入库时间：</dt>
+                        <dd>${e.storageTime}</dd>
+                    </dl>
+                    <dl>
+                        <dt>预报货品总数：</dt>
+                        <dd>${e.forecastNum}</dd>
+                    </dl>
+                    <dl>
+                        <dt>实收货品总数：</dt>
+                        <dd>${e.realNum}</dd>
+                    </dl>
+                </div>
+                <div class="details_R">
+                    <dl>
+                        <dt>预报尺寸：</dt>
+                        <dd>
+                            <span class="mR5">${e.forecastLength}</span>
+                            X
+                            <span class="mR5 mL5">${e.forecastWidth}</span>
+                            X
+                            <span class="mR5 mL5">${e.forecastHeight}</span>
+                            （体积：<span>1.000 CNM</span>）
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>实测尺寸：</dt>
+                        <dd>
+                            <span class="mR5">${e.realLength}</span>
+                            X
+                            <span class="mR5 mL5">${e.realWidth}</span>
+                            X
+                            <span class="mR5 mL5">${e.realHeight}</span>
+                            （体积：<span>1.000 CNM</span>）
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>预报重量：</dt>
+                        <dd>${e.forecastWeigh} KG</dd>
+                    </dl>
+                    <dl>
+                        <dt>实测重量：</dt>
+                        <dd>${e.realWeigh} KG</dd>
+                    </dl>
+
+                </div>
+            </div>
+            <div class="printtable">
+                <table width="100%">
+                    <thead>
+                    <tr>
+                        <th width="147">库存编码</th>
+                        <th width="100">商家SKU</th>
+                        <th>货品名称</th>
+                        <th>规格型号</th>
+                        <th width="120">包装信息</th>
+                        <th width="113">申报名称</th>
+                        <th width="83">申报价值</th>
+                        <th width="82">数量</th>
+                        <th width="90">过期时间</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {{each(i,d) e.boxCommodityList}}
+                    <tr>
+                        <td><a class="break block blue" href="javascript:;" data-title="海外仓业务管理-货品管理-详情" data-href="?m=xhr_id_20100000_20105000_detail&id=${d.commodityId}">${d.inventoryCode}</a></td>
+                        <td>${d.merchantSku}</td>
+                        <td><p>${d.commodityTitle}</p></td>
+                        <td>${d.specsModel}</td>
+                        <td><p>重量：${d.weight}KG</p><p>长度：${d.length}CM</p><p>宽度：${d.width}CM</p><p>高度：${d.height}CM</p></td>
+                        <td>${d.declareName}</td>
+                        <td>${d.declarePrice}${source.currencyUnit}</td>
+                        <td><p>装箱：${d.fillBoxNum}</p><p>实收：${d.realNum}</p></td>
+                        <td>${d.outTime}</td>
+                    </tr>
+                    {{/each}}
+                    </tbody>
+                </table>
+            </div>
+            {{/each}}
+        </div>
+        <div class="msg-con none">
+            <div class="printtable">
+                <table width="100%">
+                    <thead>
+                    <tr>
+                        <th width="147">库存编码</th>
+                        <th width="100">商家SKU</th>
+                        <th>货品名称</th>
+                        <th>规格型号</th>
+                        <th width="120">包装信息</th>
+                        <th width="113">申报名称</th>
+                        <th width="83">申报价值</th>
+                        <th width="82">数量</th>
+                        <th width="90">过期时间</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {{each(i,e) source.extendList}}
+                        <tr>
+                            <td><a class="break block blue" href="javascript:;" data-title="海外仓业务管理-货品管理-详情" data-href="?m=xhr_id_20100000_20105000_detail&id=${e.commodityId}">${e.inventoryCode}</a></td>
+                            <td>${e.merchantSku}</td>
+                            <td><p>${e.commodityTitle}</p></td>
+                            <td>${e.specsModel}</td>
+                            <td><p>重量：${e.weight}KG</p><p>长度：${e.length}CM</p><p>宽度：${e.width}CM</p><p>高度：${e.height}CM</p></td>
+                            <td>${e.declareName}</td>
+                            <td>${e.declarePrice}${source.currencyUnit}</td>
+                            <td><p>装箱：${e.fillBoxNum}</p><p>实收：${e.realNum}</p></td>
+                            <td>${e.outTime}</td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="msg-con">
+        <h3 class="titleText">备注信息</h3>
+        <div class="mT20 mB20">
+            <dl class="lh34 fix">
+                <dt class="w130 fL">备注信息：</dt>
+                <dd class="fL break">${source.merchantRemark || '暂无备注'}</dd>
+            </dl>
+        </div>
+    </div>
+</div>
+<div class="btnMain">
+    <a class="button" href="javascript:history.go(-1);">返回</a>
+</div>
+{{else source.activePos==2}}
+<div class="contsBox">
+    <div class="details">
+        <div class="stateText">
+            <p class="mB20">处理状态：<span>${getConstName("OwmsInvoiceStatusEnum",source.status)}</span></p>
+        </div>
+    </div>
+    <div class="details">
+        <ul class="tabBtn">
+            <li><a href="javascript:;">基本信息</a></li>
+            <li class="this"><a href="javascript:;">收发货信息</a></li>
+            <li><a href="javascript:;">货品信息</a></li>
+        </ul>
+        <!-- 摘要 begin -->
+        <div class="tabCon">
+            <div class="msg-con none">
+                <div class="otherConts mT20">
+                    <div class="details_L">
+                        <dl>
+                            <dt>发货单号：</dt>
+                            <dd>${source.invoiceCode}</dd>
+                        </dl>
+                        <dl>
+                            <dt>小笨鸟订单号：</dt>
+                            <dd>${source.orderCode}</dd>
+                        </dl>
+                        <dl>
+                            <dt>原始订单号：</dt>
+                            <dd>${source.originalCode}</dd>
+                        </dl>
+                        <dl>
+                            <dt>下单时间：</dt>
+                            <dd>${source.orderTime}</dd>
+                        </dl>
+                        <dl>
+                            <dt>提交时间：</dt>
+                            <dd>${source.submitTime}</dd>
+                        </dl>
+                    </div>
+                    <div class="details_R">
+                        <dl>
+                            <dt>买家名称：</dt>
+                            <dd>${source.buyerName}</dd>
+                        </dl>
+                        <dl>
+                            <dt>sku总数： </dt>
+                            <dd>${source.skuNum}</dd>
+                        </dl>
+                        <dl>
+                            <dt>应发货品总数： </dt>
+                            <dd>${source.maySendNum}</dd>
+                        </dl>
+                        <dl>
+                            <dt>实发货品总数： </dt>
+                            <dd>${source.realSendNum}</dd>
+                        </dl>
+                        <dl>
+                            <dt>来源： </dt>
+                            <dd>${getConstName("OwmsDataSourceEnum",source.source)}</dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+            <div class="msg-con">
+                <div class="mT20">
+                    <dl class="invoice_dl">
+                        <dt class="invoice_dt_title">收货信息</dt>
+                        <dd>
+                            <dl class="fix">
+                                <dt class="invoice_dt">收货人姓名：</dt>
+                                <dd class="invoice_dd">${source.consigneeName}</dd>
+                            </dl>
+                        </dd>
+                        <dd>
+                            <dl class="fix">
+                                <dt class="invoice_dt">收货人电话：</dt>
+                                <dd class="invoice_dd">${source.consigneePhone}</dd>
+                            </dl>
+                        </dd>
+                        <dd>
+                            <dl class="fix">
+                                <dt class="invoice_dt">收货地区：</dt>
+                                <dd class="invoice_dd">${source.consigneeContry} - ${source.consigneeCity}</dd>
+                            </dl>
+                        </dd>
+                        <dd>
+                            <dl class="fix">
+                                <dt class="invoice_dt">详细地址：</dt>
+                                <dd class="invoice_dd">${source.consigneeAddress}</dd>
+                            </dl>
+                        </dd>
+                        <dd>
+                            <dl class="fix">
+                                <dt class="invoice_dt">邮政编码：</dt>
+                                <dd class="invoice_dd">${source.consigneeZipcode}</dd>
+                            </dl>
+                        </dd>
+                    </dl>
+                    <dl class="invoice_dl">
+                        <dt class="invoice_dt_title">发货信息</dt>
+                        <dd>
+                            <dl class="fix">
+                                <dt class="invoice_dt">发货仓库：</dt>
+                                <dd class="invoice_dd">${source.sendStoreName}</dd>
+                            </dl>
+                        </dd>
+                        <dd>
+                            <dl class="fix">
+                                <dt class="invoice_dt">发货时间：</dt>
+                                <dd class="invoice_dd">${source.sendTime}</dd>
+                            </dl>
+                        </dd>
+                        <dd>
+                            <dl class="fix">
+                                <dt class="invoice_dt">包裹重量：</dt>
+                                <dd class="invoice_dd">${source.pckWeight}</dd>
+                            </dl>
+                        </dd>
+                        <dd>
+                            <dl class="fix">
+                                <dt class="invoice_dt">包裹体积：</dt>
+                                <dd class="invoice_dd">${source.pckVolume}</dd>
+                            </dl>
+                        </dd>
+                        <dd>
+                            <dl class="fix">
+                                <dt class="invoice_dt">物流公司：</dt>
+                                <dd class="invoice_dd">${source.logisticsCompany}</dd>
+                            </dl>
+                        </dd>
+                        <dd>
+                            <dl class="fix">
+                                <dt class="invoice_dt">服务类型：</dt>
+                                <dd class="invoice_dd">${source.serviceType}</dd>
+                            </dl>
+                        </dd>
+                        <dd>
+                            <dl class="fix">
+                                <dt class="invoice_dt">物流跟踪单号：</dt>
+                                <dd class="invoice_dd">${source.logisticsTrackCode}</dd>
+                            </dl>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+            <div class="msg-con none">
+                <div class="title_cost">
+                    <span>总运费：${source.totalFreight}  CNY</span>
+                    <span>基础运费：${source.basicFreight}  CNY</span>
+                    <span>挂号费：${source.registerFee}  CNY</span>
+                    <span>订单处理费：${source.orderProcessFee}  CNY</span>
+                </div>
+                <div class="ordertable">
+                    <table class="" border="0" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <td>库存编码</td>
+                                <td>商家sku</td>
+                                <td>货品名称</td>
+                                <td>规格型号</td>
+                                <td>应发数量</td>
+                                <td>实发数量</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{if source.invoiceCommodityList.length}}
+                            {{each(i,c) source.invoiceCommodityList}}
+                            <tr>
+                                <td>${inventoryCode}</td>
+                                <td>${merchantSku}</td>
+                                <td>${commodityTitle}</td>
+                                <td>${specsModel}</td>
+                                <td>${maySendNum}</td>
+                                <td>${realSendNum}</td>
+                            </tr>
+                            {{/each}}
+                            {{else}}
+                            <tr>
+                                <td colspan="6">暂无数据</td>
+                            </tr>
+                            {{/if}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <h3 class="titleText">备注信息</h3>
+        <dl class="textDl pT15">
+            <dt>备注信息：</dt>
+            <dd>
+                <div class="textBox">${source.remark}</div>
+            </dd>
+        </dl>
+        <div class="btnMain">
+            <a sdata-href="?m=xhr_id_20100000_20107000" class="button" href="javascript:history.go(-1);">返回</a>
+        </div>
+    </div>
+</div>
+{{/if}}

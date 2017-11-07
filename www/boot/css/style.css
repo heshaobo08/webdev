@@ -1,0 +1,23 @@
+body { padding-top: 50px;padding-bottom: 40px;color: #5a5a5a;}
+.h_top{background-color: #1f262d}
+.content{width:100%;position:relative;}
+.menuLeft{position:absolute; left:0; top:0; width:200px; min-height:925px; height:100%; _height:860px; background-color:#2E363F;z-index:99;}
+.functionItem{ position:relative; border-top: 1px solid #37414b;border-bottom: 1px solid #1f262d;}
+.common_bg{ position:relative; height:50px; line-height:50px; background-color:#295892;  font-size:14px; font-weight:400; background:url(../img/menuIcon_bg.png) no-repeat;}
+.menuList{border-bottom: 1px solid #37414b}
+.menuList h3{padding:0px;margin:0px;}
+.menuList a{ text-decoration:none;}
+.common_bg:hover,.common_bg:active{ font-weight:700; background-color:#27a9e3;}
+.common_bg a{ display:block; color:#fff; padding-left:80px;}
+.onselect .common_bg{ font-weight:700; background-color:#3167aa;}
+.nav_sublist{background: #1e242b;padding:8px 0;margin:0px;}
+.nav_sublist li{}
+.nav_sublist li a{padding-left: 66px; color:#e4e4e4;font-size: 14px;display: block;height: 50px; line-height: 50px;}
+.nav_sublist li a.sub_nav_select{background: #0c2f5a;color:#d87925;font-weight: bold;}
+.nav_sublist li a:hover{/* background: #0c2f5a; */color:#d87925;font-weight: bold;}
+.function1{ background-position:30px 13px;}
+.function2{ background-position:30px -57px;}
+.function3{background-position:30px -477px;}
+
+
+.contRight{padding:28px 25px 25px 230px;min-height:875px; height:100%; _height:875px;}

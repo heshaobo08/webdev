@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>汇付宝</title>
+<link href="css/base.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<style>
+/*失败*/
+.pay_fail{
+   margin-top: 20px;     
+}
+.rest_pay_fail_t{
+    background:#f9fbff;
+}
+.rest_pay_fail p{
+    font-size:18px;
+    color:#333333;
+    padding-left: 200px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+.rest_pay_fail p img{
+    position: relative;
+    top:9px;
+    right: 20px;
+}
+.rest_pay_fail h6{
+    font-size:12px;
+    color:#0066cc;
+    cursor: pointer;
+    margin-left: 230px;
+    margin-top: 20px;
+}
+</style>
+</head>
+<body>
+    <div id="ngp_warpper">
+        <!--头部开始-->
+        <div class="ngp_header">
+            <div class="ngp_top">
+                <div class="ngp_logo">
+                   <img src="images/logo.png">
+                   <span class="logo_hx"></span>
+                   <span class="logo_text">商户服务</span>
+                </div>
+                <div class="ngp_top_right">
+                    <span>您好！ Acdbm@9186.com</span>
+                    <b></b>
+                    <span>退出</span>
+                    <b></b>
+                    <span>帮助中心</span>
+                </div>
+            </div>
+        </div>
+        <div class="ngp_nav">
+            <div class="nav_list">
+                <ul>
+                    <li class="nav_ative"><a href="index.html">我的汇付宝</a></li>
+                    <li><a href="transaction.html">交易管理</a></li>
+                    <li><a href="#">结算管理</a></li>
+                    <li><a href="account_management.html">账户管理</a></li>
+                </ul>
+            </div> 
+        </div>
+        <!--头部结束-->
+        
+        <!--内容开始-->
+        <div class="ngp_content">
+           <div class="pay_fail">
+                <div class="rest_pay_fail">
+                    <div class="rest_pay_fail_t">
+                        <p><img src="images/error_tip.png">支付失败</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--内容结束-->
+        
+        <!--尾部开始-->
+        <div class="ngp_footer">
+            <p>
+                <span>关于我们</span>
+                <span>合作伙伴</span>
+                <span>商务合作</span>
+                <span>联系我们</span>
+            </p>
+            <p class="ngp_ft">Copyright © since 2008 汇元银通（北京）在线支付技术有限公司  版权所有 侵权必究</p>
+        </div>
+        <!--尾部结束-->
+        
+    </div>
+</body>
+</html>

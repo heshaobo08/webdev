@@ -1,0 +1,304 @@
+<div class="">
+    <div class="details">
+        <div class="stateText">
+            <p class="state">订单状态： <span>${source.order.status}</span>
+            </p>
+        </div>
+
+    </div>
+    <div class="details">
+        <h3 class="titleText">订单信息</h3>
+        <div class="otherConts">
+            <div class="details_L">
+                <dl>
+                    <dt>小笨鸟订单号：</dt>
+                    <dd>${source.order.xbnOrderId}</dd>
+                </dl>
+                <dl>
+                    <dt>
+                        {{if source.order.orderPlatform == "3"}}
+                            newegg
+                        {{else source.order.orderPlatform == "2"}}
+                            amazon
+                        {{else source.order.orderPlatform == "1"}}
+                            ebay
+                        {{/if}}订单号：</dt>
+                    <dd>${source.order.platformOrderId}</dd>
+                </dl>
+                <dl>
+                    <dt>订单金额：</dt>
+                    <dd>${source.order.currencySymbol}${source.order.amount}</dd>
+                </dl>
+                <dl>
+                    <dt>下单时间：</dt>
+                    <dd>${source.order.purchaseDate}</dd>
+                </dl>
+            </div>
+            <div class="details_R">
+                <dl>
+                    <dt>买家：</dt>
+                    <dd>${source.order.buyerName}</dd>
+                </dl>
+                <dl>
+                    <dt>销售站点： </dt>
+                    <dd>${source.order.site}</dd>
+                </dl>
+                <dl>
+                    <dt>退款金额： </dt>
+                    <dd><span class="red">${source.order.currencySymbol}${source.order.refundMoney}</span>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+
+    <div class="details">
+        <ul class="tabBtn" id="order_tabs">
+            <li class="this" data-tabs="1">
+                <a href="javascript:;">摘要</a>
+            </li>
+            <li data-tabs="2">
+                <a href="javascript:;">发货</a>
+            </li>
+            <li data-tabs="3">
+                <a href="javascript:;">消息</a>
+            </li>
+        </ul>
+
+        <div id="order_tabs_details">
+            <div data-tabs_tabs_details="1" class="none">
+                <!-- 摘要 begin -->
+                <div class="">
+                    <div class="ordertable">
+                        <table class="" border="0" cellspacing="0">
+                            <tbody>
+
+                                {{each(i,list) source.order.items}}
+                                <!-- id="${list.xbnItemId}"-->
+                                <tr class="orderTr">
+
+                                    <td><img src="images/defineImg.png" class="imgBorder" id="${list.xbnItemId}" width="48" height="48" />
+                                    </td>
+                                    <td>
+                                        <a href="javascript:;" class="orderTitle">${list.title}</a>
+                                        <p>
+                                            <span>SKU：${list.sku}</span> &nbsp;&nbsp;&nbsp;
+                                            <span>item ID：${list.itemId}</span>
+                                        </p>
+                                        <p class="order_choice"><span>${list.variationNames}</span><span>${list.variationValues}</span>
+                                        </p>
+                                    </td>
+                                    <td>
+                                        <p>单价：${source.order.currencySymbol}${list.price}</p>
+                                        <p>数量：${list.num}</p>
+                                        <p>运费：${source.order.currencySymbol}${list.freight}</p>
+                                    </td>
+                                    <td>
+                                        {{if list.shipHistory}}
+                                        <p>{{if list.shipHistory.number}}已发货{{/if}}</p>
+                                        <p>${list.shipHistory.methods}</p>
+                                        <p>${list.shipHistory.number}</p>
+                                        {{/if}}
+                                    </td>
+                                </tr>
+                                {{/each}}
+
+                            </tbody>
+                        </table>
+                    </div>
+
+
+
+                    <h3 class="titleText">付款信息</h3>
+                    <div class="otherConts">
+                        <div class="details_L">
+                            <dl>
+                                <dt>付款状态：</dt>
+                                <dd>${source.payment.status}</dd>
+                            </dl>
+                            <dl>
+                                <dt>付款方式：</dt>
+                                <dd>${source.payment.paymentMethod}</dd>
+                            </dl>
+                            <dl>
+                                <dt>付款时间：</dt>
+                                <dd>${source.payment.date}</dd>
+                            </dl>
+                        </div>
+                        <div class="details_R">
+                            <dl>
+                                <dt>付款金额： </dt>
+                                <dd>${source.order.currencySymbol}${source.payment.amount}</dd>
+                            </dl>
+                            <dl>
+                                <dt>交易流水号： </dt>
+                                <dd>${source.payment.transactionNumber}</dd>
+                            </dl>
+                        </div>
+                    </div>
+                    <h3 class="titleText">发货信息</h3>
+                    <div class="otherConts">
+                        <div class="details_L">
+                            <dl>
+                                <dt>发货状态：</dt>
+                                <dd>${source.ship.status}</dd>
+                            </dl>
+                            <dl>
+                                <dt>收件人：</dt>
+                                <dd>${source.ship.addressee}</dd>
+                            </dl>
+                            <dl>
+                                <dt>发货时间：</dt>
+                                <dd>${source.ship.date}</dd>
+                            </dl>
+                        </div>
+                        <div class="details_R">
+                            <dl>
+                                <dt>发货方式： </dt>
+                                <dd>${source.ship.methods}</dd>
+                            </dl>
+                            <dl>
+                                <dt>跟踪单号： </dt>
+                                <dd>${source.ship.number}</dd>
+                            </dl>
+                        </div>
+                        <dl class="textDl">
+                            <dt>收货地址： </dt>
+                            <dd>
+                                ${source.ship.address.addressLine1}&nbsp;&nbsp;${source.ship.address.addressLine2}&nbsp;&nbsp;${source.ship.address.addressLine3}&nbsp;&nbsp;${source.ship.address.city}，${source.ship.address.stateOrRegion}，${source.ship.address.countryName}，${source.ship.address.postalCode}，${source.ship.address.phone}
+                            </dd>
+                        </dl>
+                    </div>
+                    <h3 class="titleText">其他信息</h3>
+                    <div class="otherConts">
+                        <dl class="textDl">
+                            <dt>买家留言： </dt>
+                            <dd>${source.other.buyersMessage}</dd>
+                        </dl>
+                        <dl class="textDl">
+                            <dt>订单备注： </dt>
+                            <dd>${source.other.remarks}</dd>
+                        </dl>
+                    </div>
+                </div>
+                <!-- 摘要 end -->
+            </div>
+            <div data-tabs_tabs_details="2" class="none" id="details_ship_conts"></div>
+            <div data-tabs_tabs_details="3" class="none">
+                <!-- 消息 end -->
+                <div class="bigTable" id="details_message_conts"></div>
+                <div class="page" id="message_pager">
+                    <a href="javascript:;" class="firstPage fL" data-displace="first">首页</a>
+                    <a href="javascript:;" class="prve fL icon-56" data-displace="prev"></a>
+                    <ul class="pagenumber" id="message_pager_item"></ul>
+                    <a href="javascript:;" class="next fL icon-55" data-displace="next"></a>
+                    <a href="javascript:;" class="lastPage" data-displace="last">尾页</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="btnMain ">
+            <a href="javascript:history.go(-1); " class="button js-rejectMsg " data-title="订单管理-订单列表 ">返回</a>
+        </div>
+
+        <div class="none" id="details_message_show_conts"></div>
+    </div>
+
+    <script type="text/tcl" id="details_ship">
+        <!-- 发货 begin -->
+        <div class="ordertable">
+            <table class="" border="0" cellspacing="0">
+                <thead>
+                    <tr>
+                        <td>跟踪单号</td>
+                        <td>承运商</td>
+                        <td>发货时间</td>
+                        <td>商品SKU</td>
+                        <td>收货地址</td>
+                        <!--
+                        <td>操作</td>
+                        -->
+                    </tr>
+                </thead>
+                <tbody>
+                    _[{each(i,s) source.items}]_
+                    <tr class="orderTr">
+                        <td>$_[s.trackingNumber]_</td>
+                        <td>$_[s.carrier]_</td>
+                        <td>$_[s.date]_ </td>
+                        <td>
+                            <p>$_[s.sku]_ </p>
+                        </td>
+                        <td>
+                            <p>$_[s.address.addressLine1]_$_[s.address.addressLine2]_$_[s.address.addressLine3]_</p>
+                            <p>
+                            $_[s.address.city]_ ，$_[s.address.stateOrRegion]_，$_[s.address.countryName]_ ，$_[s.address.postalCode]_
+                            </p>
+                            <p>$_[s.address.phone]_</p>
+                        </td>
+                        <!--
+                        <td>
+                            _[{if s.carrier == "APAC"}]_<a href="javascript:;" class="blue">查看</a>_[{/if}]_
+                        </td>
+                        -->
+                    </tr>
+                    _[{/each}]_
+                </tbody>
+            </table>
+        </div>
+        <!-- 发货 end -->
+    </script>
+    <script type="text/tcl" id="details_message">
+
+        <table class="layout" border="0" cellspacing="0">
+            <thead>
+                <tr>
+                    <th width="60%">消息标题</th>
+                    <th width="20%">发信人</th>
+                    <th width="20%">时间</th>
+                </tr>
+            </thead>
+            <tbody>
+                _[{each(i,l) source.list}]_
+                <tr class="">
+                    <td class="white"><a href="javascript:;" class="blue pop_message" id="$_[l.id]_">$_[l.messageTitle]_</a>
+                    </td>
+                    <td>$_[l.sender]_</td>
+                    <td>$_[l.createTime]_</td>
+                </tr>
+                _[{/each}]_
+
+            </tbody>
+        </table>
+
+        <!-- 消息 end -->
+    </script>
+
+    <script type="text/tcl" id="details_message_show_tmpl">
+        <div class="orderMessage">
+            <dl>
+                <dt>标题：</dt>
+                <dd class="Truncate">$_[source.messageTitle]_</dd>
+            </dl>
+            <dl>
+                <dt>发信人：</dt>
+                <dd>$_[source.sender]_</dd>
+            </dl>
+            </dl>
+            <dl>
+                <dt>收信人：</dt>
+                <dd>$_[source.receiver]_</dd>
+            </dl>
+            <dl>
+                <dt>时间：</dt>
+                <dd>$_[source.createTime]_</dd>
+            </dl>
+            <dl class="mT20">
+                <dt>内容：</dt>
+                <dd>
+                    <p id="message_content">load...</p>
+                </dd>
+            </dl>
+        </div>
+    </script>
+</div>

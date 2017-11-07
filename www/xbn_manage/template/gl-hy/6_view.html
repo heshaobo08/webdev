@@ -1,0 +1,60 @@
+<div class="details">
+    <div class="personal">
+        <div class="personal_img">
+            <img src="images/headImg.jpg" />
+        </div>
+        <div class="personal_text">
+            <dl>
+                <dt>所属用户：</dt>
+                <dd>${source.userName || "没有用户"}</dd>
+            </dl>
+            <dl>
+                <dt>联系人：</dt>
+                <dd>${source.contacts}</dd>
+            </dl>
+            <dl>
+                <dt>电话：</dt>
+                <dd>${source.telephone}</dd>
+            </dl>
+        </div>
+        <div class="personal_text">
+            <dl>
+                <dt>账户来源：</dt>
+                <dd>{{if source.platformID=='1'}}ebay{{else source.platformID=='2'}}amazon{{else source.platformID=='3'}}newegg{{/if}}</dd>
+            </dl>
+            <dl>
+                <dt>邮箱：</dt>
+                <dd>${source.eMail}</dd>
+            </dl>
+        </div>
+    </div>
+    <h3 class="titleText">基本信息</h3>
+    <div class="basicInfo">
+        <dl>
+            <dt>所购商品SKU：</dt>
+            <dd>${source.sku||"&nbsp;"}</dd>
+        </dl>
+        <dl>
+            <dt>详细地址：</dt>
+            <dd>
+                <span class="mR10">${source.country||"&nbsp;"}</span>
+                <span class="mR10">${source.state||"&nbsp;"}</span>
+                <span class="mR10">${source.city||"&nbsp;"}</span>
+                <span class="mR10">${source.address||"&nbsp;"}</span>
+            </dd>
+        </dl>
+        <dl>
+            <dt>邮编：</dt>
+            <dd>${source.zipCode||"&nbsp;"}</dd>
+        </dl>
+        <dl>
+            <dt>备注：</dt>
+            <dd>${source.comment||"&nbsp;"}</dd>
+        </dl>
+    </div>
+</div>
+<!-- conts end -->
+<!--中间内容区域 end-->
+<div class="btnMain">
+    <a href="javascript:history.go(-1);" class="button" sdata-href='?m=xhr_id_33_83'  data-title='会员管理-客户管理'>返回</a>
+</div>

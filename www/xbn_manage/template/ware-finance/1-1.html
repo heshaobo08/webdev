@@ -1,0 +1,188 @@
+<div class="serch">
+    <div class="account_infor" id="accountInfo">
+
+    </div>
+    <!-- serch begin -->
+    <form id="searchForm">
+    <div class="serch_main">
+        <div class="serch_conts">
+            <dl>
+                <dt>交易编号：</dt>
+                <dd><input type="text" class="defaultInput searchParamListEle" class="defaultInput" name="dealCode" pattern="^[a-zA-Z\d]+$"/></dd>
+            </dl>
+            <dl>
+                <dt>交易类型：</dt>
+                <dd>
+                    <div class="select w190">
+                        <input index-data="" type="hidden" value="请选择"  class="searchParamListEle" name="dealType"/>
+                        <i>请选择</i>
+                        <em class="icon-52"></em>
+                        <ul>
+                            <li index-data=""><span>请选择</span></li>
+                            {{each(i,type) getConstName("OwmsDealTypeEnum")}}
+                            <li index-data="${i}" ><span>${type}</span></li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                </dd>
+            </dl>
+            <dl>
+                <dt>交易项目：</dt>
+                <dd>
+                    <div class="select w190">
+                        <input index-data="" type="hidden" value="请选择" class="searchParamListEle" name="dealItem"/>
+                        <i>请选择</i>
+                        <em class="icon-52"></em>
+                        <ul>
+                            <li index-data=""><span>请选择</span></li>
+                            {{each(ii,item) getConstName("OwmsDealItemEnum")}}
+                            <li index-data="${ii}" ><span>${item}</span></li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                </dd>
+            </dl>
+            <dl>
+                <dt>交易时间：</dt>
+                <dd>
+                    <div class="defaultData">
+                        <div class="dataBegin">
+                            <span class="dateInput searchParamListEle" id="startTime" name="dealTime" data-operator="ge" id="dealTimeStart"></span>
+                            <a href="javascript:;" class="timeStart icon-54"></a>
+                        </div>
+                        <span class="point"></span>
+                        <div class="dataEnd">
+                            <span class="dateInput searchParamListEle" id="endTime" name="dealTime" data-operator="le" id="dealTimeEnd"></span>
+                            <a href="javascript:;" class="timeEnd icon-54"></a>
+                        </div>
+                    </div>
+                </dd>
+            </dl>
+            <dl>
+                <dt>交易状态：</dt>
+                <dd>
+                    <div class="select w190">
+                        <input index-data="" type="hidden" value="请选择" class="searchParamListEle" name="dealStatus"/>
+                        <i>请选择</i>
+                        <em class="icon-52"></em>
+                        <ul>
+                            <li index-data=""><span>全部</span></li>
+                            {{each(iii,status) getConstName("OwmsDealStatusEnum")}}
+                                <li index-data="${iii}"><span>${status}</span></li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                </dd>
+            </dl>
+            <dl>
+                <dt>交易金额：</dt>
+                <dd>
+                    <div class="defaultPrice">
+                        <input type="text" class="priceBegin" name="dealAmount" data-operator="ge" pattern="^([1-9]\d{0,9}|0)(\.\d{1,2})?$">
+                        <span class="point"></span>
+                        <input type="text" class="priceEnd" name="dealAmount" data-operator="le" pattern="^([1-9]\d{0,9}|0)(\.\d{1,2})?$">
+                    </div>
+                </dd>
+            </dl>
+            <dl class="serchDl">
+                <dt>&emsp;</dt>
+                <dd><a href="javascript:;" class="button js-search">Search</a></dd>
+            </dl>
+        </div>
+    </div>
+    </form>
+    <!-- serch end -->
+    <div class="addbutton">
+        <a href="javascript:;" class="button mR20" data-href="?m=xhr_id_20200000_20201000" data-title="海外仓财务管理-账户管理">返回</a>
+        {{if source.operateData.moduleData && source.operateData.actionData && source.operateData.operate['HWC20201001'] && source.operateData.operate['HWC20201001'].childOpt['HWC20201002']}}
+        <a href="javascript:;" class="buttonText mR20 js-recharge">小笨鸟充值</a>
+        {{/if}}
+        {{if source.operateData.moduleData && source.operateData.actionData && source.operateData.operate['HWC20201001'] && source.operateData.operate['HWC20201001'].childOpt['HWC20201003']}}
+        <a href="javascript:;" class="buttonText mR20 js-exportBill">导出账单</a>
+        {{/if}}
+        <form style="position:fixed;left:-999999px;" action="/owms/finance/accountDetail/export" method="post" id="exportBill" >
+            <input type="submit" value="导出账单"/>
+            <input type="hidden" name="obj" value=''/>
+        </form>
+    </div>
+</div>
+<!-- conts begin -->
+<div class="contsBox">
+    <div class="bigTable">
+        <table class="" border="0" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>交易编号</th>
+                    <th>交易类型</th>
+                    <th>交易项目</th>
+                    <th>交易时间</th>
+                    <th>交易状态</th>
+                    <th>交易金额</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody id="listCon">
+            </tbody>
+        </table>
+    </div>
+    <div class="page" id="topPager"></div>
+
+</div>
+<!-- conts end -->
+<script id="userInfo" type="text/x-jquery-tmpl">
+    <span class="blue">$_[userName]_</span>
+    <span>总余额：_[{if totalBalance}]_ $_[totalBalance]_ _[{else}]_ 0 _[{/if}]_ CNY</span>
+    <span>可用余额： _[{if vailableBalance}]_ $_[vailableBalance]_ _[{else}]_ 0 _[{/if}]_ CNY</span>
+</script>
+
+<script id="listTmpl" type="text/x-jquery-tmpl">
+    _[{if list.length}]_
+    _[{each(i,c) list}]_
+    <tr>
+        <td>$_[c.dealCode]_</td>
+        <td>$_[getConstName("OwmsDealTypeEnum",c.dealType)]_</td>
+        <td>$_[getConstName("OwmsDealItemEnum",c.dealItem)]_</td>
+        <td>$_[c.dealTime]_</td>
+        <td>$_[getConstName("OwmsDealStatusEnum", c.dealStatus)]_</td>
+        <td>
+            _[{if c.dealAmount}]_
+                _[{if [1,2,3,11].indexOf(c.dealItem)==-1}]_
+                <span class="red">-$_[getTwoPoint(c.dealAmount)]_ CNY</span>
+                _[{else}]_
+                <span class="isgreen">+$_[getTwoPoint(c.dealAmount)]_ CNY</span>
+                _[{/if}]_
+            _[{else}]_
+                0.00 CNP
+            _[{/if}]_
+        </td>
+        <td>
+        _[{if operateData.moduleData && operateData.actionData && operateData.operate['HWC20201001'] && operateData.operate['HWC20201001'].childOpt['HWC20201006']}]_
+            <a class="blue mR10" data-href="?m=xhr_id_20200000_20201000_detail&id=$_[c.id]_&dealItem=$_[c.dealItem]_" data-title="海外仓财务管理-账户管理管理-账户详情-交易详情">详情</a>
+            _[{/if}]_
+            _[{if c.dealItem=="2" && c.dealStatus=="1"}]_
+            _[{if operateData.moduleData && operateData.actionData && operateData.operate['HWC20201001'] && operateData.operate['HWC20201001'].childOpt['HWC20201004']}]_
+            <a class="blue js-offline" data-id="$_[c.id]_">充值确认</a>
+            _[{/if}]_
+            _[{/if}]_
+            _[{if c.dealType == "2" && (c.dealStatus=="2" || c.dealStatus=="4")}]_
+            _[{if operateData.moduleData && operateData.actionData && operateData.operate['HWC20201001'] && operateData.operate['HWC20201001'].childOpt['HWC20201005']}]_
+            <a class="blue js-refund" data-id="$_[c.id]_" data-code="$_[c.dealCode]_" data-dealAmount="$_[c.dealAmount]_">退款</a>
+            _[{/if}]_
+            _[{/if}]_
+        </td>
+    </tr>
+    _[{/each}]_
+        _[{else}]_
+        <tr>
+            <td colspan="7" class="notr">暂无数据</td>
+        </tr>
+    _[{/if}]_
+</script>
+
+<script id='pageListTmpl' type='text/x-jquery-tmpl'>
+    <a href="javascript:;" class="firstPage fL" data-displace="first">首页</a>
+    <a href="javascript:;" class="prve fL icon-56" data-displace="prev"></a>
+    <ul class="pagenumber" id="pager"></ul>
+    <a href="javascript:;" class="next fL icon-55" data-displace="next"></a>
+    <a href="javascript:;" class="lastPage" data-displace="last">尾页</a>
+</script>

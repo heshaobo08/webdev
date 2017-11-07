@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>三级联动</title>
+<link href="css/base.css" rel="stylesheet">
+<link href="css/select2.css" rel="stylesheet">
+<style>
+.goods_select_ct{position:relative;top:50px;}
+.goods_select_ct span{padding:0 3%;}
+.goods_secl_next{font-size:14px;width:80px;float:right;padding-top:0px;}
+.goods_secl_next p{text-align:center;background:#38a25d;color:#fff;height:30px;line-height:30px;padding:5px 10px;border:none; border-radius:5px; margin:5px 0 ; cursor: pointer;}
+.goods_one_select{float:left;margin-left:20px;}
+.goods_two_select{float:left;margin-left:20px;}
+.goods_three_select{float:left;margin-left:20px;}
+#one_fenlei-error{position:absolute;left:2%;bottom:-10px;}
+#two_fenlei-error{position:absolute;left:33%;bottom:-10px;}
+#three_fenlei-error{position:absolute;left:65%;bottom:-10px;}
+
+.fenlei_input{position:absolute;border-radius:5px;width:500px;height:210px;overflow:auto;top:59px;z-index:10;background-color:#fff;border:solid 1px #ccc;display:none;}
+.fenlei_input p{padding-right:20px;font-size:14px;line-height:30px;height:30px;padding-left:10px;cursor:pointer;border-bottom:solid 1px #ccc;color:#505050;}
+.fenlei_error{margin-top:15px;display:none;color:red;}
+
+.fenlei_none{position:absolute;border-radius:5px;width:236px;top:59px;z-index:10;background-color:#fff;border:solid 1px #ccc;display:none;}
+.fenlei_none p{color:red;padding:5px 0px 5px 10px;}
+    #btn{
+        margin-top:140px;
+        margin-left:140px;
+        cursor: pointer;
+    }
+</style>
+<script src="js/jquery.min.js"></script>
+<script src="js/select2.js"></script>
+<script>
+$(function(){
+   //选择分类
+    var pro= "省";
+    var ci= "市";
+    var to= "区";
+    $("#btn").on("click",function(){
+        pro = $("#loc_province").find("option:selected").text();
+        ci = $("#loc_city").find("option:selected").text();
+        to = $("#loc_town").find("option:selected").text();
+        window.location.reload()
+    })
+	function showLocation(province , city , town) {
+		var title	= [pro , ci , to];
+		$.each(title , function(k , v) {
+			title[k]	= '<option value="">'+v+'</option>';
+		})
+		
+		$('#loc_province').append(title[0]);
+		$('#loc_city').append(title[1]);
+		$('#loc_town').append(title[2]);
+		
+		$("#loc_province,#loc_city,#loc_town").select2();
+		$('#loc_province').change(function() {
+			$('#loc_city').empty();
+			$('#loc_city').append(title[1]);
+			var _province_id = $('#loc_province').val();
+            //console.log(_province_id);
+			if(_province_id!=''){
+				get_cate_list('loc_city' , $('#loc_province').val(),"2");
+			}
+			$('#loc_city').change()
+		})
+		
+		$('#loc_city').change(function() {
+			$('#loc_town').empty();
+			$('#loc_town').append(title[2]);
+			var _city_id = $('#loc_city').val();
+			if(_city_id!='' && _city_id!='0'){
+				get_cate_list('loc_town' , $('#loc_city').val(),"3");
+			}
+			$('#loc_town').change()
+		})
+		
+		$('#loc_town').change(function() {
+			var _town_id = $(this).val();
+			$('input[name=location_id]').val(_town_id);
+			/*if(_town_id!='' && _town_id!='0'){
+				change_url($(this).val());
+			}*/
+			
+		})
+		get_cate_list('loc_province' , '',"1");	
+	}
+	
+    function get_cate_list(el_id , loc_id,role) {
+		var el	= $('#'+el_id); 
+		$.ajax({
+	           type: "GET",
+	           url: "http://192.168.4.108:8080/test/three/select",
+			   data: {'id':loc_id,'role':role},
+			   dataType: 'jsonp',
+               jsonp:'callback',
+	           success: function(data){
+	               //console.log(data);
+				 $.each(data , function(k , v) {
+						var option	= '<option value="'+v.id+'">'+v.name+'</option>';
+						el.append(option);
+				})
+			   },
+            error: function(){
+                console.log("请求失败!");
+            }
+	    });	
+	}
+    showLocation();
+    
+   
+   
+    
+})    
+</script>
+</head>
+    <body>
+       <div class="goods_select_ct">
+		<div class="goods_one_select">
+			<input name="one_fenlei" type="hidden" class="one_fenlei" id="one_fenlei">
+			<select id="loc_province" style="width:200px;"></select>
+		</div>
+		<div class="goods_two_select">
+			<input name="two_fenlei" type="hidden" class="two_fenlei" id="two_fenlei">
+			<select id="loc_city" style="width:200px;"></select>
+		</div>
+		<div class="goods_three_select">
+			<input name="three_fenlei" type="hidden" class="three_fenlei" id="three_fenlei">
+			<select id="loc_town" style="width:200px;"></select>
+		</div>
+		<div style="clear:both"></div>
+	</div>
+    <div id="btn">提交</div>
+    </body>
+</html>

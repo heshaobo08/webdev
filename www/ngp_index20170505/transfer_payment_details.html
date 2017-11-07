@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>汇付宝</title>
+<link href="css/base.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<script src="js/jquery.js"></script>
+<script src="js/plug/time/WdatePicker.js"></script>
+</head>
+<body>
+    <div id="cover"></div>
+    <div class="ngp_pop_three">
+        <h6 class="ngp_pop_hd">退款<em><img src="images/ngp_del.png"></em></h6>
+        <p><img src="images/refund_tip.png"><em>确认批量退款？</em></p>
+        <h3 class="ngp_pop_btn">确认</h3>
+    </div>
+    <div id="ngp_warpper">
+        <!--头部开始-->
+        <div class="ngp_header">
+            <div class="ngp_top">
+                <div class="ngp_logo">
+                   <img src="images/logo.png">
+                   <span class="logo_hx"></span>
+                   <span class="logo_text">商户服务</span>
+                </div>
+                <div class="ngp_top_right">
+                    <span>您好！ Acdbm@9186.com</span>
+                    <b></b>
+                    <span>退出</span>
+                    <b></b>
+                    <span>帮助中心</span>
+                </div>
+            </div>
+        </div>
+        <div class="ngp_nav">
+            <div class="nav_list">
+                <ul>
+                    <li class="nav_ative"><a href="index.html">我的汇付宝</a></li>
+                    <li><a href="transaction.html">交易管理</a></li>
+                    <li><a href="#">结算管理</a></li>
+                    <li><a href="account_management.html">账户管理</a></li>
+                </ul>
+            </div> 
+        </div>
+        <!--头部结束-->
+        
+        <!--内容开始-->
+        <div class="ngp_content">
+            <div class="recharge_box">
+                <div class="transaction_box">
+                   <p class="reviewed_name">付款审核明细</p>
+                    <div class="transaction_query" style="display:block">
+                        <div class="payment_details">
+                            <p>批次号&nbsp;&nbsp;8888888888</p>
+                            <p><span>订单创建时间&nbsp;&nbsp;2016-01-01 00:00:00</span><span>订单完成时间&nbsp;&nbsp;2016-01-01 00:00:00</span></p>
+                            <p><span>总金额&nbsp;&nbsp;8888</span><span>总笔数&nbsp;&nbsp;23</span></p>
+                            <p><span>状态&nbsp;&nbsp;审核失败</span><span>失败原因&nbsp;&nbsp;审核拒绝</span></p>
+                        </div>
+                        <div class="transaction_tabel">
+                             <table class="tbl_content">
+                                <thead>
+                                    <tr class="thead">
+                                        <td width="10%">订单号</td>
+                                        <td width="10%">收款人姓名</td>
+                                        <td width="20%">银行账号</td>
+                                        <td width="15%">开户银行</td>
+                                        <td width="15%">开户支行名称</td>
+                                        <td width="10%">付款金额</td>
+                                        <td width="10%">备注</td>
+                                        <td width="10%">状态</td>
+                                    </tr>
+                                </thead>
+                                <tbody class="record_list">
+                                    <tr>
+                                        <td>20160728111</td>
+                                        <td>米米粒123</td>
+                                        <td>62223893904982773899</td>
+                                        <td>工商银行</td>
+                                        <td>工商银行工商银行工商银行</td>
+                                        <td>10</td>
+                                        <td>分红</td>
+                                        <td>审核中</td>
+                                    </tr>
+                                    <tr>
+                                        <td>20160728111</td>
+                                        <td>米米粒123</td>
+                                        <td>62223893904982773899</td>
+                                        <td>工商银行</td>
+                                        <td>工商银行工商银行工商银行</td>
+                                        <td>10</td>
+                                        <td>分红</td>
+                                        <td>审核中</td>
+                                    </tr>
+                                   <tr>
+                                        <td>20160728111</td>
+                                        <td>米米粒123</td>
+                                        <td>62223893904982773899</td>
+                                        <td>工商银行</td>
+                                        <td>工商银行工商银行工商银行</td>
+                                        <td>10</td>
+                                        <td>分红</td>
+                                       <td>审核中</td>
+                                    </tr>
+                                    <tr>
+                                        <td>20160728111</td>
+                                        <td>米米粒123</td>
+                                        <td>62223893904982773899</td>
+                                        <td>工商银行</td>
+                                        <td>工商银行工商银行工商银行</td>
+                                        <td>10</td>
+                                        <td>分红</td>
+                                        <td>审核中</td>
+                                    </tr>
+                                   <tr>
+                                        <td>20160728111</td>
+                                        <td>米米粒123</td>
+                                        <td>62223893904982773899</td>
+                                        <td>工商银行</td>
+                                        <td>工商银行工商银行工商银行</td>
+                                        <td>10</td>
+                                        <td>分红</td>
+                                        <td>审核中</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="transaction_bt">
+                            <div class="page">
+                                <p>
+                                    <span>首页</span>
+                                    <span>上一页</span>
+                                    <span>下一页</span>
+                                    <span>尾页</span>
+                                    <span>2/5页，</span>
+                                    <span>共30条 每页
+                                        <select class="page_select">
+                                            <option>10</option>
+                                            <option>20</option>
+                                            <option>30</option>
+                                            <option>40</option>
+                                        </select>条，
+                                    </span>
+                                    <span>到第<input type="text" class="page_input">页</span>
+                                </p>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="payment_details_btn">
+                            <p><span class="detail_refund_btn">退款</span><span class="detail_refund_btn">拒绝</span><span class="detail_back_btn">返回</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--内容结束-->
+        
+        <!--尾部开始-->
+        <div class="ngp_footer">
+            <p>
+                <span>关于我们</span>
+                <span>合作伙伴</span>
+                <span>商务合作</span>
+                <span>联系我们</span>
+            </p>
+            <p class="ngp_ft">Copyright © since 2008 汇元银通（北京）在线支付技术有限公司  版权所有 侵权必究</p>
+        </div>
+        <!--尾部结束-->
+        
+    </div>
+</body>
+</html>

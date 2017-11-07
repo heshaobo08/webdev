@@ -1,0 +1,169 @@
+<form id='addBrandForm'>
+<div class="details">
+    <h3 class="titleText">关联会员</h3>
+    <div class="initBox fix">
+        <dl class="editDl">
+            <dt><font>*</font>关联帐号：</dt>
+            <dd>
+                <a href="javascript:;" class="button js-addRelatedAccount" id='jd-userId'>选择关联帐号</a>
+            </dd>
+        </dl>
+        <div class="related none">
+            <input type="hidden" name="userId" required data-target='jd-userId'>
+            <dl class="fL">
+                <dt>手机号：</dt>
+                <dd class='relatedMobile'></dd>
+            </dl>
+            <dl class="fR">
+                <dt>用户名：</dt>
+                <dd class='relatedName'></dd>
+            </dl>
+        </div>
+    </div>
+</div>
+<div class="details">
+    
+    <h3 class="titleText">新增品牌</h3>
+    <div class="initBox">
+        <dl class="editDl">
+            <dt><font>*</font>品牌中文名称：</dt>
+            <dd><input type="text" class="input w240 js-checkName" name='cnName' required></dd>
+        </dl>
+        <dl class="editDl">
+            <dt><font>*</font>品牌英文名称：</dt>
+            <dd><input type="text" class="input w240 js-checkName" name='enName' required pattern='^[\w\s]+$'></dd>
+        </dl>
+        <dl class="textImg mB20">
+            <dt><font>*</font>品牌LOGO：</dt>
+            <dd>
+                <div class="inline_block">
+                    <img src="" data-filedId='' class="mR20 fL none" id='logoImgField' />
+                    <a href="javascript:;" class="button rel">添加图片<input type="file" class='uploadBtn'  id='js-centifyLogo'></a>
+                    <input type="hidden" name='centifyLogo'  required data-target='js-centifyLogo'>
+                </div>
+            </dd>
+        </dl>
+        <dl class="editDl">
+            <dt><font>*</font>经营模式：</dt>
+            <dd>
+                <div class="select w240 fL" id='jd-businessModel'>
+                    <input type="hidden" value="请选择" index-data="" name='businessModel' required data-target='jd-businessModel'>
+                    <i>请选择</i>
+                    <em class="icon-52"></em>
+                    <ul>
+                        <li index-data="own" class='active'><span>自有品牌</span></li>
+                        <li index-data="agent"><span>代理品牌</span></li>
+                    </ul>
+                </div>
+            </dd>
+        </dl>
+        <div id="businessOwn">
+            <!--自有品牌-->
+            <dl class="editDl">
+                <dt><font>*</font>商标类型：</dt>
+                <dd class="choiceRadio">
+                    <label><input type="radio" value="R" name="brandType">R标</label>
+                    <label><input type="radio" value="TM" name="brandType">TM标</label>
+                    <span class='explaintext' style='display:none;'>TM标有效期为商标申请受理书发文日期延后两年。</span>
+                </dd>
+            </dl>
+            <dl class="editDl">
+                <dt><font>*</font>商标有限期至：</dt>
+                <dd>
+                    <div class="deadline mB15" id='jd-brandExpireTime'>
+                        <span class="dataInput showExpireName" id="startTime">${source.brandExpireTime}</span>
+                        <a href="javascript:;" class="timeStart icon-54"></a>
+                    </div>
+                </dd>
+            </dl>
+        </div>
+        <div id="businessAgent" class="none">
+            <!--代理品牌-->
+            <dl class="editDl">
+                <dt><font>*</font>品牌商名称：</dt>
+                <dd>
+                    <input class="input w240" type="text" name='brandType'>
+                </dd>
+            </dl>
+            <dl class="editDl">
+                <dt><font>*</font>授权有限期至：</dt>
+                <dd>
+                    <div class="deadline mB15" id='jd-brandsExpireTime'>
+                        <span class="dataInput showExpireName" id="sstartTime">${source.brandExpireTime}</span>
+                        <a href="javascript:;" class="stimeStart icon-54"></a>
+                    </div>
+                </dd>
+            </dl>
+        </div>
+        <dl class="textImg">
+            <dt><font>*</font>资质证书：</dt>
+            <dd>
+                <div class="inline_block">
+                    <div class='setPic'>
+                    </div>
+                    <a href="javascript:;" class="button rel">添加图片<input type="file" class='' id='js-uploadImgId' ></a>
+                    <input type="hidden" name='cnetifyLiencense' required data-target='js-uploadImgId'>
+                </div>
+                <!--代理品牌修改-->
+                <span class="explainText centifyAgent">请上传该品牌的销售授权书及进货发票，如果为多级授权，则需上传多级授权书附件</span>
+                <!--代理品牌修改end-->
+                <!--自有品牌修改-->
+                <span class="explainText centifyOwn">商标注册证或商标注册申请受理书</span>
+                <!--自有品牌修改end-->
+            </dd>
+        </dl>
+    </div>
+ 
+</div>
+<!-- conts end -->
+<!--中间内容区域 end-->
+<div class="btnMain">
+    <a href="javascript:;" class="button mR20 js-addBrandSUbmit">提交</a><a href="javascript:;" class="buttonText" data-href='?m=xhr_id_33_69' data-title='会员管理-新增品牌审核'>取消</a>
+</div>
+   </form>
+
+<div class="layercon none"></div>
+
+<script id='addRelatedTmpl' type='text/x-jquery-tmpl'>
+    <div class="" style="padding:30px 40px;">
+    <form id='addRelateForm'>
+    <dl class="singleSearch">
+        <dd>
+            <div class="select w120 fL mR10" id='jd-orderSelect'>
+                <input index-data="" type="hidden" class='orderSelect' required data-target='jd-orderSelect'> 
+                <i index-data="">按名称查询</i> 
+                <em class="icon-52"></em>
+                <ul>
+                    <li index-data="mobile">
+                        <span>按手机号查询</span>
+                    </li>
+                    <li index-data="userName">
+                        <span>按用户名查询</span>
+                    </li>
+                </ul>
+            </div>
+            <input type="text" value="" class="input w190 orderBySelectField" required>
+            <a href="javascript:;" class="button mL10 js-selectRelatedSearch">search</a>
+        </dd>
+    </dl>
+    </form>
+    <div class="bigTable none">
+        <form id='addRelatedUserSelectTable'>
+        <table class="" border="0" cellspacing="0">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>用户名</th>
+                    <th>手机号</th>
+                    <th>状态</th>
+                </tr>
+            </thead>
+            <tbody id='selectRelatedUser'>
+                
+            </tbody>
+        </table>
+        </form>
+    </div>
+    
+</div>
+</script>

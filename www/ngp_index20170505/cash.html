@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>汇付宝</title>
+<link href="css/base.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<script src="js/jquery.js"></script>
+<script src="js/cash.js"></script>
+</head>
+<body>
+    <div id="cover"></div>
+    <div class="ngp_pop_four">
+        <h6 class="ngp_pop_hd">提交<em><img src="images/ngp_del.png"></em></h6>
+        <p><img src="images/success_tip.png"><b>账户信息提交成功</b></p>
+        <h3 class="ngp_pop_btn">确定</h3>
+    </div>
+    <div class="cash_pop_one">
+        <h6 class="ngp_pop_hd">添加提现账户<em><img src="images/ngp_del.png"></em></h6>
+        <p><label>账户名</label>北京AAA科技股份有限公司</p>
+        <p><label>银行账号</label><input type="text" class="cash_pop_input" placeholder="请输入银行账号"></p>
+        <p><label>开户银行</label><input type="text" class="cash_pop_input" placeholder="开户银行名称"></p>
+        <div class="cash_select_box">
+               <p>省／直辖市</p>
+               <div class="record_select" name="record_select">
+                   <input type="text" readonly placeholder="省／直辖市">
+                   <ul>
+                      <li data-value="1">北京</li>
+                      <li data-value="2">重庆</li>
+                      <li data-value="3">上海</li>
+                   </ul>
+              </div>
+              <div class="record_select" name="record_select" style="margin-left:10px;">
+                   <input type="text" readonly placeholder="城市">
+                   <ul>
+                      <li data-value="1">北京</li>
+                      <li data-value="2">重庆</li>
+                      <li data-value="3">上海</li>
+                      <li data-value="4">天津</li>
+                   </ul>
+              </div>
+        </div>
+        <div class="clear"></div>
+        <p><label>开户支行名称</label><input type="text" class="cash_pop_input" placeholder="开户支行名称"></p>
+        <h3 class="ngp_pop_btn">确定</h3>
+    </div>
+    <div class="cash_pop_two">
+        <h6 class="ngp_pop_hd">提现确认<em><img src="images/ngp_del.png"></em></h6>
+        <p>提现金额：1,000.00元</p>
+        <p>提现账户：工商银行（7988）</p>
+        <p>提现手续费（0.5%）：5.00元</p>
+        <p>实际扣除费用：1,0005.00元</p>
+        <h3 class="ngp_pop_btn"><a href="index.html">确定</a></h3>
+    </div>
+    <div id="ngp_warpper">
+        <!--头部开始-->
+        <div class="ngp_header">
+            <div class="ngp_top">
+                <div class="ngp_logo">
+                   <img src="images/logo.png">
+                   <span class="logo_hx"></span>
+                   <span class="logo_text">商户服务</span>
+                </div>
+                <div class="ngp_top_right">
+                    <span>您好！ Acdbm@9186.com</span>
+                    <b></b>
+                    <span>退出</span>
+                    <b></b>
+                    <span>帮助中心</span>
+                </div>
+            </div>
+        </div>
+        <div class="ngp_nav">
+            <div class="nav_list">
+                <ul>
+                    <li class="nav_ative"><a href="index.html">我的汇付宝</a></li>
+                    <li><a href="transaction.html">交易管理</a></li>
+                    <li><a href="#">结算管理</a></li>
+                    <li><a href="account_management.html">账户管理</a></li>
+                </ul>
+            </div> 
+        </div>
+        <!--头部结束-->
+        
+        <!--内容开始-->
+        <div class="ngp_content">
+            <div class="recharge_box">
+               <p class="recharge_name">提现</p>
+               <p class="cash_money">可用金额：<em>100,000.00</em>元<span><a href="record.html">查看充值记录</a></span></p>
+                <p class="cash_money cash_money_top">可提现账户<span><a href="cash_bank_management.html">银行卡管理</a></span></p>
+               <div class="cash_box">
+                   <div class="cash_bank_list">
+                       <ul>
+                           <li class="cash_ative">
+                               <!--<b>对公<img src="images/cash_hx.png"></b>-->
+                               <span class="cash_type">
+                                    <input type="radio" name="radio_bank" class="radio" checked><label class="radio"><b><img src="images/cash_bank.png"></b></label>
+                                </span>
+                               <span>尾号：7599</span>
+                               <em>管理</em>
+                               <div class="cash_bank_mode">
+                                   <p class="cash_default">设为默认</p>
+                                   <p class="cash_fg"></p>
+                                   <p class="cash_delt">删除</p>
+                               </div>
+                           </li>
+                           <li>
+                               <!--<b>对私<img src="images/cash_hx.png"></b>-->
+                               <span class="cash_type">
+                                    <input type="radio" name="radio_bank" class="radio"><label class="radio"><b><img src="images/cash_bank.png"></b></label>
+                                </span>
+                               <span>尾号：7599</span>
+                               <em>管理</em>
+                               <div class="cash_bank_mode">
+                                   <p class="cash_default">设为默认</p>
+                                   <p class="cash_fg"></p>
+                                   <p class="cash_delt">删除</p>
+                               </div>
+                           </li>
+                       </ul>
+                    <p class="cash_add">添加提现账户</p>
+                   </div>
+                   <div class="cash_details">
+                       <p><span class="transfer_name_w">提现金额</span><input type="text" class="transfer_list_w">&nbsp;&nbsp;<span class="transfer_number">元</span>
+                       </p>
+                       <p class="all_agree"><input type="checkbox" class="checkbox" value="全部提取" checked="checked"><label class="checkbox label_secl"></label><span>全部提取</span></p>
+                       <p>
+                            <span class="transfer_name_w">银行服务类型</span>
+                            <span class="transfer_type">
+                                <input type="radio" name="radio1" class="radio" checked><label class="radio"><b>当日24点前到账</b></label>
+                                <input type="radio" name="radio1" class="radio"><label class="radio"><b>次日24点前到账<em class="cash_look">查看服务费</em></b></label>
+                            </span>
+                       </p>
+                       <div class="cash_service">
+                           <table>
+                               <tr>
+                                   <td>当日到账费率</td>
+                                   <td><p>单笔金额</p>
+                                       <p>0-10万元（含10万元）：0.2%（最低2元，最高25元）</p>
+                                       <p>10万元－500万元（不含10万元）：0.025%（无上、下限）</p>
+                                   </td>
+                               </tr>
+                               <tr>
+                                   <td>次日到账率</td>
+                                   <td>0元（无上、下限）</td>
+                               </tr>
+                               <tr>
+                                   <td>当日到账费率</td>
+                                   <td><p>单笔：500万元</p>
+                                       <p>当日：500万元</p>
+                                   </td>
+                               </tr>
+                           </table>
+                       </div>
+                       <p><span class="transfer_name_w">提现手续费</span><span class="transfer_number">5.00元</span></p>
+                       <p><span class="transfer_name_w">支付密码</span><input type="text" class="transfer_list_w"><span class="pay_pswd">忘记支付密码？</span></p>
+                       <p><span class="transfer_name_w">备注</span><input type="text" class="transfer_list_w"></p>
+                   </div>
+                <h3 class="cash_btn">确认提现</h3>
+               </div>
+            </div>
+        </div>
+        <!--内容结束-->
+        
+        <!--尾部开始-->
+        <div class="ngp_footer">
+            <p>
+                <span>关于我们</span>
+                <span>合作伙伴</span>
+                <span>商务合作</span>
+                <span>联系我们</span>
+            </p>
+            <p class="ngp_ft">Copyright © since 2008 汇元银通（北京）在线支付技术有限公司  版权所有 侵权必究</p>
+        </div>
+        <!--尾部结束-->
+        
+    </div>
+</body>
+</html>

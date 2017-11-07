@@ -1,0 +1,226 @@
+<!-- conts begin -->
+<div class="">
+    <div class="details fix">
+        <div class="stateText">
+
+            <!--已驳回-->
+            {{if source.status == "2"}}
+                <p class="mB20">提现状态： <span>已驳回</span></p>
+            	<p class="reason">驳回原因：<span class="mL25">账号信息错误</span></p>
+            {{/if}}
+            <!--已提现-->
+            {{if source.status == "3"}}
+                <p class="mB20">提现状态： <span>已提现</span></p>
+            {{/if}}
+            
+        </div>
+        <h3 class="titleText">基本信息</h3>
+        <div class="detailsConts">
+            <dl class="textDl">
+                <dt>用户名：</dt>
+                <dd>${source.userName}</dd>
+            </dl>
+            <dl class="textDl">
+                <dt>申请提现时间：</dt>
+                <dd>${source.applyTime}</dd>
+            </dl>
+            <dl class="textDl">
+                <dt>提现账单：  </dt>
+                <dd class="typeClass"><span>${source.billNames}</span></dd>
+            </dl>
+            <dl class="textDl">
+                <dt>提现总金额：</dt>
+                <dd>${source.sum}</dd>
+            </dl>
+            <dl class="textDl">
+                <dt>提现目标账户：</dt>
+                <dd>
+                    {{if source.banks == "XBNYH001"}}
+                    中国工商银行
+                    {{else source.banks == "XBNYH002"}}
+                    中国农业银行
+                    {{else source.banks == "XBNYH003"}}
+                    中国银行
+                    {{else source.banks == "XBNYH004"}}
+                    中国建设银行
+                    {{else source.banks == "XBNYH005"}}
+                    交通银行
+                    {{else source.banks == "XBNYH006"}}
+                    招商银行
+                    {{else source.banks == "XBNYH007"}}
+                    浦发银行
+                    {{else source.banks == "XBNYH008"}}
+                    包商银行
+                    {{else source.banks == "XBNYH009"}}
+                    北京农商银行
+                    {{else source.banks == "XBNYH010"}}
+                    北京银行
+                    {{else source.banks == "XBNYH011"}}
+                    渤海银行
+                    {{else source.banks == "XBNYH012"}}
+                    重庆银行
+                    {{else source.banks == "XBNYH013"}}
+                    大连银行
+                    {{else source.banks == "XBNYH014"}}
+                    广发银行
+                    {{else source.banks == "XBNYH015"}}
+                    广州银行
+                    {{else source.banks == "XBNYH016"}}
+                    杭州银行
+                    {{else source.banks == "XBNYH017"}}
+                    恒丰银行
+                    {{else source.banks == "XBNYH018"}}
+                    华夏银行
+                    {{else source.banks == "XBNYH019"}}
+                    江苏银行
+                    {{else source.banks == "XBNYH020"}}
+                    南京银行
+                    {{else source.banks == "XBNYH021"}}
+                    宁波银行
+                    {{else source.banks == "XBNYH022"}}
+                    平安银行
+                    {{else source.banks == "XBNYH023"}}
+                    上海农商银行
+                    {{else source.banks == "XBNYH024"}}
+                    上海银行
+                    {{else source.banks == "XBNYH025"}}
+                    盛京银行
+                    {{else source.banks == "XBNYH026"}}
+                    天津银行
+                    {{else source.banks == "XBNYH027"}}
+                    兴业银行
+                    {{else source.banks == "XBNYH028"}}
+                    浙商银行
+                    {{else source.banks == "XBNYH029"}}
+                    中国光大银行
+                    {{else source.banks == "XBNYH030"}}
+                    中国民生银行
+                    {{else source.banks == "XBNYH031"}}
+                    中国邮政储蓄银行
+                    {{else source.banks == "XBNYH032"}}
+                    中信银行
+                    {{/if}}
+                    ${source.cardNo}
+                </dd>
+            </dl>
+            <dl class="textDl">
+                <dt>账户类型：</dt>
+                <dd>{{if source.holderType=='0'}}个人{{else source.holderType=='1'}}企业{{/if}}</dd>
+            </dl>
+            <dl class="textDl">
+                <dt>持卡人姓名：</dt>
+                <dd>${source.name}</dd>
+            </dl>
+            <dl class="textDl">
+                <dt>开户行信息：</dt>
+                <dd>${source.openAccountInfo}</dd>
+            </dl>
+        </div>
+    </div>
+    <div class="details fix">
+        <h3 class="titleText">提现信息</h3>
+		{{if source.status == "0" || source.status == "1" }}
+        <div class="editConts mB15">
+            <form id="financeForm">
+                <dl class="editDl">
+                    <dt>提现手续费：</dt>
+                    <dd>${source.value}</dd>
+                </dl>
+                <dl class="editDl">
+                    <dt>实际到账金额：</dt>
+                    <dd><input type="text" value="${source.realSum}" name="realSum" class="input w240" required data-max="10"/><span class="mL10">人民币</span></dd>
+                </dl>
+                <dl class="editDl">
+                    <dt>提现金额：</dt>
+                    <dd><span class="valueRealSum">${source.valueRealSum}</span></dd><!--提现金额 = 提现手续费+实际到账金额-->
+                </dl>
+                <dl class="editDl">
+                    <dt>提现状态：</dt>
+                    <dd>
+                        <div class="select w240" style="z-index: 100;">
+                            <input index-data="${source.status}" type="hidden" value="${source.status}" name="status">
+                            <i>请选择</i>
+                            <em class="icon-52"></em>
+                            <ul>
+                                <li index-data=""><span>请选择</span></li>
+                                <li index-data="0"><span>待审核</span></li>
+                                <li index-data="1"><span>处理中</span></li>
+                                <li index-data="2"><span>已驳回</span></li>
+                                <li index-data="3"><span>已提现</span></li>
+                            </ul>
+                        </div>
+                    </dd>
+                </dl>
+                
+                <dl class="editDl failReason none">
+                    <dt>驳回原因：</dt>
+                    <dd><input type="text" value="${source.failReason}" class="input w480" name="failReason" data-max="200" /></dd>
+                </dl>
+    
+                <dl class="editDl">
+                    <dt>备注：</dt>
+                    <dd><input type="text" value="${source.remark}" class="input w480" name="remark" data-max="200" /></dd>
+                </dl>
+                <dl class="editDl">
+                    <dt>审核人员：</dt>
+                    <dd>${source.operator}<input type="hidden" value="${source.operator}" name="operator" /></dd>
+                </dl>
+                <dl class="editDl">
+                    <dt>审核时间：</dt>
+                    <dd>${source.updateTime}</dd>
+                </dl>
+            </form>
+        </div>
+        <div class="btnMain">
+            <a href="javascript:;" class="button js-submit">提交</a>
+            <a href="javascript:history.go(-1);" class="buttonText pad20" sdata-href="?m=xhr_id_173_178" data-title="财务管理-提现申请管理">返回</a>
+        </div>
+        {{/if}}
+		{{if source.status == "2" || source.status == "3"}}
+            <div class="detailsConts">
+                
+                <dl class="editDl">
+                    <dt>提现手续费：</dt>
+                    <dd>${source.value}</dd>
+                </dl>
+                <dl class="editDl">
+                    <dt>实际到账金额：</dt>
+                    <dd>${source.realSum}</dd>
+                </dl>
+                <dl class="editDl">
+                    <dt>提现金额：</dt>
+                    <dd>${source.sum}</dd>
+                </dl>
+                <dl class="editDl">
+                    <dt>提现状态：</dt>
+                    <dd>
+                    {{if source.status == "2"}}
+                        已驳回
+                    {{else}}
+                        已提现
+                    {{/if}}
+                    </dd>
+                </dl>
+                <dl class="editDl">
+                    <dt>备注：</dt>
+                    <dd>${source.remark}</dd>
+                </dl>
+                <dl class="editDl">
+                    <dt>审核人员：</dt>
+                    <dd>${source.operator}<input type="hidden" value="${source.operator}" name="operator" /></dd>
+                </dl>
+                <dl class="editDl">
+                    <dt>审核时间：</dt>
+                    <dd>${source.updateTime}</dd>
+                </dl>
+            </div>
+            <div class="btnMain">
+                <a href="javascript:history.go(-1);" class="button" sdata-href="?m=xhr_id_173_178" data-title="财务管理-提现申请管理">返回</a>
+            </div>
+		{{/if}}
+    </div>
+    
+    
+</div>
+<!-- conts end -->
+						

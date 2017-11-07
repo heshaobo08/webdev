@@ -1,0 +1,263 @@
+<div class="serch">
+    <!-- serch begin -->
+    <form id='settledEarchForm'>
+        <div class="serch_main">
+            <div class="serch_conts">
+                <dl>
+                    <dt>用户名/手机/邮箱:</dt>
+                    <dd><input type="text" value="" class="defaultInput" name='userMobile'/></dd>
+                </dl>
+                <dl>
+                    <dt>名称:</dt>
+                    <dd><input type="text" value="" class="defaultInput" name='companyName'/></dd>
+                </dl>
+                <dl>
+                    <dt>角色:</dt>
+                    <dd>
+                        <div class="select w190">
+                            <input index-data="" name='groupId' type="hidden" value="请选择"/>
+                            <i>请选择</i>
+                            <em class="icon-52"></em>
+                            <ul>
+                                <li index-data=""><span>请选择</span></li>
+                                {{each(i,role) source.role}}
+                                <li index-data="${role.id}"><span>${role.groupName}</span></li>
+                                {{/each}}
+                            </ul>
+                        </div>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>等级 :</dt>
+                    <dd>
+                        <div class="select w190">
+                            <input index-data="" name='levelId' type="hidden" value="请选择"/>
+                            <i>请选择</i>
+                            <em class="icon-52"></em>
+                            <ul>
+                                <li index-data=""><span>请选择</span></li>
+                                {{each(i,level) source.level}}
+                                <li index-data="${level.id}"><span>${level.levelName}</span></li>
+                                {{/each}}
+                            </ul>
+                        </div>
+                    </dd>
+                </dl>
+            </div>
+            <div class="serch_conts">
+                <dl>
+                    <dt>入驻时间 :</dt>
+                    <dd>
+                        <div class="defaultData">
+                            <div class="dataBegin">
+                                <span class="dataInput" id="startTime"></span>
+                                <a href="javascript:;" class="timeStart icon-54"></a>
+                            </div>
+                            <span class="point"></span>
+
+                            <div class="dataEnd">
+                                <span class="dataInput" id="endTime"></span>
+                                <a href="javascript:;" class="timeEnd icon-54"></a>
+                            </div>
+                        </div>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>入驻类型:</dt>
+                    <dd>
+                        <div class="select w190">
+                            <input index-data="" name='companyType' type="hidden" value="请选择"/>
+                            <i>请选择</i>
+                            <em class="icon-52"></em>
+                            <ul>
+                                <li index-data=""><span>请选择</span></li>
+                                <li index-data="1"><span>企业入驻</span></li>
+                                <li index-data="2"><span>个人入驻</span></li>
+                            </ul>
+                        </div>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>&emsp;</dt>
+                    <dd><a href="javascript:;" class="button js-settleSearch">Search</a></dd>
+                </dl>
+            </div>
+        </div>
+    </form>
+    <div class="addbutton none">您所搜索的，共有<i id='searchTotalCount'>${source.totalCount}</i>条内容符合。</div>
+</div>
+<!-- serch end -->
+<!-- conts begin -->
+<div class="contsBox">
+    <div class="bigTable">
+        <table class="layout" border="0" cellspacing="0">
+            <thead>
+            <tr>
+                <th width="10%">用户名</th>
+                <th width="5%">入驻类型</th>
+                <th width="10%">名称</th>
+                <th width="9%">手机号</th>
+                <th width="12%">入驻时间</th>
+                <th width="8%">角色</th>
+                <th width="8%">等级</th>
+                <th width="30%">操作</th>
+            </tr>
+            </thead>
+            <tbody id='settledListCon'>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="page" id="topPager">
+    </div>
+
+</div>
+<div class="layerBoxCon"></div>
+<!-- 分页模板 -->
+<script id='pageListCon' type='text/x-jquery-tmpl'>
+    <a href="javascript:;" class="firstPage fL" data-displace="first">首页</a>
+    <a href="javascript:;" class="prve fL icon-56" data-displace="prev"></a>
+    <ul class="pagenumber" id="pager"></ul>
+    <a href="javascript:;" class="next fL icon-55" data-displace="next"></a>
+    <a href="javascript:;" class="lastPage" data-displace="last">尾页</a>
+
+
+
+</script>
+
+<!-- 入驻商家列表 -->
+<script id='settledListTmpl' type='text/x-jquery-tmpl'>
+_[{if list}]_
+    _[{each(i,settle) list}]_
+    <tr>
+        <td class="white">$_[settle.userName]_</td>
+        <td>$_[settle.companyType == 2 ? "个人" : "企业"]_</td>
+        <td>$_[settle.companyName]_</td>
+        <td>$_[settle.userMobile]_</td>
+        <td>$_[settle.chkTime]_</td>
+        <td>$_[settle.roleName]_</td>
+        <td>$_[settle.roleLevelName]_</td>
+        <td class="displayTd">
+            _[{if operateData.moduleData && operateData.actionData && operateData.operate['h02020002']}]_
+                 <a href="javascript:;" class="blue mR10" data-href='?m=xhr_id_33_42_detail&id=$_[settle.id]_' data-title='会员管理-入驻商家-查看商家'>$_[operateData.operate['h02020002'].menuName]_</a>
+            _[{/if}]_
+            _[{if operateData.moduleData && operateData.actionData && operateData.operate['h02020003']}]_
+                 <a href="javascript:;" class="blue mR10"  data-href='?m=xhr_id_33_42_edit&id=$_[settle.id]_' data-title='会员管理-入驻商家-修改资料'>$_[operateData.operate['h02020003'].menuName]_</a>
+            _[{/if}]_
+            _[{if operateData.moduleData && operateData.actionData && operateData.operate['h02020004']}]_
+                 <a href="javascript:;" class="blue mR10 js-settledModify" data-id='$_[settle.userId]_'>$_[operateData.operate['h02020004'].menuName]_</a>
+            _[{/if}]_
+            _[{if operateData.moduleData && operateData.actionData && operateData.operate['h02020005']}]_
+            <a href="javascript:;" class="blue mR10" data-href='?m=xhr_id_33_42_auth&id=$_[settle.id]_' data-title='会员管理-入驻商家-站点授权'>$_[operateData.operate['h02020005'].menuName]_</a>
+            _[{/if}]_
+            _[{if operateData.moduleData && operateData.actionData && operateData.operate['h02020006']}]_
+                 <a href="javascript:;" class="blue mR10 js-settledLicense" data-id='$_[settle.userId]_'>$_[operateData.operate['h02020006'].menuName]_</a>
+            _[{/if}]_
+            _[{if operateData.moduleData && operateData.actionData && operateData.operate['h02020007']}]_
+            <a href="javascript:;" class="blue js-settledPublish" data-id='$_[settle.userId]_'>$_[operateData.operate['h02020007'].menuName]_</a>
+            _[{/if}]_
+        </td>
+    </tr>
+    _[{/each}]_
+_[{else}]_
+    <tr>
+        <td colspan="6">暂无数据</td>
+    </tr>
+_[{/if}]_
+
+
+
+</script>
+
+<!-- 修改角色等级 -->
+<script id='settledUserRoleTmpl' type='text/x-jquery-tmpl'>
+    <form id="settledUserRoleForm">
+    <dl class="modify">
+        <input type="hidden" name="id" value="$_[id]_">
+        <dt>当前角色：</dt>
+        <dd>
+            <span class="Truncate block w240" title="_[{if roleList[role]}]_$_[roleList[role].groupName]__[{/if}]_">_[{if roleList[role]}]_$_[roleList[role].groupName]__[{/if}]_</span>
+        </dd>
+    </dl>
+    <dl class="modify">
+        <dt>修改为：</dt>
+        <dd>
+            <div class="select w140 fL mR20" id='js-role'>
+                <input index-data="" name='groupId' type="hidden" value="请选择" required data-target='js-role'>
+                <i>请选择</i>
+                <em class="icon-52"></em>
+                <ul>
+                    <li index-data=""><span>请选择</span></li>
+                    _[{each(i,roles) roleList}]_
+                        <li index-data="$_[roles.id]_" _[{if roles.id==role}]_ class='active' _[{/if}]_><span>$_[roles.groupName]_</span></li>
+                    _[{/each}]_
+                </ul>
+            </div>
+        </dd>
+    </dl>
+    <dl class="modify">
+        <dt>当前等级：</dt>
+        <dd>
+            <span class="Truncate block w240" title="_[{if levelList[level]}]_$_[levelList[level].levelName]__[{/if}]_">_[{if levelList[level]}]_$_[levelList[level].levelName]__[{/if}]_</span>
+        </dd>
+    </dl>
+    <dl class="modify">
+        <dt>修改为：</dt>
+        <dd>
+            <div class="select w140 fL mR20" id='js-level'>
+                <input index-data="" type="hidden" value="请选择" name='levelId' required data-target='js-level'>
+                <i>请选择</i>
+                <em class="icon-52"></em>
+                <ul>
+                    <li index-data=""><span>请选择</span></li>
+                    _[{each(i,levels) levelList}]_
+                        <li index-data="$_[levels.id]_" _[{if levels.id==level}]_ class='active' _[{/if}]_><span>$_[levels.levelName]_</span></li>
+                    _[{/each}]_
+                </ul>
+            </div>
+        </dd>
+    </dl>
+</div>
+
+
+
+</script>
+
+<!-- upc授权 -->
+<script id='settledUpcTmpl' type='text/x-jquery-tmpl'>
+    <form id="settledUpcForm">
+        <dl class="modify">
+            <dt>当前剩余UPC：</dt>
+            <dd id='settledCurrentNum'>$_[upcTotal || 0]_</dd>
+        </dl>
+        <dl class="modify">
+            <dt>添加数量：</dt>
+            <dd>
+                <input type="number" value="" name='count' class="input w120" required pattern="^[1-9]\d*$">
+                <span class="mL10">共<font id='settledUpcTotal'></font></span>
+            </dd>
+        </dl>
+    </form>
+
+
+
+</script>
+
+<!-- ebay刊登授权 -->
+<script id='settledEbayTmpl' type='text/x-jquery-tmpl'>
+    <form id="settledEbayForm">
+        <dl class="modify">
+            <dt>当前刊登量：</dt>
+            <dd id='settledEbayCurrentNum'>_[{if ebayListTotal}]_$_[ebayListTotal]_ _[{else}]_ 0 _[{/if}]_</dd>
+        </dl>
+        <dl class="modify">
+            <dt>添加刊登量：</dt>
+            <dd>
+                <input type="number" value="" name='count' class="input w120" required pattern="^[1-9]\d*$">
+                <span class="mL10">共<font id='settledEbayTotal'></font></span>
+            </dd>
+        </dl>
+    </form>
+</script>
+
+

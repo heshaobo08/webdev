@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>汇付宝</title>
+<link href="css/base.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<script src="js/jquery.js"></script>
+<script src="js/plug/time/WdatePicker.js"></script>
+<script src="js/account_management_add.js"></script>
+</head>
+<body>
+    <div id="cover"></div>
+    <div class="ngp_pop_three">
+        <h6 class="ngp_pop_hd">提示<em><img src="images/ngp_del.png"></em></h6>
+        <p><img src="images/refund_tip.png"><em>确认删除该子账户？</em></p>
+        <h3 class="ngp_pop_btn">确认</h3>
+    </div>
+    <div class="account_pop_one">
+        <h6 class="ngp_pop_hd">信息预览<em><img src="images/ngp_del.png"></em></h6>
+        <p><label>设置子账户：</label><em>wufengde@gmail.com</em></p>
+        <p><label>子账户备注：</label><em>财务</em></p>
+        <p><label>权限配置：</label><em></em></p>
+        <h3 class="ngp_pop_btn">确认添加</h3>
+    </div>
+    <div class="account_pop_two">
+        <h6 class="ngp_pop_hd">创建提示<em><img src="images/ngp_del.png"></em></h6>
+        <p><span>我们将会发送一封验证邮件到您的子账户邮箱：<em>wufd1992@qq.com</em></span></p>
+        <p>请在30分钟内，根据邮箱内的初始登录密码登录激活并修改密码</p>
+        <h3 class="ngp_pop_btn">确认</h3>
+    </div>
+    <div id="ngp_warpper">
+        <!--头部开始-->
+        <div class="ngp_header">
+            <div class="ngp_top">
+                <div class="ngp_logo">
+                   <img src="images/logo.png">
+                   <span class="logo_hx"></span>
+                   <span class="logo_text">商户服务</span>
+                </div>
+                <div class="ngp_top_right">
+                    <span>您好！ Acdbm@9186.com</span>
+                    <b></b>
+                    <span>退出</span>
+                    <b></b>
+                    <span>帮助中心</span>
+                </div>
+            </div>
+        </div>
+        <div class="ngp_nav">
+            <div class="nav_list">
+                <ul>
+                    <li class="nav_ative"><a href="index.html">我的汇付宝</a></li>
+                    <li><a href="transaction.html">交易管理</a></li>
+                    <li><a href="#">结算管理</a></li>
+                    <li><a href="account_management.html">账户管理</a></li>
+                </ul>
+            </div> 
+        </div>
+        <!--头部结束-->
+        
+        <!--内容开始-->
+        <div class="ngp_content">
+            <div class="recharge_box">
+                <div class="transaction_box">
+                    <p class="reviewed_name">添加子账户</p>
+                    <div class="account_management_add">
+                        <p><label><span>*</span>设置子账号</label><input type="text" placeholder="请输入您的邮箱"></p>
+                        <p><label><span>*</span>手机号码</label><input type="text"></p>
+                        <p><label>子账号备注</label><input type="text"></p>
+                    </div>
+                    <p class="account_powers">权限设置</p>
+                    
+                    <div class="account_powers_list">
+                       <p class="transaction_check">
+                            <input type="checkbox" class="checkbox js_quanxuan" value="1">
+                            <label class="checkbox check_p">
+                                <em class="node_name">商户管理</em>
+                            </label>
+                        </p>
+                        <div class="account_two_list">
+                            <h6 class="transaction_check">
+                                <input type="checkbox" class="checkbox js_erquanxuan" name="app_box" value="2_1">
+                                <label class="checkbox check_p">
+                                    <em class="node_name">员工管理</em>
+                                </label>
+                            </h6>
+                            <div class="authority">
+                                <ul>
+                                    <li class="transaction_check">
+                                         <input type="checkbox" class="checkbox" value="2_1_1" name="app_box"><label class="checkbox check_p"><em>删除员工</em></label>
+                                    </li>
+                                    <li class="transaction_check">
+                                         <input type="checkbox" class="checkbox" value="2_1_2" name="app_box"><label class="checkbox check_p"><em>增加新员工</em></label>
+                                    </li>
+                                    <li class="transaction_check">
+                                         <input type="checkbox" class="checkbox" value="2_1_3" name="app_box"><label class="checkbox check_p"><em>删除员工</em></label>
+                                    </li>
+                                    
+                                </ul>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="account_two_list">
+                            <h6 class="transaction_check">
+                                <input type="checkbox" class="checkbox js_erquanxuan" name="app_box" value="2_2">
+                                <label class="checkbox check_p">
+                                    <em class="node_name">员工管理</em>
+                                </label>
+                            </h6>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="account_powers_list">
+                       <p class="transaction_check">
+                            <input type="checkbox" class="checkbox js_quanxuan" value="一级全选">
+                            <label class="checkbox check_p">
+                                <em class="node_name">商户管理</em>
+                            </label>
+                        </p>
+                        <div class="account_two_list">
+                            <h6 class="transaction_check">
+                                <input type="checkbox" class="checkbox js_erquanxuan" name="app_box" value="二级级全选">
+                                <label class="checkbox check_p">
+                                    <em class="node_name">员工管理</em>
+                                </label>
+                            </h6>
+                            <div class="authority">
+                                <ul>
+                                    <li class="transaction_check">
+                                         <input type="checkbox" class="checkbox" value="" name="app_box"><label class="checkbox check_p"><em>删除员工</em></label>
+                                    </li>
+                                    <li class="transaction_check">
+                                         <input type="checkbox" class="checkbox" value="" name="app_box"><label class="checkbox check_p"><em>增加新员工</em></label>
+                                    </li>
+                                    <li class="transaction_check">
+                                         <input type="checkbox" class="checkbox" value="" name="app_box"><label class="checkbox check_p"><em>删除员工</em></label>
+                                    </li>
+                                    
+                                </ul>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="account_two_list">
+                            <h6 class="transaction_check">
+                                <input type="checkbox" class="checkbox js_erquanxuan" name="app_box" value="二级级全选">
+                                <label class="checkbox check_p">
+                                    <em class="node_name">员工管理</em>
+                                </label>
+                            </h6>
+                        </div>
+                    </div>
+                    
+                    <h3 class="account_add_btn">确认创建</h3>
+                </div>
+            </div>
+        </div>
+        <!--内容结束-->
+        
+        <!--尾部开始-->
+        <div class="ngp_footer">
+            <p>
+                <span>关于我们</span>
+                <span>合作伙伴</span>
+                <span>商务合作</span>
+                <span>联系我们</span>
+            </p>
+            <p class="ngp_ft">Copyright © since 2008 汇元银通（北京）在线支付技术有限公司  版权所有 侵权必究</p>
+        </div>
+        <!--尾部结束-->
+        
+    </div>
+</body>
+</html>

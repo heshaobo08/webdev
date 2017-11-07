@@ -1,0 +1,52 @@
+{
+    "statusCode": "2000000",
+    "data": {
+                "promotionName": "test promotion2",
+                "promotionType": "0",
+                "promotionStartTime": "2015-06-14 13:39:24",
+                "promotionEndTime": "2015-06-15 13:39:24",
+                "isEffective": "2",
+                "promotionStatus": "1",
+                "createTime": "2015-06-10 10:00:26",
+                "createBy": "guohaifei",
+                "productIds": [
+                    "40289e984dad2825014dad282f160000"
+                ],
+                "promotionTypes": [
+                    {
+                        "serviceType": "注册会员",
+                        "userGrade": "初级会员",
+                        "userRole": "体验会员",
+                        "userRoleId": "4",
+                        "discountType": "2",
+                        "discount": [
+                            {
+                                "giftProductIds": [
+                                    "40289e984dad9f96014dada1b08e0000",
+                                    "40289e984dc7bf7b014dc7bf857d0000"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "serviceType": "交易会员",
+                        "userGrade": "中级会员",
+                        "userRole": "普通会员",
+                        "userRoleId": "4",
+                        "discountType": "1",
+                        "discount": [
+                            {
+                                "discountRate": "90",
+                                "startValue": "100",
+                                "endValue": "500"
+                            },
+                            {
+                                "discountRate": "80",
+                                "startValue": "501",
+                                "endValue": "1000"
+                            }
+                        ]
+                    }
+                ]
+            }
+}

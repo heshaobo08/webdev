@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>汇付宝</title>
+<link href="css/base.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<script src="js/jquery.js"></script>
+<script src="js/plug/time/WdatePicker.js"></script>
+<script src="js/transaction.js"></script>
+</head>
+<body>
+    <div id="cover"></div>
+    <div class="ngp_pop_two">
+        <h6 class="ngp_pop_hd">退款<em><img src="images/ngp_del.png"></em></h6>
+        <p><span class="ngp_pop_name_w">汇付宝订单：</span>20160822766</p>
+        <p><span class="ngp_pop_name_w">已退金额：</span>99元</p>
+        <p><span class="ngp_pop_name_w">退款金额：</span><input type="text" class="pop_money_w">元</p>
+        <h3 class="ngp_pop_btn"><a href="">确认退款</a></h3>
+    </div>
+    <div class="ngp_pop_three">
+        <h6 class="ngp_pop_hd">退款<em><img src="images/ngp_del.png"></em></h6>
+        <p><img src="images/refund_tip.png"><em>确认批量退款？</em></p>
+        <h3 class="ngp_pop_btn">确认</h3>
+    </div>
+    <div id="ngp_warpper">
+        <!--头部开始-->
+        <div class="ngp_header">
+            <div class="ngp_top">
+                <div class="ngp_logo">
+                   <img src="images/logo.png">
+                   <span class="logo_hx"></span>
+                   <span class="logo_text">商户服务</span>
+                </div>
+                <div class="ngp_top_right">
+                    <span>您好！ Acdbm@9186.com</span>
+                    <b></b>
+                    <span>退出</span>
+                    <b></b>
+                    <span>帮助中心</span>
+                </div>
+            </div>
+        </div>
+        <div class="ngp_nav">
+            <div class="nav_list">
+                <ul>
+                    <li class="nav_ative"><a href="index.html">我的汇付宝</a></li>
+                    <li><a href="transaction.html">交易管理</a></li>
+                    <li><a href="#">结算管理</a></li>
+                    <li><a href="account_management.html">账户管理</a></li>
+                </ul>
+            </div> 
+        </div>
+        <!--头部结束-->
+        
+        <!--内容开始-->
+        <div class="ngp_content">
+            <div class="recharge_box">
+                <div class="transaction_box">
+                    <div class="transaction_tab">
+                        <div class="account_tab_l">
+                            <ul>
+                                <li class="tab_active">交易查询</li>
+                                <li>退款审核</li>
+                                <li>退款查询</li>
+                            </ul>
+                        </div>
+                        <div class="account_tab_r"></div>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="transaction_query" style="display:block">
+                        <div class="transaction_input">
+                            <label>起止时间</label><input type="text" class="record_time_w Wdate" id="startDate1" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',maxDate:'#F{$dp.$D(\'endDate1\')}'})" readonly="readonly" ><span class="record_hx">到</span><input type="text" class="record_time_w Wdate" id="endDate1" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'#F{$dp.$D(\'startDate1\')}'})" readonly="readonly">
+                        </div>
+                        <div class="transaction_select">
+                            <p>业务类型</p>
+                            <div class="record_select" name="record_select">
+                               <input type="text" readonly placeholder="全部">
+                               <ul>
+                                  <li data-value="1">全部</li>
+                                  <li data-value="2">网关支付</li>
+                                  <li data-value="3">快捷支付</li>
+                                  <li data-value="3">其他</li>
+                               </ul>
+                            </div>
+                            <p>交易状态</p>
+                            <div class="record_select" name="record_select">
+                               <input type="text" readonly placeholder="全部">
+                               <ul>
+                                  <li data-value="1">全部</li>
+                                  <li data-value="2">支付完成</li>
+                                  <li data-value="3">支付失败</li>
+                                  <li data-value="4">未支付</li>
+                                  <li data-value="5">交易关闭</li>
+                                  <li data-value="6">退款中</li>
+                                  <li data-value="7">失败</li>
+                                  <li data-value="8">退款审核中</li>
+                                  <li data-value="9">退款成功</li>
+                                  <li data-value="10">退款失败</li>
+                               </ul>
+                            </div>
+                        </div>
+                    <div class="clear"></div>
+                    <p class="transaction_btn">
+                        <span>查询</span>
+                        <span>导出</span>
+                    </p>
+                    <div class="transaction_tabel">
+                         <table class="tbl_content">
+                            <thead>
+                                <tr class="thead">
+                                    <td width="4%">
+                                        <p class="transaction_check"><input type="checkbox" class="checkbox comm_all" value="全选"><label class="checkbox check_p"></label></p>
+                                    </td>
+                                    <td width="12%">汇付宝支付单号</td>
+                                    <td width="10%">商家订单号</td>
+                                    <td width="10%">付款账户</td>
+                                    <td width="14%">交易创建时间</td>
+                                    <td width="14%">交易成功时间</td>
+                                    <td width="8%">交易金额</td>
+                                    <td width="8%">退款金额</td>
+                                    <td width="10%">交易状态</td>
+                                    <td width="10%">操作</td>
+                                </tr>
+                            </thead>
+                            <tbody class="record_list">
+                                <tr>
+                                    <td>
+                                         <p class="transaction_check"><input type="checkbox" class="checkbox" value="" name="app_box"><label class="checkbox check_p"></label></p>
+                                    </td>
+                                    <td>123456</td>
+                                    <td>123456</td>
+                                    <td>张圣诞</td>
+                                    <td>2016-06-23 10:43:22</td>
+                                    <td>2016-06-23 10:43:22</td>
+                                    <td>100.00</td>
+                                    <td>100.00</td>
+                                    <td>支付完成</td>
+                                    <td><span class="record_look"><a href="transaction_detail.html">查看</a></span><span class="record_refund">退款</span></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                         <p class="transaction_check"><input type="checkbox" class="checkbox" value="" name="app_box"><label class="checkbox check_p"></label></p>
+                                    </td>
+                                    <td>123456</td>
+                                    <td>123456</td>
+                                    <td>张圣诞</td>
+                                    <td>2016-06-23 10:43:22</td>
+                                    <td>2016-06-23 10:43:22</td>
+                                    <td>100.00</td>
+                                    <td>100.00</td>
+                                    <td>支付完成</td>
+                                    <td><span class="record_look"><a href="transaction_detail.html">查看</a></span><span class="record_refund">退款</span></td>
+                                </tr>
+                               <tr>
+                                    <td>
+                                         <p class="transaction_check"><input type="checkbox" class="checkbox" value="" name="app_box"><label class="checkbox check_p"></label></p>
+                                    </td>
+                                    <td>123456</td>
+                                    <td>123456</td>
+                                    <td>张圣诞</td>
+                                    <td>2016-06-23 10:43:22</td>
+                                    <td>2016-06-23 10:43:22</td>
+                                    <td>100.00</td>
+                                    <td>100.00</td>
+                                    <td>支付完成</td>
+                                    <td><span class="record_look"><a href="transaction_detail.html">查看</a></span><span class="record_refund">退款</span></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                         <p class="transaction_check"><input type="checkbox" class="checkbox" value="" name="app_box"><label class="checkbox check_p"></label></p>
+                                    </td>
+                                    <td>123456</td>
+                                    <td>123456</td>
+                                    <td>张圣诞</td>
+                                    <td>2016-06-23 10:43:22</td>
+                                    <td>2016-06-23 10:43:22</td>
+                                    <td>100.00</td>
+                                    <td>100.00</td>
+                                    <td>支付完成</td>
+                                    <td><span class="record_look"><a href="transaction_detail.html">查看</a></span><span class="record_refund">退款</span></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                         <p class="transaction_check"><input type="checkbox" class="checkbox" value="" name="app_box"><label class="checkbox check_p"></label></p>
+                                    </td>
+                                    <td>123456</td>
+                                    <td>123456</td>
+                                    <td>张圣诞</td>
+                                    <td>2016-06-23 10:43:22</td>
+                                    <td>2016-06-23 10:43:22</td>
+                                    <td>100.00</td>
+                                    <td>100.00</td>
+                                    <td>支付完成</td>
+                                    <td><span class="record_look"><a href="transaction_detail.html">查看</a></span><span class="record_refund">退款</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="transaction_bt">
+                        <div class="transaction_batch">
+                            <p class="transaction_check transaction_l"><input type="checkbox" class="checkbox comm_all" value=""><label class="checkbox check_p"></label><span>全选</span><b>批量退款</b></p>
+                        </div>
+                        <div class="page">
+                            <p>
+                                <span>首页</span>
+                                <span>上一页</span>
+                                <span>下一页</span>
+                                <span>尾页</span>
+                                <span>2/5页，</span>
+                                <span>共30条 每页
+                                    <select class="page_select">
+                                        <option>10</option>
+                                        <option>20</option>
+                                        <option>30</option>
+                                        <option>40</option>
+                                    </select>条，
+                                </span>
+                                <span>到第<input type="text" class="page_input">页</span>
+                            </p>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    </div>
+                    <div class="transaction_query">
+                        <div class="transaction_input">
+                            <p class="record_type">
+                                <label>起止时间</label><input type="text" class="record_time_w Wdate" id="startDate2" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',maxDate:'#F{$dp.$D(\'endDate2\')}'})" readonly="readonly" ><span class="record_hx">到</span><input type="text" class="record_time_w Wdate" id="endDate2" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'#F{$dp.$D(\'startDate2\')}'})" readonly="readonly">
+                                <input type="radio" name="radio" value="交易创建时间" class="radio" checked><label class="radio"><b>交易创建时间</b></label>
+                                <input type="radio" name="radio" value="退款创建时间" class="radio"><label class="radio"><b>退款创建时间</b></label>
+                            </p>
+                        </div>
+                        <div class="transaction_select transaction_select_top">
+                            <p>业务单号</p>
+                            <div class="transaction_f">
+                                <input type="text" class="record_time_w">
+                            </div>
+                            <p>审核状态</p>
+                            <div class="record_select" name="record_select">
+                               <input type="text" readonly placeholder="全部">
+                               <ul>
+                                  <li data-value="">全部</li>
+                                  <li data-value="">待审核</li>
+                                  <li data-value="">失败</li>
+                                  <li data-value="">成功</li>
+                               </ul>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                        <p class="transaction_btn">
+                            <span>查询</span>
+                        </p>
+                    <div class="transaction_tabel">
+                         <table class="tbl_content">
+                            <thead>
+                                <tr class="thead">
+                                    <td width="4%">
+                                        <p class="transaction_check"><input type="checkbox" class="checkbox comm_all" value="全选"><label class="checkbox check_p"></label></p>
+                                    </td>
+                                    <td width="10%">退款单号</td>
+                                    <td width="12%">汇付支付订单号</td>
+                                    <td width="10%">商户订单号</td>
+                                    <td width="10%">退款申请人</td>
+                                    <td width="10%">交易创建时间</td>
+                                    <td width="10%">退款创建时间</td>
+                                    <td width="10%">退款金额</td>
+                                    <td width="8%">状态</td>
+                                    <td width="16%">操作</td>
+                                </tr>
+                            </thead>
+                            <tbody class="record_list">
+                                <tr>
+                                    <td>
+                                         <p class="transaction_check"><input type="checkbox" class="checkbox" value="" name="app_box"><label class="checkbox check_p"></label></p>
+                                    </td>
+                                    <td>123456</td>
+                                    <td>123456</td>
+                                    <td>12345</td>
+                                    <td>张三</td>
+                                    <td>2016-06-23 10:43:22</td>
+                                    <td>2016-06-23 10:43:22</td>
+                                    <td>100.00</td>
+                                    <td>支付完成</td>
+                                    <td><span class="record_look">查看</span><span class="record_adopt">通过</span><span class="record_refuse">拒绝</span></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                         <p class="transaction_check"><input type="checkbox" class="checkbox" value="" name="app_box"><label class="checkbox check_p"></label></p>
+                                    </td>
+                                    <td>123456</td>
+                                    <td>123456</td>
+                                    <td>12345</td>
+                                    <td>张三</td>
+                                    <td>2016-06-23 10:43:22</td>
+                                    <td>2016-06-23 10:43:22</td>
+                                    <td>100.00</td>
+                                    <td>支付完成</td>
+                                    <td><span class="record_look">查看</span><span class="record_adopt">通过</span><span class="record_refuse">拒绝</span></td>
+                                </tr>
+                               <tr>
+                                    <td>
+                                         <p class="transaction_check"><input type="checkbox" class="checkbox" value="" name="app_box"><label class="checkbox check_p"></label></p>
+                                    </td>
+                                    <td>123456</td>
+                                    <td>123456</td>
+                                    <td>12345</td>
+                                    <td>张三</td>
+                                    <td>2016-06-23 10:43:22</td>
+                                    <td>2016-06-23 10:43:22</td>
+                                    <td>100.00</td>
+                                    <td>支付完成</td>
+                                    <td><span class="record_look">查看</span><span class="record_adopt">通过</span><span class="record_refuse">拒绝</span></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                         <p class="transaction_check"><input type="checkbox" class="checkbox" value="" name="app_box"><label class="checkbox check_p"></label></p>
+                                    </td>
+                                   <td>123456</td>
+                                    <td>123456</td>
+                                    <td>12345</td>
+                                    <td>张三</td>
+                                    <td>2016-06-23 10:43:22</td>
+                                    <td>2016-06-23 10:43:22</td>
+                                    <td>100.00</td>
+                                    <td>支付完成</td>
+                                    <td><span class="record_look">查看</span><span class="record_adopt">通过</span><span class="record_refuse">拒绝</span></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                         <p class="transaction_check"><input type="checkbox" class="checkbox" value="" name="app_box"><label class="checkbox check_p"></label></p>
+                                    </td>
+                                    <td>123456</td>
+                                    <td>123456</td>
+                                    <td>12345</td>
+                                    <td>张三</td>
+                                    <td>2016-06-23 10:43:22</td>
+                                    <td>2016-06-23 10:43:22</td>
+                                    <td>100.00</td>
+                                    <td>支付完成</td>
+                                    <td><span class="record_look">查看</span><span class="record_adopt">通过</span><span class="record_refuse">拒绝</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="transaction_bt">
+                        <div class="transaction_batch">
+                            <p class="transaction_check transaction_l"><input type="checkbox" class="checkbox comm_all" value=""><label class="checkbox check_p"></label><span>全选</span><b>批量通过</b><b>批量拒绝</b></p>
+                        </div>
+                        <div class="page">
+                            <p>
+                                <span>首页</span>
+                                <span>上一页</span>
+                                <span>下一页</span>
+                                <span>尾页</span>
+                                <span>2/5页，</span>
+                                <span>共30条 每页
+                                    <select class="page_select">
+                                        <option>10</option>
+                                        <option>20</option>
+                                        <option>30</option>
+                                        <option>40</option>
+                                    </select>条，
+                                </span>
+                                <span>到第<input type="text" class="page_input">页</span>
+                            </p>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    </div>
+                    
+                    
+                     <div class="transaction_query">
+                        <div class="transaction_input">
+                            <p class="record_type">
+                                <label>起止时间</label><input type="text" class="record_time_w Wdate" id="startDate2" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',maxDate:'#F{$dp.$D(\'endDate2\')}'})" readonly="readonly" ><span class="record_hx">到</span><input type="text" class="record_time_w Wdate" id="endDate2" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'#F{$dp.$D(\'startDate2\')}'})" readonly="readonly">
+                                <input type="radio" name="radio2" value="交易创建时间" class="radio" checked><label class="radio"><b>交易创建时间</b></label>
+                                <input type="radio" name="radio2" value="退款创建时间" class="radio"><label class="radio"><b>退款创建时间</b></label>
+                            </p>
+                        </div>
+                        <div class="transaction_select transaction_select_top">
+                            <p>业务单号</p>
+                            <div class="transaction_f">
+                                <input type="text" class="record_time_w">
+                            </div>
+                            <p>审核状态</p>
+                            <div class="record_select" name="record_select">
+                               <input type="text" readonly placeholder="全部">
+                               <ul>
+                                  <li data-value="">全部</li>
+                                  <li data-value="">待审核</li>
+                                  <li data-value="">失败</li>
+                                  <li data-value="">成功</li>
+                               </ul>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                        <p class="transaction_btn">
+                            <span>查询</span>
+                        </p>
+                    <div class="transaction_tabel">
+                         <table class="tbl_content">
+                            <thead>
+                                <tr class="thead">
+                                    <td width="10%">退款单号</td>
+                                    <td width="12%">汇付支付订单号</td>
+                                    <td width="10%">商户订单号</td>
+                                    <td width="10%">退款申请人</td>
+                                    <td width="10%">交易创建时间</td>
+                                    <td width="10%">退款创建时间</td>
+                                    <td width="10%">退款金额</td>
+                                    <td width="8%">状态</td>
+                                    <td width="16%">操作</td>
+                                </tr>
+                            </thead>
+                            <tbody class="record_list">
+                                <tr>
+                                    <td>123456</td>
+                                    <td>123456</td>
+                                    <td>12345</td>
+                                    <td>张三</td>
+                                    <td>2016-06-23 10:43:22</td>
+                                    <td>2016-06-23 10:43:22</td>
+                                    <td>100.00</td>
+                                    <td>支付完成</td>
+                                    <td><span class="record_look">查看</span></td>
+                                </tr>
+                                <tr>
+                                    <td>123456</td>
+                                    <td>123456</td>
+                                    <td>12345</td>
+                                    <td>张三</td>
+                                    <td>2016-06-23 10:43:22</td>
+                                    <td>2016-06-23 10:43:22</td>
+                                    <td>100.00</td>
+                                    <td>支付完成</td>
+                                    <td><span class="record_look">查看</span></td>
+                                </tr>
+                               <tr>
+                                    <td>123456</td>
+                                    <td>123456</td>
+                                    <td>12345</td>
+                                    <td>张三</td>
+                                    <td>2016-06-23 10:43:22</td>
+                                    <td>2016-06-23 10:43:22</td>
+                                    <td>100.00</td>
+                                    <td>支付完成</td>
+                                    <td><span class="record_look">查看</span></td>
+                                </tr>
+                                <tr>
+                                   <td>123456</td>
+                                    <td>123456</td>
+                                    <td>12345</td>
+                                    <td>张三</td>
+                                    <td>2016-06-23 10:43:22</td>
+                                    <td>2016-06-23 10:43:22</td>
+                                    <td>100.00</td>
+                                    <td>支付完成</td>
+                                    <td><span class="record_look">查看</span></td>
+                                </tr>
+                                <tr>
+                                    <td>123456</td>
+                                    <td>123456</td>
+                                    <td>12345</td>
+                                    <td>张三</td>
+                                    <td>2016-06-23 10:43:22</td>
+                                    <td>2016-06-23 10:43:22</td>
+                                    <td>100.00</td>
+                                    <td>支付完成</td>
+                                    <td><span class="record_look">查看</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="transaction_bt">
+                        <div class="page">
+                            <p>
+                                <span>首页</span>
+                                <span>上一页</span>
+                                <span>下一页</span>
+                                <span>尾页</span>
+                                <span>2/5页，</span>
+                                <span>共30条 每页
+                                    <select class="page_select">
+                                        <option>10</option>
+                                        <option>20</option>
+                                        <option>30</option>
+                                        <option>40</option>
+                                    </select>条，
+                                </span>
+                                <span>到第<input type="text" class="page_input">页</span>
+                            </p>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <!--内容结束-->
+        
+        <!--尾部开始-->
+        <div class="ngp_footer">
+            <p>
+                <span>关于我们</span>
+                <span>合作伙伴</span>
+                <span>商务合作</span>
+                <span>联系我们</span>
+            </p>
+            <p class="ngp_ft">Copyright © since 2008 汇元银通（北京）在线支付技术有限公司  版权所有 侵权必究</p>
+        </div>
+        <!--尾部结束-->
+        
+    </div>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<div class="contsBox">
+    {{if source.pageStatus=='reply' || source.pageStatus=='apply' }}
+    <form id='replyForm'>
+    <div class="details mesInput">    
+        <div class="otherConts">
+            <div class="details_L">
+            {{if source.pageStatus=='apply'}}
+                <dl class="editDl">
+                    <dt>卖家账户： </dt>
+                    <dd>
+                        <input class="input" type="text" name="userID" required>
+                    </dd>
+                </dl>
+                {{else}}
+                    <input class="hidden" type="text" name="userID" value='${source.userID}'>
+            {{/if}}
+                <dl class="editDl">
+                    <dt>消息标题： </dt>
+                    <dd>
+                        <input class="input" type="text" name="messageTitle" required>
+                    </dd>
+                </dl>
+                <dl class="editDl">
+                    <dt>收信人： </dt>
+                    <dd>
+                        <input class="input" type="text" name='receiver' required>
+                    </dd>
+                </dl>
+                <dl class="editDl">
+                    <dt>发信人： </dt>
+                    <dd>
+                        <input class="input" type="text" name='sender' required>
+                    </dd>
+                </dl>
+            </div>
+            <div class="details_R">
+                <dl class="editDl">
+                    <dt>站点： </dt>
+                    <dd>
+                        <input class="input" type="text" name='siteName' required>
+                    </dd>
+                </dl>
+                <dl class="editDl">
+                    <dt>订单编号： </dt>
+                    <dd>
+                        <input class="input" type="text" name='orderID' required>
+                    </dd>
+                </dl>
+                <dl class="editDl">
+                    <dt>订单中商品SKU： </dt>
+                    <dd>
+                        <input class="input" type="text" name='sku' required>
+                    </dd>
+                </dl>
+            </div>
+            <textarea name="content" id="" cols="30" rows="10" class="mB20" required></textarea>
+            <div class="bigwidth fix mB10 attachmentBox">
+                <div class="bigwidth_left">
+                &nbsp;
+                </div>
+                <a href="javascript:;" class="button rel">添加附件<input type="file" class='uploadBtn' id='js-uploadAttachment'/></a>
+            </div>
+            <p>
+                <a href="javascript:;" class="button mR20 fL js-messageReplySubmit">提交</a>
+                <a href="javascript:;" class="buttonText fL" data-href='?m=xhr_id_33_78&p=${source.platform}'>取消</a>
+            </p>
+            
+        </div>
+    </div>
+    </form>
+    {{/if}}
+    {{if source.pageStatus=='reply' || source.pageStatus=='view'}}
+    <div class="msgHistory"{{if source.pageStatus=='view'}}style='border-top:none'{{/if}}>
+        <dl>
+            <dt>主题：</dt>
+            <dd><span class="Truncate inline_block w300" title="${source.messageTitle}">${source.messageTitle}</span> <em class="fR">${source.receiveTime}</em></dd>
+        </dl>
+        <dl>
+            <dt>发件人：</dt>
+            <dd>${source.sender}</dd>
+        </dl>
+        <dl>
+            <dt>收件人：</dt>
+            <dd>${source.receiver}</dd>
+        </dl>
+        <dl>
+            <dt>站点：</dt>
+            <dd>${source.siteCnName}</dd>
+        </dl>
+        <dl class='fix'>
+            <dt>订单ID：</dt>
+            <dd>${source.orderID||'&nbsp;'}</dd>
+        </dl>
+        <dl class='fix'>
+            <dt>商品SKU：</dt>
+            <dd>${source.sku||'&nbsp;'}</dd>
+        </dl>
+        {{if source.filedata}}
+        <dl class='fix'>
+            <dt>附件：</dt>
+            <dd class='messageFileAttachment'>
+                {{each(i,file) source.filedata}}
+                <a href="javascript:;" class="annex"><img src="${file.fileOriginalurl}"></a>
+                {{/each}}
+            </dd>
+        </dl>
+        {{/if}}
+        <p></p>
+        <span>
+            {{wrap source.content + "<br>"}}{{/wrap}}
+        </span>
+        
+    </div> 
+    {{if source.pageStatus=='view'}}
+            <div class="btnMain" style="border-top:none"><a href="javascript:history.go(-1);" class="button"  sdata-href='?m=xhr_id_33_78&p=${source.platform}' data-title='会员管理-消息管理'>返回</a></div>
+        {{/if}}       
+    {{/if}}
+</div>

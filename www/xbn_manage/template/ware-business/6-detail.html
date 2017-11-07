@@ -1,0 +1,114 @@
+<!-- conts begin -->
+<div class="contsBox">
+    <div class="details">
+        <h3 class="titleText">基本信息</h3>
+        <div class="mT20">
+            <dl class="invoice_dl">
+                <dt class="invoice_dt_title"></dt>
+                <dd>
+                    <dl>
+                        <dt class="invoice_dt">货主：</dt>
+                        <dd class="invoice_dd">${source.createUser || '暂无货主'}</dd>
+                    </dl>
+                </dd>
+                <dd>
+                    <dl>
+                        <dt class="invoice_dt">库存编码：</dt>
+                        <dd class="invoice_dd">${source.inventoryCode}</dd>
+                    </dl>
+                </dd>
+                <dd>
+                    <dl>
+                        <dt class="invoice_dt">商家SKU：</dt>
+                        <dd class="invoice_dd">${source.merchantSku || '暂无SKU'}</dd>
+                    </dl>
+                </dd>
+                <dd>
+                    <dl>
+                        <dt class="invoice_dt">货品名称：</dt>
+                        <dd class="invoice_dd">${source.title || '暂无货品名称'}</dd>
+                    </dl>
+                </dd>
+                <dd>
+                    <dl>
+                        <dt class="invoice_dt">规格型号：</dt>
+                        <dd class="invoice_dd"><span class="white inline_block" title="${source.specsModel || '暂无规格'}">${source.specsModel || '暂无规格'}</span></dd>
+                    </dl>
+                </dd>
+                <dd>
+                    <dl>
+                        <dt class="invoice_dt">来源：</dt>
+                        <dd class="invoice_dd">${source.source == '1' ? '站外' : '小笨鸟'}</dd>
+                    </dl>
+                </dd>
+                <dd>
+                    <dl>
+                        <dt class="invoice_dt">状态：</dt>
+                        <dd class="invoice_dd">${getConstName("OwmsCommodityEnum",source.status)}</dd>
+                    </dl>
+                </dd>
+                <dd>
+                    <dl>
+                        <dt class="invoice_dt">品牌：</dt>
+                        <dd class="invoice_dd">${source.brand || "暂无品牌"}</dd>
+                    </dl>
+                </dd>
+                <dd>
+                    <dl>
+                        <dt class="invoice_dt">采集序列号：</dt>
+                        <dd class="invoice_dd">${source.isCollection == '1' ? '是' : '否'}</dd>
+                    </dl>
+                </dd>
+            </dl>
+        </div>
+    </div>
+    <div class="details">
+        <h3 class="titleText">包装信息</h3>
+        <div class="mT20">
+            <dl class="invoice_dl">
+                <dt class="invoice_dt_title"></dt>
+                <dd>
+                    <dl class="fL mR100">
+                        <dt class="invoice_dt">重量：</dt>
+                        <dd class="invoice_dd">${source.weight || "暂无数据"} KG</dd>
+                    </dl>
+                    <dl clas="fL">
+                        <dt class="invoice_dt">尺寸：</dt>
+                        <dd class="invoice_dd">${source.width || "暂无数据"}CM x ${source.height || "暂无数据"}CM x ${source.length || "暂无数据"}CM</dd>
+                    </dl>
+                </dd>
+            </dl>
+        </div>
+    </div>
+    {{if source.commodityCustomList.length}}
+    <div class="details">
+        <h3 class="titleText">报关信息</h3>
+        <div class="ordertable">
+            <table class="" border="0" cellspacing="0">
+                <tbody>
+                    {{each(i,e) source.commodityCustomList}}
+                    {{if customCode || applyName || applyPrice}}
+                    <tr class="orderTr">
+                        <td class="fb w140 col_545454">${e.clearanceCountry}</td>
+                        <td>海关编码：<br />${customCode||'--'}</td>
+                        <td>申报名称：<br />${applyName||'--'}</td>
+                        <td>申报价值：<br />{{if applyPrice}}${applyPrice}${e.currencyUnit}{{else}}--{{/if}}</td>
+                    </tr>
+                    {{/if}}
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {{/if}}
+    <div class="details">
+        <h3 class="titleText">备注信息</h3>
+        <div class="mT20 mB20 mL140">
+            <p class="break">${source.description || "暂无数据"}</p>
+        </div>
+    </div>
+</div>
+<div class="btnMain">
+    <a href="javascript:history.go(-1);" class="button">返回</a>
+</div>
+<!-- conts end -->

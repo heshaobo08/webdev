@@ -1,0 +1,160 @@
+		<div class="app_location">
+			<p>位置：<a href="#">我是运营编辑</a>><a href="#">摇一摇</a>><a href="#">场次管理</a>><span>新建场次</span></p>
+		</div>
+		<div class="app_list">
+			<div class="app_edit_hd">
+				<div class="app_edit_pro">
+					<ul>
+						<li class="pro_one_on"><p class="on position_one">基本信息</p></li>
+						<li class="pro_two"><p class="position_two">配置奖品</p></li>
+						<li class="new_three"><p class="position_new_three">应用分发</p></li>
+						<li class="new_four"><p class="position_new_four">完成</p></li>
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+			<form id="matches_form">
+			<div class="app_edit number_new">
+				<div class="number_new_hd"><p>场次信息</p></div>
+				<div class="app_item clearfix">
+					<div class="app_item_hd updown_item"><label for="theme"><span>*</span>主题：</label></div>
+					<div class="app_item_box zi_address">
+						<span><input type="text" id="theme" name="theme"></span>
+					</div>
+				</div>
+				<div class="app_item clearfix">
+					<div class="app_item_hd updown_item"><label for="category">分类：</label></div>
+					<div class="app_item_box">
+						<input type="text" id="Category">
+					</div>
+				</div>
+				<div class="app_item clearfix">
+					<div class="app_item_hd updown_item"><label for="start_time1"><span>*</span>时间：</label></div>
+					<div class="app_item_box">
+						<div class="app_item_time number_time">
+							<span><input type="text" class="twoToTwo" id="start_time1" name="start_time" ><a class="ac_time_hx">&nbsp;</a></span>
+							<span class="twoToTwoLine">至</span>
+							<span><input type="text" class="twoToTwo" id="end_time1" name="end_time"><a class="ac_time_hx">&nbsp;</a></span>
+						</div>
+					</div>
+				</div>
+				<div class="app_item clearfix">
+					<div class="app_item_hd updown_item"><label><span>*</span>倒计时：</label></div>
+					<div class="app_item_box">
+						<span>
+							<select id="countdown_ct" name="countdown" class="{required:true}">
+								<option value="">不限</option>
+								<option value="2">30分钟</option>
+								<option value="3">15分钟</option>
+							</select>
+						</span>
+					</div>
+				</div>
+				<div class="app_item clearfix">
+					<div class="app_item_hd updown_item"><label for="show">所属节目：</label></div>
+					<div class="app_item_box zi_address">
+						<input type="text" id="show" name="show">
+					</div>
+				</div>
+				<div class="app_item clearfix">
+					<div class="app_item_hd updown_item"><label for="show"><span>*</span>封面图：</label></div>
+					<div class="app_item_box">
+					<input type="hidden" value="" id="edit_url">
+						<div id="uploader">
+							<div class="queueList">
+								<div id="dndArea" class="placeholder">
+									<input type="hidden" name="uploadImgHidden" id="uploadImgHidden" value=""/>
+									<div id="filePicker"></div>
+								</div>
+								<div class="number_img_edit"></div>
+							</div>
+						</div>	
+					</div>
+				</div>
+				<div class="app_item clearfix">
+					<div class="app_item_hd updown_item"><label for="in_number"><span>*</span>日参与数：</label></div>
+					<div class="app_item_box">
+						<span><input type="text" id="in_number" name="in_number"></span>
+					</div>
+				</div>
+				<div class="number_new_hd"><p>奖品信息</p></div>
+				<div class="app_item clearfix">
+					<div class="app_item_hd"><label><span>*</span>领取方式：</label></div>
+					<div class="app_item_box">
+						<span><input type="checkbox" name="collect">&nbsp;&nbsp;送货上门</span>
+						<span><input type="checkbox" name="collect">&nbsp;&nbsp;用户自提</span>
+					</div>
+				</div>
+				<div class="app_item clearfix">
+					<div class="app_item_hd updown_item"><label for="address">自提地址：</label></div>
+					<div class="app_item_box zi_address">
+						<input type="text" id="address">
+					</div>
+				</div>
+				<div class="app_item clearfix">
+					<div class="app_item_hd updown_item"><label for="contact">联系人：</label></div>
+					<div class="app_item_box">
+						<input type="text" id="contact">
+					</div>
+				</div>
+				<div class="app_item clearfix">
+					<div class="app_item_hd updown_item"><label for="contact_mode">联系方式：</label></div>
+					<div class="app_item_box">
+						<input type="text" id="contact_mode">
+					</div>
+				</div>
+				<div class="number_new_hd"><p>其他信息</p></div>
+				<div class="app_item clearfix">
+					<div class="app_item_hd updown_item"><label for="start_collect"><span>*</span>领取有效期：</label></div>
+					<div class="app_item_box">
+						<div class="app_item_time number_time">
+							<span><input type="text" class="twoToTwo" id="start_collect" name="start_collect" ><a class="ac_time_hx">&nbsp;</a></span>
+							<span class="twoToTwoLine">至</span>
+							<span><input type="text" class="twoToTwo" id="end_collect" name="end_collect"><a class="ac_time_hx">&nbsp;</a></span>
+						</div>
+					</div>
+				</div>
+				<div class="app_item clearfix">
+					<div class="app_item_hd updown_item"><label for="start_since"><span>*</span>自提有效期：</label></div>
+					<div class="app_item_box">
+						<div class="app_item_time number_time">
+							<span><input type="text" class="twoToTwo" id="start_since" name="start_since" ><a class="ac_time_hx">&nbsp;</a></span>
+							<span class="twoToTwoLine">至</span>
+							<span><input type="text" class="twoToTwo" id="end_since" name="end_since"><a class="ac_time_hx">&nbsp;</a></span>
+						</div>
+					</div>
+				</div>
+				<div class="number_new_hd"><p>推送配置</p></div>
+				<div class="app_item clearfix">
+					<div class="app_item_hd updown_item"><label for="push_content"><span>*</span>推送内容：</label></div>
+					<div class="app_item_box">
+						<span>
+							<textarea name="push_content" cols="20" rows="5" id="push_content"></textarea>
+						</span>
+					</div>
+				</div>
+				<div class="app_item clearfix">
+					<div class="app_item_hd updown_item"><label><span>*</span>推送时间：</label></div>
+					<div class="app_item_box">
+						<div class="app_item_time number_time">
+							<span><input type="text" class="twoToTwo" id="start_push" name="start_push" ><a class="ac_time_hx">&nbsp;</a></span>
+						</div>
+						<div class="tuisti"><p></p></div>
+					</div>
+				</div>
+				<div class="app_item clearfix">
+					<div class="app_item_hd updown_item"><label><span>*</span>推送对象：</label></div>
+					<div class="app_item_box">
+						<span>
+							<select id="push_object" name="push_object" class="{required:true}">
+								<option value="">不限</option>
+								<option value="1">订阅用户</option>
+							</select>
+						</span>
+					</div>
+				</div>
+				<p class="app_next_bt">下一步</p>
+			</div>
+			</form>
+		</div>
+	<script src="js/controllers/number_new_ctrl.js"></script>

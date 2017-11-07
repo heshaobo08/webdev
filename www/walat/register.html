@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0 user-scalable=no" />
+    <title>注册</title>
+    <link href="css/base.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <script src="js/jquery.js"></script>
+</head>
+
+<body>
+    <!--弹窗-->
+    <div id="cover"></div>
+    <div class="cancel">
+        <h4>确认手机号码</h4>
+        <h5>我们将发送验证码到：</h5>
+        <h5>18911799970</h5>
+        <p><span class="repeal">Cancel</span><a href="security_code.html"><span>OK</span></a></p>
+    </div>
+    <div class="phone_error">
+        <h4>手机号码与银行预留不一致，请确认并重新输入。</h4>
+        <p>确定</p>
+    </div>
+    <div id="wapper">
+        <!--头部开始-->
+        <div id="header">
+            <p>注册</p>
+        </div>
+        <!--头部结束-->
+        <!--内容开始-->
+        <div id=content>
+            <div class="form_block">
+                <p>
+                    <label for="phone_number">手机号码</label>
+                    <input type="tel" id="phone_number" placeholder="请输入手机号码"><img src="images/delt.png" class="del_tip"></p>
+                <h5></h5>
+                <h3 class="next_step">下一步</h3>
+            </div>
+            <div class="hint">
+                <p><a href="login.html">已有账户,去登录</a></p>
+            </div>
+        </div>
+        <!--内容结束-->
+        <!--尾部开始-->
+        <div id=footer></div>
+        <!--尾部结束-->
+    </div>
+</body>
+<script>
+    $(function () {
+        /*阻止默认事件*/
+        var stopDefault = function (e) {
+                e.preventDefault();
+            }
+            //弹层函数
+        function appearDiv(str) {
+            $("#cover").show();
+            $(".phone_error").fadeIn(400).find('h4').text(str);
+            $(window).on("touchmove", stopDefault);
+        }
+        $(".phone_error p").on("click", function () {
+                $("#cover").hide();
+                $(".phone_error").hide();
+                $(window).off("touchmove", stopDefault);
+            })
+            //点击按钮逐个删除
+        $(".del_tip").on("click", function () {
+            var card_str = $("#number_card").val();
+            var card_arr = card_str.split(" ");
+            var new_str = card_arr.join("");
+            var new_arr = [];
+            for (var i = 0; i < new_str.length; i++) {
+                new_arr.push(new_str[i]);
+            }
+            if (new_arr.length) {
+                new_arr.length--;
+                var str_c = new_arr.join("");
+                $("#number_card").val(str_c.replace(/\D/g, '').replace(/....(?!$)/g, '$& '))
+            }
+
+        })
+        $(".next_step").on("click", function () {
+            //手机号验证	
+            var reg = /(^13\d{9}$)|(^14\d{9}$)|(^15\d{9}$)|(^16\d{9}$)|(^17\d{9}$)|(^18\d{9}$)|(^19\d{9}$)/g;
+            var mobileP = $("#phone_number").val().trim();
+            if (!mobileP) {
+                appearDiv("请输入手机号！");
+                return false;
+            }
+            if (!reg.test(mobileP)) {
+                appearDiv("手机号码输入错误！");
+                return false;
+            }
+            $("#cover").height($(document).height());
+            $("#cover").show();
+            $(".cancel").show();
+        })
+        $(".cancel .repeal").on("click", function () {
+            $("#cover").hide();
+            $(".cancel").hide();
+        })
+    })
+</script>
+
+</html>

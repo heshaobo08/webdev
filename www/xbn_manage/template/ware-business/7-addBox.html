@@ -1,0 +1,455 @@
+<div class="contsBox">
+    <div class="details">
+        <h3 class="titleText">基本信息</h3>
+        <div class="otherConts">
+            <div class="details_L">
+                <input id="countryCurrencyId" type="hidden" value="${source.plan.countryCurrencyId}" />
+                <input id="planId" type="hidden" value="${source.plan.id}" />
+                <dl>
+                    <dt>预报编码：</dt>
+                    <dd>${source.forecastCode}</dd>
+                </dl>
+                <dl>
+                    <dt>预报时间：</dt>
+                    <dd>${source.forecastTime}</dd>
+                </dl>
+                <dl>
+                    <dt>预报箱数：</dt>
+                    <dd>${source.forecastBoxNum}</dd>
+                </dl>
+                <dl>
+                    <dt>预报货品总数：</dt>
+                    <dd>${source.forecastCommodityNum}</dd>
+                </dl>
+                <dl>
+                    <dt>仓库实收箱数：</dt>
+                    <dd>${source.receiveBoxNum}</dd>
+                </dl>
+            </div>
+            <div class="details_R">
+                <dl>
+                    <dt>SKU总数：</dt>
+                    <dd>${source.skuNum}</dd>
+                </dl>
+                <dl>
+                    <dt>处理点实收箱数：</dt>
+                    <dd>${source.siteReceiveBoxNum}</dd>
+                </dl>
+                <dl>
+                    <dt>实收货品总数：</dt>
+                    <dd>${source.receiveCommodityNum}</dd>
+                </dl>
+                <dl>
+                    <dt>商家发货物流公司：</dt>
+                    <dd>${source.userLogisticsCompany}</dd>
+                </dl>
+                <dl>
+                    <dt>商家发货物流单号：</dt>
+                    <dd>${source.userLogisticsCode}</dd>
+                </dl>
+            </div>
+        </div>
+        <div class="ordertable">
+            <table cellspacing="0" border="0" class="">
+                <thead>
+                <tr>
+                    <td>物流编码</td>
+                    <td>处理地点</td>
+                    <td>物流方式</td>
+                    <td>目的仓库</td>
+                    <td>截至下单时间</td>
+                    <td>截至收货时间</td>
+                    <td>预计到货日期</td>
+                    <td>始发站</td>
+                    <td>终点站</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="orderTr">
+                    <td>${source.plan.logisticsCode}</td>
+                    <td>${source.plan.disposalSiteName}</td>
+                    <td>${getConstName("OwmsLogisticsServerTypeEnum",source.plan.logisticsType)}</td>
+                    <td>${source.plan.destinationStoreName}</td>
+                    <td>${source.plan.sendTimeLimit}</td>
+                    <td>${source.plan.receiveTimeLimit}</td>
+                    <td>${source.plan.expectedArrivalDate}</td>
+                    <td>${source.plan.startStation}</td>
+                    <td>${source.plan.lastStation}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <form id="boxForm">
+    <div class="details tmplBox" >
+        <h3 class="titleText borderNone">装箱信息</h3>
+    </div>
+    </form>
+    <div class="details">
+        <h3 class="titleText">备注信息</h3>
+        <dl class="textDl pT15">
+            <dt>备注信息：</dt>
+            <dd>
+                <div class="textBox">${source.remark||'暂无备注'}</div>
+                <div class="textareaBox none">
+                    <form id="editRemarkForm">
+                        <textarea data-cnmax="500" name="remark" class="textarea w430 h80" style="vertical-align:top;">${source.remark}</textarea>
+                        <p class="mT15"><a href="javascript:;" class="button mR20 js-saveRemark">保存</a><a href="javascript:;" class="buttonText js-closeRemark">取消</a></p>
+                    </form>
+                </div>
+            </dd>
+        </dl>
+    </div>
+</div>
+<div class="btnMain">
+    <a href="javascript:;" class="button mR20 js-addSave">保存</a><a href="javascript:;" class="buttonText mR20 js-editRemark">修改备注</a><a data-href="?m=xhr_id_20100000_20106000" href="javascript:;" class="buttonText">返回</a>
+</div>
+
+
+<script id="goodsTmpl" type="text/x-jquery-tmpl">
+_[{each(i,e) data}]_
+<tbody data-id="$_[e.commodity.id]_" data-info="$_[e.custom.customCode]_,$_[e.custom.applyName]_,$_[e.custom.applyPrice]_">
+<tr>
+    <td><p class="Truncate blue js-info" title="$_[e.commodity.inventoryCode]_">$_[e.commodity.inventoryCode]_</p></td>
+    <td title="$_[e.commodity.merchantSku]_">$_[e.commodity.merchantSku]_</td>
+    <td title="$_[e.commodity.title]_"><p>$_[e.commodity.title]_</p></td>
+    <td title="$_[e.commodity.specsModel]_"><span class="white inline_block">$_[e.commodity.specsModel]_</span></td>
+    <td>
+        <p>重量：$_[e.commodity.weight]_KG</p>
+        <p>长度：$_[e.commodity.length]_CM</p>
+        <p>宽度：$_[e.commodity.width]_CM</p>
+        <p>高度：$_[e.commodity.height]_CM</p>
+    </td>
+    <td><span class="white inline_block" title="$_[e.custom.applyName]_">$_[e.custom.applyName]_</span></td>
+    <td title="$_[e.custom.applyPrice]_$_[e.custom.currencyUnit]_">$_[e.custom.applyPrice]_$_[e.custom.currencyUnit]_</td>
+    <td>
+        <div class="addNum">
+            <a class="a_remove js-minus" href="javascript:;">-</a>
+            <input type="text" name="proNum" class="w50 js-input" data-max="999999999" value="1" pattern="^[1-9]\d*$"/>
+            <a class="a_add js-plus" href="javascript:;">+</a>
+        </div>
+    </td>
+    <td>
+        <div class="deadline w120 fL mR10">
+            <input class="dataInput timeInp w76" id="$_[Date.parse(new Date())]_" readonly value="" />
+            <a class="icon-54 time" href="javascript:;"></a>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td colspan="9" class="tR lh34">
+        <a href="javascript:;" class="blue js-calGoods">删除货品</a>
+        <a href="javascript:;" class="blue mL50 js-addGoods">+添加货品</a>
+    </td>
+</tr>
+</tbody>
+_[{/each}]_
+</script>
+
+
+
+<script id="listTmpl" type="text/x-jquery-tmpl">
+<div class="bigTable">
+    <form id="searchForm">
+    <div class="serch_receipt">
+        <dl>
+            <dt>库存编码：</dt>
+            <dd><input type="text" name="inventoryCode" class="defaultInput"/></dd>
+        </dl>
+        <dl>
+            <dt>商家SKU：</dt>
+            <dd><input type="text" name="merchantSku" class="defaultInput"/></dd>
+        </dl>
+        <dl>
+            <dt>货品名称：</dt>
+            <dd><input type="text" name="title" class="defaultInput"/></dd>
+        </dl>
+        <dl>
+            <dt>规格型号：</dt>
+            <dd><input type="text" name="specsModel" class="defaultInput"/></dd>
+        </dl>
+        <dl style="margin-right: 0">
+            <dt>&emsp;</dt>
+            <dd><a class="button js-search" href="javascript:;">Search</a></dd>
+        </dl>
+    </div>
+    </form>
+    <table cellspacing="0" border="0" r-box="all">
+        <thead>
+            <tr>
+                <th width="20"><input type="checkbox" name="all" class="mL5"/></th>
+                <th width="150">库存编码</th>
+                <th width="150">商家SKU</th>
+                <th width="300">货品名称</th>
+                <th width="100">规格型号</th>
+                <th width="180">备注</th>
+            </tr>
+        </thead>
+        <tbody id="listCon">
+
+        </tbody>
+    </table>
+    <div class="fix">
+        <div class="page">
+        </div>
+    </div>
+    <div class="btnMain">
+       <a class="buttonText js-goodSave" href="javascript:;">确认</a><a class="buttonText mL35 js-goodsCal" href="javascript:;">取消</a>
+    </div>
+</div>
+</script>
+<script id="conList" type="text/x-jquery-tmpl">
+_[{each(i,e) list}]_
+<tr>
+    <td><input type="checkbox" data-id="$_[e.id]_" class="mL5"/></td>
+    <td title="$_[e.inventoryCode]_">$_[e.inventoryCode]_</td>
+    <td title="$_[e.merchantSku]_">$_[e.merchantSku]_</td>
+    <td><span class="white inline_block" title="$_[e.title]_">$_[e.title]_</span></td>
+    <td title="$_[e.specsModel]_">$_[e.specsModel]_</td>
+    <td><span class="white inline_block" title="$_[e.description]_">$_[e.description]_</span></td>
+</tr>
+_[{/each}]_
+</script>
+
+<script id="boxTmpl" type="text/x-jquery-tmpl">
+<div class="details bordertTop boxBlock">
+    <div class="boxConts">
+        <h3 class="boxTitle mB30" data-code="$_[code]_" data-orderCode="$_[orderCode]_">
+            <span>$_[code]_号箱</span>
+            _[{if status}]_
+            <a href="javascript:;" class="blue mL50 f14 js-delBox">删除箱子</a>
+            _[{else}]_
+            <a href="javascript:;" class="blue mL50 f14 js-delBox none">删除箱子</a>
+            _[{/if}]_
+            <a href="javascript:;" class="blue mL25 f14 js-addBox">+添加箱子</a>
+        </h3>
+        <div class="boxConts_L">
+            <dl class="editDl">
+                <dt>装箱单号：</dt>
+                <dd>
+                    $_[orderCode]_
+                </dd>
+            </dl>
+            <dl class="editDl">
+                <dt>SKU数量：</dt>
+                <dd class="skuNum">
+                    未添加货品
+                </dd>
+            </dl>
+            <dl class="editDl">
+                <dt>商品总数：</dt>
+                <dd class="proNum">
+                    未添加货品
+                </dd>
+            </dl>
+        </div>
+        <div class="boxConts_R">
+            <dl class="editDl">
+                <dt>实测重量：</dt>
+                <dd>
+                    <input type="text" pattern='^([1-9]\d{0,9}|0)(\.\d{1,3})?$' required class="input w240 mR10 forecastWeigh"  patternText="整数位最多10位，小数位精确到小数点后3位" value=""> <em class="col_cccccc">（码头收货时测量的实测重量，单位：KG。）</em>
+                </dd>
+
+            </dl>
+            <dl class="editDl">
+                <dt>实测尺寸：</dt>
+                <dd>
+                    <input type="text" required pattern='^([1-9]\d{0,3}|0)(\.\d{1,1})?$' class="input w45 mR5 forecastLength" patternText="整数位最多4位，小数位精确到小数点后1位" value=""> <em class="col_cccccc mR5">X</em>
+                    <input type="text" required patternText="整数位最多4位，小数位精确到小数点后1位" pattern='^([1-9]\d{0,3}|0)(\.\d{1,1})?$' class="input w45 mR5 forecastWidth" value=""> <em class="col_cccccc mR5">X</em>
+                    <input type="text" required patternText="整数位最多4位，小数位精确到小数点后1位" pattern='^([1-9]\d{0,3}|0)(\.\d{1,1})?$' class="input w45 mR5 forecastHeight" value=""><em class="col_cccccc">（码头收货时测量的实测尺寸，长 X 宽 X 高，单位：CM）</em>
+                </dd>
+
+            </dl>
+        </div>
+    </div>
+    <div class="printtable">
+        <table width="100%" class="tpmlGoods layout">
+            <thead>
+            <tr>
+                <th width="90">库存编码</th>
+                <th width="90">商家SKU</th>
+                <th width="90">货品名称</th>
+                <th width="80">规格型号</th>
+                <th width="110">包装信息</th>
+                <th width="80">申报名称</th>
+                <th width="90">申报价值</th>
+                <th width="90">数量</th>
+                <th width="90">过期时间</th>
+            </tr>
+            </thead>
+            <tbody class="firstGoods">
+            <tr>
+                <td colspan="9" class="tR lh34 borNone">
+                    <a href="javascript:;" class="blue mL50 js-addGoods">+添加货品</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="tmplList"></div>
+</div>
+</script>
+
+<script id="pageListTmpl" type="text/x-jquery-tmpl">
+    <a href="javascript:;" class="firstPage fL" data-displace="first">首页</a>
+    <a href="javascript:;" class="prve fL icon-56" data-displace="prev"></a>
+    <ul class="pagenumber" id="pager"></ul>
+    <a href="javascript:;" class="next fL icon-55" data-displace="next"></a>
+    <a href="javascript:;" class="lastPage" data-displace="last">尾页</a>
+</script>
+
+<script id="listSeaTmpl" type="text/x-jquery-tmpl">
+<form id="seaForm">
+<div class="bigTable borT1e3">
+    _[{each(i,e) commodityList}]_
+    <div class="seaBlock" data-id="$_[e.id]_">
+        <div class="seaText">
+            <p>商家SKU：$_[e.merchantSku]_</p>
+            <p>货品名称：$_[e.title]_</p>
+            <p>库存编码：$_[e.inventoryCode]_</p>
+            <p>规格型号：$_[e.specsModel]_</p>
+        </div>
+        _[{each(i,c) commodityCustomList}]_
+        _[{if c.countryCurrencyId == null || c.countryCurrencyId == country.id}]_
+        <div class="seaCont" data-id="$_[c.id]_">
+            <dl class="editDl">
+                <dt>海关编码：</dt>
+                <dd>
+                    <input type="text" maxlength="20" name="customCode" pattern="^[a-zA-Z0-9.]+$" required class="input w240 mR10" value="$_[c.customCode]_"> <em class="col_cccccc">（可以根据货品特征在海关网站查询）</em>
+                </dd>
+            </dl>
+            <dl class="editDl">
+                <dt>申报名称：</dt>
+                <dd>
+                <!--(?!.*gift|.*accessory|.*accessories|.*part|.*cloths|.*tools|.*toy|.*stationery)^.*$-->
+                    <input type="text" maxlength="50" pattern="^[\u4e00-\u9fa5_a-zA-Z]+$" name="applyName" required class="input w240 mR10 fL" value="$_[c.applyName]_"> <em class="col_cccccc w500 fL">（货品报关名称，只能由26个英文字母或下横杠组成，不能包含数字。不能包含以下单词：gift，accessory，accessories，part，cloths，tools，toy，stationery，这些单词已被海关列入很名单，不允许申报）</em>
+                </dd>
+            </dl>
+            <dl class="editDl">
+                <dt>申报价值：</dt>
+                <dd>
+                    <input type="text" name="applyPrice" pattern='^([1-9]\d{0,9}|0)(\.\d{1,2})?$' required class="input w240 mR10" value="$_[c.applyPrice]_"> <em class="col_cccccc">（货品报关单价，单位：USD）</em>
+                </dd>
+            </dl>
+        </div>
+        _[{/if}]_
+        _[{/each}]_
+    </div>
+    _[{/each}]_
+    <div class="btnMain mT30">
+       <a class="buttonText js-seaSave" href="javascript:;">确认</a><a class="buttonText mL35 js-goodsCal" href="javascript:;">取消</a>
+    </div>
+</div>
+</form>
+</script>
+
+
+<script id="goodsInfoTmpl" type="text/x-jquery-tmpl">
+<div class="contsBox">
+    <div class="details">
+        <h3 class="titleText">基本信息</h3>
+        <div class="mT20">
+            <dl class="invoice_dl">
+                <dt class="invoice_dt_title"></dt>
+                <dd>
+                    <dl>
+                        <dt class="invoice_dt">货主：</dt>
+                        <dd class="invoice_dd">$_[createUser]_</dd>
+                    </dl>
+                </dd>
+                <dd>
+                    <dl>
+                        <dt class="invoice_dt">库存编码：</dt>
+                        <dd class="invoice_dd">$_[inventoryCode]_</dd>
+                    </dl>
+                </dd>
+                <dd>
+                    <dl>
+                        <dt class="invoice_dt">商家sku：</dt>
+                        <dd class="invoice_dd">$_[merchantSku]_</dd>
+                    </dl>
+                </dd>
+                <dd>
+                    <dl>
+                        <dt class="invoice_dt">货品名称：</dt>
+                        <dd class="invoice_dd">$_[title]_</dd>
+                    </dl>
+                </dd>
+                <dd>
+                    <dl>
+                        <dt class="invoice_dt">规格型号：</dt>
+                        <dd class="invoice_dd">$_[specsModel]_</dd>
+                    </dl>
+                </dd>
+                <dd>
+                    <dl>
+                        <dt class="invoice_dt">来源：</dt>
+                        <dd class="invoice_dd">$_[source == '1' ? '站外' : '小笨鸟']_</dd>
+                    </dl>
+                </dd>
+                <dd>
+                    <dl>
+                        <dt class="invoice_dt">状态：</dt>
+                        <dd class="invoice_dd">$_[status]_</dd>
+                    </dl>
+                </dd>
+                <dd>
+                    <dl>
+                        <dt class="invoice_dt">品牌：</dt>
+                        <dd class="invoice_dd">$_[brand || "暂无品牌"]_</dd>
+                    </dl>
+                </dd>
+                <dd>
+                    <dl>
+                        <dt class="invoice_dt">采集序列号：</dt>
+                        <dd class="invoice_dd">$_[isCollection == '1' ? '是' : '否']_</dd>
+                    </dl>
+                </dd>
+            </dl>
+        </div>
+    </div>
+    <div class="details">
+        <h3 class="titleText">包装信息</h3>
+        <div class="mT20">
+            <dl class="invoice_dl">
+                <dt class="invoice_dt_title"></dt>
+                <dd>
+                    <dl class="fL mR100">
+                        <dt class="invoice_dt">重量：</dt>
+                        <dd class="invoice_dd">$_[weight || "暂无数据"]_</dd>
+                    </dl>
+                    <dl clas="fL">
+                        <dt class="invoice_dt">尺寸：</dt>
+                        <dd class="invoice_dd">$_[width || "暂无数据"]_X$_[height || "暂无数据"]_X$_[length || "暂无数据"]_CM</dd>
+                    </dl>
+                </dd>
+            </dl>
+        </div>
+    </div>
+    <div class="details">
+        <h3 class="titleText">报关信息</h3>
+        <div class="ordertable">
+            <table class="" border="0" cellspacing="0">
+                <tbody>
+                    _[{each(i,e) commodityCustomList}]_
+                    <tr class="orderTr">
+                        <td class="fb w140 col_545454">$_[e.clearanceCountry]_</td>
+                        <td>海关编码：$_[e.customCode || "暂无数据"]_</td>
+                        <td>申报名称：$_[e.applyName || "暂无数据"]_</td>
+                        <td>申报价值：$_[e.applyPrice || "暂无数据"]_$_[e.currencyUnit]_</td>
+                    </tr>
+                    _[{/each}]_
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="details">
+        <h3 class="titleText">备注信息</h3>
+        <div class="mT20 mB20 mL140">
+            <p>备注信息：
+                <span class="break block">$_[description || "暂无数据"]_</span>
+            </p>
+        </div>
+    </div>
+</div>
+</script>

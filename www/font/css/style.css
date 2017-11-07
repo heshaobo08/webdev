@@ -1,0 +1,20 @@
+.wapper{width:100%;height:100%;}
+.header{width:100%;height:60px;background-color:#111;}
+.content{width:100%;position:relative;}
+.menuLeft{position:absolute; left:0; top:0; width:200px; min-height:925px; height:100%; _height:860px; background-color:#295892;z-index:99;}
+.functionItem{ position:relative; border-bottom:1px solid #3c6da8;}
+.common_bg{ position:relative; height:40px; line-height:40px; background-color:#295892;  font-size:14px; font-weight:400; background:url(../img/menuIcon_bg.png) no-repeat;}
+.common_bg:hover,.common_bg:active{ font-weight:700; background-color:#3167aa;}
+.common_bg a{ display:block; color:#fff; padding-left:80px;}
+.onselect .common_bg{ font-weight:700; background-color:#3167aa;}
+.nav_sublist{background: #163e70;padding:8px 0;margin:0px;}
+.nav_sublist li{}
+.nav_sublist li a{padding-left: 66px; color:#e4e4e4;font-size: 14px;display: block;height: 40px; line-height: 40px;}
+.nav_sublist li a.sub_nav_select{background: #0c2f5a;color:#d87925;font-weight: bold;}
+.nav_sublist li a:hover{/* background: #0c2f5a; */color:#d87925;font-weight: bold;}
+.function1{ background-position:30px 8px;}
+.function2{ background-position:30px -58px;}
+.function3{background-position:30px -478px;}
+
+
+.contRight{padding:28px 25px 25px 230px;min-height:875px; height:100%; _height:875px;}

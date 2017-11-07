@@ -1,0 +1,67 @@
+		<div class="app_location">
+			<p>位置：<a href="#">我是运营编辑</a>><a href="#">摇一摇</a>><a href="#">应用管理</a>><span>编辑</span></p>
+		</div>
+		<div class="app_list">
+			<div class="app_edit_hd">
+				<div class="app_edit_img">
+					<p><img src="img/tmp1.png"></p>
+					<h6>四川旅游</h6>
+				</div>
+				<div class="app_edit_pro">
+					<ul>
+						<li class="pro_one_on"><p class="on position_one">基本信息</p></li>
+						<li class="pro_two"><p class="position_two">奖品信息</p></li>
+						<li class="pro_three"><p class="position_three">完成</p></li>
+					</ul>
+				</div>
+			<div class="clearfix"></div>
+			</div>
+		<form id="ac_new_form">
+			<div class="app_edit">
+				<div class="app_item clearfix">
+					<div class="app_item_hd"><label><span>*</span>奖品分类：</label></div>
+					<div class="app_item_box">
+						<span><input type="checkbox" name="prize">&nbsp;&nbsp;虚拟奖品</span>
+						<span><input type="checkbox" name="prize">&nbsp;&nbsp;实物奖品</span>
+					</div>
+				</div>
+				<div class="app_item clearfix">
+					<div class="app_item_hd updown_item"><label for="start_time1"><span>*</span>领取有效期：</label></div>
+					<div class="app_item_box">
+						<div class="app_item_time">
+							<span><input type="text" class="twoToTwo" id="start_time1" name="start_time" ><a class="ac_time_hx">&nbsp;</a></span>
+							<span class="twoToTwoLine">至</span>
+							<span><input type="text" class="twoToTwo" id="end_time1" name="end_time"><a class="ac_time_hx">&nbsp;</a></span>
+						</div>
+					</div>
+				</div>
+				<div class="app_item clearfix">
+					<div class="app_item_hd"><label><span>*</span>领取方式：</label></div>
+					<div class="app_item_box">
+						<span><input type="checkbox" name="collect">&nbsp;&nbsp;送货上门</span>
+						<span><input type="checkbox" name="collect">&nbsp;&nbsp;用户自提</span>
+					</div>
+				</div>
+				<div class="app_item clearfix">
+					<div class="app_item_hd updown_item"><label for="address">自提地址：</label></div>
+					<div class="app_item_box zi_address">
+						<input type="text" id="address">
+					</div>
+				</div>
+				<div class="app_item clearfix">
+					<div class="app_item_hd updown_item"><label for="contact">联系人：</label></div>
+					<div class="app_item_box">
+						<input type="text" id="contact">
+					</div>
+				</div>
+				<div class="app_item clearfix">
+					<div class="app_item_hd updown_item"><label for="contact_mode">联系方式：</label></div>
+					<div class="app_item_box">
+						<input type="text" id="contact_mode">
+					</div>
+				</div>
+				<p class="app_next_bt">下一步</p>
+			</div>
+			</form>
+		</div>
+	<script src="js/controllers/app_information_ctrl.js"></script>

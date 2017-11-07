@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<meta charset='utf-8'/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no,minimal-ui">
+    <head>
+        <style>
+            .visit{
+               width: 10rem;
+            }
+            img{
+                width: 100%;
+                height: 100%;
+            }
+            .share{
+                width: 10rem;
+                display: none;
+                position: relative;
+            }
+            .icon{
+                position: absolute;
+                width: 8rem;
+                margin: 0 auto;
+                height: 5rem;
+                top: 10rem;
+                left: 10%;
+                right: 10%;    
+            }
+            .clickshare{
+            position: absolute;
+                top: 1.6rem;
+                left: 3rem;
+                width: 2.3rem;
+                height: 0.6rem;
+                z-index: 1;
+            }
+            .addAnimation{
+                position: absolute;
+                display: none;
+            }
+            @keyframes animation1 {
+                0%{
+                width: 0.1rem;
+                height: 0.1rem;
+                top: 1.8rem;
+                left:3.8rem;
+                }
+                80%{
+                width: 2.2rem;
+                height: 2.2rem;
+                top: -1.4rem;
+                left:0.6rem;
+                }
+                100%{
+                width: 2rem;
+                height: 2rem; 
+                top: -1rem;
+                left: 1rem; 
+                }
+            }
+             @keyframes animation2 {
+                0%{
+                width: 0.1rem;
+                height: 0.1rem;
+                top: 1.5rem;
+                left:3.8rem;
+                }
+                 80%{
+                width: 2rem;
+                height: 2rem;
+                top: 3.5rem;
+                left:0.6rem;
+                }
+                100%{
+                width: 1.8rem;
+                height: 1.8rem; 
+                top: 3.1rem;
+                left: 1rem;
+                }
+            }
+             @keyframes animation3 {
+                0%{
+                width: 0.1rem;
+                height: 0.1rem;
+                top: 1.8rem;
+                left:3.8rem;
+                }
+                 
+                 80%{
+                width: 2rem;
+                height: 2rem; 
+                top: -1rem;
+                left: 5.8rem;
+                 }
+                100%{
+                width: 1.8rem;
+                height: 1.8rem; 
+                top: -0.4rem;
+                left: 5.4rem;
+                }
+            }
+             @keyframes animation4 {
+                0%{
+                width: 0.1rem;
+                height: 0.1rem;
+                top: 1.5rem;
+                left:3.8rem;
+                }
+                80%{
+                width: 2.2rem;
+                height:2.2rem; 
+                top: 3.7rem;
+                left: 5.8rem;   
+                 }
+                100%{
+                width: 2rem;
+                height:2rem; 
+                top: 3.3rem;
+                left: 5.4rem; 
+                }
+            }
+            .an1{
+               animation: animation1 0.5s ease-in-out forwards;
+            }
+            .an2{
+                animation: animation2 0.5s ease-in-out forwards;
+            }
+            .an3{
+                 animation: animation3 0.5s ease-in-out forwards;
+            }
+            .an4{
+                 animation: animation4 0.5s ease-in-out forwards;
+            }
+            .small{
+                width: 0.6rem;
+                height: 0.6rem;
+                position: absolute;
+                display: none;
+            }
+            .smallicon1{
+                top:1.2rem;
+                left: 3.2rem;
+            }
+            .smallicon2{
+                top:1.9rem;
+                left: 4.3rem;
+            }
+             .smallicon3{
+               top:1.2rem;
+               left: 4.3rem;
+            }
+            .smallicon4{
+               top:1.9rem;
+               left: 3.2rem;
+            }
+        </style>
+        <script src="js/jquery-1.10.2.min.js"></script>
+        <script src="js/adaptor.js"></script>
+   </head>
+    <body>
+    
+    <div class="visit">
+    <img src='images/%E9%82%80%E8%AF%B7%E5%A5%BD%E5%8F%8B.jpg'/>   
+    </div>
+    <div class="share">
+    <img src='images/%E5%88%86%E4%BA%AB%E5%A5%BD%E5%8F%8B.jpg'/>
+    <div class='icon'>
+        <div class="clickshare"><img src="images/1_11.png"/></div>
+        <div class="addAnimation"><img src='images/1_03.gif'/></div>
+        <div class="addAnimation"><img src='images/1_15.gif'/></div>
+        <div class="addAnimation"><img src='images/1_06.png'/></div>
+        <div class="addAnimation"><img src='images/1_18.gif'/></div>
+        <div class="small smallicon1"><img src='images/1_03.gif'/></div>
+        <div class="small smallicon2"><img src='images/1_18.gif'/></div>
+        <div class="small smallicon3"><img src='images/1_06.png'/></div>
+        <div class="small smallicon4"><img src='images/1_15.gif'/></div>
+        </div>
+    </div>
+    </body>
+    <script>
+    $('.visit').on('click',function(){
+        $('.share').show();
+        $(this).hide();
+        $('.addAnimation').each(function(i){
+            $(this).addClass('an'+(i+1)).show();
+        });
+        $('.small').fadeTo(200,0.3).fadeOut(200);
+    })
+    </script>
+</html>

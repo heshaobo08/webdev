@@ -1,0 +1,68 @@
+<div class="contsBox">
+    <form id="returnForm">
+        <div class="details">
+            <h3 class="titleText">收款人信息</h3>
+            <div class="mT20 pL280">
+                <dl class="textDl">
+                    <dt><font class="star"></font>收款人开户银行：</dt>
+                    <dd><input type="text" title="${source.receiptBankName}" value="${source.receiptBankName}" class="input w240" disabled="disabled"  required/></dd>
+                </dl>
+                <dl class="textDl">
+                    <dt><font class="star"></font>收款人户名全称：</dt>
+                    <dd><input type="text" title="${source.receiptUserFullName}" value="${source.receiptUserFullName}" class="input w240" disabled="disabled" required/></dd>
+                </dl>
+                <dl class="textDl">
+                    <dt><font class="star"></font>收款人银行账号：</dt>
+                    <dd><input type="text" title="${source.receiptBankAccount}" value="${source.receiptBankAccount}" class="input w240" disabled="disabled" required/></dd>
+                </dl>
+            </div>
+        </div>
+        <div class="details">
+            <h3 class="titleText">付款人信息</h3>
+            <div class="mT20 pL280">
+                <dl class="textDl">
+                    <dt><font class="star">*</font>退款金额：</dt>
+                    <dd><input type="text" class="input w190" data-imax="${source.vailableBalance}" value="${source.vailableBalance}" pattern="^([1-9]\d{0,9}|0)(\.\d{1,2})?$" required name="refundAmount"/><span class="col_cccccc mL10">CNY</span></dd>
+                </dl>
+                <dl class="textDl">
+                    <dt><font class="star">*</font>付款人开户银行：</dt>
+                    <dd><input type="text" class="input w240" data-cnmax="50" required name="payBankName"/></dd>
+                </dl>
+                <dl class="textDl">
+                    <dt><font class="star">*</font>付款人户名全称：</dt>
+                    <dd><input type="text" class="input w240" data-cnmax="50" required  name="payUserFullName"/></dd>
+                </dl>
+                <dl class="textDl">
+                    <dt><font class="star">*</font>付款人银行账号：</dt>
+                    <dd><input type="text" class="input w240" data-cnmax="50" required name="payBankAccount" /></dd><!--pattern="^\d{1,50}$"-->
+                </dl>
+                <dl class="textDl">
+                    <dt><font class="star">*</font>交易流水号：</dt>
+                    <dd><input type="text" class="input w240" data-cnmax="50" required name="detailCode"/></dd>
+                </dl>
+                <dl class="textDl">
+                    <dt><font class="star">*</font>付款时间：</dt>
+                    <dd>
+                        <div class="deadline">
+                            <span class="dataInput" id="timeStart"></span>
+                            <a class="icon-54 timeStart" href="javascript:;"></a>
+                        </div>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+        <div class="details">
+            <h3 class="titleText">备注信息</h3>
+            <div class="mT20 pL280">
+                <dl class="textDl">
+                    <dt><font class="star"></font>备注信息：</dt>
+                    <dd><textarea class="textarea w390 h140" placeholder="最多500个字符" data-cnmax="500" name="remark"></textarea></dd>
+                </dl>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="btnMain">
+    <a href="javascript:;" class="button js-save">提交</a>
+    <a href="javascript:history.go(-1);" class="buttonText pad20 js-return">取消</a>
+</div>

@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>汇付宝</title>
+<link href="css/base.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<script src="js/jquery.js"></script>
+<script src="js/transfer.js"></script>
+</head>
+<body>
+    <div id="cover"></div>
+    <div class="ngp_pop_four">
+        <h6 class="ngp_pop_hd">提示<em><img src="images/ngp_del.png"></em></h6>
+        <p><img src="images/refund_tip.png"><em>请线下提交该银行卡的转账授权函，审核成功以后将自动转账</em></p>
+        <h3 class="ngp_pop_btn">确定</h3>
+    </div>
+    <div class="ngp_pop_five">
+        <h6 class="ngp_pop_hd">提示<em><img src="images/ngp_del.png"></em></h6>
+        <p><img src="images/error_tip.png"><em>文件上传失败，请检查文件是否符合规则重新上传</em></p>
+        <h3 class="ngp_pop_btn">确定</h3>
+    </div>
+    <div class="ngp_pop_sex">
+        <h6 class="ngp_pop_hd">提交<em><img src="images/ngp_del.png"></em></h6>
+        <img src="images/success_tip.png" class="ngp_pop_sex_img">
+        <h4>提交成功</h4>
+        <h4>批次号：89279823423</h4>
+        <p>可凭批次号查看转账进度</p>
+        <h3 class="ngp_pop_btn"><a href="transfer_look.html">确定</a></h3>
+        <p>注：请线下提交该银行卡的转账授权函，审核成功以后将自动转帐</p>
+    </div>
+    <div id="ngp_warpper">
+        <!--头部开始-->
+        <div class="ngp_header">
+            <div class="ngp_top">
+                <div class="ngp_logo">
+                   <img src="images/logo.png">
+                   <span class="logo_hx"></span>
+                   <span class="logo_text">商户服务</span>
+                </div>
+                <div class="ngp_top_right">
+                    <span>您好！ Acdbm@9186.com</span>
+                    <b></b>
+                    <span>退出</span>
+                    <b></b>
+                    <span>帮助中心</span>
+                </div>
+            </div>
+        </div>
+        <div class="ngp_nav">
+            <div class="nav_list">
+                <ul>
+                    <li class="nav_ative"><a href="index.html">我的汇付宝</a></li>
+                    <li><a href="transaction.html">交易管理</a></li>
+                    <li><a href="#">结算管理</a></li>
+                    <li><a href="account_management.html">账户管理</a></li>
+                </ul>
+            </div> 
+        </div>
+        <!--头部结束-->
+        
+        <!--内容开始-->
+        <div class="ngp_content">
+            <div class="recharge_box">
+                <div class="transaction_box">
+                    <p class="reviewed_name">转账</p>
+                    <div class="transaction_tab transfer_tab">
+                        <div class="transaction_tab_l">
+                            <ul>
+                                <li class="tab_active">输入收款账户</li>
+                                <li>上传批量文件</li>
+                            </ul>
+                        </div>
+                        <div class="transaction_tab_r"></div>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="transaction_query" style="display:block">
+                        <div class="transfer">
+                            <p class="record_type">
+                                <input type="radio" name="radio" class="radio" checked><label class="radio"><b>对公付款</b></label>
+                                <input type="radio" name="radio" class="radio"><label class="radio"><b>对私付款</b></label>
+                            </p>
+                            <div class="transaction_tabel">
+                                <table class="tbl_content">
+                                    <thead>
+                                        <tr class="thead">
+                                            <td width="10%">收款方开户名</td>
+                                            <td width="20%">收款方银行账号</td>
+                                            <td width="10%">开户银行</td>
+                                            <td width="15%">开户行所在地</td>
+                                            <td width="15%">开户行支行名称</td>
+                                            <td width="10%">金额</td>
+                                            <td width="10%">备注</td>
+                                            <td width="10%">操作</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="record_list">
+                                        <tr>
+                                            <td><input type="text" class="transfer_input_w"></td>
+                                            <td><input type="text" class="transfer_input_w transfer_sp_w"></td>
+                                            <td><input type="text" class="transfer_input_w"></td>
+                                            <td><input type="text" class="transfer_input_w one_sp_w"><input type="text" class="transfer_input_w one_sp_w"></td>
+                                            <td><input type="text" class="transfer_input_w two_sp_w"></td>
+                                            <td><input type="text" class="transfer_input_w"></td>
+                                            <td class="transfer_note">
+                                                <input type="text" class="transfer_input_w">
+                                                <div class="transfer_note_box">
+                                                    <ul>
+                                                        <li><a href="#">1234567</a></li>
+                                                        <li><a href="#">1234567</a></li>
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                            <td><span class="record_look">删除</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="text" class="transfer_input_w"></td>
+                                            <td><input type="text" class="transfer_input_w transfer_sp_w"></td>
+                                            <td><input type="text" class="transfer_input_w"></td>
+                                            <td><input type="text" class="transfer_input_w one_sp_w"><input type="text" class="transfer_input_w one_sp_w"></td>
+                                            <td><input type="text" class="transfer_input_w two_sp_w"></td>
+                                            <td><input type="text" class="transfer_input_w"></td>
+                                            <td class="transfer_note">
+                                                <input type="text" class="transfer_input_w">
+                                                <div class="transfer_note_box">
+                                                    <ul>
+                                                        <li><a href="#">你好，今天</a></li>
+                                                        <li><a href="#">不好</a></li>
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                            <td><span class="record_look">删除</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <p class="transfer_add"><img src="images/transfer_add.png"><em>添加收款账户</em> （最多只能添加10位收款人）</p>
+                        <div class="transfer_list">
+                            <p><span class="transfer_name_w">付款金额合计</span><em class="transfer_name_c">00.00</em>元 <span class="transfer_name_w">付款笔数合计</span> <span class="transfer_number">1笔</span></p>
+                            <p>
+                                <span class="transfer_name_w">银行服务类型</span>
+                                <span class="transfer_type">
+                                    <input type="radio" name="radio1" class="radio" checked><label class="radio"><b>当日到账</b></label>
+                                    <input type="radio" name="radio1" class="radio"><label class="radio"><b>次日到账</b></label>
+                                </span>
+                            </p>
+                            <p class="transfer_bank_details">
+                                <span class="transfer_mode">当日到账</span>
+                                <span class="transfer_look_details">查看详情<img src="images/transfer_tip.png"></span>
+                            </p>
+                            <div class="transfer_bank_details_one">
+                                <p>当日到账银行</p>
+                                <table class="transfer_table">
+                                    <thead>
+                                        <tr>
+                                            <td width="70%">银行名称</td>
+                                            <td width="30%">服务时间</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                         <tr>
+                                            <td>中国工商银行、中国农业银行、招商银行、平安银行、兴业银行、中古建设银行</td>
+                                            <td>9:00-17:30</td>
+                                        </tr>
+                                         <tr>
+                                            <td>中国邮政储蓄银行</td>
+                                            <td>9:00-18:00</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <p>支持次日到账银行</p>
+                                <p>中国工商银行、中国农业银行、招商银行、平安银行、兴业银行、中国建设银行</p>
+                                <p>其他银行仅支持第二个工作日到账</p>
+                            </div>
+                            <p>
+                                <span class="transfer_name_w">手续费</span>
+                                <em class="transfer_name_c">00.00</em>元
+                                <span class="transfer_fee"><img src="images/transfer_tip1.png">手续费标准</span>
+                            </p>
+                            <p class="transfer_fee_box">
+                                <span>手续费标准</span>
+                                <em>手续费标准手续费标准手续费标准手续费标准手续费标准手续费标准手续费标准手续费标准手续费标准手续费标准手续费标准手续费标准手续费标准手续费标准手续费标准手续费标准手续费标准手续费标准手续费标准手续费标准手续费标准手续费标准手续费标准手续费标准手续费标准手续费标准手续费标准手续费标准手续费标准手续费标准手续费标准手续费标准手续费标准手续费标准手续费标准手续费标准手续费标准手续费标准手续费标准手续费标。</em>
+                            </p>
+                            <p><span class="transfer_name_w">付款总额</span><em class="transfer_name_c">00.00</em>元</p>
+                            <p><span class="transfer_name_w">支付密码</span><input type="text" class="transfer_list_w"><span class="pay_pswd">忘记支付密码？</span></p>
+                        </div>
+                        <p class="transfer_btn">提交申请</p>
+                    </div>
+                    <div class="transaction_query">
+                        <div class="transfer_upload">
+                            <p>选择付款文件</p>
+                            <div class="transfer_upload_box">
+                                <span class="tr_upload"><input type="file"><em>浏览选择文件</em></span><span class="tr_upload_text">下载批量模版.xls</span>
+                                <p>只支持.xls格式</p>
+                                <div class="tr_upload_speck">
+                                    <h6>批量付款说明：</h6>
+                                    <p>1、按照模板格式填写文件，只支持.xls格式
+                                    <p>2、一次最多可付款到100个账户，每个账户必须是都授权过或者没授权过</p>
+                                    <p>3、一个批次付款金额限制为200万</p>
+                                    <p>4、一个批次只支持一种账户形式，对公和对私不能同时出现在表格</p>
+                                    <p>5、当前支持21个银行，详情见模板表格</p>
+                                </div>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="transfer_upload_tab">
+                            <table class="tbl_content">
+                                    <thead>
+                                        <tr class="thead">
+                                            <td width="5%">序号</td>
+                                            <td width="10%">收款方开户名</td>
+                                            <td width="20%">银行账户</td>
+                                            <td width="15%">开户银行</td>
+                                            <td width="15%">开户行所在地</td>
+                                            <td width="10%">开户行名称</td>
+                                            <td width="10%">付款金额</td>
+                                            <td width="10%">对公/对私</td>
+                                            <td width="5%">备注</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="record_list">
+                                        <tr>
+                                            <td>1</td>
+                                            <td>战三</td>
+                                            <td>62223893904982773899</td>
+                                            <td>中国建设银行</td>
+                                            <td>所在地</td>
+                                            <td>所在地</td>
+                                            <td>1888</td>
+                                            <td>对公</td>
+                                            <td>分红</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            <div class="transaction_bt">
+                                <div class="page">
+                                    <p>
+                                        <span>首页</span>
+                                        <span>上一页</span>
+                                        <span>下一页</span>
+                                        <span>尾页</span>
+                                        <span>2/5页，</span>
+                                        <span>共30条 每页
+                                            <select class="page_select">
+                                                <option>10</option>
+                                                <option>20</option>
+                                                <option>30</option>
+                                                <option>40</option>
+                                            </select>条，
+                                        </span>
+                                        <span>到第<input type="text" class="page_input">页</span>
+                                    </p>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                        <div class="transfer_list">
+                            <p><span class="transfer_name_w">付款金额合计</span><em class="transfer_name_c">00.00</em>元 <span class="transfer_name_w">付款笔数合计</span> <span class="transfer_number">1笔</span></p>
+                            <p>
+                                <span class="transfer_name_w">银行服务类型</span>
+                                <span class="transfer_type">
+                                    <input type="radio" name="radio1" class="radio" checked><label class="radio"><b>当日到账</b></label>
+                                    <input type="radio" name="radio1" class="radio"><label class="radio"><b>次日到账</b></label>
+                                </span>
+                            </p>
+                            <p class="transfer_bank_details">
+                                <span class="transfer_mode">当日到账</span>
+                                <span class="transfer_look_details">查看详情<img src="images/transfer_tip.png"></span>
+                            </p>
+                            <div class="transfer_bank_details_one">
+                                <p>当日到账银行</p>
+                                <table class="transfer_table">
+                                    <thead>
+                                        <tr>
+                                            <td width="70%">银行名称</td>
+                                            <td width="30%">服务时间</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                         <tr>
+                                            <td>中国工商银行、中国农业银行、招商银行、平安银行、兴业银行、中古建设银行</td>
+                                            <td>9:00-17:30</td>
+                                        </tr>
+                                         <tr>
+                                            <td>中国邮政储蓄银行</td>
+                                            <td>9:00-18:00</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <p>支持次日到账银行</p>
+                                <p>中国工商银行、中国农业银行、招商银行、平安银行、兴业银行、中国建设银行</p>
+                                <p>其他银行仅支持第二个工作日到账</p>
+                            </div>
+                            <p>
+                                <span class="transfer_name_w">手续费</span>
+                                <em class="transfer_name_c">00.00</em>元
+                                <span class="transfer_fee"><img src="images/transfer_tip1.png">手续费标准</span>
+                            </p>
+                            <p class="transfer_fee_box">
+                                <span>手续费标准</span>
+                                <em>手续费标准手续费标准手续费标准手续费标准手续费标准手续费标准手续费标准手续费标准手续费标准手续费标准手续费标准手续费标准手续费标准手续费标准手续费标准手续费标准手续费标准手续费标准手续费标准手续费标准手续费标准手续费标准手续费标准手续费标准手续费标准手续费标准手续费标准手续费标准手续费标准手续费标准手续费标准手续费标准手续费标准手续费标准手续费标准手续费标准手续费标准手续费标准手续费标准手续费标。</em>
+                            </p>
+                            <p><span class="transfer_name_w">付款总额</span><em class="transfer_name_c">00.00</em>元</p>
+                            <p><span class="transfer_name_w">支付密码</span><input type="text" class="transfer_list_w"><span class="pay_pswd">忘记支付密码？</span></p>
+                        </div>
+                        <p class="upload_btn">提交申请</p>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <!--内容结束-->
+        
+        <!--尾部开始-->
+        <div class="ngp_footer">
+            <p>
+                <span>关于我们</span>
+                <span>合作伙伴</span>
+                <span>商务合作</span>
+                <span>联系我们</span>
+            </p>
+            <p class="ngp_ft">Copyright © since 2008 汇元银通（北京）在线支付技术有限公司  版权所有 侵权必究</p>
+        </div>
+        <!--尾部结束-->
+        
+    </div>
+</body>
+</html>

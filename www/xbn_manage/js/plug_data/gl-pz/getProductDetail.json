@@ -1,0 +1,17 @@
+{
+    "statusCode": "2000000",
+    "data": {
+        "serviceId": "1",
+        "serviceName": "test product",
+        "price": "11.0",
+        "unit": "个",
+        "introduction": "测试产品",
+        "lastUpdateBy": "admin",
+        "createTime": "2015-05-08 14:02:29",
+        "lastUpdateTime": "2015-05-08 14:02:31",
+        "productStatus": "1",
+        "isRecommended": "1",
+        "pictureId": "http://timage.xbniao.com/SJFSLDFJBNN.jpg",
+        "isEffective": "1"
+    }
+}

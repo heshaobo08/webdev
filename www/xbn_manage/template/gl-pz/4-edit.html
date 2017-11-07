@@ -1,0 +1,98 @@
+<!--中间内容区域 begin-->
+<div class="details siteDetail">
+    <form id='saleProductFrom'>
+        <h3 class="titleText">销售产品信息</h3>
+        <div class="initBox">
+            <dl class="editDl">
+                <dt><font>*</font>产品名称：</dt>
+                <dd>
+                    <input type="hidden" name='serviceId' value='${source.serviceId}'>
+                    <input class="input w240" type="text" value='${source.serviceName}' name="productName" required>
+                </dd>
+            </dl>
+            <dl class="editDl">
+                <dt><font>*</font>销售状态：</dt>
+                <dd>
+                    <div class="select w240 fL" id='jd-productStatus'>
+                        <input type="hidden" name='productStatus' required data-target="jd-productStatus" index-data="${source.productStatus}" value="{{if source.productStatus=='1'}}可售{{else}}不可售{{/if}}">
+                        <i>请选择</i>
+                        <em class="icon-52"></em>
+                        <ul style="display: none;">
+                            <li index-data=""><span>请选择</span></li>
+                            <li index-data="1" class="{{if source.productStatus=='1'}} active {{/if}}"><span>可售</span></li>
+                            <li index-data="0" {{if source.productStatus=='0'}} active {{/if}}><span>不可售</span></li>
+                        </ul>
+                    </div>
+                </dd>
+            </dl>
+            <dl class="editDl">
+                <dt><font>*</font>是否推荐产品：</dt>
+                <dd>
+                    <div class="select w240 fL" id='jd-isRecommended'>
+                        <input type="hidden" value="{{if source.isRecommended=='1'}}可售{{else}}不可售{{/if}}" name='isRecommended' required data-target="jd-isRecommended" index-data="${source.isRecommended}">
+                        <i>请选择</i>
+                        <em class="icon-52"></em>
+                        <ul style="display: none;">
+                            <li index-data="1" class='{{if source.isRecommended=="1"}} active {{/if}}'><span>是</span></li>
+                            <li index-data="0" class='{{if source.isRecommended=="0"}} active {{/if}}'><span>否</span></li>
+                        </ul>
+                    </div>
+                </dd>
+            </dl>
+            <dl class="editDl">
+                <dt><font>*</font>价格：</dt>
+                <dd>
+                    <input class="input w110 mR5" type="number" value="${source.price}" name='price' placeholder="金额" required>
+                    <input class="input w110" type="text" value="${source.unit}" name='productUnit' placeholder="单位" required>
+                </dd>
+            </dl>
+            <dl class="editDl">
+                <dt><font>*</font>销售类型：</dt>
+                <dd>
+                    <div class="select w240 fL" id='jd-productType'>
+                        <input type="hidden" name='productType' required data-target='jd-productType' value="{{if source.productType=='1'}}不支持多个购买{{else}}支持多个购买{{/if}}" index-data="${source.productType}">
+                        <i>请选择</i>
+                        <em class="icon-52"></em>
+                        <ul style="display: none;">
+                            <li index-data=""><span>请选择</span></li>
+                            <li index-data="1" class="{{if source.productType=='1'}}active{{/if}}"><span>不支持多个购买</span></li>
+                            <li index-data="0" class="{{if source.productType=='0'}}active{{/if}}"><span>支持多个购买</span></li>
+                        </ul>
+                    </div>
+                </dd>
+            </dl>
+            <dl class="editDl">
+                <dt><font>*</font>宣传图片：</dt>
+                <dd class='editTXA'>
+                    <img src="${source.fileOriginalurl}" data-filedid='${source.relFileId}' {{if !source.fileOriginalurl}}class='none'{{/if}}>
+                    <a href="javascript:;" class="button rel fix">
+                        添加图片<input type="file" id="jd-pictureId"/>
+                    </a>
+                    <input type="hidden" name='pictureId' required data-target='jd-pictureId' value="${source.fileOriginalurl}">
+                </dd>
+            </dl>
+            <dl class="editTXA">
+                <dt><font>*</font>产品介绍：</dt>
+                <dd>
+                    <textarea class="w480 h90" placeholder="关于产品的详细介绍" name='productIntroduction' required>${source.introduction}</textarea>
+                </dd>
+            </dl>
+            <dl class="textDl">
+                <dt><font>*</font>包含基础产品：</dt>
+                <dd>
+                    {{each(i,site) source.data}}
+
+                    <label class="mR10 inline_block">
+                        <input class="mR5" type="checkbox" name='baseProducts' value="${site.id}" {{if source.selectSite && source.selectSite[site.id]}}checked{{/if}} />${site.cnName}</label>
+                    {{/each}}
+                </dd>
+            </dl>
+        </div>
+    </form>
+</div>
+<!--中间内容区域 end-->
+<!--conts end-->
+<div class="btnMain">
+    <a class="button mR30 js-saveSaleProduct" href="javascript:;">提交</a>
+    <a class="buttonText" href="javascript:;" data-href='?m=xhr_id_199_222' data-title="配置管理-销售产品管理">取消</a>
+</div>

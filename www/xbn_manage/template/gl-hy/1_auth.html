@@ -1,0 +1,54 @@
+<!-- conts begin -->
+<div class="details">
+	<h3 class="titleText">关联会员</h3>
+	<div class="related">
+		<dl class="fL">
+			<dt>手机号：</dt>
+			<dd>${source.userList.mobile}</dd>
+		</dl>
+		<dl class="fR">
+			<dt>邮箱：</dt>
+			<dd>${source.userList.email}</dd>
+		</dl>
+	</div>
+</div>
+
+<div class="details">
+	<h3 class="titleText">授权站点
+		<label><input class="mL40 mR5 js-platform" type="checkbox" value="eBay">eBay站点</label>
+		<label><input class="mL40 mR5 js-platform" type="checkbox" value="Amazon">Amazon站点</label>
+	</h3>
+	<div class="bigTable tableRecord">
+	<form id='authSiteForm'>
+		<table class="" border="0" cellspacing="0" r-box="all">
+			<thead>
+				<tr>
+					<th><input class="mR25" type="checkbox" value="1" name='all'>站点名称</th>
+					<th><a href="javascript:;" class='icon-54 mR10 js-batchStart' style="color:#5cb0ef"></a>授权开始时间</th>
+					<th><a href="javascript:;" class='icon-54 mR10 js-batchEnd'></a>授权结束时间</th>
+					<th>授权状态</th>
+				</tr>
+			</thead>
+			<tbody>
+				<input type="hidden" name='companyId' value="${source.id}"/>
+				<input type="hidden" name='userId' value="${source.userId}"/>
+					{{each(i,site) source.siteList}}
+					<tr>
+						<td><input class="mR25" type="checkbox" name="siteId" value="${site.siteId}" platform='${site.platformValue}' data-name='${site.siteName}'>${site.siteName}</td>
+						<td><a href="javascript:;" class='timeStart icon-54'></a><input class='startTime mL10' type="text" value="${site.accreditBeginTime}" style='border:none;background:transparent'  /></td>
+						<td><a href="javascript:;" class='timeEnd icon-54'></a><input class='endTime mL10' type="text" value="${site.accreditEndTime}" style='border:none;background:transparent'/></td>
+						<td>{{if site.accreditStatus=='0'}}未授权{{else site.accreditStatus=='1'}}已授权{{else site.accreditStatus=='2'}}授权已过期{{/if}}</td>
+					</tr>
+					{{/each}}
+
+			</tbody>
+
+		</table>
+		</form>
+	</div>
+</div>
+<!-- conts end -->
+<!--中间内容区域 end-->
+<div class="btnMain">
+	<a href="javascript:;" class="button js-authSiteSubmit">确认授权</a><a href="javascript:;" class="buttonText pad20" data-href='?m=xhr_id_33_42'  data-title='会员管理-入驻商家'>取消</a>
+</div>

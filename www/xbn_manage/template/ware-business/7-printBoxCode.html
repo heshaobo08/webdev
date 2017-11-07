@@ -1,0 +1,66 @@
+<div class="contsBox">
+    <div class="details">
+        <h3 class="titleText">选择打印规格</h3>
+        <div class="printCont">
+            <dl class="fix printDl">
+                <dt class="w130 fL">标签打印纸规格：</dt>
+                <dd class="fL">
+                    <div class="select w480">
+                        <input type="hidden" name="templateCode" value="" index-data="">
+                        <i index-data="">请选择</i>
+                        <em class="icon-52"></em>
+                        <ul>
+                            {{each(i,e) source.tempList}}
+                            <li class="{{if i==0}}active{{/if}}" index-data="${e.code}"><span>${e.des}</span></li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                </dd>
+                <dd class="fL">
+                    <span class="col_cccccc">注意：请购买A4不干胶标签打印纸，务必用激光打印机打印，否则条形码将无法被设备识别</span>
+                </dd>
+            </dl>
+        </div>
+    </div>
+    <div class="details">
+        <h3 class="titleText">修改信息</h3>
+        <div class="printtable pT20">
+            <table>
+                <thead>
+                    <tr>
+                        <th width="30%">预报编码</th>
+                        <th width="20%">箱号</th>
+                        <th width="30%">装箱单号</th>
+                        <th width="20%" class="tC">打印数量</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{each(i,e) source.list}}
+                    <tr>
+                        <td>${forecastCode}</td>
+                        <td>${boxCode}</td>
+                        <td>${boxOrderCode}</td>
+                        <td class="tC">
+                            <div class="addNum">
+                                <a href="javascript:;" class="a_remove js-minus">-</a>
+                                <input type="text" value="1" class="w50 js-input" name=
+"num" data-cont="${userName},${forecastCode},${boxCode+'/'+forecastBoxNum},${storeCode}" data-id="${e.boxOrderCode}" data-title="XBN"/>
+                                <a href="javascript:;" class="a_add js-plus">+</a>
+                            </div>
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="btnMain">
+    <form action="/owms/commodity/downBoxBarCodePdf" method="post" class='inline_block' target="_blank">
+        <input type="hidden" id='templateCode' name="templateCode" value=""/>
+        <input type="hidden" id='barCodeList' name="boxBarCodeList" value=""/>
+        <a class="button js-onlinePrint" href="javascript:;">在线打印</a>
+        <input type="submit" style="background:none;border:none;cursor: pointer;" class="buttonText pad20 js-savePDF inline_block" value="保存PDF文件"/>
+        <a class="buttonText" href="javascript:history.go(-1);">取消</a>
+    </form>
+</div>

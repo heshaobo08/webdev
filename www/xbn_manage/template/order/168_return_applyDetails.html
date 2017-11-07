@@ -1,0 +1,364 @@
+<div class="">
+    <div class="details">
+        <div class="stateText">
+            <p class="state">退换货&amp;退款状态：
+                <span>
+                    {{if source.returnStatus == 1}}
+                    买家未回复
+                    {{else source.returnStatus == 2}}
+                    卖家已回复
+                    {{else source.returnStatus == 3}}
+                    申请处理中
+                    {{else source.returnStatus == 4}}
+                    申请已拒绝
+                    {{else source.returnStatus == 5}}
+                    商品待退货
+                    {{else source.returnStatus == 6}}
+                    商品退货中
+                    {{else source.returnStatus == 7}}
+                    退货未收到
+                    {{else source.returnStatus == 8}}
+                    申请已关闭
+                    {{else source.returnStatus == 9}}
+                    待操作退款
+                    {{else source.returnStatus == 10}}
+                    退款已完成
+                    {{/if}}
+                </span>
+            </p>
+        </div>
+        <p class="statetextShow">
+            <span>申请编号：${source.returnID}</span>
+            <span>卖家：${source.seller}</span>
+            <span>买家：${source.buyer}</span>
+            <span>管理员：${source.admin}</span>
+            <span>申请时间：${source.applyCreateTime}</span>
+            <span>申请超时时间：${source.applyExprieTime}</span> {{if source.refundCommodityTime != null}}
+            <span>确认收货超时时间：${source.refundCommodityTime}</span> {{/if}}
+            <input type="hidden" id="operator" value="${source.admin}" />
+            <input type="hidden" id="returnID" value="${source.returnID}" />
+            <input type="hidden" id="orderID" value="${source.orderID}" />
+        </p>
+        <div class="addbutton mT10">
+            <!--<a href="javascript:;" class="button mar20" data-type="3">提出处理方案</a> -->
+
+            {{if source.returnStatus != "8" && source.returnStatus != "9" && source.returnStatus != "10"}}
+            <a href="javascript:;" class="button" data-type="1">关闭申请</a> {{/if}} {{if source.returnStatus == "1"}}
+            <a href="javascript:;" class="button mar20" data-type="3">提出处理方案</a> {{else source.returnStatus == "2"}}
+            <a href="javascript:;" class="button mar20" data-type="3">提出处理方案</a>
+            <a href="javascript:;" class="button mar20" data-type="4">回复卖家</a> {{else source.returnStatus == "4"}}
+            <a href="javascript:;" class="button mar20" data-type="5">驳回卖家请求</a>
+            <a href="javascript:;" class="button mar20" data-type="6">修改处理方案</a> {{else source.returnStatus == "5"}}
+            <a href="javascript:;" class="button mar20" data-type="7">填写退货信息</a> {{else source.returnStatus == "6"}}
+            <a href="javascript:;" class="button mar20" data-type="9">更新退货信息</a> {{else source.returnStatus == "7"}}
+            <a href="javascript:;" class="button mar20" data-type="9">更新退货信息</a> {{else source.returnStatus == "9"}}
+            <a href="javascript:;" class="button" data-type="10">操作退款</a> {{/if}} 
+            {{if source.returnStatus == "1" || source.returnStatus == "2" || source.returnStatus == "3" || source.returnStatus == "4"}}
+            <span id="btnArbitration" data-state="${source.returnType}"></span> 
+            {{/if}}
+
+
+        </div>
+    </div>
+    <div class="details">
+        <h3 class="titleText">订单信息</h3>
+    </div>
+
+    <div class="details" id="details_conts"></div>
+
+
+    <div class="details">
+        <h3 class="titleText">协商记录</h3>
+    </div>
+    <div class="details fix" id="details_history_conts"></div>
+
+    <div class="btnMain">
+        <a href="javascript:history.go(-1);" class="button" data-title="订单管理-退换货&amp;退款管理">返回</a>
+    </div>
+
+
+    <!--驳回卖家申请-->
+    <div id="layer_5" class="none">
+        <form action="" name="" id="layer_5_form">
+            <div class="orderMessage mR20 mL20">
+                <dl class="editTXA"><dt>买家意见：</dt>
+                    <dd>
+                        <textarea name="txtReply" id="txtReply" cols="30" rows="10" class="w356 h70" required></textarea>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>凭证图片：</dt>
+                    <dd>
+                        <p class="mB20">
+                            <input type="file" value="" name="" class="uploadBtn" id="upPic" />添加附件
+                            <input type="text" name="" value="0" id="fileStatus" class="none" />
+                        </p>
+                        <span id="setPic"></span>
+                    </dd>
+                </dl>
+            </div>
+        </form>
+    </div>
+
+    <div id="layer_7" class="none">
+        <form action="" name="" id="layer_7_form">
+            <div class="logistics">
+                <dl><dt>物流商：</dt>
+                    <dd>
+                        <input type="text" id="wls" class="input fL w240" required placeholder="请填写物流商信息" />
+                    </dd>
+                </dl>
+                <dl><dt>跟踪单号：</dt>
+                    <dd>
+                        <input type="text" id="gzdh" class="input fL w240" required placeholder="请填写跟踪单号" />
+                    </dd>
+                </dl>
+            </div>
+        </form>
+    </div>
+
+    <!--回复卖家-->
+    <div id="layer_4" class="none">
+        <form action="" name="" id="layer_4_form">
+            <div class="orderMessage mR20 mL20">
+                <dl class="editTXA"><dt>发送消息：</dt>
+                    <dd>
+                        <textarea name="txtReply" id="txtReply" cols="30" rows="10" class="w356 h70" required></textarea>
+                    </dd>
+                </dl>
+                <dl>
+                    <dd>
+                        <p class="mB20">
+                            <input type="file" value="" name="" class="uploadBtn" id="upPic" />添加附件
+                            <input type="text" name="" value="0" id="fileStatus" class="none" />
+                        </p>
+                        <span id="setPic"></span>
+                    </dd>
+                </dl>
+            </div>
+        </form>
+    </div>
+
+
+    <!--退款-->
+    <div id="layer_10" class="none">
+        <form action="" name="" id="layer_10_form">
+            <div class="refundOperate">
+                <dl>
+                    <dt>退款时间：</dt>
+                    <dd>
+                        <div class="deadline">
+                            <span class="dataInput" id="returnMonerTime" value=""></span>
+                            <a class="icon-54" href="javascript:;"></a>
+                        </div>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>退款金额：</dt>
+                    <dd>
+                        <input type="text" class="input fL mR10 w240" id="refundMoney" required/>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>退款交易号：</dt>
+                    <dd>
+                        <input type="text" class="input fL w240" id="dealcode" required/>
+                    </dd>
+                </dl>
+                <dl class="editTXA"><dt>备注：</dt>
+                    <dd>
+                        <textarea name="" id="content" cols="30" rows="10" required></textarea>
+                    </dd>
+                </dl>
+            </div>
+        </form>
+    </div>
+    <!-- 更新退货信息-->
+    <div id="layer_9" class="none">
+        <form action="" name="" id="layer_9_form">
+            <div class="logistics">
+                <dl><dt>物流商：</dt>
+                    <dd>
+                        <input type="text" id="wls" class="input fL w240" required placeholder="请填写物流商信息" />
+                    </dd>
+                </dl>
+                <dl><dt>跟踪单号：</dt>
+                    <dd>
+                        <input type="text" id="gzdh" class="input fL w240" required placeholder="请填写跟踪单号" />
+                    </dd>
+                </dl>
+            </div>
+        </form>
+    </div>
+
+    <!-- 平台仲裁 填写退货信息-->
+    <div id="layer_11" class="none">
+        <form action="" name="" id="layer_11_form">
+            <div class="address">
+                <dl><dt>收件人：</dt>
+                    <dd>
+                        <input type="text" class="input fL w240" id="name" />
+                    </dd>
+                </dl>
+                <dl><dt>国家/地区：</dt>
+                    <dd>
+                        <input type="text" class="input fL w240" id="country" />
+                        <!--<div class="select w240 fL">
+                            <input type="hidden" value="请选择" index-data=""><i>请选择</i><em class="icon-52"></em>
+                            <ul style="">
+                                <li index-data=""><span>请选择</span>
+                                </li>
+                                <li index-data="1"><span>请选择1</span>
+                                </li>
+                                <li index-data="2"><span>请选择2</span>
+                                </li>
+                                <li index-data="2"><span>请选择3</span>
+                                </li>
+                            </ul>
+                        </div>-->
+                    </dd>
+                </dl>
+                <dl><dt>洲/省：</dt>
+                    <dd>
+                        <input type="text" class="input fL w240" id="region" />
+                    </dd>
+                </dl>
+                <dl><dt>城市：</dt>
+                    <dd>
+                        <input type="text" class="input fL w240" id="city" />
+                    </dd>
+                </dl>
+                <dl><dt>街道及详细地址：</dt>
+                    <dd>
+                        <input type="text" class="input fL w365" id="street" />
+                    </dd>
+                </dl>
+                <dl><dt>电话：</dt>
+                    <dd>
+                        <input type="text" class="fL w240 input" id="phone" />
+                    </dd>
+                </dl>
+                <dl><dt>邮编：</dt>
+                    <dd>
+                        <input type="text" class="input fL w240" id="zipCode" />
+                    </dd>
+                </dl>
+            </div>
+        </form>
+    </div>
+    <script type="text/tcl" id="details_history_tmpl">
+
+        _[{each(i,l) source.list}]_
+
+        <div class="pB20">
+
+            <div class="recordBox borderNone">
+                <div class="recordTop">
+                    <dl class="recordText">
+                        <dt>$_[l.operator]_</dt>
+                        <dd>
+                            _[{if l.action == "01"}]_ 提出退款申请 _[{else l.action == "02"}]_ 回复卖家 _[{else l.action == "03"}]_ 提出解决方案 _[{else l.action == "04"}]_ 修改解决方案 _[{else l.action == "05"}]_ 驳回卖家请求 _[{else l.action == "06"}]_ 平台仲裁 _[{else l.action == "07"}]_ 填写退货信息 _[{else l.action == "08"}]_ 更新退货信息 _[{else l.action == "09"}]_ 关闭申请 _[{else l.action == "10"}]_ 操作退款 _[{else l.action == "11"}]_ 联系买家 _[{else l.action == "12"}]_ 同意申请 _[{else l.action == "13"}]_ 拒绝申请 _[{else l.action == "14"}]_ 确认收货 _[{else l.action == "15"}]_ 未收到货 _[{else l.action == "16"}]_ 直接退款 _[{/if}]_
+                        </dd>
+                    </dl>
+                    <span class="timeShow">$_[l.createTime]_</span>
+                </div>
+
+                _[{if l.action == "01"}]_ _[{if l.message}]_
+                <p class="recordbottom">退换货理由：$_[l.message]_</p>_[{/if}]_
+                <p class="recordbottom">
+                    _[{if l.returnType == "1"}]_ 建议处理方案: 退货退款-买家承担运费 _[{else l.returnType == "2"}]_ 建议处理方案: 退货退款-卖家承担运费 _[{else l.returnType == "3"}]_ 建议处理方案: 全额退款 _[{else l.returnType == "4"}]_ 建议处理方案: 部分退款 _[{else l.returnType == "5"}]_ 建议处理方案: 双方继续沟通 _[{/if}]_
+                </p>
+                <p class="recordbottom">
+                    本次退款金额:$_[l.currencySymbol]_$_[parseInt(Number(l.refundMoney)*100 + Number(l.freightCompensation)*100 + Number(l.freight)*100)/100]_
+                </p>
+                <p class="recordbottom">
+                    留言：$_[l.content]_
+                </p>
+                _[{else l.action == "02"}]_
+                <p class="recordbottom">
+                    留言：$_[l.content]_
+                </p>
+                _[{else l.action == "03"}]_ 03 _[{else l.action == "04"}]_ 04 _[{else l.action == "05"}]_ $_[l.content]_ _[{else l.action == "06"}]_ 06 _[{else l.action == "07"}]_
+                <p class="recordbottom">物流服务商：$_[l.shipCode]_</p>
+                <p class="recordbottom">跟踪号：$_[l.shipService]_</p>
+                _[{else l.action == "08"}]_
+                <p class="recordbottom">物流服务商：$_[l.shipCode]_</p>
+                <p class="recordbottom">跟踪号：$_[l.shipService]_</p>
+                _[{else l.action == "09"}]_ 09 _[{else l.action == "10"}]_ 10 _[{else l.action == "11"}]_
+                <p class="recordbottom">
+                    留言：$_[l.content]_
+                </p>
+                _[{else l.action == "12"}]_
+                <p class="recordbottom">
+                    $_[l.text]_
+                </p>
+                _[{else l.action == "13"}]_
+                <p class="recordbottom">
+                    拒绝理由:$_[l.message]_
+                </p>
+                <p class="recordbottom">
+                    留言：$_[l.content]_
+                </p>
+                _[{else l.action == "14"}]_
+                <p class="recordbottom">
+                    最终退款金额：$_[l.currencySymbol]_$_[parseInt(Number(l.refundMoney)*100 + Number(l.freightCompensation)*100 + Number(l.freight)*100)/100]_
+                </p>
+                _[{else l.action == "15"}]_
+                <p class="recordbottom">
+                    未收到货
+                </p>
+                _[{else l.action == "16"}]_ 最终退款金额：$_[l.currencySymbol]_$_[parseInt(Number(l.refundMoney)*100 + Number(l.freightCompensation)*100 + Number(l.freight)*100)/100]_ &nbsp;&nbsp;&nbsp;&nbsp;留言：$_[l.content]_ _[{/if}]_
+                _[{if l.fileStatus != "0"&&l.fileStatus != null}]_
+                    
+                <p class="addImg" data-dis="history">
+                    <img src="../../images/img_01.jpg" class="imgBorder fL" id="$_[l.recordID]_" width="48" height="48" />
+                </p>
+                _[{/if}]_
+            </div>
+
+        </div>
+        _[{/each}]_
+
+    </script>
+
+    <script type="text/tcl" id="details_tmpl">
+
+        <div class="smallTable">
+            <table class="" border="0" cellspacing="0">
+                <tbody orderid="$_[source.order.xbnOrderId]_">
+                    <tr class="">
+                        <td colspan="2" class="orderMessage">
+                            <span>小笨鸟订单号：<em >$_[source.order.xbnOrderId]_</em></span>
+                            <span>
+                            _[{if source.order.orderPlatform == 1}]_ 
+                                ebay
+                                _[{else source.order.orderPlatform == 2}]_
+                                amazon
+                                _[{else source.order.orderPlatform == 3}]_
+                                newegg
+                            _[{/if}]_
+                            订单号：$_[source.order.platformOrderId]_</span>
+                            <span>销售站点：$_[source.order.site]_</span>
+                            <span>订单金额：$_[source.order.currencySymbol]_ $_[source.order.amount]_（含运费$_[source.order.currencySymbol]_$_[source.order.totalFreight]_）</span>
+                            <span>已退金额：<em class="red">$_[source.order.currencySymbol]_$_[source.order.refundMoney]_</em></span>
+                        </td>
+                    </tr>
+                </tbody>
+                <tbody>
+
+                    _[{each(i,l) source.order.items}]_
+                    <tr class="">
+                        <td data-dis="order">
+                            <img src="images/defineImg.png" id="$_[l.xbnItemId]_" class="imgBorder" width="48" height="48">
+                        </td>
+                        <td>
+                            <a href="javascript:;" class="blue">$_[l.title]_</a>
+                            <p class="caption">SKU：$_[l.sku]_</p>
+                        </td>
+                    </tr>
+                    _[{/each}]_
+                </tbody>
+            </table>
+        </div>
+    </script>
+</div>

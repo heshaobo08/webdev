@@ -1,0 +1,531 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0 user-scalable=no" />
+    <title></title>
+    <script src="../Scripts/eCharts/echarts.min.js"></script>
+    <script src="../Scripts/jquery-1.8.3.min.js"></script>
+    <script src="../Scripts/hy.mobile/zepto.min.1.0.js"></script>
+    <script src="../Scripts/hy.mobile/hy.mobile.1.0.js"></script>
+    <script src="stock-DJI.js"></script>
+    
+    <link href="css/commen.css" rel="stylesheet" />
+</head>
+<body>
+    <!--头部-->
+    <div class="header bg_w">
+        <div class="hearder_top">
+            <div class="autobox po_re zin100" id="header">
+                <div class="logo-small">
+                    <a href="/">
+                        <img src="images/logo_small.png" />
+                    </a>
+                </div>
+                <div class="right orange unlogin" id="login">
+                    <div class="orange">
+                        <a class="orange" href="javascript:;">注册</a>
+                        <a class="orange" href="javascript:;">登录</a>
+                    </div>
+                </div>
+                <div class="nav fz_12">
+                    <ul>
+                        <li>
+                            <a href="/" class="">首页</a>
+                        </li>
+                        <li>
+                            <a class="active">交易中心</a>
+                        </li>
+                        <li>
+                            <a>财务中心</a>
+                        </li>
+                        <li>
+                            <a>安全中心</a>
+                        </li>
+                        <li>
+                            <a>帮助中心</a>
+                        </li>
+                        <li>
+                            <a>BtcTrade</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="autobox">
+            <div class="all_coin_price">
+                <div class="all_coin_show">
+                    <a href="">
+                        <i class="price_i_lkc"></i>
+                        <span>幸运币</span>
+                    </a>
+                </div>
+            </div>
+            <dl class="all_coin_info">
+                <dt>0.213</dt>
+                <dd><p class="orange">0.234</p>最高价</dd>
+                <dd><p class="green">0.19</p>最低价</dd>
+                <dd><p>0.212</p>买一价</dd>
+                <dd><p>0.213</p>卖一价</dd>
+                <dd class="w150"><p>3547.49万</p>成交量</dd>
+            </dl>
+
+        </div>
+    </div>
+    <div class="list-tab-box" style="padding-top:15px;">
+        <ul class="list-tab">
+            <li class="on" style="margin:0;"><i class="arrow-tab"></i><a href="/coin/lkc/">交易幸运币</a></li>
+            <li><a><i class="arrow-tab"></i>幸运币行情</a></li>
+            <li><a ><i class="arrow-tab"></i>了解幸运币</a></li>
+            <li><a><i class="arrow-tab"></i>评价幸运币</a></li>
+            <li><a><i class="arrow-tab"></i>幸运币资讯</a></li>
+        </ul>
+    </div>
+    <!--k线图-->
+    <div id="main" class="main"></div>
+    <!--买入-->
+    <div class="autobox mt20 clear" style="padding-top: 20px;margin-bottom:20px;">
+        <div class="fast_tr clear">
+            <form class="ft_box" id="form-buy">
+                <dl>
+                    <dt class="orange">买入LKC</dt>
+                    <dd style="overflow: inherit;">
+                        <div class="price-warr">价格与市场价偏差过大，请慎重填写！</div>
+                        <input id="buy-price" name="price" placeholder="买入价格 CNY／LKC" onblur="xian(1)" type="text">
+                        <font>最佳买价&nbsp;<b class="orange do" id="buy-nice">0.219</b></font>
+                    </dd>
+                    <dd>
+                        <input name="number" placeholder="买入数量 LKC" type="text">
+                        <font>最大可买 <b id="buy-max" class="orange">-</b></font>
+                    </dd>
+                    <dd>
+                        <p>买入比例：</p>
+                        <div class="slider_wrap">
+                            <div id="ratio_num_buy" class="ratio">0%</div>
+                            <div class="sliderbox">
+                                <div class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all">
+                                    <div class="ui-slider-range ui-widget-header ui-slider-range-min"></div>
+                                    <a class="ui-slider-handle ui-state-default ui-corner-all" style="left: 0%;"></a>
+                                    <div class="ui-slider-range ui-widget-header ui-corner-all ui-slider-range-min" style="width: 0%;"></div><div class="ui-slider-range ui-widget-header ui-corner-all ui-slider-range-min" style="width: 0%;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </dd>
+                    <dd>
+                        <p>交易额：</p>
+                        <span class="col_333" id="buy-total">0</span> CNY
+                    </dd>
+                    <dd>
+                        <p>手续费：</p> 0.1%
+                    </dd>
+                    <dd class="pwdtrade">
+                        <input id="buy-pwtrade" name="pwtrade" placeholder="请输入交易密码" type="password">
+                        <span onclick="AJAX.layertpwd()" class="settings"></span>
+                    </dd>
+                    <dd class="tradeadd-ga">
+                        <input placeholder="双重验证" name="ga">
+                    </dd>
+                </dl>
+                <div>
+                    <input id="type-buy" name="type" value="buy" type="hidden">
+                    <div class="trader_btn">
+                        <div class="tan_btn" id="tm-buy"></div>
+                        <input value="买入" onclick="AJAX.tradeadd('buy')" type="button">
+                    </div>
+                </div>
+            </form>
+            <form class="ft_box nobr">
+                <dl>
+                    <dt class="green">卖出LKC</dt>
+                    <dd style="overflow: inherit;">
+                        <div class="price-warr">价格与市场价偏差过大，请慎重填写！</div><input name="price" placeholder="卖出价格 CNY／LKC" onblur="xian(2)" type="text">
+                        <font>最佳卖价&nbsp;<b class="orange do">0.216</b></font>
+                    </dd>
+                    <dd>
+                        <input name="number" placeholder="卖出数量 LKC" type="text">
+                        <font>最大可卖 <b id="sell-max" class="orange">-</b></font>
+                    </dd>
+                    <dd>
+                        <p>卖出比例：</p>
+                        <div class="slider_wrap">
+                            <div class="ratio">0%</div>
+                            <div class="sliderbox">
+                                <div id="slider_sell" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all">
+                                    <div class="ui-slider-range ui-widget-header ui-slider-range-min"></div>
+                                    <a data_slide="sell" class="ui-slider-handle ui-state-default ui-corner-all" href="#" style="left: 0%;"></a>
+                                    <div class="ui-slider-range ui-widget-header ui-corner-all ui-slider-range-min" style="width: 0%;"></div><div class="ui-slider-range ui-widget-header ui-corner-all ui-slider-range-min" style="width: 0%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </dd>
+                    <dd>
+                        <p>交易额：</p>
+                        <span class="col_333">0</span> CNY
+                    </dd>
+                    <dd>
+                        <p>手续费：</p> 0.1%
+                    </dd>
+                    <dd class="pwdtrade">
+                        <input name="pwtrade" placeholder="请输入交易密码" type="password">
+                        <span class="settings"></span>
+                    </dd>
+                    <dd class="tradeadd-ga">
+                        <input placeholder="双重验证" name="ga">
+                    </dd>
+                </dl>
+                <div>
+                    <div class="trader_btn">
+                        <div class="tan_btn"></div>
+                        <input class="bg_green" value="卖出" type="button">
+                    </div>
+                </div>
+            </form>
+        </div>
+     </div>
+        <!--底部开始-->
+        <div class="footer">
+            <div class="autobox pt23 clear">
+                <div class="footer_logo">
+                    <a href="/">
+                        <img src="images/footer_logo.png" />
+                    </a>
+                </div>
+                <div class="right">
+                    <dl class="w171">
+                        <dt>关于我们</dt>
+                        <dd><a href="/about/us.html">公司简介</a></dd>
+
+                        <dd><a href="/about/contact.html">联系我们</a></dd>
+                        <dd><a href="/about/fee.html">费用说明</a></dd>
+                        <!--dd>费用-说明</dd-->
+                        <dd><a href="/about/us.html">更多</a></dd>
+                    </dl>
+                    <dl class="w166">
+                        <dt>新手帮助</dt>
+
+                        <dd><a href="/help/zhuce.html">注册指南</a></dd>
+                        <dd><a href="/help/jiaoyi.html">交易指南</a></dd>
+                        <dd><a href="/help/chongzhi.html">充值指南</a></dd>
+                        <dd><a href="/help/jubi.html">更多</a></dd>
+                    </dl>
+                    <dl class="w192">
+                        <dt>下载中心</dt>
+                        <dd><a href="/xz/qianbao.html">虚拟币钱包下载</a></dd>
+                        <dd><a href="/xz/liulanqi.html">浏览器下载</a></dd>
+                        <dd><a href="/xz/newcoinapply.html">新币上线申请</a></dd>
+                        <dd><a href="/xz/qianbao.html">更多</a></dd>
+                    </dl>
+                    <dl>
+                        <dt>市场合作</dt>
+                        <dd>QQ：2820305090</dd>
+                        <dd>邮箱：market@jubi.com</dd>
+                    </dl>
+                </div>
+                <div style="clear: both"></div>
+                <p class="footer-fxts" style="font-size: 12px; margin-top: 20px; color: #cc0000;">风险提示：数字货币可能存在矿工预挖、庄家操控、团队解散、技术缺陷等问题，其价格波动较大，因此我们强烈建议您在自身能承受的风险范围内参与数字货币交易。</p>
+            </div>
+        </div>
+        <div class="footer_bottom">
+            <div class="autobox">
+                <span style="display: inline-block;color:#a6a9ab;">CopyRight© 2013-2017聚币网All Rights Reserved. Powered by 聚币科技有限公司 | 工商注册号：91110108MA003JR31P &nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.miitbeian.gov.cn/publish/query/indexFirst.action" target="_blank">京ICP备14009321号</a>&nbsp;&nbsp;|&nbsp;&nbsp;<img style="height: 14px;margin-right: 6px;position: relative;top: 2px;" src="images/beian.png"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802023957" target="_blank">京公网安备11010802023957号</a><br><a href="/">jubi.com</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a target="_blank" href="/about/join.html">加入我们</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a target="_blank" href="/help/api.html">API</a></span> <span style="display: inline-block; color:#a6a9ab"></span><a style="float:right;margin-top:5px;" id="___szfw_logo___" href="https://credit.szfw.org/CX20151225013017170181.html" target="_blank"></a>
+                <script type="text/javascript">(function () { document.getElementById("___szfw_logo___").oncontextmenu = function () { return false; } })();</script>
+            </div>
+            <!-- 原安全验证位置 -->
+        </div>
+</body>
+</html>
+<script>
+    function splitData(rawData) {
+        var categoryData = [];
+        var values = [];
+        var volumes = [];
+        for (var i = 0; i < rawData.length; i++) {
+            categoryData.push(rawData[i].splice(0, 1)[0]);
+            values.push(rawData[i]);
+            volumes.push([i, rawData[i][4], rawData[i][0] > rawData[i][1] ? 1 : -1]);
+        }
+
+        return {
+            categoryData: categoryData,
+            values: values,
+            volumes: volumes
+        };
+    }
+
+    function calculateMA(dayCount, data) {
+        var result = [];
+        for (var i = 0, len = data.values.length; i < len; i++) {
+            if (i < dayCount) {
+                result.push('-');
+                continue;
+            }
+            var sum = 0;
+            for (var j = 0; j < dayCount; j++) {
+                sum += data.values[i - j][1];
+            }
+            result.push(+(sum / dayCount).toFixed(3));
+        }
+        return result;
+    }
+
+    $(function () {
+        var myChart = echarts.init(document.getElementById("main"));
+        var data = splitData(charts_data);
+
+        myChart.setOption(option = {
+            backgroundColor: '#eee',
+            animation: false,
+            legend: {
+                bottom: 10,
+                left: 'center',
+                data: ['Dow-Jones index', 'MA5', 'MA10', 'MA20', 'MA30']
+            },
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'cross'
+                },
+                backgroundColor: 'rgba(245, 245, 245, 0.8)',
+                borderWidth: 1,
+                borderColor: '#ccc',
+                padding: 10,
+                textStyle: {
+                    color: '#000'
+                },
+                position: function (pos, params, el, elRect, size) {
+                    var obj = { top: 10 };
+                    obj[['left', 'right'][+(pos[0] < size.viewSize[0] / 2)]] = 30;
+                    return obj;
+                },
+                extraCssText: 'width: 170px'
+            },
+            axisPointer: {
+                link: { xAxisIndex: 'all' },
+                label: {
+                    backgroundColor: '#777'
+                }
+            },
+            toolbox: {
+                feature: {
+                    dataZoom: {
+                        yAxisIndex: false
+                    },
+                    brush: {
+                        type: ['lineX', 'clear']
+                    }
+                }
+            },
+            brush: {
+                xAxisIndex: 'all',
+                brushLink: 'all',
+                outOfBrush: {
+                    colorAlpha: 0.1
+                }
+            },
+            visualMap: {
+                seriesIndex: 5,
+                dimension: 2,
+                pieces: [{
+                    value: 1,
+                    color: '#2f4554'
+                }, {
+                    value: -1,
+                    color: '#c23531'
+                }]
+            },
+            grid: [
+                {
+                    left: '10%',
+                    right: '8%',
+                    height: '50%'
+                },
+                {
+                    left: '10%',
+                    right: '8%',
+                    top: '63%',
+                    height: '16%'
+                }
+            ],
+            xAxis: [
+                {
+                    type: 'category',
+                    data: data.categoryData,
+                    scale: true,
+                    boundaryGap: false,
+                    axisLine: { onZero: false },
+                    splitLine: { show: false },
+                    splitNumber: 20,
+                    min: 'dataMin',
+                    max: 'dataMax',
+                    axisPointer: {
+                        z: 100
+                    }
+                },
+                {
+                    type: 'category',
+                    gridIndex: 1,
+                    data: data.categoryData,
+                    scale: true,
+                    boundaryGap: false,
+                    axisLine: { onZero: false },
+                    axisTick: { show: false },
+                    splitLine: { show: false },
+                    axisLabel: { show: false },
+                    splitNumber: 20,
+                    min: 'dataMin',
+                    max: 'dataMax',
+                    axisPointer: {
+                        label: {
+                            formatter: function (params) {
+                                var seriesValue = (params.seriesData[0] || {}).value;
+                                return params.value
+                                + (seriesValue != null
+                                    ? '\n' + echarts.format.addCommas(seriesValue)
+                                    : ''
+                                );
+                            }
+                        }
+                    }
+                }
+            ],
+            yAxis: [
+                {
+                    scale: true,
+                    splitArea: {
+                        show: true
+                    }
+                },
+                {
+                    scale: true,
+                    gridIndex: 1,
+                    splitNumber: 2,
+                    axisLabel: { show: false },
+                    axisLine: { show: false },
+                    axisTick: { show: false },
+                    splitLine: { show: false }
+                }
+            ],
+            dataZoom: [
+                {
+                    type: 'inside',
+                    xAxisIndex: [0, 1],
+                    start: 98,
+                    end: 100
+                },
+                {
+                    show: true,
+                    xAxisIndex: [0, 1],
+                    type: 'slider',
+                    top: '85%',
+                    start: 98,
+                    end: 100
+                }
+            ],
+            series: [
+                {
+                    name: 'Dow-Jones index',
+                    type: 'candlestick',
+                    data: data.values,
+                    itemStyle: {
+                        normal: {
+                            borderColor: null,
+                            borderColor0: null
+                        }
+                    },
+                    tooltip: {
+                        formatter: function (param) {
+                            param = param[0];
+                            return [
+                                'Date: ' + param.name + '<hr size=1 style="margin: 3px 0">',
+                                'Open: ' + param.data[0] + '<br/>',
+                                'Close: ' + param.data[1] + '<br/>',
+                                'Lowest: ' + param.data[2] + '<br/>',
+                                'Highest: ' + param.data[3] + '<br/>'
+                            ].join('');
+                        }
+                    }
+                },
+                {
+                    name: 'MA5',
+                    type: 'line',
+                    data: calculateMA(5, data),
+                    smooth: true,
+                    lineStyle: {
+                        normal: { opacity: 0.5 }
+                    }
+                },
+                {
+                    name: 'MA10',
+                    type: 'line',
+                    data: calculateMA(10, data),
+                    smooth: true,
+                    lineStyle: {
+                        normal: { opacity: 0.5 }
+                    }
+                },
+                {
+                    name: 'MA20',
+                    type: 'line',
+                    data: calculateMA(20, data),
+                    smooth: true,
+                    lineStyle: {
+                        normal: { opacity: 0.5 }
+                    }
+                },
+                {
+                    name: 'MA30',
+                    type: 'line',
+                    data: calculateMA(30, data),
+                    smooth: true,
+                    lineStyle: {
+                        normal: { opacity: 0.5 }
+                    }
+                },
+                {
+                    name: 'Volume',
+                    type: 'bar',
+                    xAxisIndex: 1,
+                    yAxisIndex: 1,
+                    data: data.volumes
+                }
+            ]
+        }, true);
+
+        // myChart.on('brushSelected', renderBrushed);
+
+        // function renderBrushed(params) {
+        //     var sum = 0;
+        //     var min = Infinity;
+        //     var max = -Infinity;
+        //     var countBySeries = [];
+        //     var brushComponent = params.brushComponents[0];
+
+        //     var rawIndices = brushComponent.series[0].rawIndices;
+        //     for (var i = 0; i < rawIndices.length; i++) {
+        //         var val = data.values[rawIndices[i]][1];
+        //         sum += val;
+        //         min = Math.min(val, min);
+        //         max = Math.max(val, max);
+        //     }
+
+        //     panel.innerHTML = [
+        //         '<h3>STATISTICS:</h3>',
+        //         'SUM of open: ' + (sum / rawIndices.length).toFixed(4) + '<br>',
+        //         'MIN of open: ' + min.toFixed(4) + '<br>',
+        //         'MAX of open: ' + max.toFixed(4) + '<br>'
+        //     ].join(' ');
+        // }
+
+        myChart.dispatchAction({
+            type: 'brush',
+            areas: [
+                {
+                    brushType: 'lineX',
+                    coordRange: ['2016-06-02', '2016-06-20'],
+                    xAxisIndex: 0
+                }
+            ]
+        });
+
+    });
+</script>

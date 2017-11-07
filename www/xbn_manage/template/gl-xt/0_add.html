@@ -1,0 +1,64 @@
+<!-- conts begin -->
+<div class="details">
+    <h3 class="titleText">基本信息</h3>
+    <div class="initBox">
+    <form id="serviceForm">
+        <dl class="editDl">
+            <dt><font>*</font>角色名称：</dt>
+            <dd><input type="text" name="roleName" class="input w240" required data-max="100"></dd>
+        </dl>
+        <dl class="changeDl">
+            <dt><font></font>备注信息：</dt>
+            <dd><textarea rows="3" cols="30" class="textedit" name="remark" data-max="2000"></textarea></dd>
+        </dl>
+    </form>    
+    </div>
+</div>
+<div class="details">
+    <h3 class="titleText">权限信息</h3>
+    <div class="menuList">
+        {{each(i,tree) source.data}}
+        <dl class='topTree'>
+            <dt>{{if tree.childs.length}}<em class='icon-24 js-showMore'></em>{{else}}<em class="icon-57"></em>{{/if}}<label for="treeId_${tree.id}"><input type="checkbox" id='treeId_${tree.id}'  value='${tree.id}'>${tree.menuName}</label></dt>
+            {{if tree.childs.length}}
+            <dd class="none">
+                <label style="margin-left: 24px;"><input type="checkbox" name="checkAll"/>全选</label>
+                {{each(m,stree) tree.childs}}
+                    <dl>
+                        <dt>{{if stree.childs.length}}<em class="icon-24 js-showMore"></em>{{else}}<em class="icon-57"></em>{{/if}}<label for="treeId_${stree.id}"><input type="checkbox" id='treeId_${stree.id}' value='${stree.id}'>${stree.menuName}</label></dt>
+                        {{if stree.childs.length}}
+                        <dd  class="none">
+                            <label style="margin-left: 24px;"><input type="checkbox" name="checkAll"/>全选</label>
+                            {{each(m,ntree) stree.childs}}
+                                <dl>
+                                    <dt>{{if ntree.childs.length}}<em class="icon-24 js-showMore"></em>{{else}}<em class="icon-57"></em>{{/if}}<label for="treeId_${ntree.id}"><input type="checkbox" id="treeId_${ntree.id}" value="${ntree.id}"/>${ntree.menuName}</label></dt>
+                                    {{if ntree.childs.length}}
+                                    <dd class="none">
+                                        <label><input type="checkbox" name="checkAll"/>全选</label>
+                                        {{each(m,stree) ntree.childs}}
+                                            <dl>
+                                                <dt><label for="treeId_${stree.id}"><input type="checkbox" id='treeId_${stree.id}' value='${stree.id}'/>${stree.menuName}</label></dt>
+                                            </dl>
+                                        {{/each}}
+                                    </dd>
+                                    {{/if}}
+                                </dl>
+                            {{/each}}                            
+                        </dd>
+                        {{/if}}
+                    </dl>
+                {{/each}}
+            </dd>
+            {{/if}}
+        </dl>
+        {{/each}}
+    </div>
+</div>
+<!-- conts end -->
+<!--中间内容区域 end-->
+<div class="btnMain">
+    <a href="javascript:;" class="button js-submit">确认</a>
+    <a href="javascript:history.go(-1);" class="buttonText pad20" sdata-href="?m=xhr_id_1_2" data-title="系统管理-管理员角色">返回</a>
+</div>
+
+					

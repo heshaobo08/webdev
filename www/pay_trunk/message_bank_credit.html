@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0 user-scalable=no" />
+<title>填写银行卡信息</title>
+<link href="css/base.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<script src="js/jquery.js"></script>
+<script>
+$(function() {
+    /*阻止默认事件*/
+    var stopDefault = function(e) {
+        e.preventDefault();
+    }
+    $(".js_check").on("change",function() {
+        if($(this).prop("checked")) {
+            $("#cover").show();
+            $(".agreement").slideToggle(1000);
+            $(window).on("touchmove",stopDefault);
+        }
+        
+    })
+    $(".js_cancel").on("click",function() {
+        $("#cover").hide();
+        $(".agreement").slideToggle(1000);
+        $(window).off("touchmove",stopDefault);
+    })
+    
+    $(".js_phone_tip").on("click",function() {
+         $("#cover").show();
+        $(".phone_tip").show();
+        $(window).on("touchmove",stopDefault);
+    })
+    
+     $(".phone_tip h6").on("click",function() {
+        $("#cover").hide();
+        $(".phone_tip").hide();
+        $(window).off("touchmove",stopDefault);
+    })
+     
+     
+    $(".js_time_tip").on("click",function() {
+         $("#cover").show();
+        $(".time_tip").show();
+        $(window).on("touchmove",stopDefault);
+    })
+    
+     $(".time_tip h6").on("click",function() {
+        $("#cover").hide();
+        $(".time_tip").hide();
+        $(window).off("touchmove",stopDefault);
+    })
+     
+     $(".js_cvv_tip").on("click",function() {
+         $("#cover").show();
+        $(".cvv_tip").show();
+        $(window).on("touchmove",stopDefault);
+    })
+    
+     $(".cvv_tip h6").on("click",function() {
+        $("#cover").hide();
+        $(".cvv_tip").hide();
+        $(window).off("touchmove",stopDefault);
+    })
+     
+     
+    $(".bank_next").on("click",function() {
+        //验证有效期
+        var time_card = $("#time_card").val().trim();
+        if(!time_card){
+             appearDiv("请输入信用卡的有效期！");
+			return false;
+        }
+        
+        //cvv码
+        var cvv_card = $("#cvv_card").val().trim();
+         if(!cvv_card){
+             appearDiv("请输入信用卡背面三位数字检码！");
+			return false;
+        }
+        
+        //手机号验证	
+        var reg = /(^13\d{9}$)|(^14\d{9}$)|(^15\d{9}$)|(^16\d{9}$)|(^17\d{9}$)|(^18\d{9}$)|(^19\d{9}$)/g; 
+        var mobileP = $("#number_phone").val().trim();
+        if(!mobileP){
+            appearDiv("请输入手机号码！");
+			return false;
+        }
+        if(!reg.test(mobileP)){
+            appearDiv("手机号码输入错误！");
+			return false;
+        }
+        if(!$(".js_check").prop("checked")){
+            appearDiv("请勾选同意用户协议！");
+			return false;
+        }
+        
+    })
+    
+    //弹层函数
+    function appearDiv(str) {
+        $("#cover").show();
+        $(".phone_error").fadeIn(400).find('h4').text(str);
+        $(window).on("touchmove",stopDefault);
+    }
+    
+    $(".phone_error p").on("click",function() {
+        $("#cover").hide();
+        $(".phone_error").hide();
+        $(window).off("touchmove",stopDefault);
+    })
+    
+})
+</script>
+</head>
+<body>
+<!--弹窗-->
+<div id="cover"></div>
+<div class="phone_error">
+    <h4>手机号码与银行预留不一致，请确认并重新输入。</h4>
+    <p>确定</p>
+</div>
+<div class="phone_tip">
+    <h4>手机号码说明</h4>
+    <div class="bank_ms">
+        <h3>银行卡申请人信息</h3>
+        <p>****</p>
+        <p>手机号码 <em>xxxxxxx</em></p>
+        <p>****</p>
+    </div>
+    <p>银行预设的手机号码是你在办理该银行卡时所填写的联系手机号码。</p>
+    <p>忘记、没有或已停用手机号码的用户可致电相应行服务热线咨询。</p>
+    <h6>知道了</h6>
+</div>
+<div class="time_tip">
+    <h4>有效期说明</h4>
+    <p><img src="images/bank_time.png"></p>
+    <p>有效期是打印在信用卡正面卡号下方，标准格式为月份在前，年份在后的一串数字</p>
+    <h6>知道了</h6>
+</div>
+<div class="cvv_tip">
+    <h4>CVV码说明</h4>
+    <p><img src="images/bank_cvv.png"></p>
+    <p>CVV码是信用卡背面签名栏上紧跟卡号末四位号码的三位数字，用着安全认证</p>
+    <h6>知道了</h6>
+</div>
+<div class="bank_explained">
+    <h4>持卡人说明</h4>
+    <p>为了你的账户资金安全，只能绑定持卡人的银行卡。</p>
+    <p>获取更多帮助，请致电电讯客服</p>
+    <p>＋86-010-58103559。</p>
+    <h6>知道了</h6>
+</div>
+<div class="agreement">
+    <p>汇付宝电子商务服务协议</p>
+    <p>汇付宝付款商务服务协议</p>
+    <p class="js_cancel">取消</p>
+</div>
+<div id="wapper">
+    <!--头部开始-->
+    <div id="header">
+        <a href="javascript:history.go(-1)" class="back">取消</a>
+        <p>填写银行卡信息</p>
+    </div>
+    <!--头部结束-->
+    <!--内容开始-->
+    <div id=content>
+        <div class="bank_card">
+            <h6>请添加持卡人本人的银行卡</h6>
+            <h5></h5>
+            <p>持卡人<span>战三</span></p>
+            <h5></h5>
+            <p>卡号码<span>5454 6565 5566 5898</span></p>
+            <h5></h5>
+            <p class="add_bank_name"><img src="images/bank_js.png">建设银行<span class="type_bank">信用卡</span></p>
+            <h5></h5>
+            <p><label for="time_card">有效期</label><input type="tel" id="time_card" placeholder="月/年(如06/16输入0616)"><img src="images/name-tip.png" class="name_tip js_time_tip"></p>
+            <h5></h5>
+            <p><label for="cvv_card">CVV码</label><input type="tel" id="cvv_card" placeholder="请输入信用卡背面三位数字检码"><img src="images/name-tip.png" class="name_tip js_cvv_tip"></p>
+            <h5></h5>
+             <p><label for="number_phone">手机号码</label><input type="tel" id="number_phone" placeholder="请输入银行预留手机号码"><img src="images/name-tip.png" class="name_tip js_phone_tip"></p>
+            <h5></h5>
+            <p><input type="checkbox" class="js_check"><b>同意<em>《用户协议》</em></b></p>
+            <h3 class="bank_next">下一步</h3>
+        </div>
+    </div>
+    <!--内容结束-->
+    <!--尾部开始-->
+    <div id=footer></div>
+    <!--尾部结束-->
+</div>
+</body>
+</html>

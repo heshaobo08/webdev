@@ -1,0 +1,144 @@
+<!-- conts begin -->
+<div class="">
+    <div class="details">
+        <div class="stateText">
+        <!--已删除-->
+        {{if source.status == "0"}}
+        	<p class="mB20">账户状态： <span>已删除</span></p>
+        {{/if}}
+        <!--已审核-->
+        {{if source.status == "2"}}
+        	<p class="mB20">账户状态： <span>已通过</span></p>
+        {{/if}}
+        <!--已驳回-->
+        {{if source.status == "3"}}
+        	<p class="mB20">账户状态： <span>已驳回</span></p>
+            <p class="reason">驳回原因：<span class="mL25">${source.rejectReason}</span></p>
+        {{/if}}
+            
+        </div>
+        <h3 class="titleText">基本信息</h3>
+        <div class="detailsConts">
+            <dl class="textDl">
+                <dt>账户类型：</dt>
+                <dd>{{if source.holderType=="0"}}个人{{else}}企业{{/if}}</dd>
+            </dl>
+            <dl class="textDl">
+                <dt>银行账户/卡号：</dt>
+                <dd>${source.cardNo}</dd>
+            </dl>
+            <dl class="textDl">
+                <dt>银行：  </dt>
+                <dd>{{if source.bankData[source.banks]}}${source.bankData[source.banks].name}{{/if}}</dd>
+            </dl>
+            <dl class="textDl">
+                <dt>开户行信息：</dt>
+                <dd>${source.bankName}</dd>
+            </dl>
+            {{if source.holderType == "0"}}
+                <dl class="textDl">
+                    <dt>持卡人：</dt>
+                    <dd>${source.name}</dd>
+                </dl>
+                <dl class="textDl">
+                    <dt>身份证号：</dt>
+                    <dd>${source.idNo}</dd>
+                </dl>
+                <dl class="textDl">
+                    <dt>手机号：</dt>
+                    <dd>${source.mobile}</dd>
+                </dl>
+            {{else}}
+                <dl class="textDl">
+                    <dt>公司名称：</dt>
+                    <dd>${source.companyName}</dd>
+                </dl>
+                <dl class="textDl">
+                    <dt>银行代码：</dt>
+                    <dd>${source.bankCode}</dd>
+                </dl>
+            {{/if}}
+            <dl class="textDl">
+                <dt>住址：</dt>
+                <dd>{{if source.address}}${source.address} , {{/if}}${source.livingAddress}</dd>
+            </dl>
+        </div>
+    </div>
+    <!--待审核-->
+    {{if source.status == "1"}}
+        <div class="details">
+            <h3 class="titleText">审核信息</h3>
+            <div class="editConts mB20">
+                <form id="financeForm">
+                    <dl class="editDl">
+                        <dt>审核意见：</dt>
+                        <dd>
+                            <span class="mR30">
+                                <input type="radio" class="mR10" name="status" value="2" checked="true"/>通过
+                            </span>
+                            <span class="mR30">
+                                <input type="radio" class="mR10" name="status" value="3" />驳回
+                            </span>
+                        </dd>
+                    </dl>
+                    <dl class="editDl rejectReason">
+                        <dt>驳回原因：</dt>
+                        <dd><input type="text" value="${source.rejectReason}" name="rejectReason" class="input w480 fL" data-max="200"></dd>
+                    </dl>
+                    <dl class="editDl">
+                        <dt>审核凭证：</dt>
+                        <dd>
+                            <a href="javascript:;" class="button rel">添加图片<input type="file" id="uploadImg" required/></a>
+                            <ul id="setPic" class="mT10 fix"></ul>
+                        </dd>
+                    </dl>
+                    <dl class="editDl">
+                        <dt>备注：</dt>
+                        <dd><input type="text" value="${source.remark}" name="remark" class="input w480 fL" required data-max="200"></dd>
+                    </dl>
+                </form>    
+            </div>
+        </div>
+        <div class="btnMain">
+            <a href="javascript:;" class="button js-submit">提交</a><a href="javascript:history.go(-1);" class="buttonText pad20"  sdata-href="?m=xhr_id_173_174" data-title="财务管理-银行账户管理">返回</a>
+        </div>
+    {{else}}
+    <!--已审核 || 已删除 || 已驳回-->
+    	<div class="details">
+            <h3 class="titleText">审核信息</h3>
+            <div class="editConts mB20">
+                <dl class="textImg">
+                    <dt>审核凭证：</dt>
+                    <dd>
+                        <ul id="upload" class="mT10 fix">
+                            {{each(i,img) source.fileData['1']}}
+                                <li><img src="${img.fileOriginalurl}"></li>
+                            {{/each}}
+                        </ul>
+                    </dd>
+                </dl>
+                <dl class="textDl">
+                    <dt>备注：</dt>
+                    <dd>
+                        ${source.remark}
+                    </dd>
+                </dl>
+                <dl class="textDl">
+                    <dt>审核人员：</dt>
+                    <dd>${source.reviewer}</dd>
+                </dl>
+                <dl class="textDl">
+                    <dt>审核时间：</dt>
+                    <dd>${source.reviewTime}</dd>
+                </dl>
+            </div>
+        </div>
+        
+    	<div class="btnMain">
+        	<a href="javascript:history.go(-1);" class="button" sdata-href="?m=xhr_id_173_174" data-title="财务管理-银行账户管理">返回</a>
+        </div>
+    {{/if}}
+
+    
+</div>
+<!-- conts end -->

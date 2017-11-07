@@ -1,0 +1,50 @@
+<div class="contsBox">
+    <div class="details">
+        {{if source.dataList.length}}
+        <div class="stateText">
+            <p class="mB20">${source.storeName || "美国-洛杉矶仓"}<span class="f14 mL30">更新时间：2015-03-24    11:22</span></p>
+            <p class="reason"><span>总容量：${source.TotalVolumeCount.toFixed(4)}  CBM</span><span class="mL50">已占容量：${source.ItemVolumeCount.toFixed(4)}  CBM</span><span class="mL50">剩余容量：${source.surplusCount.toFixed(4)}  CBM</span></p>
+        </div>
+        {{each(i,c) source.dataList2}}
+            <h3 class="titleText">${c[0].zone}区</h3>
+            {{each(j,m) c}}
+            <div class="smallTable">
+                <table class="" border="0" cellspacing="0">
+                    <tbody>
+                        <tr class="borderNone">
+                            <td class="">
+                                <div class="mT62">
+                                    <p class="col_545454 fb">${locationType} 型货位 <a href="javascript:;" class="blue">(${percentage}%)</a></p>
+                                    <div class="volume_speed w170 mT30">
+                                        <p class="volume_speed_cont" style="width:${percentage}%"></p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="volume_text">
+                                    <p>货位尺寸：${lenght}  X  ${width}  X  ${height}  M</p>
+                                    <p>单货位容量：${locationVolume.toFixed(4)}  CBM</p>
+                                    <p>货位数量：${locationCount}</p>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="volume_text">
+                                    <p>总容量：${totalVolume.toFixed(4)}  CBM</p>
+                                    <p>已占容量：${itemVolume.toFixed(4)}  CBM</p>
+                                    <p>剩余容量：${(totalVolume-itemVolume).toFixed(4)} CBM</p>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            {{/each}}
+        {{/each}}
+        {{else}}
+            <h3 class="titleText">${source.storeName} 暂无数据</h3>
+        {{/if}}
+    </div>
+    <div class="btnMain">
+        <a href="javascript:history.go(-1);" class="button">返回</a>
+    </div>
+</div>

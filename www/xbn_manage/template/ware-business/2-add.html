@@ -1,0 +1,125 @@
+<form id="addPlanForm">
+    <div class="contsBox">
+        <div class="details">
+            <h3 class="titleText">基本信息</h3>
+
+            <div class="newConts pL215">
+                <dl class="neweditDl">
+                    <dt><font>*</font>物流编码：</dt>
+                    <dd><input type="text" name="logisticsCode" class="input w240" required data-cnmax="20"/></dd>
+                </dl>
+                <dl class="neweditDl">
+                    <dt><font>*</font>处理地点：</dt>
+                    <dd id="selectSite">
+                        <div class="select w240 fL" id="disposalSite">
+                            <input index-data="" type="hidden" value="" name="disposalSite" required data-target="disposalSite"/>
+                            <i index-data="">请选择</i>
+                            <em class="icon-52"></em>
+                            <ul>
+                                <li index-data=""><span>请选择</span></li>
+                                {{each(i,c) getConstName("OwmsDisposalSiteEnum")}}
+                                <li index-data="${i}"><span>${c}</span></li>
+                                {{/each}}
+                            </ul>
+                        </div>
+                    </dd>
+                </dl>
+                <dl class="neweditDl">
+                    <dt><font>*</font>物流方式：</dt>
+                    <dd id="selectType">
+                        <div class="select w240 fL" id="logisticsType">
+                            <input index-data="" type="hidden" value="" name="logisticsType" required data-target="logisticsType"/>
+                            <i index-data="">请选择</i>
+                            <em class="icon-52"></em>
+                            <ul>
+                                <li index-data=""><span>请选择</span></li>
+                                {{each(i,c) getConstName("OwmsLogisticsServerTypeEnum")}}
+                                <li index-data="${i}"><span>${c}</span></li>
+                                {{/each}}
+                            </ul>
+                        </div>
+                    </dd>
+                </dl>
+                <dl class="neweditDl">
+                    <dt><font>*</font>目的仓库：</dt>
+                    <dd id="selectStore">
+                        <div class="select w240 fL" id="destinationStoreId">
+                            <input index-data="" type="hidden" value="" name="destinationStoreId" required data-target="destinationStoreId"/>
+                            <i index-data="">请选择</i>
+                            <em class="icon-52"></em>
+                            <ul>
+                                <li index-data=""><span>请选择</span></li>
+                                {{if source.length}}
+                                {{each(i,c) source}}
+                                <li index-data="${id}"><span>${storeName}</span></li>
+                                {{/each}}
+                                {{/if}}
+                            </ul>
+                        </div>
+                        <input type="hidden" name="destinationStoreCode" />
+                    </dd>
+                </dl>
+                <div class="infoCode">
+                    <dl class="neweditDl">
+                        <dt><font>*</font>目的仓编码：</dt>
+                        <dd>
+                            <span id="endCode" class="block lh32"></span>
+                        </dd>
+                    </dl>
+                    <dl class="neweditDl">
+                        <dt><font>*</font>目的国家：</dt>
+                        <dd>
+                            <span id="endCountry" class="block lh32"></span>
+                        </dd>
+                    </dl>
+                    <dl class="neweditDl">
+                        <dt><font>*</font>货币单位：</dt>
+                        <dd>
+                            <span id="endCurrency" class="block lh32"></span>
+                        </dd>
+                    </dl>
+                </div>
+                <dl class="neweditDl">
+                    <dt><font>*</font>截止下单时间：</dt>
+                    <dd>
+                        <div class="deadline">
+                            <span class="dataInput" id="sendTimeLimit"></span>
+                            <a class="icon-54 pickDate" href="javascript:;"></a>
+                        </div>
+                    </dd>
+                </dl>
+                <dl class="neweditDl">
+                    <dt><font>*</font>截止收货时间：</dt>
+                    <dd>
+                        <div class="deadline">
+                            <span class="dataInput" id="receiveTimeLimit"></span>
+                            <a class="icon-54 pickDate" href="javascript:;"></a>
+                        </div>
+                    </dd>
+                </dl>
+                <dl class="neweditDl">
+                    <dt><font>*</font>预计到货日期：</dt>
+                    <dd>
+                        <div class="deadline">
+                            <span class="dataInput" id="expectedArrivalDate"></span>
+                            <a class="icon-54 pickDate" href="javascript:;"></a>
+                        </div>
+                    </dd>
+                </dl>
+                <dl class="neweditDl">
+                    <dt><font>*</font>始发站：</dt>
+                    <dd><input type="text" class="input w240" pattern="[A-Z]+$" required data-cnmax="2" name="startStation"/></dd>
+                </dl>
+                <dl class="neweditDl">
+                    <dt><font>*</font>终点站：</dt>
+                    <dd><input type="text" class="input w240" pattern="[A-Z]+$" required data-cnmax="2" name="lastStation"/></dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+    <div class="btnMain">
+        <a href="javascript:;" class="button js-submit">保存</a>
+        <a href="javascript:history.go(-1);" onclick="document.title='海外仓业务管理-物流计划管理'" class="buttonText pad20" sdata-href="?m=xhr_id_20100000_20104000"
+           data-title="海外仓业务管理-物流计划管理">返回</a>
+    </div>
+</form>

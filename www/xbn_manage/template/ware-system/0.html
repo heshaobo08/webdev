@@ -1,0 +1,94 @@
+<div class="serch">
+    <!-- serch begin -->
+    <form id="searchForm">
+        <div class="serch_main">
+            <div class="serch_conts">
+                <dl>
+                    <dt>国家：</dt>
+                    <dd><input type="text" value="" class="defaultInput" name="country"/></dd>
+                </dl>
+                <dl>
+                    <dt>货币单位：</dt>
+                    <dd>
+                        <div class="select w190">
+                            <input type="hidden" value="请选择" name="currencyUnit" index-data=""/>
+                            <i>全部</i>
+                            <em class="icon-52"></em>
+                            <ul>
+                                <li index-data=""><span>请选择</span></li>
+                                {{each(i,unit) source.units}}
+                                <li index-data="${unit}"><span>${unit}</span></li>
+                                {{/each}}
+                            </ul>
+                        </div>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>&nbsp;</dt>
+                    <dd><a href="javascript:;" class="button js-search">Search</a></dd>
+                </dl>
+            </div>
+        </div>
+    </form>
+    <!-- serch end -->
+    <div class="addbutton">
+        {{if source.operateData.moduleData && source.operateData.actionData && source.operateData.operate['HWC20301001']}}
+        <a data-title="海外仓系统管理-国家设置-新增" data-href="?m=xhr_id_20300000_20301000_add" class="button" href="javascript:;">新增</a>
+        {{/if}}
+        {{if source.operateData.moduleData && source.operateData.actionData && source.operateData.operate['HWC20301002']}}
+        <a href="javascript:;" class="buttonText pad20 js-batchDelete">删除</a>
+        {{/if}}
+        <em class="mL50 none">您所搜索的，共有<i id='searchTotalCount'>${source.totalCount}</i>条内容符合。</em>
+    </div>
+</div>
+<!-- conts begin -->
+<div class="contsBox">
+    <div class="bigTable">
+        <table class="" border="0" cellspacing="0" r-box="all0">
+            <thead>
+            <tr>
+                <th width="30"><input type="checkbox" name="all0"/></th>
+                <th>国家</th>
+                <th>货币单位</th>
+                <th>报关名称过滤</th>
+                <th width="100">操作</th>
+            </tr>
+            </thead>
+            <tbody id="listCon"></tbody>
+        </table>
+    </div>
+    <div class="page" id="topPager"></div>
+</div>
+<script id='pageListTmpl' type='text/x-jquery-tmpl'>
+    <a href="javascript:;" class="firstPage fL" data-displace="first">首页</a>
+    <a href="javascript:;" class="prve fL icon-56" data-displace="prev"></a>
+    <ul class="pagenumber" id="pager"></ul>
+    <a href="javascript:;" class="next fL icon-55" data-displace="next"></a>
+    <a href="javascript:;" class="lastPage" data-displace="last">尾页</a>
+
+
+</script>
+<script id="listTmpl" type="text/x-jquery-tmpl">
+    _[{if list.length}]_
+    _[{each(i,c) list}]_
+    <tr>
+        <td><input type="checkbox" data-id="$_[c.id]_" name="accountId"/></td>
+        <td>$_[c.country]_</td>
+        <td>$_[c.currencyUnit]_</td>
+        <td>$_[c.forbiddenKeys]_</td>
+        <td>
+        _[{if operateData.moduleData && operateData.actionData && operateData.operate['HWC20301003']}]_
+             <a class="blue mR10" data-href="?m=xhr_id_20300000_20301000_edit&id=$_[c.id]_" data-title="海外仓系统管理-国家设置-修改">修改</a>
+             _[{/if}]_
+             _[{if operateData.moduleData && operateData.actionData && operateData.operate['HWC20301004']}]_
+             <a href="javascript:;" class="blue js-delete" data-id="$_[c.id]_">删除</a>
+             _[{/if}]_
+        </td>
+    </tr>
+    _[{/each}]_
+        _[{else}]_
+    <tr>
+        <td colspan="5">暂无数据</td>
+    </tr>
+    _[{/if}]_
+</script>

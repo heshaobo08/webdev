@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>汇付宝</title>
+<link href="css/base.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<script src="js/jquery.js"></script>
+<script src="js/customs_upload.js"></script>
+</head>
+<body>
+    <div id="cover"></div>
+    <div class="customs_pop_one">
+        <p class="customs_pop_hd">提示<em><img src="images/customs_del.png"></em></p>
+        <p class="customs_pop_box">
+            <img src="images/icon_tishi.png">
+            <span></span>
+        </p>
+        <p class="customs_pop_btn">确定</p>
+    </div>
+    <div class="customs_pop_two">
+        <p class="customs_pop_hd">上传<em><img src="images/customs_del.png"></em></p>
+        <div class="cus_pop_box">
+            <div class="cus_pop_box_l"><img src="images/icon_cuowu.png"></div>
+            <div class="cus_pop_box_r">
+                <h6>文件上传失败</h6>
+                <p>请检查文件是否符合规则重新上传</p>
+            </div>
+        </div>
+        <div class="clear"></div>
+        <p class="customs_pop_btn_two">确定</p>
+    </div>
+    <div id="ngp_warpper">
+        <!--头部开始-->
+        <div class="ngp_header">
+            <div class="ngp_top">
+                <div class="ngp_logo">
+                   <img src="images/logo.png">
+                   <span class="logo_hx"></span>
+                   <span class="logo_text">商户服务</span>
+                </div>
+                <div class="ngp_top_right">
+                    <span>您好！ Acdbm@9186.com</span>
+                    <b></b>
+                    <span>退出</span>
+                    <b></b>
+                    <span>帮助中心</span>
+                </div>
+            </div>
+        </div>
+        <div class="ngp_nav">
+            <div class="nav_list">
+                <ul>
+                    <li><a href="index.html">我的汇付宝</a></li>
+                    <li class="nav_ative"><a href="customs.html">通关申报</a></li>
+                    <li><a href="security_center.html">安全中心</a></li>
+                </ul>
+            </div> 
+        </div>
+        <!--头部结束-->
+        
+        <!--内容开始-->
+        <div class="customs_ct">
+            <div class="index_ct">
+                <div class="index_ct_l index_ct_l_ative">
+                    <img src="images/icon_shangchuan.png"><span><a href="">申报信息批量上传</a></span><em></em>
+                </div>
+                <div class="index_ct_r">
+                    <img src="images/icon_jiluchaxun.png"><span><a href="">申报纪录查询</a></span>
+                </div>
+            </div>
+            <div class="customs">
+                <div class="customs_list">
+                   <ul>
+                       <li>
+                            <img src="images/cus_1.png">
+                            <span class="step_line"></span>
+                            <p class="step_text step_ative">上传文件</p>
+                       </li>
+                       <li>
+                            <img src="images/cus_2_2.png">
+                            <span class="step_line"></span>
+                            <p class="step_text">确认信息</p>
+                       </li>
+                       <li>
+                            <img src="images/cus_3_3.png">
+                            <p class="step_text">提交成功</p>
+                       </li>
+                    </ul>
+                </div>
+                <div class="clear"></div>
+                <div class="transfer_upload">
+                    <p>选择申报文件</p>
+                    <div class="transfer_upload_box">
+                        <span class="tr_upload"><input type="file"><em>浏览选择文件</em></span><span class="tr_upload_text">下载批量模版.xls</span>
+                        <p>只支持.xls格式</p>
+                        <div class="tr_upload_speck">
+                            <h6>填报说明：</h6>
+                            <p>1、只支持上传2003版本的Excel文件</p>
+                            <p>2、必须按照Excel模板文件填写</p>
+                            <p>3、每次最多导入100行数据，大于100行数据请分多批导入</p>
+                        </div>
+                    </div>
+                <div class="clear"></div>
+                <div class="customs_upload_tip">
+                    <!--<p class="upload_tip_error">选择上传的文件内容存在异常！<span><a href="">下载失败文件</a></span></p>-->
+                    <!-- <p class="upload_tip_success">校验文件成功！</p>-->
+                </div>
+                </div>
+                <h3 class="customs_btn_dis" id="customs_btn_next">下一步</h3>
+            </div>
+        </div>
+        <!--内容结束-->
+        
+        <!--尾部开始-->
+        <div class="ngp_footer">
+            <p>
+                <span>关于我们</span>
+                <span>合作伙伴</span>
+                <span>商务合作</span>
+                <span>联系我们</span>
+            </p>
+            <p class="ngp_ft">Copyright © since 2008 汇元银通（北京）在线支付技术有限公司  版权所有 侵权必究</p>
+        </div>
+        <!--尾部结束-->
+        
+    </div>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>汇付宝</title>
+<link href="css/base.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<script src="js/jquery.js"></script>
+<script src="js/index.js"></script>
+</head>
+<body>
+    <div id="cover"></div>
+    <div class="ngp_pop_ip">
+        <h6 class="ngp_pop_hd">你登录的IP与上次不一致</h6>
+        <p>系统发现您本次登录与上次登录的IP不一致，为保证您的财产安全，请输入您的支付密码！</p>
+        <p><label>支付密码</label><input type="password"></p>
+        <h3 class="ngp_pop_btn_ip"><span class="ip_con">确认</span><span class="ip_out">退出</span></h3>
+    </div>
+    <div id="ngp_warpper">
+        <!--头部开始-->
+        <div class="ngp_header">
+            <div class="ngp_top">
+                <div class="ngp_logo">
+                   <img src="images/logo.png">
+                   <span class="logo_hx"></span>
+                   <span class="logo_text">商户服务</span>
+                </div>
+                <div class="ngp_top_right">
+                    <span>您好！ Acdbm@9186.com</span>
+                    <b></b>
+                    <span>退出</span>
+                    <b></b>
+                    <span>帮助中心</span>
+                </div>
+            </div>
+        </div>
+        <div class="ngp_nav">
+            <div class="nav_list">
+                <ul>
+                    <li class="nav_ative"><a href="index.html">我的汇付宝</a></li>
+                    <li><a href="transaction.html">交易管理</a></li>
+                    <li><a href="#">结算管理</a></li>
+                    <li><a href="account_management.html">商户管理</a></li>
+                </ul>
+            </div> 
+        </div>
+        <!--头部结束-->
+        
+        <!--内容开始-->
+        <div class="ngp_content">
+            <div class="ngp_ct_one">
+               <p class="ngp_name">Acdbm@9186.com</p>
+               <p class="ngp_company"><span>北京WFDHA股份有限公司</span><span class="company_hx"></span><span>上次登录：2016-07-07 18:00:00</span></p>
+            </div>
+            
+            <div class="ngp_ct_two">
+                <div class="ngp_ct_two_l">
+                    <p class="ngp_amount">账户可用金额(元)</p>
+                    <p class="ngp_money"><img src="images/loading16-16.gif"></p>
+                    <p class="ngp_not_money">不可用余额  200.00元</p>
+                    <p class="ngp_btn">
+                        <span><a href="recharge_bank.html">充值</a></span>
+                        <span><a href="cash.html">提现</a></span>
+                    </p>
+                </div>
+                <div class="ngp_ct_two_r">
+                    <div class="ngp_statistic_l">
+                        <p class="ngp_statis">今日统计<span>07-07</span></p>
+                        <p class="ngp_total">合计收入：<span><em><img src="images/loading16-16.gif"></em>元</span></p>
+                        <p class="ngp_total">合计支出：<span><em>4567.00</em>元</span></p>
+                    </div>
+                    <div class="ngp_statistic_r">
+                        <p class="ngp_statis">本月统计<span>2016-07</span></p>
+                        <p class="ngp_total">合计收入：<span><em>1000,000.00</em>元</span></p>
+                        <p class="ngp_total">合计支出：<span><em>4567.00</em>元</span></p>
+                    </div>
+                </div>
+            <div class="clear"></div>
+            </div>
+            
+            <div class="ngp_ct_three">
+               <div class="ngp_three_box">
+                    <p class="ngp_three_hd"><img src="images/ngp_index1.png"><span>转账</span></p>
+                    <div class="ngp_three_list">
+                        <p><img src="images/ngp_index_tip1.png"><span><a href="transfer.html">汇款到银行账户</a></span></p>
+                        <p><img src="images/ngp_index_tip1.png"><span><a href="transfer.html">批量汇款到银行账户</a></span></p>
+                        <p><img src="images/ngp_index_tip1.png"><span><a href="transfer_look.html">查看转账记录</a></span></p>
+                    </div>
+               </div>
+                <div class="ngp_three_box">
+                    <p class="ngp_three_hd"><img src="images/ngp_index2.png"><span>代收</span></p>
+                    <div class="ngp_three_list">
+                        <p><img src="images/ngp_index_tip2.png"><span><a href="collection.html">添加代收申请</a></span></p>
+                        <p><img src="images/ngp_index_tip2.png"><span><a href="collection_query.html">代收批次查询</a></span></p>
+                        <p><img src="images/ngp_index_tip2.png"><span><a href="collection_order_query.html">代收明细查询</a></span></p>
+                    </div>
+               </div>
+                <div class="ngp_three_box">
+                    <p class="ngp_three_hd"><img src="images/ngp_index3.png"><span>交易管理</span></p>
+                    <div class="ngp_three_list">
+                        <p><img src="images/ngp_index_tip3.png"><span><a href="transaction.html">交易查询</a></span></p>
+                        <!--<p><img src="images/ngp_index_tip3.png"><span><a href="">交易订单精确查询</a></span></p>-->
+                    </div>
+               </div>
+                <div class="ngp_three_box ngp_three_box_none">
+                    <p class="ngp_three_hd"><img src="images/ngp_index4.png"><span>我的审批</span></p>
+                    <div class="ngp_three_list">
+                        <p><img src="images/ngp_index_tip4.png"><span><a href="transfer_reviewed.html">转账审批</a></span></p>
+                        <p><img src="images/ngp_index_tip4.png"><span><a href="transaction.html">退款审批</a></span></p>
+                    </div>
+               </div>
+            </div>
+            
+        </div>
+        <!--内容结束-->
+        
+        <!--尾部开始-->
+        <div class="ngp_footer">
+            <p>
+                <span>关于我们</span>
+                <span>合作伙伴</span>
+                <span>商务合作</span>
+                <span>联系我们</span>
+            </p>
+            <p class="ngp_ft">Copyright © since 2008 汇元银通（北京）在线支付技术有限公司  版权所有 侵权必究</p>
+        </div>
+        <!--尾部结束-->
+        
+    </div>
+</body>
+</html>

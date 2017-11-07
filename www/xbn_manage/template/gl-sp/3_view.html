@@ -1,0 +1,565 @@
+<div class="fc_conts">
+	<div class="details showMainProduct">
+		<div class="stateText">
+			<p class="state">最后更新时间： <span>${source.lastUpdateDate}</span></p>
+		</div>
+		<h3 class="titleText">商品信息</h3>
+		<div class="stateText">
+			<dl class="textDl">
+				<dt>刊登标题：</dt>
+				<dd class="block break">${source.title}</dd>
+			</dl>
+			{{if source.platform=='1'}}
+			<dl class="textDl">
+				<dt>刊登副标题：</dt>
+				<dd class="block break">${source.subTitle}</dd>
+			</dl>
+			{{/if}}
+		</div>
+		<ul class="tabBtn mB15">
+			<li class="this"><a href="javascript:;">基本信息</a></li>
+			<li><a href="javascript:;">商品描述</a></li>
+			<li><a href="javascript:;">交易详情</a></li>
+			{{if source.variationType=='multiVariation'}}
+			<li><a href="javascript:;">规格详情</a></li>
+			{{/if}}
+		</ul>
+		<!-- tabconts begin-->
+		<div class="">
+			<!-- 基本信息 begin-->
+			<div class="details">
+				<div class=" otherConts">
+					<div class="details_L">
+
+						<dl>
+							<dt>小笨鸟用户名：</dt>
+							<dd>${source.userDetail.name}</dd>
+						</dl>
+						<dl>
+							<dt>{{if source.platform=='1'}}eBay{{else source.platform=='2'}}amazon{{else source.platform=='3'}}newegg{{/if}}用户名：</dt>
+							<dd>${source.account}</dd>
+						</dl>
+						<dl>
+							<dt>规格：</dt>
+							<dd>{{if source.variationType=="singleVariation"}}单规格{{else}}多规格{{/if}}</dd>
+						</dl>
+						<dl>
+							<dt>站点：</dt>
+							<dd>{{if source.siteList[source.site]}}${source.siteList[source.site].cnName}{{/if}}</dd>
+						</dl>
+						<dl>
+							<dt>商品货号/SKU：</dt>
+							<dd>
+								{{if source.sku.indexOf('-')!='-1'}}
+								   ${source.sku.slice(source.sku.indexOf('-')+1)}
+								{{else}}
+								  ${source.sku}
+								{{/if}}
+							</dd>
+						</dl>
+						{{if source.platform=='2'}}
+							<dl>
+								<dt>可售数量：</dt>
+								<dd>{{if source.variationType=='singleVariation'}}${source.stock}{{else}}${source.totalStock}{{/if}}${source.quantityUnit}</dd>
+							</dl>
+							<dl>
+								<dt>销售价格：</dt>
+								<dd>{{if source.variationType=='singleVariation'}}${source.siteList[source.site].currencyMark}${source.price}{{else}}${source.siteList[source.site].currencyMark}${source.varyPrice}{{/if}}</dd>
+							</dl>
+							<dl>
+								<dt>商品原价：</dt>
+								<dd>${source.siteList[source.site].currencyMark}${source.originalPrice}</dd>
+							</dl>
+							<dl>
+								<dt>促销价格：</dt>
+								<dd>${source.siteList[source.site].currencyMark}${source.promotionPrice}</dd>
+							</dl>
+							<dl>
+								<dt>促销时间：</dt>
+								<dd>${source.promotionStartTime} — ${source.promotionEndTime}</dd>
+							</dl>
+							<dl>
+								<dt>UPC：</dt>
+								<dd>${source.upc}</dd>
+							</dl>
+						{{else source.platform=='3'}}
+							<dl>
+								<dt>可售数量：</dt>
+								<dd>{{if source.variationType=='singleVariation'}}${source.stock}{{else}}${source.totalStock}{{/if}}${source.quantityUnit}</dd>
+							</dl>
+							<dl>
+								<dt>销售价格：</dt>
+								<dd>{{if source.variationType=='singleVariation'}}${source.siteList[source.site].currencyMark}${source.price}{{else}}${source.siteList[source.site].currencyMark}${source.varyPrice}{{/if}}</dd>
+							</dl>
+							<dl>
+								<dt>建议售价：</dt>
+								<dd>${source.siteList[source.site].currencyMark}${source.suggestedPrice}</dd>
+							</dl>
+							<dl>
+								<dt>UPC：</dt>
+								<dd>${source.upc}</dd>
+							</dl>
+							<dl>
+								<dt>厂商产品编码：</dt>
+								<dd>{{if source.commodityCode}}${source.commodityCode.replace(/\b[\w]+\-/,'')}{{/if}}</dd>
+							</dl>
+						{{else source.platform=='1'}}
+							<dl>
+								<dt>商品状况：</dt>
+								<dd>{{if source.productStatus && source.productStatus[source.commodityCondition]}}${source.productStatus[source.commodityCondition].name}{{/if}}</dd>
+							</dl>
+							<dl>
+								<dt>可售数量：</dt>
+								<dd>{{if source.variationType=='singleVariation'}}${source.stock}{{else}}${source.totalStock}{{/if}}${source.quantityUnit}</dd>
+							</dl>
+							<dl>
+								<dt>销售方式：</dt>
+								<dd>{{if source.listingType=='FixedPriceItem'}}固价{{else}}竞价{{/if}}</dd>
+							</dl>
+							<dl>
+								<dt>销售价格：</dt>
+								<dd>{{if source.variationType=='singleVariation'}}${source.siteList[source.site].currencyMark}${source.price}{{else}}${source.siteList[source.site].currencyMark}${source.varyPrice}{{/if}}</dd>
+							</dl>
+							<dl>
+								<dt>刊登天数：</dt>
+								<dd>${source.duration}</dd> <!--接口-->
+							</dl>
+						{{/if}}
+					</div>
+					<div class="details_R">
+						<dl>
+							<dt>商品大小：</dt>
+							<dd>
+								<span class="mR10">长(${source.commodityPkg.pkgHeight}${source.siteList[source.site].packLengthUnit})</span>
+								<span class="mR10">宽(${source.commodityPkg.pkgWidth}${source.siteList[source.site].packLengthUnit})</span>
+								<span class="mR10">高(${source.commodityPkg.pkgHeight}${source.siteList[source.site].packLengthUnit})</span>
+							</dd>
+						</dl>
+						<dl>
+							<dt>商品重量：</dt>
+							<input type="hidden" value="${source.commodityPkg.arrPkgWeight=source.siteList[source.site].packWeightUnit.split('###')}">
+							<dd>
+							{{if source.commodityPkg.arrPkgWeight.length==2 || source.platform=='1'}}
+								{{if source.commodityPkg.pkgMajorWeight}}
+									${source.commodityPkg.pkgMajorWeight}${source.commodityPkg.arrPkgWeight[0]}
+								{{/if}}&nbsp;&nbsp;
+								{{if source.commodityPkg.pkgMinorWeight}}
+									${source.commodityPkg.pkgMinorWeight}${source.commodityPkg.arrPkgWeight[1]}
+								{{/if}}
+							{{else}}
+								${source.commodityPkg.pkgWeight}${source.siteList[source.site].packWeightUnit}
+							{{/if}}</dd>
+						</dl>
+						<dl>
+							<dt>商品属性：</dt>
+							{{each(i,commodity) source.commoditySpecifics}}
+								<dd>${commodity.specificName}（${commodity.specificValue}）</dd>
+							{{/each}}
+						</dl>
+					</div>
+				</div>
+				<div class="">
+					<!--ebay-->
+					<dl class="textDl">
+						<dt>商品分类：</dt>
+						<dd>${source.cateFullPath}</dd>
+					</dl>
+					{{if source.platform=='1'}}
+						<!-- <dl class="textDl">
+							<dt>商品第二分类：</dt>
+							<dd></dd>
+						</dl> -->
+					{{else source.platform=='2'}}
+						<dl class="textDl">
+							<dt>商品关键字1：</dt>
+							<dd>${source.searchTerms1}</dd>
+						</dl>
+						{{if source.searchTerms2}}
+						<dl class="textDl">
+							<dt>商品关键字2：</dt>
+							<dd>${source.searchTerms2}</dd>
+						</dl>
+						{{/if}}
+						{{if source.searchTerms3}}
+						<dl class="textDl">
+							<dt>商品关键字3：</dt>
+							<dd>${source.searchTerms3}</dd>
+						</dl>
+						{{/if}}
+						{{if source.searchTerms4}}
+						<dl class="textDl">
+							<dt>商品关键字4：</dt>
+							<dd>${source.searchTerms4}</dd>
+						</dl>
+						{{/if}}
+						{{if source.searchTerms5}}
+						<dl class="textDl">
+							<dt>商品关键字5：</dt>
+							<dd>${source.searchTerms5}</dd>
+						</dl>
+						{{/if}}
+						{{if source.bulletPoint1}}
+						<dl class="textDl">
+							<dt>商品特点1：</dt>
+							<dd>${source.bulletPoint1}</dd>
+						</dl>
+						{{/if}}
+						{{if source.bulletPoint2}}
+						<dl class="textDl">
+							<dt>商品特点2：</dt>
+							<dd>${source.bulletPoint2}</dd>
+						</dl>
+						{{/if}}
+						{{if source.bulletPoint3}}
+						<dl class="textDl">
+							<dt>商品特点3：</dt>
+							<dd>${source.bulletPoint3}</dd>
+						</dl>
+						{{/if}}
+						{{if source.bulletPoint4}}
+						<dl class="textDl">
+							<dt>商品特点4：</dt>
+							<dd>${source.bulletPoint4}</dd>
+						</dl>
+						{{/if}}
+						{{if source.bulletPoint5}}
+						<dl class="textDl">
+							<dt>商品特点5：</dt>
+							<dd>${source.bulletPoint5}</dd>
+						</dl>
+						{{/if}}
+					{{/if}}
+				</div>
+
+			</div>
+			<!-- 基本信息 end-->
+			<!-- 商品描述 begin -->
+			<div class="picDiscribe details none">
+				<div class="pic_show">
+					<span class="pic_main">
+						<img src="images/defineImg.png" data-fileid='${source.id}' data-type='0'>
+					</span>
+					<div class='inline_block' data-fileid='${source.id}' data-type='1'>
+					</div>
+					<script data-forFileid='${source.id}' data-type='1' type='text/x-jquery-tmpl'>
+						_[{if list}]_
+							_[{each(i,pic) list}]_
+								<span><img src="$_[pic]_"/></span>
+							_[{/each}]_
+						_[{/if}]_
+					 </script>
+				</div>
+				<div class="wordDiscribe block break">
+					{{if source.platform=='1'}}
+					<iframe id="wordDiscribeIframe" width="1100" height="400"></iframe>
+					{{else}}
+					{{wrap source.description+'<br>'}}{{/wrap}}
+					{{/if}}
+				</div>
+			</div>
+			<!-- 商品描述 end -->
+			<!-- 交易详情 begin -->
+			<div class="details none">
+			{{if source.platform=='1'}}
+				<div class="">
+					<dl class="textDl">
+						<dt>卖家账号：</dt>
+						<dd>${source.account}</dd>
+					</dl>
+					<dl class="textDl">
+						<dt>订单处理时间：</dt>
+						<dd>${source.handleDays}工作日</dd>
+					</dl>
+					<!-- <dl class="textDl">
+						<dt>发货类型：</dt>
+						<dd>自有库发货（小笨鸟海外仓发货）</dd>
+					</dl> -->
+					<dl class="textDl">
+						<dt>商品所在地：</dt>
+						<dd>{{if source.address}}${source.address.provinceCn}${source.address.cityCn}${source.address.districtCn}${source.address.cnStreet} ${source.address.cnContacts} ${source.address.telephone} ${source.address.zipCode} {{/if}}</dd>
+					</dl>
+				</div>
+				{{if source.shipData}}
+				<div class="smallTable">
+					<table class="" cellspacing="0" border="0">
+						<thead>
+							<tr>
+								<th>货运方式</th>
+								<th>货运服务</th>
+								<th>运费</th>
+								<th>运送国家</th>
+							</tr>
+						</thead>
+						<tbody>
+						{{each(i,ship) source.shipData.shippingServices}}
+							<tr>
+								<td>{{if ship.isIntl}}国际货运{{else}}本地货运{{/if}}</td>
+								<td>${ship.serviceValue}</td>
+								<td>${ship.serviceCost}</td>
+								<td>${ship.shipTo}</td>
+							</tr>
+						{{/each}}
+						</tbody>
+					</table>
+				</div>
+				{{/if}}
+				<div class="">
+					<dl class="textDl">
+						<dt>不运送国家：</dt>
+						<dd>{{if source.shipData}}${source.shipData.shippingIntlExcludeLocations}{{/if}}</dd>
+					</dl>
+					<dl class="textDl">
+						<dt>退货政策：</dt>
+						<dd>{{if source.returnData}}${source.returnData.isReturns}{{/if}}</dd>
+					</dl>
+					<dl class="textDl">
+						<dt>退货运费承担方：</dt>
+						<dd>{{if source.returnData}}${source.returnData.undertaker}{{/if}}</dd>
+					</dl>
+					<dl class="textDl">
+						<dt>退货方式：</dt>
+						<dd>{{if source.returnData}}${source.returnData.returnType}{{/if}}</dd>
+					</dl>
+					<dl class="textDl">
+						<dt>退货天数：</dt>
+						<dd>{{if source.returnData}}${source.returnData.returnDateNumber}天{{/if}}</dd>
+					</dl>
+					<dl class="textDl">
+						<dt>退货描述：</dt>
+						<dd>{{if source.returnData}}${source.returnData.remark}{{/if}}</dd>
+					</dl>
+				</div>
+				{{else source.platform=='2'}}
+					<div class="">
+						<dl class="textDl">
+							<dt>订单处理时间：</dt>
+							<dd>${source.handleDays}个工作日</dd>
+						</dl>
+						<!-- <dl class="textDl">
+							<dt>发货类型：</dt>
+							<dd>自有库发货（小笨鸟海外仓发货）</dd>
+						</dl> -->
+						<dl class="textDl">
+							<dt>发货地址：</dt>
+							<dd>
+							{{if source.address}}${source.address.provinceCn}${source.address.cityCn}${source.address.districtCn}${source.address.cnStreet} ${source.address.cnContacts} ${source.address.telephone} ${source.address.zipCode} {{/if}}
+
+							</dd>
+						</dl>
+						<dl class="textDl">
+							<dt>运费：</dt>
+							<dd>免运费</dd>
+						</dl>
+						<dl class="textDl">
+						<dt>退货政策：</dt>
+							<dd>{{if source.returnData}}${source.returnData.isReturns}{{/if}}</dd>
+						</dl>
+						<dl class="textDl">
+							<dt>退货运费承担方：</dt>
+							<dd>{{if source.returnData}}${source.returnData.undertaker}{{/if}}</dd>
+						</dl>
+						<dl class="textDl">
+							<dt>退货方式：</dt>
+							<dd>{{if source.returnData}}${source.returnData.returnType}{{/if}}</dd>
+						</dl>
+						<dl class="textDl">
+							<dt>退货天数：</dt>
+							<dd>{{if source.returnData}}${source.returnData.returnDateNumber}{{/if}}</dd>
+						</dl>
+						<dl class="textDl">
+							<dt>退货描述：</dt>
+							<dd>{{if source.returnData}}${source.returnData.remark}{{/if}}</dd>
+						</dl>
+					</div>
+					{{else source.platform=='3'}}
+					<div class="">
+	<!-- 					<dl class="textDl">
+							<dt>发货类型：</dt>
+							<dd>自有库发货（小笨鸟海外仓发货）</dd>
+						</dl> -->
+						<dl class="textDl">
+							<dt>发货地址：</dt>
+							<dd>{{if source.address}}${source.address.provinceCn}${source.address.cityCn}${source.address.districtCn}${source.address.cnStreet} ${source.address.cnContacts} ${source.address.telephone} ${source.address.zipCode} {{/if}}</dd>
+						</dl>
+						<dl class="textDl">
+							<dt>运费：</dt>
+							<dd>免运费</dd>
+						</dl>
+						<dl class="textDl">
+							<dt>是否航空禁运：</dt>
+							<dd>{{if source.isAirEmbargo}}是{{else}}否{{/if}}</dd>
+						</dl>
+						<dl class="textDl">
+							<dt>是否有窒息危险物： </dt>
+							<dd>{{if source.contraband}}${source.contraband}{{else}}否{{/if}}</dd>
+						</dl>
+						<dl class="textDl">
+							<dt>退货政策：</dt>
+							<dd>{{if source.returnData}}${source.returnData.isReturns}{{/if}}</dd>
+						</dl>
+						<dl class="textDl">
+							<dt>退货运费承担方：</dt>
+							<dd>{{if source.returnData}}${source.returnData.undertaker}{{/if}}</dd>
+						</dl>
+						<dl class="textDl">
+							<dt>退货方式：</dt>
+							<dd>{{if source.returnData}}${source.returnData.returnType}{{/if}}</dd>
+						</dl>
+						<dl class="textDl">
+							<dt>退货天数：</dt>
+							<dd>{{if source.returnData}}${source.returnData.returnDateNumber}{{/if}}</dd>
+						</dl>
+						<dl class="textDl">
+							<dt>退货描述：</dt>
+							<dd>{{if source.returnData}}${source.returnData.remark}{{/if}}</dd>
+						</dl>
+					</div>
+				{{/if}}
+
+			</div>
+			<!-- 交易详情 end -->
+			{{if source.variationType=='multiVariation'}}
+			<!-- 多规格信息 -->
+			<div class="details none">
+			{{if source.commodityVariations}}
+			   <div class="productTable">
+				   <table cellspacing="0" border="0" class="">
+					   <thead>
+						   <tr>
+							   {{each(i,vary) source.commodityVariations.title}}
+								<th>${vary}</th>
+							   {{/each}}
+							   <th>库存</th>
+							   <th>价格</th>
+							   <th>商品货号/SKU</th>
+							   <th>状态</th>
+						   </tr>
+					   </thead>
+					   <tbody>
+					   {{each(i,commody) source.commodityVariations}}
+							   {{if source.platform=='1'}}
+								   {{each(m,arr) commody.variationDetails}}
+								   <tr>
+									   {{each(i,value) arr.aVariationValue}}
+										<td>${value}</td>
+									   {{/each}}
+									   <td>${arr.variationStock}</td>
+									   <td>${source.siteList[source.site].currencyMark}${arr.variationPrice}</td>
+									   <td>
+											   {{if arr.variationSku.indexOf('-')!='-1'}}
+											   ${arr.variationSku.slice(arr.variationSku.indexOf('-')+1)}
+											{{else}}
+											  ${arr.variationSku}
+											{{/if}}
+									   </td>
+									   <td>{{if arr.isEnable}}启用{{else arr.isEnable==false}}禁用{{/if}}</td>
+								   </tr>
+							   {{/each}}
+							{{else}}
+								   <tr>
+									   {{each(i,value) commody.aVariationValue}}
+										<td>${value}</td>
+									   {{/each}}
+									   <td>${commody.variationStock}</td>
+									   <td>${source.siteList[source.site].currencyMark}${commody.variationPrice}</td>
+									   <td>
+											   {{if commody.variationSku.indexOf('-')!='-1'}}
+											   ${commody.variationSku.slice(commody.variationSku.indexOf('-')+1)}
+											{{else}}
+											  ${commody.variationSku}
+											{{/if}}
+									   </td>
+									   <td>{{if commody.isEnable}}启用{{else commody.isEnable==false}}禁用{{/if}}</td>
+								   </tr>
+							{{/if}}
+						{{/each}}
+					   </tbody>
+				   </table>
+				   <table cellspacing="0" border="0" class="">
+					   <thead>
+					   <tr class="bT">
+							{{each(i,vary) source.commodityVariations.title}}
+							<th>${vary}</th>
+							{{/each}}
+						   <th>商品图片</th>
+					   </tr>
+					   </thead>
+					   <tbody class="picOn">
+					   {{each(i,commody) source.commodityVariations}}
+							   {{if source.platform=='1'}}
+								   {{each(m,arr) commody.variationDetails}}
+								   <tr style="background-color: rgb(255, 255, 255);">
+									   {{each(i,value) arr.aVariationValue}}
+										<td>${value}</td>
+									   {{/each}}
+									   <td>
+										   <img src="images/defineImg.png" data-fileid='${commody.variationId}' data-type='0'>
+										   <span data-fileid='${commody.variationId}' data-type='1'></span>
+										   <script data-forFileid='${commody.variationId}' data-type='1' type='text/x-jquery-tmpl'>
+											  _[{if list}]_
+												  _[{each(i,pic) list}]_
+													  <img src="$_[pic]_"/>
+												  _[{/each}]_
+											  _[{/if}]_
+										   </script>
+									   </td>
+								   </tr>
+							   {{/each}}
+						   {{else}}
+								   <tr>
+								   {{each(i,value) commody.aVariationValue}}
+									<td>${value}</td>
+								   {{/each}}
+								   <td>
+									   <img src="images/defineImg.png" data-fileid='${commody.variationId}' data-type='0'>
+									   <span data-fileid='${commody.variationId}' data-type='1'></span>
+									   <script data-forFileid='${commody.variationId}' data-type='1' type='text/x-jquery-tmpl'>
+										  _[{if list}]_
+											  _[{each(i,pic) list}]_
+												  <img src="$_[pic]_"/>
+											  _[{/each}]_
+										  _[{/if}]_
+									   </script>
+								   </td>
+							   </tr>
+						   {{/if}}
+						{{/each}}
+					   </tbody>
+				   </table>
+			   </div>
+			 {{/if}}
+			</div>
+			{{/if}}
+		</div>
+		</div>
+	</div>
+	<!-- conts end -->
+	<!--中间内容区域 end-->
+</div>
+<div class="btnMain">
+	{{if source.platform=='1'}}
+		{{if (source.status==2 && source.commodityOperate==null) || (source.status==2 && source.commodityOperate.operateType=='End' && source.chkStatus==2 && source.commodityCron.cronStatus==1 && source.endType=='EndManual' || source.endType=='EndDurationExpire') }}<a class="button js-productOffLine" href="javascript:;">下线</a>{{/if}}
+  {{else}}
+
+	  <!--Todo commodityCron 未统一结构-->
+	  {{if (source.status==2 && source.commodityOperate.operateType==null) || (source.status==2 && source.commodityOperate.operateType=='End' && source.commodityChk.chkStatus==2 && source.commodityCron.cronStatus==1)}}<a class="button js-productOffLine" href="javascript:;">下线</a>
+	  {{/if}}
+
+  {{/if}}
+	<a class="button mL20" href="javascript:history.go(-1);" sdata-href='?m=xhr_id_95_96'  data-title='商品管理-在线商品管理'>返回</a>
+</div>
+
+<div class="layerCon"></div>
+
+<script id='layerBoxTmpl' type='text/x-jquery-tmpl'>
+<form id='productAuditLayerBox'>
+	<div class="checkupTips">
+	 <dl>
+		  <dt>请填写商品下线原因：</dt>
+		  <dd class='mT20'>
+			   <textarea name="chkReason" cols="30" rows="10" placeholder="请填写商品下线原因" class="reject"></textarea>
+		  </dd>
+	 </dl>
+</div>
+</form>
+</script>

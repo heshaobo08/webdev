@@ -1,0 +1,9 @@
+require.config({
+    paths:{
+        jquery:"jquery.min"
+    }
+})
+require(["jquery","a"],function($,fn){
+    console.log($);
+    console.log(fn.add(4,3));
+})

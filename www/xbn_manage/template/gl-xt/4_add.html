@@ -1,0 +1,29 @@
+<!-- conts begin -->
+<div class="details">
+    <h3 class="titleText">等级信息</h3>
+    <div class="initBox">
+    <form id="serviceForm">
+        <dl class="editDl">
+            <dt>等级名称：</dt>
+            <dd><input type="text" name="levelName" class="input w240" required data-cnmax="50" maxlength="50" /></dd>
+        </dl>
+        <dl class="editDl">
+            <dt>等级描述：</dt>
+            <dd><input type="text" name="remark" class="input w480" required data-cnmax="100" maxlength="100" /></dd>
+        </dl>
+        <dl class="editDl">
+            <dt>角色状态：</dt>
+            <dd class="choiceRadio">
+            	<label><input value="true" name="isValid" type="radio" checked="true"/>启用</label>
+                <label><input value="false" name="isValid" type="radio"/>禁用</label>
+            </dd>
+        </dl>
+    </form>    
+    </div>
+</div>
+<!-- conts end -->
+<!--中间内容区域 end-->
+<div class="btnMain">
+    <a href="javascript:;" class="button js-submit">保存</a>
+    <a href="javascript:;" class="buttonText pad20" data-href="?m=xhr_id_1_300" data-title="系统管理-等级管理">取消</a>
+</div>

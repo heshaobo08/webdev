@@ -1,0 +1,40 @@
+{
+    "statusCode":"2000000",
+    "data" : {        
+              "pageSize": 20,
+             "totalCount": 100,
+             "totalPages": 5,
+             "cPageNO": 1,
+             "list":[
+                {
+                    "id": "站点ID",
+                    "platform": "所属平台",
+                    "siteId": "XBNZD007",
+                    "isReturns": "是否支持退货",
+                    "returnType": "退货方式",
+                    "undertaker": "承担者",
+                    "returnDateNumber": "退货天数",
+                    "updateTime": "修改时间",
+                    "createTime": "创建时间",
+                    "categoryId": " 小笨鸟分类",
+                    "remark":"退货描述",
+                    "operator": "操作人"
+
+                },
+                {
+                    "id": "站点ID",
+                    "platform": "所属平台",
+                    "siteId": "XBNZD007",
+                    "isReturns": "是否支持退货",
+                    "returnType": "退货方式",
+                    "undertaker": "承担者",
+                    "returnDateNumber": "退货天数",
+                    "updateTime": "修改时间",
+                    "createTime": "创建时间",
+                    "categoryId": " 小笨鸟分类",
+                    "remark":"退货描述",
+                    "operator": "操作人"
+            }
+        ]
+    } 
+}

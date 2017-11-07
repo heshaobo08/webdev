@@ -1,0 +1,75 @@
+<div class="contsBox">
+    <div class="details">
+        <h3 class="titleText">基本信息</h3>
+        <div class="newConts pL140">
+            <dl class="textDl">
+                <dt>仓库编码：</dt>
+                <dd>${source.storeCode}</dd>
+            </dl>
+            <dl class="textDl">
+                <dt>仓库名称：</dt>
+                <dd>${source.storeName}</dd>
+            </dl>
+            <dl class="textDl">
+                <dt>仓库收货人：  </dt>
+                <dd>${source.consignee}</dd>
+            </dl>
+            <dl class="textDl">
+                <dt>联系电话：</dt>
+                <dd>${source.phonenumber}</dd>
+            </dl>
+            <dl class="textDl">
+                <dt>公司名称：</dt>
+                <dd>${source.componyName}</dd>
+            </dl>
+            <dl class="textDl">
+                <dt>所属国家：</dt>
+                <dd>${source.country}</dd>
+            </dl>
+            <dl class="textDl">
+                <dt>货币单位：</dt>
+                <dd>${source.currencyUnit}</dd>
+            </dl>
+            <dl class="textDl">
+                <dt>系统编码：  </dt>
+                <dd>${source.sysCode}</dd>
+            </dl>
+            <dl class="textDl">
+                <dt>仓库地址：</dt>
+                <dd class="break">${source.address}</dd>
+            </dl>
+        </div>
+    </div>
+    <div class="details">
+        <h3 class="titleText">修改信息</h3>
+        <div class="newConts pL140">
+            <dl class="textDl">
+                <dt>创建人：</dt>
+                <dd>${source.createUser}</dd>
+            </dl>
+            <dl class="textDl">
+                <dt>创建时间：</dt>
+                <dd>${source.createTime}</dd>
+            </dl>
+            <dl class="textDl">
+                <dt>最后修改人：  </dt>
+                <dd>${source.lastUpdateUser}</dd>
+            </dl>
+            <dl class="textDl">
+                <dt>最后修改时间：</dt>
+                <dd>${source.lastUpdateTime}</dd>
+            </dl>
+
+        </div>
+    </div>
+</div>
+<div class="btnMain">
+    {{if source.operateData.moduleData && source.operateData.actionData && source.operateData.operate['HWC20102004'] && source.operateData.operate['HWC20102004'].childOpt['HWC20102005']}}
+    <a class="button mR10" data-href="?m=xhr_id_20100000_20102000_edit&id=${source.id}" data-title="海外仓系统管理-国家设置-修改">修改</a>
+    {{/if}}
+    {{if source.operateData.moduleData && source.operateData.actionData && source.operateData.operate['HWC20102004'] && source.operateData.operate['HWC20102004'].childOpt['HWC20102006']}}
+    <a href="javascript:;" class="buttonText pad20 js-delete" data-id="${source.id}">删除</a>
+    {{/if}}
+    <a href="javascript:history.go(-1);" onclick="document.title='海外仓业务管理-仓库管理'" class="buttonText pad20" sdata-href="?m=xhr_id_20100000_20102000"
+       data-title="海外仓业务管理-仓库管理">返回</a>
+</div>

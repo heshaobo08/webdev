@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf8">
+<title>订阅支付</title>
+<link href="css/base.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<script src="js/jquery.js"></script>
+    <script>
+        $(function(){
+            $(".login_nav_active").on("click",function(e){
+                $(".sub_nav").show();
+                e.stopPropagation();
+            });
+            $(document).click(function(){
+                $(".sub_nav").hide();
+        });
+        })
+    </script>
+</head>
+<body>
+    <div class="warpper">
+        <!--头部开始-->
+        <div class="login_header">
+            <p>
+                <span class="login_hd_active"><a href="#">企业版</a></span>
+                <span class="help_center"><a href="#">帮助中心</a></span>
+            </p>
+        </div>
+        <div class="login_nav_bg">
+            <div class="login_nav">
+                <div class="login_nav_left">
+                    <p>
+                        <img src="images/logo.png">
+                        <span class="logo_hx"></span>
+                        <span class="logo_text">企业版</span>
+                    </p>
+                </div>
+                <div class="login_nav_right">
+                    <ul>
+                        <li><a href="#">首页</a></li>
+                        <li><a href="#">产品中心</a></li>
+                        <li class="login_nav_active"><a href="#">行业解决方案</a>
+                            <p class="sub_nav">订阅支付</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--头部结束-->
+        <!--内容开始-->
+        <div class="login_content">
+            <div class="subscribe_box"></div>
+            <div class="subscribe_ct">
+                <div class="subscribe_ct_one">
+                    <p>计费支付模式</p>
+                    <ul>
+                        <li>
+                            <p><img src="images/s_cpfw.png"></p>
+                            <h3>产品服务</h3>
+                            <h6>支持创建不同的产品服务计划、满足不同用户需求</h6>
+                            <h6>黄金年度会员服务计划、白银月度会员服务计划</h6>
+                        </li>
+                        <li>
+                            <p><img src="images/s_zd.png"></p>
+                            <h3>自动扣费</h3>
+                            <h6>支持创建不同的产品服务计划、满足不同用户需求</h6>
+                            <h6>黄金年度会员服务计划、白银月度会员服务计划</h6>
+                        </li>
+                        <li>
+                            <p><img src="images/s_htzc.png"></p>
+                            <h3>后台支持</h3>
+                            <h6>BeeCloud稳定的后台系统支持，稳定，安全的支付化</h6>
+                            <h6>资金管理平台，技术丰富的数据统计，满足财务需求</h6>
+                        </li>
+                    </ul>
+                </div>
+                <div class="clear"></div>
+                <p class="subscribe_hx"></p>
+                <div class="subscribe_ct_two">
+                    <p>支持多场景接入</p>
+                    <ul>
+                        <li>
+                            <p><img src="images/s_bj_sjly.png"></p>
+                            <h6><img src="images/s_sjly.png"></h6>
+                            <h3>社交领域</h3>
+                        </li>
+                        <li>
+                            <p><img src="images/s_bj_yxhy.png"></p>
+                            <h6><img src="images/s_yxhy.png"></h6>
+                            <h3>游戏行业</h3>
+                        </li>
+                        <li>
+                            <p><img src="images/s_bj_qyfu.png"></p>
+                            <h6><img src="images/s_qyfu.png"></h6>
+                            <h3>企业服务</h3>
+                        </li>
+                        <li>
+                            <p><img src="images/s_bj_yyfw.png"></p>
+                            <h6><img src="images/s_yyfw.png"></h6>
+                            <h3>音乐服务</h3>
+                        </li>
+                        <li>
+                            <p><img src="images/s_bj_wxwz.png"></p>
+                            <h6><img src="images/s_wxwz.png"></h6>
+                            <h3>文学网站</h3>
+                        </li>
+                    </ul>
+                </div>
+                <div class="clear"></div>
+                <p class="subscribe_hx"></p>
+                <div class="subscribe_ct_one">
+                    <p>重构更加亲密的用户关系</p>
+                    <ul>
+                        <li>
+                            <p style="height:110px;"><img src="images/s_yhty.png"></p>
+                            <h3>更好的用户体验</h3>
+                            <h6>用户根据自己需求，订阅不同产品服务定时自动扣</h6>
+                            <h6>费免去主动付费操作、可随时取消服务，用户拥有</h6>
+                            <h6>最大的自主权</h6>
+                        </li>
+                        <li>
+                            <p style="height:110px;"><img src="images/s_yhqd.png"></p>
+                            <h3>更精准的升级优化驱动</h3>
+                            <h6>企业根据用户订阅信息变化统计，更加了解用户需</h6>
+                            <h6>求针对性的产品服务升级与优化、使产品服务质量</h6>
+                            <h6>和体验拥有更强大的竞争力</h6>
+                        </li>
+                        <li>
+                            <p style="height:110px;"><img src="images/s_lj.png"></p>
+                            <h3>更牢固的企业、用户连接</h3>
+                            <h6>自动扣费为内核的订阅支付、使企业和用户的关系</h6>
+                            <h6>由一次性购买变为持续性互动、企业获得更高的</h6>
+                            <h6>用户留存率用户获得更好的服务体验</h6>
+                        </li>
+                    </ul>
+                </div>
+                <div class="clear"></div>
+                <p class="subscribe_hx"></p>
+                <div class="subscribe_ct_threee">
+                    <p>完善的订阅支付技术支持</p>
+                    <ul>
+                        <li>
+                            <h6><img src="images/s_yhayzfu.png"></h6>
+                            <p>银行卡验证服务</p>
+                        </li>
+                        <li>
+                            <h6><img src="images/s_zdkf.png"></h6>
+                            <p>银行卡绑定、到期自动扣费</p>
+                        </li>
+                        <li>
+                            <h6><img src="images/s_zdcs.png"></h6>
+                            <p>扣费失败自动重试</p>
+                        </li>
+                        <li>
+                            <h6><img src="images/s_cwsjfx.png"></h6>
+                            <p>财务数据分析</p>
+                        </li>
+                        <li>
+                            <h6><img src="images/s_dyyhgl.png"></h6>
+                            <p>订阅用户管理</p>
+                        </li>
+                        <li>
+                            <h6><img src="images/s_ysj.png"></h6>
+                            <p>高效稳定安全的云数据</p>
+                        </li>
+                    </ul>
+                    <div class="clear"></div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    <!--内容结束-->
+        <!--尾部开始-->
+        <div class="login_footer">
+            <div class="login_footer_ct">
+                <p>关于我们 | 合作伙伴 | 商务合作 | 联系我们</p>
+                <p>Copyright © since 2008 汇元银通（北京）在线支付技术有限公司 版权所有 侵权必究 </p>
+            </div>
+        </div>
+        <!--尾部结束-->
+    </div>
+</body>
+</html>

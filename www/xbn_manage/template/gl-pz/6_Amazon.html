@@ -1,0 +1,209 @@
+<!-- serch begin -->
+<div class="serch">
+    <div class="serch_tab">
+        <ul>
+            {{if source.operateData.moduleData && source.operateData.actionData &&
+            source.operateData.operate['h060801']}}
+            <li class="">
+                <a href="javascript:;" data-href='?m=xhr_id_199_244&platform=1' data-title='配置管理-退货政策管理-ebay站点'>eBay</a>
+            </li>
+            {{/if}}
+            {{if source.operateData.moduleData && source.operateData.actionData &&
+            source.operateData.operate['h060802']}}
+            <li class="on">
+                <a href="javascript:;" data-href='?m=xhr_id_199_244&platform=2'
+                   data-title='配置管理-退货政策管理-Amazon'>Amazon</a>
+            </li>
+            {{/if}}
+            {{if source.operateData.moduleData && source.operateData.actionData &&
+            source.operateData.operate['h060803']}}
+            <li class="">
+                <a href="javascript:;" data-href='?m=xhr_id_199_244&platform=3'
+                   data-title='配置管理-退货政策管理-Newegg'>Newegg</a>
+            </li>
+            {{/if}}
+        </ul>
+    </div>
+    <div class="serch_main">
+        <form id="rejectSearchForm">
+            <div class="serch_conts">
+                <dl>
+                    <dt>站点 :</dt>
+                    <dd>
+                        <div class="select w190">
+                            <input index-data="" name='siteId' type="hidden" value="请选择">
+                            <i>请选择</i>
+                            <em class="icon-52"></em>
+                            <ul style="">
+                                <li index-data=""><span>请选择</span></li>
+                                {{each(i,site) source.site}}
+                                <li index-data="${site.id}"><span>${site.cnName}</span></li>
+                                {{/each}}
+                            </ul>
+                        </div>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>分类 :</dt>
+                    <dd>
+                        <div class="select w190">
+                            <input index-data="" name='' type="hidden" value="请选择">
+                            <i>请选择</i>
+                            <em class="icon-52"></em>
+                            <ul style="">
+                                <li index-data=""><span>请选择</span></li>
+                                <li index-data="1"><span>请选择1</span></li>
+                                <li index-data="2"><span>请选择2</span></li>
+                                <li index-data="2"><span>请选择3</span></li>
+                            </ul>
+                        </div>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>是否同意退货 :</dt>
+                    <dd>
+                        <div class="select w190">
+                            <input index-data="" name='isReturns' type="hidden" value="请选择">
+                            <i>请选择</i>
+                            <em class="icon-52"></em>
+                            <ul style="">
+                                <li index-data=""><span>请选择</span></li>
+                                <li index-data="1"><span>接受货物</span></li>
+                                <li index-data="0"><span>不接受货物</span></li>
+                            </ul>
+                        </div>
+                    </dd>
+                </dl>
+            </div>
+            <div class="serch_conts">
+                <dl>
+                    <dt>退货天数 :</dt>
+                    <dd>
+                        <div class="select w190">
+                            <input index-data="" name='returnDateNumber' type="hidden" value="请选择">
+                            <i>请选择</i>
+                            <em class="icon-52"></em>
+                            <ul style="">
+                                <li index-data=""><span>请选择</span></li>
+                                <li index-data="1"><span>10</span></li>
+                            </ul>
+                        </div>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>退货费承担方 :</dt>
+                    <dd>
+                        <div class="select w190">
+                            <input index-data="" name='undertaker' type="hidden" value="请选择">
+                            <i>请选择</i>
+                            <em class="icon-52"></em>
+                            <ul style="">
+                                <li index-data=""><span>请选择</span></li>
+                                <li index-data="Buyer"><span>买家</span></li>
+                                <li index-data="Seller"><span>卖家</span></li>
+                            </ul>
+                        </div>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>上次修改时间：</dt>
+                    <dd>
+                        <div class="defaultData">
+                            <div class="dataBegin">
+                                <span class="dataInput" id="startTime"></span>
+                                <input type="hidden" name='updateTimeStart' id='dataStart'>
+                                <a href="javascript:;" class="timeStart icon-54"></a>
+                            </div>
+                            <span class="point"></span>
+
+                            <div class="dataEnd">
+                                <span class="dataInput" id="endTime"></span>
+                                <input type="hidden" name='updateTimeEnd' id='dataEnd'>
+                                <a href="javascript:;" class="timeEnd icon-54"></a>
+                            </div>
+                        </div>
+                    </dd>
+                </dl>
+            </div>
+            <div class="serch_conts">
+                <dl class="serchDl">
+                    <dt> </dt>
+                    <dd>
+                        {{if source.operateData.moduleData && source.operateData.actionData &&
+                        source.operateData.operate['h060802'] &&
+                        source.operateData.operate['h060802'].childOpt['h06080201']}}
+                        <a href="javascript:;" class="button js-rejectEarch">Search</a>
+                        {{/if}}
+                    </dd>
+                </dl>
+            </div>
+        </form>
+    </div>
+    <div class="addbutton none">您所搜索的，共有<i id="searchTotalCount">${source.totalCount}</i>条内容符合。</div>
+</div>
+<!-- serch end -->
+<!-- conts begin -->
+<div class="contsBox">
+    <div class="bigTable">
+        <table cellspacing="0" border="0" class="">
+            <thead>
+            <tr>
+                <th>站点</th>
+                <th>分类</th>
+                <th>是否同意退货</th>
+                <th>退货费承担方</th>
+                <th>退货方式</th>
+                <th>退货天数</th>
+                <th>上次修改时间</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody id='refundListCon'>
+            </tbody>
+        </table>
+    </div>
+    <!-- 翻页 begin -->
+    <div class="page" id="topPager">
+    </div>
+    <!--翻页 end-->
+</div>
+
+<!-- 分页模板 -->
+<script id='pageListCon' type='text/x-jquery-tmpl'>
+    <a href="javascript:;" class="firstPage fL" data-displace="first">首页</a>
+    <a href="javascript:;" class="prve fL icon-56" data-displace="prev"></a>
+    <ul class="pagenumber" id="pager"></ul>
+    <a href="javascript:;" class="next fL icon-55" data-displace="next"></a>
+    <a href="javascript:;" class="lastPage" data-displace="last">尾页</a>
+
+</script>
+
+
+<!-- 退换货模板list -->
+<script id='refundListTmpl' type='text/x-jquery-tmpl'>
+_[{if list && list.length}]_
+    _[{each(i,list) list}]_
+        <tr>
+            <td>$_[site[list.siteId].cnName]_</td>
+            <td><span class='getFullPath' data-pathId='$_[list.categoryId]_'></span></td>
+            <td>$_[list.isReturns]_</td>
+            <td>$_[list.undertaker]_</td>
+            <td>$_[list.returnType]_</td>
+            <td>$_[list.returnDateNumber]_</td>
+            <td>$_[list.updateTime]_</td>
+            <td>
+                _[{if operateData.moduleData && operateData.actionData && operateData.operate['h060802'] && operateData.operate['h060802'].childOpt['h06080202']}]_
+                <a href="javascript:;" class="blue"  data-code='$_[list.code]_' data-href='?m=xhr_id_199_244_edit&platform=2&id=$_[list.id]_' data-title='配置管理-退货政策管理-amazon站点-修改'>修改</a>
+                _[{/if}]_
+            </td>
+        </tr>
+    _[{/each}]_
+_[{else}]_
+<tr><td colSpan="8">暂无数据</td></tr>
+_[{/if}]_
+
+</script>
+
+
+
+

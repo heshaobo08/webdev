@@ -1,0 +1,146 @@
+<!-- conts begin -->
+<div class="contsBox">
+    <form id='searchForm'>
+        <!-- serch begin -->
+        <div class="serch_main fix">
+            <div class="serch_conts">
+                <dl class="name">
+                    <dt>搜索名称 :</dt>
+                    <dd>
+                        <div class="select w140 fL mR10">
+                            <input index-data="" type="hidden">
+                            <i>请选择</i>
+                            <em class="icon-52"></em>
+                            <ul>
+                                <li index-data=""><span>请选择</span></li>
+                                <li index-data="1"><span>用户名</span></li>
+                                <li index-data="2"><span>平台账户</span></li>
+                                <li index-data="3"><span>订单号</span></li>
+                                <li index-data="4"><span>商品名称</span></li>
+                                <li index-data="5"><span>SKU</span></li>
+                            </ul>
+                        </div>
+                        <input type="text" class="defaultInput searchName">
+                    </dd>
+                </dl>
+                <dl class="type">
+                    <dt>收支类型 :</dt>
+                    <dd>
+                        <div class="select w190 type">
+                            <input index-data="" type="hidden" value="请选择" name="type">
+                            <i>请选择</i>
+                            <em class="icon-52"></em>
+                            <ul>
+                                <li index-data=""><span>请选择</span></li>
+                                <li index-data="0"><span>商品收入</span></li>
+                                <li index-data="1"><span>商品运费</span></li>
+                                <li index-data="2"><span>佣金退费</span></li>
+                                <li index-data="3"><span>刊登费退费</span></li>
+                                <li index-data="4"><span>其他收入</span></li>
+                                <li index-data="5"><span>订单退款</span></li>
+                                <li index-data="6"><span>刊登费</span></li>
+                                <li index-data="7"><span>商品佣金</span></li>
+                                <li index-data="8"><span>运费佣金</span></li>
+                                <li index-data="9"><span>其他费用</span></li>
+                            </ul>
+                        </div>
+                    </dd>
+                </dl>
+                <dl class="source">
+                    <dt>来源 :</dt>
+                    <dd>
+                        <div class="select w190" style="z-index: 100;">
+                            <input index-data="" type="hidden" value="请选择" name="source">
+                            <i>请选择</i>
+                            <em class="icon-52"></em>
+                            <ul>
+                                <li index-data=""><span>请选择</span></li>
+                            </ul>
+                        </div>
+                    </dd>
+                </dl>
+            </div>
+            <div class="serch_conts">
+                <dl>
+                    <dt>时间 :</dt>
+                    <dd>
+                        <div class="defaultData">
+                            <div class="dataBegin">
+                                <span class="dataInput" id="startTime" data-startime="createTime_start"></span>
+                                <a href="javascript:;" class="timeStart icon-54"></a>
+                            </div>
+                            <span class="point"></span>
+
+                            <div class="dataEnd">
+                                <span class="dataInput" id="endTime" data-endtime="createTime_end"></span>
+                                <a href="javascript:;" class="timeEnd icon-54"></a>
+                            </div>
+                        </div>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt> </dt>
+                    <dd>
+                        {{if source.operateData.moduleData && source.operateData.actionData &&
+                        source.operateData.operate['h05040001']}}
+                        <a href="javascript:;" class="button js-search">Search</a>
+                        {{/if}}
+                    </dd>
+                </dl>
+            </div>
+        </div>
+        <!-- serch end -->
+    </form>
+    <div class="addbutton none">您所搜索的，共有<i id="searchTotalCount">${source.totalCount}</i>条内容符合。</div>
+    <div class="bigTable">
+        <table class="layout" border="0" cellspacing="0">
+            <thead>
+            <tr>
+                <th width="10%">时间</th>
+                <th width="9%">用户名</th>
+                <th width="9%">平台账号</th>
+                <th width="10%">订单号</th>
+                <th width="8%">金额</th>
+                <th width="8%">收支类型</th>
+                <th width="25%">商品</th>
+                <th width="10%">SKU</th>
+                <th width="11%">来源</th>
+            </tr>
+            </thead>
+            <tbody id="listCon">
+
+            </tbody>
+        </table>
+    </div>
+    <div class="page" id="topPager">
+
+    </div>
+</div>
+<!-- conts end -->
+<script id='pageListCon' type='text/x-jquery-tmpl'>
+	<a href="javascript:;" class="firstPage fL" data-displace="first">首页</a>
+	<a href="javascript:;" class="prve fL icon-56" data-displace="prev"></a>
+	<ul class="pagenumber" id="pager"></ul>
+	<a href="javascript:;" class="next fL icon-55" data-displace="next"></a>
+	<a href="javascript:;" class="lastPage" data-displace="last">尾页</a>
+
+</script>
+<script id="list" type="text/x-jquery-tmpl">
+_[{if list.length}]_
+	_[{each(i,c) list}]_
+	<tr>
+		<td>$_[c.siteTime]_</td>
+		<td>$_[c.userName]_</td>
+		<td>$_[c.accountName]_</td>
+		<td>$_[c.orderId]_</td>
+		<td>$_[c.money]_</td>
+		<td>$_[c.type]_</td>
+		<td>$_[c.itemName]_</td>
+		<td>_[{if c.sku}]_$_[c.sku.replace(/^[\dA-Za-z]*\-/,'')]__[{/if}]_</td>
+		<td>$_[c.source]_</td>
+	</tr>
+	_[{/each}]_
+_[{else}]_
+<tr><td colSpan="9">暂无数据</td></tr>
+_[{/if}]_
+</script>

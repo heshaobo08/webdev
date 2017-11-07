@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>汇付宝</title>
+<link href="css/base.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<script src="js/jquery.js"></script>
+<script src="js/plug/time/WdatePicker.js"></script>
+<script src="js/record.js"></script>
+</head>
+<body>
+    <div id="cover"></div>
+    <div class="ngp_pop_one">
+        <h6 class="ngp_pop_hd">充值退款<em><img src="images/ngp_del.png"></em></h6>
+        <p>订单：20160822766</p>
+        <p>充值金额：99元</p>
+        <p>退款金额：<input type="text" class="pop_money">元</p>
+        <h3 class="ngp_pop_btn">确定</h3>
+    </div>
+    <div id="ngp_warpper">
+        <!--头部开始-->
+        <div class="ngp_header">
+            <div class="ngp_top">
+                <div class="ngp_logo">
+                   <img src="images/logo.png">
+                   <span class="logo_hx"></span>
+                   <span class="logo_text">商户服务</span>
+                </div>
+                <div class="ngp_top_right">
+                    <span>您好！ Acdbm@9186.com</span>
+                    <b></b>
+                    <span>退出</span>
+                    <b></b>
+                    <span>帮助中心</span>
+                </div>
+            </div>
+        </div>
+        <div class="ngp_nav">
+            <div class="nav_list">
+                <ul>
+                    <li class="nav_ative"><a href="index.html">我的汇付宝</a></li>
+                    <li><a href="transaction.html">交易管理</a></li>
+                    <li><a href="#">结算管理</a></li>
+                    <li><a href="account_management.html">账户管理</a></li>
+                </ul>
+            </div> 
+        </div>
+        <!--头部结束-->
+        
+        <!--内容开始-->
+        <div class="ngp_content">
+           <div class="recharge_box">
+               <div class="record_box">
+                   <div class="transaction_tab transfer_tab">
+                        <div class="transaction_tab_l">
+                            <ul>
+                                <li class="tab_active">充值记录</li>
+                                <li>提现记录</li>
+                            </ul>
+                        </div>
+                        <div class="transaction_tab_r"></div>
+                   </div>
+                   <div class="clear"></div>
+                   <div class="transaction_query" style="display:block">
+                       <p class="record_type">
+                        <label class="record_text">交易创建时间</label><input type="text" class="record_time_w Wdate" id="startDate1" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',maxDate:'#F{$dp.$D(\'endDate1\')}'})" readonly="readonly" ><span class="record_hx">到</span><input type="text" class="record_time_w Wdate" id="endDate1" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'#F{$dp.$D(\'startDate1\')}'})" readonly="readonly">
+                        <!--<input type="radio" name="radio" value="交易创建时间" class="radio" checked><label class="radio"><b>交易创建时间</b></label>
+                        <input type="radio" name="radio" value="交易创建时间" class="radio"><label class="radio"><b>交易成功时间</b></label>-->
+                       </p>
+                       <div class="record_select_box">
+                           <p>支付类型</p>
+                           <div class="record_select" name="record_select">
+                               <input type="text" readonly placeholder="全部">
+                               <ul>
+                                  <li data-value="1">全部</li>
+                                  <li data-value="2">充值</li>
+                                  <li data-value="3">提现</li>
+                               </ul>
+                          </div>
+                          <p>交易状态</p>
+                          <div class="record_select" name="record_select">
+                               <input type="text" readonly placeholder="全部">
+                               <ul>
+                                  <li data-value="1">全部</li>
+                                  <li data-value="2">成功</li>
+                                  <li data-value="3">失败</li>
+                                  <li data-value="4">审核中</li>
+                               </ul>
+                          </div>
+                    </div>
+                    <div class="clear"></div>
+                    <p class="record_btn">查询</p>
+
+                    <div class="record_table">
+                        <table class="tbl_content">
+                        <thead>
+                            <tr class="thead">
+                                <td width="13%">订单号</td>
+                                <td width="17%">交易创建时间</td>
+                                <td width="10%">交易金额</td>
+                                <td width="10%">手续费</td>
+                                <td width="10%">状态</td>
+                                <td width="17%">支付类型</td>
+                                <td width="11%">退款金额</td>
+                                <td width="12%">操作</td>
+                            </tr>
+                        </thead>
+                        <tbody class="record_list">
+                            <tr>
+                                <td>12345678</td>
+                                <td>2016-06-23 10:43:22</td>
+                                <td>1000.00</td>
+                                <td>充值</td>
+                                <td>审核中</td>
+                                <td>2016-06-23 10:43:22</td>
+                                <td>100.00</td>
+                                <td><span class="record_look">查看</span><span class="record_refund">退款</span></td>
+                            </tr>
+                            <tr>
+                                <td>12345678</td>
+                                <td>2016-06-23 10:43:22</td>
+                                <td>1000.00</td>
+                                <td>充值</td>
+                                <td>审核中</td>
+                                <td>2016-06-23 10:43:22</td>
+                                <td>100.00</td>
+                                <td><span class="record_look">查看</span><span class="record_refund">退款</span></td>
+                            </tr>
+                            <tr>
+                                <td>12345678</td>
+                                <td>2016-06-23 10:43:22</td>
+                                <td>1000.00</td>
+                                <td>充值</td>
+                                <td>审核中</td>
+                                <td>2016-06-23 10:43:22</td>
+                                <td>100.00</td>
+                                <td><span class="record_look">查看</span><span class="record_refund">退款</span></td>
+                            </tr>
+                            <tr>
+                                <td>12345678</td>
+                                <td>2016-06-23 10:43:22</td>
+                                <td>1000.00</td>
+                                <td>充值</td>
+                                <td>审核中</td>
+                                <td>2016-06-23 10:43:22</td>
+                                <td>100.00</td>
+                                <td><span class="record_look">查看</span><span class="record_refund">退款</span></td>
+                            </tr>
+                            <tr>
+                                <td>12345678</td>
+                                <td>2016-06-23 10:43:22</td>
+                                <td>1000.00</td>
+                                <td>充值</td>
+                                <td>审核中</td>
+                                <td>2016-06-23 10:43:22</td>
+                                <td>100.00</td>
+                                <td><span class="record_look">查看</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="page">
+                        <p>
+                            <span>首页</span>
+                            <span>上一页</span>
+                            <span>下一页</span>
+                            <span>尾页</span>
+                            <span>2/5页，</span>
+                            <span>共30条 每页
+                                <select class="page_select">
+                                    <option>10</option>
+                                    <option>20</option>
+                                    <option>30</option>
+                                    <option>40</option>
+                                </select>条，
+                            </span>
+                            <span>到第<input type="text" class="page_input">页</span>
+                        </p>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="record_back"><p>返回</p></div>
+                </div>
+            </div>
+                   
+            <div class="transaction_query">
+                       <p class="record_type">
+                        <label class="record_text">交易创建时间</label><input type="text" class="record_time_w Wdate" id="startDate1" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',maxDate:'#F{$dp.$D(\'endDate1\')}'})" readonly="readonly" ><span class="record_hx">到</span><input type="text" class="record_time_w Wdate" id="endDate1" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'#F{$dp.$D(\'startDate1\')}'})" readonly="readonly">
+                       </p>
+                       <div class="record_select_box">
+                          <p>交易状态</p>
+                          <div class="record_select" name="record_select">
+                               <input type="text" readonly placeholder="全部">
+                               <ul>
+                                  <li data-value="1">全部</li>
+                                  <li data-value="2">成功</li>
+                                  <li data-value="3">失败</li>
+                                  <li data-value="4">审核中</li>
+                               </ul>
+                          </div>
+                    </div>
+                    <div class="clear"></div>
+                    <p class="record_btn">查询</p>
+
+                    <div class="record_table">
+                        <table class="tbl_content">
+                        <thead>
+                            <tr class="thead">
+                                <td width="13%">订单号</td>
+                                <td width="17%">交易创建时间</td>
+                                <td width="10%">交易金额</td>
+                                <td width="10%">手续费</td>
+                                <td width="17%">银行卡号</td>
+                                <td width="10%">状态</td>
+                            </tr>
+                        </thead>
+                        <tbody class="record_list">
+                            <tr>
+                                <td>12345678</td>
+                                <td>2016-06-23 10:43:22</td>
+                                <td>1000.00</td>
+                                <td>充值</td>
+                                <td>审核中</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>12345678</td>
+                                <td>2016-06-23 10:43:22</td>
+                                <td>1000.00</td>
+                                <td>充值</td>
+                                <td>审核中</td>
+                                <td>2016-06-23 10:43:22</td>
+                            </tr>
+                            <tr>
+                                <td>12345678</td>
+                                <td>2016-06-23 10:43:22</td>
+                                <td>1000.00</td>
+                                <td>充值</td>
+                                <td>审核中</td>
+                                <td>2016-06-23 10:43:22</td>
+                            </tr>
+                            <tr>
+                                <td>12345678</td>
+                                <td>2016-06-23 10:43:22</td>
+                                <td>1000.00</td>
+                                <td>充值</td>
+                                <td>审核中</td>
+                                <td>2016-06-23 10:43:22</td>
+                            </tr>
+                            <tr>
+                                <td>12345678</td>
+                                <td>2016-06-23 10:43:22</td>
+                                <td>1000.00</td>
+                                <td>充值</td>
+                                <td>审核中</td>
+                                <td>2016-06-23 10:43:22</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="page">
+                        <p>
+                            <span>首页</span>
+                            <span>上一页</span>
+                            <span>下一页</span>
+                            <span>尾页</span>
+                            <span>2/5页，</span>
+                            <span>共30条 每页
+                                <select class="page_select">
+                                    <option>10</option>
+                                    <option>20</option>
+                                    <option>30</option>
+                                    <option>40</option>
+                                </select>条，
+                            </span>
+                            <span>到第<input type="text" class="page_input">页</span>
+                        </p>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="record_back"><p>返回</p></div>
+                </div>
+            </div>
+                   
+        </div>
+    </div>
+        </div>
+        <!--内容结束-->
+        
+        <!--尾部开始-->
+        <div class="ngp_footer">
+            <p>
+                <span>关于我们</span>
+                <span>合作伙伴</span>
+                <span>商务合作</span>
+                <span>联系我们</span>
+            </p>
+            <p class="ngp_ft">Copyright © since 2008 汇元银通（北京）在线支付技术有限公司  版权所有 侵权必究</p>
+        </div>
+        <!--尾部结束-->
+        
+    </div>
+</body>
+</html>

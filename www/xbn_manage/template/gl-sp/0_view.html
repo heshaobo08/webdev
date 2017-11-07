@@ -1,0 +1,261 @@
+<div class="details">
+	<h3 class="titleText">商品信息</h3>
+	<div class="stateText">
+		<p class="reason">
+			主商品名称：
+			<span class="mL50">${source.title}</span>
+		</p>
+	</div>
+	<ul class="tabBtn mB15">
+		<li class="this"><a href="javascript:;">基本信息</a></li>
+		{{if source.variationType=='multiVariation'}}
+		<li><a href="javascript:;">规格信息</a></li>
+		{{/if}}
+		<li><a href="javascript:;">商品描述</a></li>
+		<li><a href="javascript:;">关联站点信息</a></li>
+	</ul>
+	<div class="showMainProduct">
+		<!-- 基本信息 -->
+		<div class="details">
+			<div class="otherConts">
+				<div class="details_L">
+					<dl>
+						<dt>商品语言：</dt>
+						<dd>{{if source.commodityLang && source.languageList[source.commodityLang.lang]}}${source.languageList[source.commodityLang.lang].value}{{/if}}</dd>
+					</dl>
+					<dl>
+						<dt>商品规格：</dt>
+						<dd>{{if source.variationType=='multiVariation'}}多规格{{else source.variationType=='singleVariation'}}单规格{{/if}}</dd>
+					</dl>
+					<dl>
+						<dt>小笨鸟用户名：</dt>
+						<dd>${source.userDetail.name}</dd>
+					</dl>
+					<dl>
+						<dt>品牌：</dt>
+						<dd>${source.brand}</dd>
+					</dl>
+					<dl>
+						<dt>刊登标题：</dt>
+						<dd  class="block break">{{if source.commodityLang}}${source.commodityLang.langTitle}{{/if}}</dd>
+					</dl>
+					<dl>
+						<dt>商品货号/SKU：</dt>
+						<dd>
+			{{if source.sku.indexOf('-')!='-1'}}
+			   ${source.sku.replace(/([a-zA-z\d]*)\-/g,'')}
+			{{else}}
+			  ${source.sku}
+			{{/if}}
+			</dd>
+					</dl>
+
+					<dl>
+						<dt>销售单位：</dt>
+						<dd>${source.quantityUnit}</dd>
+					</dl>
+		  {{if source.variationType=='singleVariation'}}
+					<dl>
+						<dt>建议零售价：</dt>
+						<dd>${source.price}元/${source.quantityUnit}</dd>
+					</dl>
+		  {{/if}}
+					<dl>
+						<dt>库存：</dt>
+						<dd>{{if source.variationType=='singleVariation'}}${source.stock}{{else}}${source.totalStock}{{/if}}${source.quantityUnit}</dd>
+					</dl>
+				</div>
+				<div class="details_R">
+					<dl>
+						<dt>商品尺寸(cm)：</dt>
+						<dd>
+							<span class="mR10">长(${source.commodityPkg.pkgLength}cm)</span>
+							<span class="mR10">宽(${source.commodityPkg.pkgWidth}cm)</span>
+							<span class="mR10">高(${source.commodityPkg.pkgHeight}cm)</span>
+						</dd>
+					</dl>
+					<dl>
+						<dt>商品重量(kg)：</dt>
+						<dd>${source.commodityPkg.pkgWeight}kg</dd>
+					</dl>
+					<dl>
+						<dt>商品发货地址：</dt>
+						<dd class="w240">
+							{{if source.address}}
+				{{if source.address.country =='CN'}}中国{{/if}}${source.address.provinceCn}${source.address.cityCn},${source.address.districtCn}${source.address.cnStreet}${source.address.cnCompany},${source.address.zipCode},${source.address.cnContacts},${source.address.telephone}
+			  {{/if}}
+						</dd>
+					</dl>
+				</div>
+			</div>
+			<div>
+				<dl class="textDl">
+					<dt>商品分组：</dt>
+					<dd>{{if source.groupData}}${source.groupData.name}{{/if}}</dd>
+				</dl>
+				<dl class="textDl">
+					<dt>分类：</dt>
+					<dd>
+						<span>${source.cateFullPath}</span>
+					</dd>
+				</dl>
+				<dl class="textDl">
+					<dt>商品备注：</dt>
+					<dd>${source.remark}</dd>
+				</dl>
+			</div>
+		</div>
+		{{if source.variationType=='multiVariation'}}
+		<!-- 多规格信息 -->
+		<div class="details none">
+		   <div class="productTable">
+			   <table cellspacing="0" border="0" class="">
+				   <thead>
+					   <tr>
+						   {{each(i,vary) source.commodityVariations[0].aVariation}}
+							<th>${vary}</th>
+						   {{/each}}
+						   <th>商品货号/SKU</th>
+						   <th>库存</th>
+						   <th>建议零售价</th>
+						   <th>备注</th>
+						   <th>状态</th>
+					   </tr>
+				   </thead>
+				   <tbody>
+				   {{each(i,commody) source.commodityVariations}}
+					   <tr>
+						   {{each(i,value) commody.aVariationValue}}
+							<td>${value}</td>
+						   {{/each}}
+						   <td>
+						   {{if commody.variationSku.indexOf('-')!='-1'}}
+							 ${commody.variationSku.slice(commody.variationSku.indexOf('-')+1)}
+							{{else}}
+							  ${commody.variationSku}
+							{{/if}}
+						   </td>
+						   <td>${commody.variationStock}</td>
+						   <td>${commody.variationPrice}</td>
+						   <td>${commody.variationDesc}</td>
+						   <td>{{if commody.isEnable}}启用{{else commody.isEnable==false}}禁用{{/if}}</td>
+					   </tr>
+					{{/each}}
+				   </tbody>
+			   </table>
+			   <table cellspacing="0" border="0" class="">
+				   <thead>
+				   <tr class="bT">
+						{{each(i,vary) source.commodityVariations[0].aVariation}}
+						<th>${vary}</th>
+						{{/each}}
+					   <th>商品图片</th>
+				   </tr>
+				   </thead>
+				   <tbody class="picOn">
+				   {{each(i,commody) source.commodityVariations}}
+					   <tr style="background-color: rgb(255, 255, 255);">
+						   {{each(i,value) commody.aVariationValue}}
+							<td>${value}</td>
+						   {{/each}}
+						   <td>
+						   <img src="images/defineImg.png" data-fileid='${commody.variationId}' data-type='0'>
+						   <span data-fileid='${commody.variationId}' data-type='1'></span>
+						   <script data-forFileid='${commody.variationId}' data-type='1' type='text/x-jquery-tmpl'>
+							  _[{if list}]_
+								  _[{each(i,pic) list}]_
+									  <img src="$_[pic]_"/>
+								  _[{/each}]_
+							  _[{/if}]_
+						   </script>
+						 </td>
+					   </tr>
+					{{/each}}
+				   </tbody>
+			   </table>
+		   </div>
+		</div>
+		{{/if}}
+		<!-- 商品描述 -->
+		<div class="picDiscribe details none">
+			<div class="pic_show">
+				<span class="pic_main">
+					<img src="images/defineImg.png" data-fileid='${source.id}' data-type='0'>
+				</span>
+				<div class='inline_block' data-fileid='${source.id}' data-type='1'>
+				</div>
+				<script data-forFileid='${source.id}' data-type='1' type='text/x-jquery-tmpl'>
+					_[{if list}]_
+						_[{each(i,pic) list}]_
+							<span><img src="$_[pic]_"/></span>
+						_[{/each}]_
+					_[{/if}]_
+				 </script>
+			</div>
+			<div class="wordDiscribe block break">
+				{{if source.commodityLang}}{{wrap source.commodityLang.langDescription+'<br>'}}{{/wrap}}{{/if}}
+			</div>
+			<div class="htmlDiscribe">
+				{{if source.commodityLang && source.commodityLang.langRichDescription}}
+					<iframe id="wordDiscribeIframe" width="1100" height="400"></iframe>
+				{{/if}}
+			</div>
+		</div>
+		<!-- 关联站点 -->
+		<div class="details none">
+			<div class="smallTable">
+			{{if source.siteDetail.length}}
+				<table class="" cellspacing="0" border="0">
+					<thead>
+						<tr>
+							<th>关联平台站点</th>
+							<th>商品名称</th>
+							<th>可售数量</th>
+							<th>规格</th>
+							<th>价格</th>
+							<th>商品货号/SKU</th>
+							<th>状态</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<tbody>
+							{{each(i,sites) source.siteDetail}}
+								<tr>
+									<td>{{if source.siteList[sites.site]}}${source.siteList[sites.site].cnName}{{/if}}</td>
+									<td>${sites.title}</td>
+									<td>${sites.stock}</td>
+									<td>{{if sites.variationType=="singleVariation"}}单规格{{else}}多规格{{/if}}</td>
+									<td>
+										${sites.price}
+									</td>
+									<td>
+										{{if sites.sku.indexOf('-')!='-1'}}
+										   ${sites.sku}
+										{{else}}
+										  ${sites.sku}
+										{{/if}}
+									</td>
+									<td>${sites.produectSiteStatusShow}</td>
+									<td>
+									{{if !sites.produectSiteStatusShow}}
+									  {{if sites.variationType=='multiVariation' && (source.siteList[sites.site] && source.siteList[sites.site].cnName.indexOf('eBay')!='0') && sites.itemId.replace(/[\[\]]+/g,'')}}
+										{{if sites.itemId.replace(/[\[\]]+/g,'').split(',')[0]!='null'}}<a href="${source.siteList[sites.site].productUrlPre}${sites.itemId.replace(/[\[\]]+/g,'').split(',')[0]}" target="_blank" class="blue">查看</a>{{/if}}
+									  {{else}}
+										{{if source.siteList[sites.site] && sites.itemId}}<a href="${source.siteList[sites.site].productUrlPre}${sites.itemId}" target="_blank" class="blue">查看</a>{{/if}}
+									  {{/if}}
+									{{/if}}
+									</td>
+								</tr>
+							{{/each}}
+					</tbody>
+				</table>
+				{{else}}
+					无关联站点
+				{{/if}}
+			</div>
+		</div>
+	</div>
+</div>
+<div class="btnMain">
+	<a class="button" href="javascript:history.go(-1);" sdata-href='?m=xhr_id_95_160' data-title='商品管理-主商品管理'>返回</a>
+</div>

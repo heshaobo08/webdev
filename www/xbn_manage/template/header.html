@@ -1,0 +1,29 @@
+<div class="backstage">
+    <span class="backstage_L">BACK-STAGE MANAGEMENT</span>
+    <div class="backstage_R">
+        <div class="signOut">
+            <a href="javascript:;" class="icon-20 js-signOut"></a>
+        </div>
+        <div class="inFor">
+            <!-- 消息提醒
+			<div class="tipsConts">
+				<a href="javascript:;" class="icon-3 tipsIcon"><span class="tipsNumber">12</span></a>
+				<a href="javascript:;" class="icon-3 tipsIcon"><span class="tipsNumber">12</span></a>
+				<a href="javascript:;" class="icon-3 tipsIcon"><span class="tipsNumber">12</span></a>
+			</div>
+-->
+            <a href="javascript:;" class="inFor_name"><em class="icon-12"></em><span class="mL5">${source.roleName}</span></a>
+        </div>
+    </div>
+</div>
+<div class="crumbs"></div>
+<script id="crumbs" type="text/x-jquery-tmpl">
+    _[{each(i,c) crumbs}]_
+    <span>$_[c]_</span> _[{if i != crumbs.length-1}]_&gt;_[{/if}]_ _[{/each}]_
+</script>
+
+<script type="text/javascript">
+    mXbn.require({
+        file: ["{root}/{file}/modules/header.js"]
+    });
+</script>

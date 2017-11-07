@@ -1,0 +1,40 @@
+ <div style="width: 100%;">
+        <input type="password" class="set_box" maxlength="1" onkeyup="return ValidateNumber(this,value)" >
+        <input type="password" class="set_box" maxlength="1" onkeyup="return ValidateNumber(this,value)">
+        <input type="password" class="set_box" maxlength="1" onkeyup="return ValidateNumber(this,value)">
+        <input type="password" class="set_box" maxlength="1" onkeyup="return ValidateNumber(this,value)">
+        <input type="password" class="set_box" maxlength="1" onkeyup="return ValidateNumber(this,value)">
+        <input type="password" class="set_box" maxlength="1" onkeyup="return ValidateNumber(this,value)">
+    </div>
+<style>	    
+  * {
+            padding: 0;
+            margin: 0;
+            margin: 0;
+        }
+
+        .set_box {
+            ime-mode: disabled;
+            padding: 14px 0px;
+            width: 11.3%;
+        }</style>
+<script>
+        num = 0;
+        window.onload = function () {
+            document.getElementsByTagName('input')[num].focus();
+        }
+        function ValidateNumber(e, pnumber) {
+            if (!/^\d+$/.test(pnumber)) {
+                e.value = /^\d+/.exec(e.value);
+            }
+            if (e.value.length == 1) {
+                if (num < 6) {
+                    document.getElementsByTagName('input')[num].focus();
+                }
+                num++;
+            }
+            return false;
+        }
+    
+
+</script>

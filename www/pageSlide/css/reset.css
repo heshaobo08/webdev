@@ -1,0 +1,16 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, em, p, font, img, small, strong, center, dl, dt, dd, ol, ul, li, form, label, table, caption, tbody, tr, th, td {margin:0;padding:0;border:0;outline:0;} 
+img{vertical-align: middle;}
+address, caption, cite, code, dfn, th, var { font-style:normal; font-weight:normal; }
+ul, ol { list-style:none; } :focus {outline:none; } 
+body { color:#636563; background:#f7f7f7;overflow-x:hidden;overflow-y: hidden}
+table {border-collapse:collapse;border-spacing: 0} 
+a { text-decoration:none;color:#313031; }
+a:visited { color:#313031; }
+a:hover, a:active, a:focus { color:#313031;}
+.left{float:left} 
+.right{float:right}
+h3,h4,h5,h6{
+    font-weight: normal;
+}
+
+

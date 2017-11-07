@@ -1,0 +1,118 @@
+<div class="contsBox">
+    <div class="details">
+        <h3 class="titleText">基本信息</h3>
+        <div class="mT20 pL280">
+            <dl class="textDl">
+                <dt class="invoice_dt">申请编号：</dt>
+                <dd class="invoice_dd">${source.applyCode}</dd>
+            </dl>
+            <dl class="textDl">
+                <dt class="invoice_dt">处理状态：</dt>
+                <dd class="invoice_dd">${getConstName("OwmsInvoiceApplyStatusEnum",source.status)}</dd>
+            </dl>
+            <dl class="textDl">
+                <dt class="invoice_dt">发票类型：</dt>
+                <dd class="invoice_dd">${getConstName("OwmsInvoiceApplyTypesEnum",source.invoiceType)}</dd>
+            </dl>
+            <dl class="textDl">
+                <dt class="invoice_dt">发票抬头：</dt>
+                <dd class="invoice_dd">${source.invoiceTitle}</dd>
+            </dl>
+            <dl class="textDl">
+                <dt class="invoice_dt">开票金额：</dt>
+                <dd class="invoice_dd"><span id="amount">${source.invoiceAmount}</span>  CNY</dd>
+            </dl>
+            <dl class="textDl">
+                <dt class="invoice_dt">开票月份：</dt>
+                <dd class="invoice_dd">${source.invoiceMonth}</dd>
+            </dl>
+            {{if source.status==3}}
+            <dl class="textDl">
+                <dt class="invoice_dt">物流公司：</dt>
+                <dd class="invoice_dd">${source.logisticsCompany}</dd>
+            </dl>
+            <dl class="textDl">
+                <dt class="invoice_dt">物流跟踪号：</dt>
+                <dd class="invoice_dd">${source.logisticsTrackingNumber}</dd>
+            </dl>
+            <dl class="textDl">
+                <dt class="invoice_dt">寄出时间：</dt>
+                <dd class="invoice_dd">${source.sendTime}</dd>
+            </dl>
+            {{/if}}
+            {{if source.status==4}}
+            <dl class="textDl">
+                <dt class="invoice_dt">驳回原因：</dt>
+                <dd class="invoice_dd">${source.rejectInfo}</dd>
+            </dl>
+            {{/if}}
+        </div>
+    </div>
+    <div class="details">
+        <h3 class="titleText">修改信息</h3>
+        <div class="mT20 pL280">
+            <dl class="textDl">
+                <dt class="invoice_dt">申请人：</dt>
+                <dd class="invoice_dd">${source.applyUser}</dd>
+            </dl>
+            <dl class="textDl">
+                <dt class="invoice_dt">申请时间：</dt>
+                <dd class="invoice_dd">${source.applyTime}</dd>
+            </dl>
+            <dl class="textDl">
+                <dt class="invoice_dt">最后修改人：</dt>
+                <dd class="invoice_dd">${source.lastUpdateUser}</dd>
+            </dl>
+            <dl class="textDl">
+                <dt class="invoice_dt">最后修改时间：</dt>
+                <dd class="invoice_dd">${source.lastUpdateTime}</dd>
+            </dl>
+        </div>
+    </div>
+</div>
+<div class="btnMain">
+    {{if source.status==1}}
+    {{if source.operateData.moduleData && source.operateData.actionData && source.operateData.operate['HWC20202007'] && source.operateData.operate['HWC20202007'].childOpt['HWC20202008']}}
+    <a class="buttonText mR20 js-audit" href="javascript:;" data-id="${source.id}">受理</a>
+    {{/if}}
+    {{if source.operateData.moduleData && source.operateData.actionData && source.operateData.operate['HWC20202007'] && source.operateData.operate['HWC20202007'].childOpt['HWC20202010']}}
+    <a class="buttonText mR20 js-reject" href="javascript:;" data-id="${source.id}">驳回</a>
+    {{/if}}
+    {{/if}}
+    {{if source.status==2}}
+    {{if source.operateData.moduleData && source.operateData.actionData && source.operateData.operate['HWC20202007'] && source.operateData.operate['HWC20202007'].childOpt['HWC20202009']}}
+    <a class="buttonText mR20 js-send" href="javascript:;" data-id="${source.id}">寄出</a>
+    {{/if}}
+    {{/if}}
+    <a class="buttonText" href="javascript:history.go(-1);" onclick="document.title='海外仓财务管理-发票管理'">返回</a>
+</div>
+<!-- 驳回 -->
+<script id="rejectReasonTmpl" type="text/x-jquery-tmpl">
+<form id="rejectForm">
+    <div class="mL70 mT20">
+        <textarea class="textarea w390 h140" placeholder="驳回原因最多250个字" data-cnmax="250" name="rejectInfo"></textarea>
+    </div>
+</form>
+</script>
+<script id="sendVoiceTmpl" type="text/x-jquery-tmpl">
+<form id="sendVoiceForm">
+    <div class="selectRole">
+        <dl class="changeDl">
+            <dt>物流公司：</dt>
+            <dd><input type="text" data-cnmax="50" required class="input w240" name="logisticsCompany2" value=""/></dd>
+        </dl>
+        <dl class="changeDl">
+            <dt>物流跟踪号：</dt>
+            <dd><input type="text" data-cnmax="50" required class="input w240" name="logisticsTrackingNumber2"/></dd>
+        </dl>
+        <dl class="changeDl">
+            <dt>寄出时间：</dt>
+            <dd>
+                <div class="deadline">
+                    <span id="sendTime" class="dateInput"></span><a href="javascript:;" class="icon-54 timeIco"></a>
+                </div>
+            </dd>
+        </dl>
+    </div>
+</form>
+</script>

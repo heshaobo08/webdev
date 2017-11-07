@@ -1,0 +1,23 @@
+<div class="nav">
+    <h1><img src="img/logo.png" alt=""></h1>
+    <div class="navItem">
+        {{each(i,k) source}}
+        <dl class="" data-sort="${k.sort}">
+            <dt>
+                <a>
+                    <em class="${k.className}"></em>${k.menuName}
+                </a>
+            </dt>
+            <dd>
+                {{each(j,c) k.childs}}
+                <a id="${c.id}" data-sort="${c.sort}" data-href="?m=xhr_id_${k.id}_${c.id}" data-title="${k.menuName}-${c.menuName}"><em>•</em>${c.menuName}</a>{{/each}}
+            </dd>
+        </dl>
+        {{/each}}
+    </div>
+    <script type="text/javascript">
+        mXbn.require({
+            file: ["{root}/{file}/modules/menu.js"]
+        });
+    </script>
+</div>

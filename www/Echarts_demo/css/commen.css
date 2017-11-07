@@ -1,0 +1,406 @@
+﻿
+ *{
+            margin:0;
+            padding:0;
+        }
+        a {
+            text-decoration: none;
+        }
+       li{
+           list-style:none;
+       }
+        .header {
+            height: 120px;
+            width: 100%;
+            box-shadow: 0 3px 3px #e8e8e8;
+        }
+        .hearder_top {
+            height: 33px;
+            width: 100%;
+            background: #f6f6f6;
+            font-size: 12px;
+            line-height: 33px;
+        }
+        .bg_w {
+            background: #fff;
+        }
+        .autobox {
+            width: 1200px;
+            margin: 0 auto;
+        }
+
+        .zin100 {
+            z-index: 100;
+        }
+
+        .po_re {
+            position: relative;
+        }
+        .logo-small {
+            float: left;
+            margin-top: 5px;
+        }
+            .logo-small img {
+                height: 22px;
+            }
+        .unlogin {
+            border: solid 1px #e55600;
+            border-radius: 3px;
+            height: 19px;
+            line-height: 19px;
+            margin-top: 6px;
+        }
+
+        .orange {
+            color: #e55600 !important;
+        }
+
+        .right {
+            float: right;
+        }
+        .fz_12 {
+            font-size: 12px !important;
+        }
+        .nav li {
+            float: left;
+            width: 85px;
+            height: 30px;
+            line-height: 30px;
+            position: relative;
+            z-index: 100;
+        }
+            .nav li a {
+                color: #333;
+            }
+        .all_coin_price {
+            float: left;
+            position: relative;
+            z-index: 90;
+        }
+        .all_coin_show {
+            width: 180px;
+            height: 67px;
+            border: 1px solid #fff;
+            border-bottom-width: 1px;
+            border-bottom-style: solid;
+            border-bottom-color: rgb(255, 255, 255);
+            border-bottom: none;
+            z-index: 100;
+            padding-left: 12px;
+            padding-top: 18px;
+            background: #fff;
+            position: relative;
+        }
+            .all_coin_show i {
+                float: left;
+                width: 55px;
+                height:50px;
+                background-image: url(../images/bite.png);
+               background-repeat: no-repeat;
+                background-size: 50px auto;
+            }
+
+            .all_coin_show span {
+                float: left;
+                line-height: 47px;
+                width: 116px;
+                overflow: hidden;
+                height: 47px;
+                font-size: 14px;
+            }
+        .all_coin_info {
+            float: left;
+            padding-top: 19px;
+        }
+            .all_coin_info dt {
+                height: 50px;
+                line-height: 50px;
+                float: left;
+                width: 240px;
+                padding-left: 15px;
+                color: #e55600;
+                font-size: 32px;
+            }
+            .all_coin_info dd {
+                float: left;
+                width: 122px;
+                text-align: center;
+                font-size: 12px;
+                color: #666;
+                line-height: 22px;
+                padding-top: 6px;
+            }
+                .all_coin_info dd p {
+                    line-height: 22px;
+                    font-size: 18px;
+                }
+
+        .list-tab-box {
+            width: 100%;
+            padding-top: 145px;
+        }
+        .list-tab {
+            width: 1200px;
+            height: 32px;
+            margin: 0 auto;
+            border-bottom: 2px solid #e3e3e3;
+        }
+            .list-tab li.on {
+                border-bottom: 2px solid #e55600;
+            }
+
+            .list-tab li {
+                float: left;
+                margin-left: 35px;
+                height: 32px;
+                text-align: center;
+                position: relative;
+            }
+        list-tab li.on > a {
+            color: #e55600;
+        }
+
+        .list-tab li > a {
+            width: 100%;
+            height: 32px;
+            font-size: 16px;
+        }
+        .main {
+                width:1200px;
+                height: 800px;
+                margin: 20px auto;
+            }
+        .fast_tr {
+                border: 1px solid #efefef;
+                background: #fff;
+                padding: 9px 0px 8px;
+                height:568px;
+        }
+        .ft_box {
+            float: left;
+            width: 50%;
+            border-right: 1px dotted #e8e8e8;
+            padding-bottom: 30px;
+            box-sizing: border-box;
+        }
+        .ft_box dt {
+            margin-bottom: 16px;
+            height: 40px;
+            line-height: 40px;
+            font-size: 20px;
+            padding-left: 30px;
+            padding-top: 16px;
+        }
+        .ft_box dd {
+            margin: 0 30px;
+            margin-bottom: 0px;
+            margin-bottom: 24px;
+            color: #999;
+            font-size: 12px;
+            position: relative;
+            overflow: hidden;
+        }
+        .ft_box dd input {
+            width: 100%;
+            height: 43px;
+            line-height: 43px;
+            font-size: 14px;
+            padding: 0 10px;
+            border: 1px solid #efefef;
+            color: #333;
+            border-radius: 3px;
+            box-sizing: border-box;
+        }
+        .ft_box dd p {
+    float: left;
+    font-size: 14px;
+}
+        .slider_wrap .ratio {
+    width: 30px;
+    line-height: 22px;
+}
+.ratio {
+    float: right;
+    color: #888;
+}
+.slider_wrap .sliderbox {
+    padding-top: 7px;
+    padding-left: 78px;
+}
+.ui-slider {
+    position: relative;
+    text-align: left;
+    width: 215px;
+}
+.ui-slider-horizontal .ui-slider-range {
+    top: 0;
+    height: 100%;
+}
+.ui-slider .ui-slider-range {
+    position: absolute;
+    z-index: 1;
+    font-size: .7em;
+    display: block;
+}
+.ui-widget-header {
+    background: #669900 50% 50% repeat-x;
+    color: #222;
+    font-weight: 700;
+}
+.ui-widget-header {
+    background-color: #fff;
+}
+.ui-slider-range {
+    position: absolute;
+    z-index: 1;
+    font-size: .7em;
+    display: block;
+    border: 0;
+}
+.ui-slider-horizontal .ui-slider-handle {
+    top: -.4em;
+    margin-left: -.6em;
+    height: 15px !important;
+    width: 15px !important;
+    border-radius: 8px !important;
+}
+.ui-slider .ui-slider-handle {
+    position: absolute;
+    z-index: 2;
+    width: 1.2em;
+    height: 1.2em;
+    cursor: default;
+}
+.ui-state-default, .ui-widget-content .ui-state-default {
+    border: 1px solid #d3d3d3;
+    background: #efefef 50% 50% repeat-x;
+    font-weight: 400;
+    color: #555;
+    outline: 0;
+}
+.ui-slider-horizontal .ui-slider-range {
+    top: 0;
+    height: 100%;
+}
+.ui-slider .ui-slider-range {
+    position: absolute;
+    z-index: 1;
+    font-size: .7em;
+    display: block;
+}
+.ui-widget-header {
+    background: #669900 50% 50% repeat-x;
+    color: #222;
+    font-weight: 700;
+}
+.ui-slider-horizontal .ui-slider-range {
+    top: 0;
+    height: 100%;
+}
+.ui-slider .ui-slider-range {
+    position: absolute;
+    z-index: 1;
+    font-size: .7em;
+    display: block;
+}
+.ui-widget-header {
+    background: #669900 50% 50% repeat-x;
+    color: #222;
+    font-weight: 700;
+}
+.nobr {
+    border-right: none !important;
+}
+.ft_box dt {
+    margin-bottom: 16px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 20px;
+    padding-left: 30px;
+    padding-top: 16px;
+}
+.green {
+    color: #690 !important;
+}
+.trader_btn {
+    height: 43px;
+    margin: 39px 30px 0px;
+}
+.trader_btn input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    background: #e55600;
+    font-size: 16px;
+    color: #fff;
+}
+.bg_green {
+    background: #690 !important;
+}
+.footer {
+    width: 100%;
+    background: #f8f8f8;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-top: 1px solid #e8e8e8;
+}
+.pt23 {
+    padding-top: 23px !important;
+}
+.footer_logo {
+    float: left;
+    margin-top: 35px;
+}
+.footer_logo img {
+    height: 58px;
+}
+.footer dl:nth-child(1) {
+    width: 199px !important;
+}
+.footer dl:nth-child(2) {
+    width: 194px !important;
+}
+.footer dl:nth-child(3) {
+    width: 220px !important;
+}
+.footer dl {
+    float: left;
+    font-size: 12px;
+    color: #666;
+    line-height: 24px;
+}
+.footer dt {
+    font-size: 14px;
+    line-height: 22px;
+}
+.footer dd a {
+    color: #666;
+}
+.footer_bottom {
+    position: relative;
+    background: #1b1b1b;
+    width: 100%;
+    padding-top: 12px;
+    line-height: 20px;
+    color: #a6a9ab;
+    text-align: left;
+    font-size: 12px;
+    padding-bottom: 9px;
+}
+.footer_bottom a {
+    color: #a6a9ab;
+}
+.clear{
+    zoom:1;
+}
+.ft_box dd font {
+    display: block;
+    height: 24px;
+    position: absolute;
+    min-width: 80px;
+    right: 10px;
+    top: 10px;
+    line-height: 26px;
+}

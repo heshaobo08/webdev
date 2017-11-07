@@ -1,0 +1,67 @@
+{
+    "statusCode": "2000000",
+    "data": {
+        "totalCount": "4",
+        "pageSize": "10",
+        "start": "1",
+        "totalPage": "1",
+        "serviceList": [
+            {
+                "serviceId": "1",
+                "serviceName": "test product",
+                "price": "11.0",
+                "unit": "个",
+                "introduction": "测试产品",
+                "lastUpdateBy": "admin",
+                "createTime": "2015-05-08 14:02:29",
+                "lastUpdateTime": "2015-05-08 14:02:31",
+                "productStatus": "1",
+                "isRecommended": "1",
+                "pictureId": "http://timage.xbniao.com/SJFSLDFJBNN.jpg",
+                "isEffective": "1"
+            },
+            {
+                "serviceId": "40289e984dad2825014dad282f160000",
+                "serviceName": "test product2",
+                "price": "10.0",
+                "unit": "个",
+                "introduction": "测试产品",
+                "lastUpdateBy": "1",
+                "createTime": "2015-06-01 11:26:41",
+                "lastUpdateTime": "2015-06-01 11:26:41",
+                "productStatus": "1",
+                "isRecommended": "1",
+                "pictureId": "sdfsdfsd",
+                "isEffective": "1"
+            },
+            {
+                "serviceId": "40289e984dad9f96014dada1b08e0000",
+                "serviceName": "test product from controller",
+                "price": "10.0",
+                "unit": "个",
+                "introduction": "测试产品1",
+                "lastUpdateBy": "1",
+                "createTime": "2015-06-01 13:39:24",
+                "lastUpdateTime": "2015-06-01 13:39:24",
+                "productStatus": "1",
+                "isRecommended": "1",
+                "pictureId": "sdfsdfsd",
+                "isEffective": "1"
+            },
+            {
+                "serviceId": "40289e984dd0d07f014dd0d088420000",
+                "serviceName": "test product5",
+                "price": "10.0",
+                "unit": "个",
+                "introduction": "测试产品",
+                "lastUpdateBy": "1",
+                "createTime": "2015-06-08 09:37:16",
+                "lastUpdateTime": "2015-06-08 09:37:16",
+                "productStatus": "1",
+                "isRecommended": "1",
+                "pictureId": "sdfsdfsd",
+                "isEffective": "1"
+            }
+        ]
+    }
+}

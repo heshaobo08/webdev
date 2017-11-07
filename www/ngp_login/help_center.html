@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf8">
+    <title>帮助中心</title>
+    <link href="css/base.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <script src="js/jquery.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.inactive').click(function () {
+                if ($(this).siblings('ul').css('display') == 'none') {
+                    $(".inactive").parent().siblings('li').find("a").removeClass('inactives');
+                    $(this).addClass('inactives');
+                    $(".inactive").parent().siblings('li').children('ul').slideUp(100);
+                    $(this).siblings('ul').slideDown(100).children('li');
+                    if ($(this).parents('li').siblings('li').children('ul').css('display') == 'block') {
+                        $(this).parents('li').siblings('li').children('ul').parent('li').children('a').removeClass('inactives');
+                        $(this).parents('li').siblings('li').children('ul').slideUp(100);
+                    }
+                } else {
+                    $(this).removeClass('inactives');
+                    $(this).siblings('ul').slideUp(100);
+
+                }
+            });
+            $('.yiji li li').on('click', function () {
+                $(this).find('a').addClass('hover');
+                $(this).siblings('li').find('a').removeClass('hover');
+                $('.help_list_r>div').eq($(this).parents('li').index()).show().siblings('div').hide();
+                $('.help_list_r>div').eq($(this).parents('li').index()).find('div').eq($(this).index()).show().siblings('div').hide();
+            });
+            $('.inactive:first').trigger('click');
+            $('.yiji li li:first').trigger('click');
+        });
+    </script>
+</head>
+
+<body>
+    <div class="warpper">
+        <!--头部开始-->
+        <div class="login_header">
+            <p>
+                <span class="login_hd_active"><a href="#">企业版</a></span>
+                <span class="login_personal"><a href="#">个人版</a></span>
+                <span class="help_center"><a href="#">帮助中心</a></span>
+            </p>
+        </div>
+        <div class="login_nav_bg">
+            <div class="login_nav">
+                <div class="login_nav_left">
+                    <p>
+                        <img src="images/logo.png">
+                        <span class="logo_hx"></span>
+                        <span class="logo_text">帮助中心</span>
+                    </p>
+                </div>
+                <div class="login_nav_right">
+                    <ul>
+                        <li><a href="#">首页</a></li>
+                        <li class="login_nav_active"><a href="#">自助服务</a></li>
+                        <li><a href="#">技术支持</a></li>
+                        <li><a href="#">联系客服</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--头部结束-->
+        <!--内容开始-->
+        <div class="login_content">
+            <div class="help_banner">
+            </div>
+            <div class="help_ct_list">
+                <div class="help_list_l">
+                    <p class="help_list_hd"><img src="images/help_tip.png">帮助指南</p>
+                    <div class="list">
+                        <ul class="yiji">
+                            <li><a href="javascript:void(0)" class="inactive">公告</a>
+                                <ul style="display: none">
+                                    <li><a href="#">产品类</a></li>
+                                    <li><a href="#">银行类</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="javascript:void(0)" class="inactive">账号相关</a>
+                                <ul style="display: none">
+                                    <li><a href="#">如何注册</a></li>
+                                    <li><a href="#">企业信息认证</a></li>
+                                    <li><a href="#">账户安全</a></li>
+                                    <li><a href="#">员工管理</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="javascript:void(0)" class="inactive">交易相关</a>
+                                <ul style="display: none">
+                                    <li><a href="#">交易查询</a></li>
+                                    <li><a href="#">交易规则</a></li>
+                                    <li><a href="#">交易退款</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="javascript:void(0)" class="inactive">产品相关</a>
+                                <ul style="display: none">
+                                    <li><a href="#">支付产品</a></li>
+                                    <li><a href="#">增值服务</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="javascript:void(0)" class="inactive">签约相关</a>
+                                <ul style="display: none">
+                                    <li><a href="#">准入条件</a></li>
+                                    <li><a href="#">签约流程</a></li> 
+                                    <li><a href="#">签约费率</a></li>
+                                    <li><a href="#">续签管理</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="javascript:void(0)" class="inactive">安全相关</a>
+                                <ul style="display: none">
+                                    <li><a href="#">安全控件</a></li>
+                                    <li><a href="#">密钥问题</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="help_list_r">
+                    <!--常见问题开始-->
+                    <div>
+                        <div class="list_r_ct">
+                            <p class="list_r_hds">产品类</p>
+                            <p>汇付宝新支付系统新上线，有多种支付产品，支持多种支付方式，欢迎您的使用，敬请期待</p>
+                        </div>
+                        <div class="list_r_ct">
+                            <p class="list_r_hds">银行类</p>
+                            <p>暂无银行系统维护提示</p>
+                            <p>注：显示某通道不能进行服务的情况，示例： </p>
+                            <p><img src="images/center.word1.png"></p>
+                        </div>
+                    </div>
+                    <!--常见问题结束-->
+                    <!--账号相关开始-->
+                    <div>
+                        <div class="list_r_ct">
+                            <p class="list_r_hds">如何注册</p>
+                            <p>1.打开汇付宝企业版官网（），点击立即【注册】；</p>
+                            <p>2.输入电子邮箱和验证码，点击下一步。注：公司账户只能使用邮箱注册；</p>
+                            <p>3.验证手机号。注：手机号只做验证使用，不作为绑定手机；</p>
+                            <p>4.查看验证邮件；</p>
+                            <p>5.在邮箱内点击验证邮件中的激活链接；</p>
+                            <p>6.在激活链接的页面当中继续注册，设置相关安全信息；</p>
+                            <p>7.下一步，注册成功；</p>
+                            <p>8.注册成功后，点击【企业实名信息填写】，进入企业认证信息页面，完成企业认证即可开通相关服务；</p>
+                        </div>
+
+                        <div class="list_r_ct">
+                            <p class="list_r_hds">企业信息认证</p>
+                            <p>1.请准备相关材料，企业营业执照、对公户银行账户（基本户或一般户）、法定代表人身份证扫描件；</p>
+                            <p>2.在企业信息认证页面填写相关信息；</p>
+                            <p>3.下一步，上传企业营业执照、组织机构代码证等证件信息；</p>
+                            <p>4.填写对公银行账号，汇付宝将向您的对公账户打款（1元以下随机金额）；</p>
+                            <p>5.等待打款；</p>
+                            <p>6.查看打款金额，返回汇付宝平台确认打款金额；</p>
+                            <p>7.认证成功，继续开通相关产品；</p>
+                        </div>
+
+                        <div class="list_r_ct">
+                            <p class="list_r_hds">账户安全</p>
+                            <h6>密码相关</h6>
+                            <h5>·&nbsp;登录密码被锁定了怎么办？</h5>
+                            <h1>如果是密码输入次数过多被锁定，1小时后自动解锁</h1>
+                            <h5>·&nbsp;找回登录密码</h5>
+                            <h5>·&nbsp;找回支付密码</h5>
+                            <h1>系统根据账户情况，列出找回支付密码的方式，一般是通过原有支付密码找回或是账号初始密保问题找回；如有其它疑问，请联系客服；</h1>
+                            <h5>·&nbsp;如何设置支付密码</h5>
+                            <h1>支付密码在账号注册时，必须设置支付密码，如果账号注册成功，修改支付密码，请在账户管理功能中修改；如有其它疑问，请联系客服； </h1>
+                            <h5>·&nbsp;忘记安全问题答案如何处理</h5>
+                            <h1>暂时无法修改安全问题，详情请联系客服；</h1>
+                            
+                            <h6>手机号绑定</h6>
+                            <h5>·&nbsp;如何绑定手机号</h5>
+                            <h1>输入需绑定的手机号码，点击发送验证码，输入收到的验证码和正确的支付密码即可绑定</h1>
+                            <h5>·&nbsp;原手机号码停用了可以修改手机号码吗</h5>
+                            <h1>可以，只需输入新的需绑定的手机号码，系统将发送验证码至新的手机号里，凭正确的支付密码即可改绑</h1>
+                        </div>
+                        
+                        <div class="list_r_ct">
+                            <p class="list_r_hds">员工管理</p>
+                            <h6>如何激活员工</h6>
+                            <p>有添加员工权限的账号在前台按提示信息添加员工后，该员工的邮箱里将收到一封激活的邮件，点击激活，设置相关账号信息即可激活</p>
+                        </div>
+                        
+                    </div>
+                    <!--账号相关结束-->
+                    <!--交易相关开始-->
+                    <div>
+                        <div class="list_r_ct">
+                            <p class="list_r_hds">交易查询</p>
+                            <h6>如何查询交易订单</h6>
+                            <p>订单管理里的交易查询页可查询在汇付宝上进行的卖出交易，并可以根据其状态进行相应的操作，例如查看详情和退款等</p>
+                            <h6>交易查询结果导出</h6>
+                            <p>根据当前查询条件进行导出，可导出所有的查询结果，目前下载的文件格式为 XLS</p>
+                        </div>
+
+                        <div class="list_r_ct">
+                            <p class="list_r_hds">交易规则</p>
+                            <h6>反欺诈措施</h6>
+                            <h5>·&nbsp;提交虚假证明材料</h5>
+                            <h1>汇付宝用户向本公司提供虚假证明材料（包括但不限于虚假的身份证件影印件、营业执照影印件、质量鉴定书等）的，经本公司核实后，对其汇付宝账号及账户内资金（包括汇付宝账户余额及在途交易涉及金额）进行冻结处理。</h1>
+                            <h5>·&nbsp;虚假交易</h5>
+                            <h1>汇付宝用户创建虚假的汇付宝交易进行盗用他人银行卡资金及其他犯罪行为，或者创建虚假的汇付宝交易进行信用炒作情节严重的，对其汇付宝账户及账户内资金（包括汇付宝账户余额及在途交易涉及金额）进行冻结处理；涉嫌犯罪的，移交公安机关处理。</h1>
+                        </div>
+
+                        <div class="list_r_ct">
+                            <p class="list_r_hds">交易退款</p>
+                            <h6>如何发起退款</h6>
+                            <p>支持接口发起和商家站点手动发起两种方式，可多次发起部分退款</p>
+                            <h6>交易完成后何时可以发起退款</h6>
+                            <p>通常是 T+1 结算后，状态正常的交易单都可发起退款</p>
+                            <h6>退款申请需要审核吗</h6>
+                            <p>通过接口发起的退款不需要审核，在商家站点手动发起的退款需要有审核权限的员工进行退款审核，审核通过后平台对该笔退款进行处理</p>
+                        </div> 
+                    </div>
+                    <!--交易相关结束-->
+                    
+                    <!--产品相关开始-->
+                    <div>
+                        <div class="list_r_ct">
+                            <p class="list_r_hds">支付产品</p>
+                            <h6>交易金额什么时候结算</h6>
+                            <p>系统支持 T+0 实时结算和 T+1 结算，根据商户与汇付宝的签约方式进行结算</p>
+                        </div>
+
+                        <div class="list_r_ct">
+                            <p class="list_r_hds">增值服务</p>
+                            <h6>如何申请增值服务</h6>
+                            <p>目前需线下对接汇付宝商务联系增值服务接入事宜，客服电话 010-58103559</p>
+                        </div>
+                    </div>
+                    <!--产品相关结束-->
+                    
+                    <!--签约相关开始-->
+                    <div>
+                        <div class="list_r_ct">
+                            <p class="list_r_hds">准入条件</p>
+                            <h6>汇付宝合作商户需遵守以下约定：</h6>
+                            <p>1）遵守国家法律法规规定，经营内容合法合规；</p>
+                            <p>2）遵循与汇付宝相关协议（合同）约定；</p>
+                            <p>3）遵循网络诚信交易原则，守法诚信经营。</p>
+                        </div>
+
+                        <div class="list_r_ct">
+                            <p class="list_r_hds">签约流程</p>
+                            <p><img src="images/center.word2.png"></p>
+                        </div>
+                        <div class="list_r_ct">
+                            <p class="list_r_hds">签约费率</p>
+                            <h6>基础产品如何收费</h6>
+                            <p>商户各产品的费率由商户与汇付宝约定的协议的费率</p>
+                            <h6>增值产品如何收费</h6>
+                            <p>待定</p>
+                        </div>
+                        <div class="list_r_ct">
+                            <p class="list_r_hds">续签管理 </p>
+                            <p>新版本暂不支持自动续签，若想续签请联系客服，客服电话 010-58103559</p>
+                        </div>
+                    </div>
+                    <!--签约相关结束-->
+                    
+                    <!--安全相关开始-->
+                    <div>
+                        <div class="list_r_ct">
+                            <p class="list_r_hds">安全控件</p>
+                            <h6>汇付宝安全证书支持的操作系统和浏览器</h6>
+                            <p>支持的浏览器：谷歌&nbsp;&nbsp;火狐&nbsp;&nbsp;360极速&nbsp;&nbsp;IE9以上</p>
+                            <p>支持的操作系统：windows</p>
+                        </div>
+
+                        <div class="list_r_ct">
+                            <p class="list_r_hds">密钥问题</p>
+                            <h6>目前汇付宝支付系统采用 MD5 签名，需要修改密钥的流程为：</h6>
+                            <p>1、登录进入商家站点</p>
+                            <p>2、点击商户管理</p>
+                            <p>3、查看签约产品</p>
+                            <p>4、点击查看要修改的产品的密钥，点击“重置密钥”，生成新的密钥，点击“使用新密钥”则修改密钥成功</p>
+                        </div>
+                    </div>
+                    <!--安全相关结束-->
+                    
+                </div>
+                <div class="clear"></div>
+            </div>
+
+        </div>
+        <!--内容结束-->
+        <!--尾部开始-->
+        <div class="login_footer">
+            <div class="login_footer_ct">
+                <p>关于我们 | 合作伙伴 | 商务合作 | 联系我们</p>
+                <p>Copyright © since 2008 汇元银通（北京）在线支付技术有限公司 版权所有 侵权必究 </p>
+            </div>
+        </div>
+        <!--尾部结束-->
+    </div>
+</body>
+
+</html>

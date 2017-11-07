@@ -1,0 +1,264 @@
+<div class="">
+    <div class="details">
+        <p class="caption captionHight">
+            <span>卖家：${source.sellerId}</span>
+            <span>买家：${source.buyerName}</span>
+            <!--<span>管理员：系统管理员</span>-->
+        </p>
+    </div>
+    <div class="details">
+        <h3 class="titleText">订单信息</h3>
+
+    </div>
+    <div class="details">
+        <div class="smallTable">
+            <table class="" border="0" cellspacing="0" r-box="all">
+                <tbody>
+                    <tr class="">
+                        <td>
+                            <!--<input type="checkbox" value="1" name="all">-->
+                        </td>
+                        <td colspan="2" class="orderMessage">
+                            <span>小笨鸟订单号：${source.xbnOrderId}</span>
+                            <span>
+                            {{if source.orderPlatform == 1}}
+                                ebay
+                            {{else source.orderPlatform == 2}}
+                                amazon
+                            {{else source.orderPlatform == 3}}
+                                newegg
+                            {{/if}}
+                            订单号：${source.platformOrderId}</span>
+                            <span>销售站点：${source.site}</span>
+                            <span>订单金额：${source.currencySymbol}${source.amount}（含运费${source.currencySymbol}${source.totalFreight}）</span>
+                            <span>已退金额：<em class="red">
+                                {{if source.refundMoney}}
+                                    ${source.currencySymbol}${source.refundMoney}
+                                {{/if}}
+                                </em></span>
+                        </td>
+                    </tr>
+                </tbody>
+                {{each(i,l) source.items}}
+                <tbody cId="${l.itemId}">
+                    <tr class="">
+                        <td>
+                            <!--<input type="checkbox" value="1" name="" data-index="${i}">-->
+                        </td>
+                        <td><img src="images/defineImg.png" class="imgBorder" id="${l.xbnItemId}" width="48" height="48" />
+                        </td>
+                        <td>
+                            <a href="javascript:;" class="blue">${l.title}</a>
+                            <p class="caption">SKU：${l.sku}</p>
+                        </td>
+                    </tr>
+                </tbody>
+                {{/each}}
+            </table>
+        </div>
+    </div>
+    <div class="details fix">
+        <h3 class="titleText">操作信息</h3>
+        <div class="initBox block">
+
+            {{if source.returnType==null && source.returnStatus == null}}
+            <!--全新创建-->
+            <dl class="editDl">
+                <dt><span class="red">*&nbsp;</span>退换货理由：</dt>
+                <dd>
+                    <div class="select w240 fL">
+                        <input index-data="" type="hidden" value="">
+                        <i index-data="">请选择</i>
+                        <em class="icon-52"></em>
+                        <ul>
+                            <li index-data=""><span>请选择</span>
+                            </li>
+                            <li index-data="1"><span>买家买错了或者不想买了</span>
+                            </li>
+                            <li index-data="2"><span>卖家未按约定时间发货</span>
+                            </li>
+                            <li index-data="3"><span>商品与描述不符</span>
+                            </li>
+                            <li index-data="4"><span>商品破损</span>
+                            </li>
+                            <li index-data="5"><span>商品缺少零配件</span>
+                            </li>
+                            <li index-data="6"><span>卖家销售假货</span>
+                            </li>
+                            <li index-data="7"><span>其他</span>
+                            </li>
+                        </ul>
+                    </div>
+                </dd>
+            </dl>
+            {{else source.returnType=="4"&&(source.returnStatus=="8"||source.returnStatus=="9"||source.returnStatus=="10")}}
+            <!--部分退款二次创建-->
+            <dl class="editDl">
+                <dt><span class="red">*&nbsp;</span>退换货理由：</dt>
+                <dd>
+                    <div class="select w240 fL">
+                        <input index-data="" type="hidden" value="">
+                        <i index-data="">请选择</i>
+                        <em class="icon-52"></em>
+                        <ul>
+                            <li index-data=""><span>请选择</span>
+                            </li>
+                            <li index-data="1"><span>买家买错了或者不想买了</span>
+                            </li>
+                            <li index-data="2"><span>卖家未按约定时间发货</span>
+                            </li>
+                            <li index-data="3"><span>商品与描述不符</span>
+                            </li>
+                            <li index-data="4"><span>商品破损</span>
+                            </li>
+                            <li index-data="5"><span>商品缺少零配件</span>
+                            </li>
+                            <li index-data="6"><span>卖家销售假货</span>
+                            </li>
+                            <li index-data="7"><span>其他</span>
+                            </li>
+                        </ul>
+                    </div>
+                </dd>
+            </dl>
+            {{else}} &nbsp; {{/if}}
+            <dl class="changeDl">
+                <dt><span class="red">*&nbsp;</span>建议处理方案：</dt> 
+                <!--{{if source.returnType=="4"&&(source.returnStatus=="8"||source.returnStatus=="9"||source.returnStatus=="10")}}
+                {{/if}}  原有代码-->
+                {{if source.refundMoney > 0}}
+                <!--部分退款二次创建-->
+                <dd class="refundWays">
+                    <label>
+                        <input class="mR10" name="Fruit" type="radio" value="4" data-r_name="部分退款" data-r_money="${source.amount}">部分退款</label>
+                    <span class="mar20">本次退款金额：${source.currencySymbol}<em class="red anoutMoney">${parseInt((Number(source.amount)-Number(source.refundMoney))*100)/100}</em></span><span><a href="javascript:;" id="okMeny">确定退款金额</a></span>
+                </dd>
+                <dd class="refundWays">
+                    <label>
+                        <input class="mR10" name="Fruit" type="radio" value="5" data-r_name="双方继续沟通" data-r_money="${source.amount}">双方继续沟通</label>
+                </dd>
+
+                {{else}}
+                <dd class="refundWays">
+                    <label>
+                        <input class="mR10" name="Fruit" type="radio" value="3" checked="checked" data-r_name="全额退款" data-r_money="${source.amount}">全额退款</label>
+                    <span class="mar20">本次退款金额：${source.currencySymbol}<em class="red anoutMoney" >${source.amount}</em></span>
+                </dd>
+                <dd class="refundWays">
+                    <label>
+                        <input class="mR10" name="Fruit" type="radio" value="4" data-r_name="部分退款" data-r_money="${source.amount}">部分退款</label>
+                    <span class="mar20">本次退款金额：${source.currencySymbol}<em class="red anoutMoney">${source.amount}</em></span><span><a href="javascript:;" id="okMeny">确定退款金额</a></span>
+                </dd>
+                <dd class="refundWays">
+                    <label>
+                        <input class="mR10" name="Fruit" type="radio" value="1" data-r_name="退货退款-买家承担运费" data-r_money="${source.amount}">退货退款-买家承担运费</label>
+                    <span class="mar20">本次退款金额：${source.currencySymbol}<em class="red anoutMoney">${source.amount}</em></span>
+                </dd>
+                <dd class="refundWays">
+                    <label>
+                        <input class="mR10" name="Fruit" type="radio" value="2" data-r_name="退货退款-卖家承担运费" data-r_money="${source.amount}">退货退款-卖家承担运费
+                    </label>
+                    <span class="mar20">本次退款金额：${source.currencySymbol}
+                        <em class="red anoutMoney">${source.amount}</em>
+                    </span>
+                    <span class="rel">运费补偿：${source.currencySymbol}
+                            <input type="text" class="input w80 mR10 refundMoney freightCompensation" data-amount="${source.amount}" data-sourcevalue="${source.sourcevalue}">
+                            <span></span>
+
+                    </span>
+                </dd>
+
+                {{/if}}
+
+                <dd class="refundWays">
+                    {{if source.returnType==null&&source.returnStatus==null}}
+                    <!--全新创建-->
+                    <label>
+                        <input class="mR10" name="Fruit" type="radio" value="5" data-r_name="双方继续沟通" data-r_money="${source.amount}">双方继续沟通</label>
+                    {{/if}}
+                </dd>
+
+            </dl>
+            <dl class="editTXA">
+                <dt><span class="red">*&nbsp;</span>买家意见：</dt>
+                <dd>
+                    <textarea class="w480 h90" id="textareaEdit"></textarea>
+                </dd>
+            </dl>
+            <dl class="changeDl">
+                <dt><span class="" style="color:#FFF;">*&nbsp;</span>凭证图片：</dt>
+                <dd>
+                    <a href="javascript:;" class="button rel">添加图片<input type="file" id="addFile"/></a>
+                </dd>
+                <dd class="addImg fix"></dd>
+            </dl>
+        </div>
+    </div>
+
+    <div class="btnMain">
+        <a href="javascript:;" class="button" id="setSubmit">提交</a>
+        <a href="javascript:history.go(-1);" class="button mar20" data-title="订单管理-订单列表">返回</a>
+        <!--<a href="javascript:;" class="buttonText">取消</a>-->
+    </div>
+    <!-- 部分退款 -->
+    <div class="none" id="reundMoney_cont"></div>
+    <script type="text/tcl" id="reundMoney_tmpl">
+        <div class="confirmTable">
+            <table>
+                <thead>
+                    <tr>
+                        <th width="35%">&nbsp;退款项目&nbsp;</th>
+                        <th width="15%">&nbsp;订单金额&nbsp;</th>
+                        <th width="15%">&nbsp;已退金额&nbsp;</th>
+                        <th width="25%">&nbsp;最大退款金额&nbsp;</th>
+                        <th width="10%">&nbsp;本次退款金额</th>
+                    </tr>
+                </thead>
+                _[{each(i,l) source.list}]_
+                <tbody data-sku="$_[l.sku]_">
+
+                    <tr>
+                        <td>
+                            <p class=" goods Truncate">$_[l.itemName]_</p>
+                            <p>SKU: <em>$_[l.sku]_</em>
+                            </p>
+                        </td>
+                        <td>$_[source.currencySymbol]_ $_[parseInt(Number(l.initialMoney)*100)*Number(l.quantityOrdered)/100]_</td>
+                        <td>$_[source.currencySymbol]_ $_[l.refundedMoney]_</td>
+                        <td>$_[source.currencySymbol]_
+                            <span>$_[parseInt(Number(l.initialMoney)*100)*Number(l.quantityOrdered)/100 - Number(l.refundedMoney)]_
+                            </span>
+                        </td>
+                        <td>
+                            <div class="rel">
+                                <input type="text" class="w95 fL input refundMoney" data-sourcevalue="$_[parseInt(Number(l.initialMoney)*100)*Number(l.quantityOrdered)/100 - Number(l.refundedMoney)]_"  data-amount="$_[parseInt(Number(l.initialMoney)*100)*Number(l.quantityOrdered)/100 - Number(l.refundedMoney)]_"/>
+                                <span></span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>运费</td>
+                        <td>$_[source.currencySymbol]_ $_[l.initialShipMoney]_</td>
+                        <td>$_[source.currencySymbol]_ $_[l.freightedMoney]_</td>
+                        <td>$_[source.currencySymbol]_
+                            <span>
+                            $_[(l.initialShipMoney*100 - l.freightedMoney*100)/100]_</span>
+                        </td>
+                        <td>
+                            <div class="rel">
+                                <input type="text" class="w95 fL input freight" data-sourcevalue="$_[(Number(l.initialShipMoney)*100 - Number(l.freightedMoney)*100)/100]_"  data-amount="$_[(Number(l.initialShipMoney)*100 - Number(l.freightedMoney)*100)/100]_"/>
+                                <span></span>
+
+                            </div>
+                        </td>
+                    </tr>
+
+                    </tobdy>
+                    _[{/each}]_
+                    <tbody id="moneyTotal"></tbody>
+            </table>
+        </div>
+
+
+    </script>
+</div>

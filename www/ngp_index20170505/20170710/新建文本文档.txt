@@ -1,0 +1,81 @@
+/*ÔÆÇ®°ü*/
+.wallet_tab_l{
+    width: 522px;
+    height: 40px;
+    float: left;  
+}
+.wallet_tab_l ul li{
+    float: left;
+    background:#f2f6fd;
+    width:130px;
+    height:40px;
+    line-height: 40px;
+    text-align: center;
+    font-size: 14px;
+    color: #333;
+    border-bottom: solid 1px #4287f5;
+    cursor: pointer;
+}
+.wallet_tab_l ul li.tab_active{
+    color: #4287f5;
+    border: solid 1px #4287f5;
+    border-bottom: none;
+    background-color: #fff;
+}
+.wallet_tab_l ul li a{
+    color: #333;
+}
+
+.wallet_tab_l ul li.tab_active a{
+    color: #4287f5;
+}
+
+
+.wallet_tab_r{
+    width: 438px;
+    height: 40px;
+    float: left;
+    border-bottom: solid 1px #4287f5;
+}
+
+.wallet_box{
+    margin-top: 50px;
+}
+.wallet_box p{
+    margin-top: 0px;
+}
+.wallet_hd{
+    font-size: 14px;
+    color: #333;
+    
+}
+.wallet_hd em{
+    font-size: 18px;
+    font-weight: 600;
+}
+.wallet_hd span{
+    float: right;
+}
+.wallet_hd span a{
+    color: #333;
+}
+.wallet_hx{
+    border-bottom: 1px solid #eee;
+    height: 1px;
+    margin: 20px 0px;
+}
+.wallet_list{
+    margin-top: 10px;
+    margin-left: 50px;
+}
+.wallet_list ul li{
+    float: left;
+    font-size: 14px;
+    color: #333;
+    width: 50%;
+    margin-top: 20px;
+}
+.wallet_list ul li span{
+    margin-left: 20px;
+    color: #FF7B00;
+}

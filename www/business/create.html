@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>创建账户</title>
+<link href="css/base.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<script src="js/jquery.js"></script>
+<script src="js/create.js"></script>
+</head>
+<body>
+<!--弹窗-->
+<div id="cover"></div>
+<div class="pop_phone">
+    <div class="pop_hd">
+        <p>验证手机<img src="images/del.png"></p>
+    </div>
+    <p class="pop_text"><img src="images/tip_phone.png"><span>为了防止恶意注册，请使用你的手机进行验证，该手机只做验证使用，不作为绑定手机</span></p>
+    <div class="pop_input">
+        <p>
+            <label for="pop_phone">手机号</label><input type="text" id=pop_phone class="pop_phone_w b_color" placeholder="请输入手机号码">
+            <span class="pop_phone_error"><img src="images/error_tip.png"><em></em></span>
+            <span class="pop_phone_success"><img src="images/succ_tip.png"></span>
+        </p>
+        <p>
+            <label for="check_code">校验码</label><input type="text" id=check_code class="check_code_w b_color" placeholder="请输入验证码">
+            <input type="button" value="点此免费获取" class="btn_code">
+            <span class="pop_code_success"><img src="images/succ_tip.png"><em>验证码已发送到您的手机</em></span>
+            <span class="pop_code_error"><img src="images/error_tip.png"><em>校验码输入错误</em></span>
+        </p>
+        <p class="resend_code">重新发送检验码</p>
+        <h3 class="pop_next">下一步</h3>
+    </div>
+</div>
+    
+
+<div class="pop_email">
+    <div class="pop_hd">
+        <p>验证账户名<img src="images/del.png"></p>
+    </div>
+    <div class="email_box">
+        <h5><img src="images/email.png">验证邮件已发送到邮箱<em>279***@qq.com</em></h5>
+        <p class="email_t">请在24小时内点击邮件中的链接继续注册。</p>
+        <h3 class="click_email">立即查收邮件</h3>
+        <p><span class="email_tip"></span>如您未收到邮件，请注意检查垃圾邮件或尝试。<span class="resend_email">重新发送邮件</span></p>
+        <p>重新发送邮件，还未收到？请试试 <em>更换邮箱</em></p>
+    </div>
+</div>
+    
+<div class="pop_agreement">
+    <div class="pop_hd">
+        <p>汇付宝服务协议<img src="images/del.png"></p>
+    </div>
+    <div class="agreement_text">
+        <h5>《汇付宝服务协议》</h5>
+        <p>汇付宝服务（以下简称本服务）是由汇元银通（北京）在线支付技术有限公司（以下简称本公司）向用户提供的汇付宝支付服务系统V1.0（以下简称本系统）及款项的代收代付等相关服务。本协议由您和本公司签订。</p>
+        <h5>一、声明与承诺</h5>
+        <p>（一）您确认，在您注册成为汇付宝用户以后接受本服务或您以其他本公司允许的方式实际使用本服务前，您已充分阅读、理解并接受本协议的全部内容，一旦您使用本服务，即表示您同意遵循本协议之所有约定。</p>
+        <p>（二）您同意，本公司有权随时对本协议内容进行单方面的变更，并以在本公司官方网站公告的方式予以公布，无需另行单独通知您；若您在本协议内容公告变更后继续使用本服务的，表示您已充分阅读、理解并接受修改后的协议内容，也将遵循修改后的协议内容使用本服务；若您不同意修改后的协议内容，您应停止使用本服务。</p>
+        <p>（三）您保证，在您同意接受本协议并注册成为汇付宝用户时，您已经年满16周岁，或者您是在中国大陆地区合法开展经营活动或其他业务的法人或其他组织；且本协议内容不受您所属国家或地区法律的排斥。不具备前述条件的，您应立即终止注册或停止使用本服务。</p>
+        <p>（四）您同意，您在网站，域名为www.heepay.com/www.9186.com上发生的所有交易，您不可撤销的授权由本公司按照本公司制定的相关规则进行处理；同时，您不可撤销的授权本公司有权按照的指令将争议款项的全部或部分支付给交易一方或双方，同时本公司有权获取您的相关信息（包括但不限于交易商品描述、行为信息、账户相关信息等）并采取合理的保密措施。汇付宝按照本公司的指令进行资金的冻结、扣划完全来自于您的授权，本公司不对您自身指令造成的任何损失承担责任。但您确认，您使用汇付宝服务时，您仍应完全遵守本《汇付宝服务协议》</p>
+    </div>
+    <h3>已经阅读并同意此协议</h3>
+</div>
+
+<div class="pop_licenses">
+    <div class="pop_hd">
+        <p>营业执照<img src="images/del.png"></p>
+    </div>
+    <p class="licenses_img"><img src="images/licenses.png"></p>
+</div>
+    
+<div class="pop_card">
+    <div class="pop_hd">
+        <p>身份证影印件<img src="images/del.png"></p>
+    </div>
+    <p class="card_text">确保证件信息清晰、完整、不可涂改和遮盖。</p>
+    <p class="card_img"><img src="images/card.png"></p>
+</div>
+
+
+<div id="wapper">
+    
+    <!--头部开始-->
+    <div class="header">
+        <div class="top">
+            <div class="top_left">
+                <a href="#"><img src="images/logo.png"></a><img src="images/fg.png" class="split_one"><span class="regi">注册商家账户</span>
+            </div>
+            <div class="top_right">
+                <p>登录<img src="images/fg1.png" class="split_s">注册<img src="images/fg1.png" class="split_s">帮助中心</p>
+            </div> 
+        </div>
+    </div>
+    <!--头部结束-->
+    
+    <!--内容开始-->
+    <div class="content">
+        <div class="step">
+            <ul>
+                <li><img src="images/one.png"><span class="step_text step_ative">创建账户</span><span class="step_line"></span></li>
+                <li><img src="images/two.png"><span class="step_text">完善账户信息</span><span class="step_line"></span></li>
+                <li><img src="images/three.png"><span class="step_text">填写实名信息</span><span class="step_line"></span></li>
+                <li><img src="images/four.png"><span class="step_text">提交成功</span></li>
+            </ul>
+        </div>
+        <div class="clear"></div>
+        <div class="create_box">
+            <div class="create_form">
+                <p>
+                    <label for="name">账户名</label><input type="text" id=name class="name_w b_color" placeholder="请输入电子邮箱">
+                    <span class="email_error"><img src="images/error_tip.png"><em></em></span>
+                    <span class="email_success"><img src="images/succ_tip.png"></span>
+                    <span class="email_repeat"><img src="images/re_tip.png">该邮箱已注册汇付宝，<em>立即登录</em></span>
+                </p>
+                <p>
+                    <label for="code">验证码</label><input type="text" id=code class="code_w b_color" placeholder="请输入验证码">
+                    <span class="create_code"><b></b><em>看不清，换一张</em></span>
+                    <span class="code_error"><img src="images/error_tip.png"></span>
+                    <span class="code_success"><img src="images/succ_tip.png"></span>
+                </p>
+                <p><input type="checkbox" class="checkbox" checked="checked"><label class="checkbox"></label><span class="checkbox_text">我同意<em>汇付宝支付协议</em></span></p>
+                <h3 class="create_form_next">下一步</h3>
+            </div>
+            <div class="create_tip">
+                <p>注册前需要什么资料？</p>
+                <h6><img src="images/create_tip.png"></h6>
+            </div>
+            <div class="create_hd"><p>注册前需要什么资料？</p></div>
+            <div class="create_data">
+                <h6><em>注册前需要准备：</em>影印件必须为彩色原件的扫描件或数码照</h6>
+                <p><span></span><em>《营业执照影印件》范例</em></p>
+                <p><span></span>对公银行账户，可以是基本户或一般户</p>
+                <p><span></span>法定代表人的<em>《身份证影印件》范例 </em></p>
+            </div>
+        </div>
+        
+    </div>
+    <!--内容结束-->
+    
+    <!--尾部开始-->
+    <div class="footer">
+        <p>关于我们 | 合作伙伴 | 商务合作 | 联系我们</p>
+        <p>Copyright © since 2008 汇元银通（北京）在线支付技术有限公司 版权所有 侵权必究 </p>
+    </div>
+    <!--尾部结束-->
+</div>    
+</body>
+</html>

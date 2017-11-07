@@ -1,0 +1,31 @@
+{
+"statusCode":"2000000",
+"data":{
+    "pageSize": 20,
+    "totalCount": 100,
+    "totalPages": 5,
+    "cPageNO": 1,
+    "list":[{
+        "id": "ID",
+        "name": "物流名称",
+        "companyName": "物流公司名称",
+        "code": "物流代码",
+        "product": "物流产品",
+        "url": "查询网址",
+        "createTime": "创建时间",
+        "updateTime": "修改时间",
+        "remark":"物流描述"
+        },
+        {
+        "id": "ID",
+        "name": "物流名称",
+        "companyName": "物流公司名称",
+        "code": "物流代码",
+        "product": "物流产品",
+        "url": "查询网址",
+        "createTime": "创建时间",
+        "updateTime": "修改时间",
+        "remark":"物流描述"
+        }]
+    }
+}

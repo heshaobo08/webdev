@@ -1,0 +1,186 @@
+<!-- conts begin -->
+<div class="contsBox">
+    <div class="details">
+        <div class="state">
+            <p>处理状态：<span>${getConstName("OwmsOverseaStorageApplyEnum",source.status)}</span></p>
+        </div>
+    </div>
+    <div class="details">
+        <h3 class="titleText">基本信息</h3>
+        <div class="otherConts newConts">
+            <div class="details_L">
+                <dl>
+                    <dt>申请人：</dt>
+                    <dd class="breakword">${source.applyer}</dd>
+                </dl>
+                <dl>
+                    <dt>公司名称：</dt>
+                    <dd class="breakword">${source.corporateName}</dd>
+                </dl>
+                <dl>
+                    <dt>公司所在城市：</dt>
+                    <dd class="breakword">${source.contactInCity}</dd>
+                </dl>
+                <dl>
+                    <dt>联系人姓名：</dt>
+                    <dd class="breakword">${source.contactName}</dd>
+                </dl>
+            </div>
+            <div class="details_R">
+                <dl>
+                    <dt>联系电话：</dt>
+                    <dd class="breakword">${source.contactPhone}</dd>
+                </dl>
+                <dl>
+                    <dt>联系邮箱：</dt>
+                    <dd class="breakword">${source.contactEmail}</dd>
+                </dl>
+                <dl>
+                    <dt>联系QQ：</dt>
+                    <dd class="breakword">${source.contactsQq}</dd>
+                </dl>
+                <dl>
+                    <dt>QQ昵称：</dt>
+                    <dd class="breakword">${source.qqNickname}</dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+    <div class="details">
+        <h3 class="titleText">业务信息</h3>
+
+        <div class="otherConts newConts">
+            <div class="details_L">
+                <dl>
+                    <dt>货品种类：</dt>
+                    <dd class="Truncate maxW200 pL0" title="${source.goodsType}">${source.goodsType}</dd>
+                </dl>
+                <dl>
+                    <dt>当前发货方式：</dt>
+                    <dd class="Truncate maxW200 pL0" title="${source.currentSendType}">${source.currentSendType}</dd>
+                </dl>
+                <dl>
+                    <dt>国内月订单量：</dt>
+                    <dd class="Truncate maxW200 pL0" title="${source.domesticMonthNum}">${source.domesticMonthNum}</dd>
+                </dl>
+                <dl>
+                    <dt>主要销售平台：</dt>
+                    <dd class="Truncate maxW200 pL0" title="${source.mainSellPlatform}">${source.mainSellPlatform}</dd>
+                </dl>
+            </div>
+            <div class="details_R">
+                <dl>
+                    <dt>是否含电池：</dt>
+                    <dd>{{if source.isContainBattery==1}}是{{else}}否{{/if}}</dd>
+                </dl>
+                <dl>
+                    <dt>当前物流消费：</dt>
+                    <dd class="Truncate maxW200 pL0" title="${source.currentLogistics}">${source.currentLogistics}</dd>
+                </dl>
+                <dl>
+                    <dt>海外仓月订单量：</dt>
+                    <dd class="Truncate maxW200 pL0" title="${source.overseaMonthNum}">${source.overseaMonthNum}</dd>
+                </dl>
+                <dl>
+                    <dt>主要销售地区：</dt>
+                    <dd class="Truncate maxW200 pL0" title="${source.mainSellArea}">${source.mainSellArea}</dd>
+                </dl>
+            </div>
+        </div>
+        <div class="merge newpad">
+            <dl class="">
+                <dt class="w140">已用海外仓服务：</dt>
+                <dd class="Truncate maxW200" title="${source.usedOverseaService}">${source.usedOverseaService}</dd>
+            </dl>
+        </div>
+    </div>
+    <div class="details">
+        <h3 class="titleText">修改信息</h3>
+
+        <div class="otherConts newConts">
+            <div class="details_L">
+                <dl>
+                    <dt>申请人：</dt>
+                    <dd>${source.applyer}</dd>
+                </dl>
+                <dl>
+                    <dt>申请时间：</dt>
+                    <dd>${source.applyTime}</dd>
+                </dl>
+            </div>
+            <div class="details_R">
+                <dl>
+                    <dt>最后修改人：</dt>
+                    <dd>${source.lastUpdateUser}</dd>
+                </dl>
+                <dl>
+                    <dt>最后修改时间：</dt>
+                    <dd>${source.lastUpdateTime}</dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="btnMain">
+    {{if source.status==1}}
+    {{if source.operateData.moduleData && source.operateData.actionData && source.operateData.operate['HWC20101005'] && source.operateData.operate['HWC20101005'].childOpt['HWC20101006']}}
+    <a href="javascript:;" class="buttonText mR20 js-pass" data-id="${source.id}" data-userid="${source.userId}">审核</a>
+    {{/if}}
+     {{if source.operateData.moduleData && source.operateData.actionData && source.operateData.operate['HWC20101005'] && source.operateData.operate['HWC20101005'].childOpt['HWC20101007']}}
+    <a href="javascript:;" class="buttonText mR20 js-reject" data-id="${source.id}">驳回</a>
+    {{/if}}
+    {{/if}}
+    <a class="buttonText mR20" href="javascript:history.go(-1);" onclick="document.title='海外仓业务管理-海外仓申请管理'">返回</a>
+</div>
+<!-- conts end -->
+<div class="layerBoxCon"></div>
+<!-- 修改角色等级 -->
+<script id='settledUserRoleTmpl' type='text/x-jquery-tmpl'>
+    <form id="settledUserRoleForm">
+    <dl class="modify">
+        <input type="hidden" name="id" value="$_[id]_">
+        <dt>当前角色：</dt>
+        <dd>
+            <span class="Truncate block w240" title="_[{if roleList[role]}]_$_[roleList[role].groupName]__[{/if}]_">_[{if roleList[role]}]_$_[roleList[role].groupName]__[{/if}]_</span>
+        </dd>
+    </dl>
+    <dl class="modify">
+        <dt>修改为：</dt>
+        <dd>
+            <div class="select w140 fL mR20" id='js-role'>
+                <input index-data="" name='groupId' type="hidden" value="请选择" required data-target='js-role'>
+                <i>请选择</i>
+                <em class="icon-52"></em>
+                <ul>
+                    <li index-data=""><span>请选择</span></li>
+                    _[{each(i,roles) roleList}]_
+                        <li index-data="$_[roles.id]_" _[{if roles.id==role}]_ class='active' _[{/if}]_><span>$_[roles.groupName]_</span></li>
+                    _[{/each}]_
+                </ul>
+            </div>
+        </dd>
+    </dl>
+    <dl class="modify">
+        <dt>当前等级：</dt>
+        <dd>
+            <span class="Truncate block w240" title="_[{if levelList[level]}]_$_[levelList[level].levelName]__[{/if}]_">_[{if levelList[level]}]_$_[levelList[level].levelName]__[{/if}]_</span>
+        </dd>
+    </dl>
+    <dl class="modify">
+        <dt>修改为：</dt>
+        <dd>
+            <div class="select w140 fL mR20" id='js-level'>
+                <input index-data="" type="hidden" value="请选择" name='levelId' required data-target='js-level'>
+                <i>请选择</i>
+                <em class="icon-52"></em>
+                <ul>
+                    <li index-data=""><span>请选择</span></li>
+                    _[{each(i,levels) levelList}]_
+                        <li index-data="$_[levels.id]_" _[{if levels.id==level}]_ class='active' _[{/if}]_><span>$_[levels.levelName]_</span></li>
+                    _[{/each}]_
+                </ul>
+            </div>
+        </dd>
+    </dl>
+</form>
+</script>

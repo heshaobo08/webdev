@@ -1,0 +1,42 @@
+<div class="container-fluid">
+<div id="mybuttons1" class="bs-example">
+    <button type="button" class="btn btn-primary">点击</button>
+</div>
+
+<div id="mybuttons2" class="bs-example" style="margin-top:20px;">
+    <button type="button" class="btn btn-primary" data-loading-text="Loading...">点击跳转到首页</button>
+</div>
+
+<div id="mybuttons3" class="bs-example" style="margin-top:20px;">
+    <button type="button" class="btn btn-primary" data-loading-text="Loading...">点击重置</button>
+</div>
+
+<div id="mybuttons4" class="bs-example" style="margin-top:20px;">
+    <button type="button" class="btn btn-primary" data-loading-text="Loading finished">点击</button>
+</div>
+</div>
+<script>
+$(function(){
+   $("#mybuttons1 .btn").on("click",function(){
+       $(this).button("toggle");
+   }); 
+    
+    $("#mybuttons2 .btn").on("click",function(){
+        $(this).button("loading").delay(1000).queue(function(){
+           window.location.href="http://192.168.4.116:82/#/index";
+        });
+    });
+    
+    $("#mybuttons3 .btn").on("click",function(){
+        $(this).button("loading").delay(1000).queue(function(){
+            $(this).button("reset");
+        });
+    });
+    
+    $("#mybuttons4 .btn").on("click",function(){
+        $(this).button("loading").delay(1000).queue(function(){
+            $(this).button("complete");
+        });
+    });
+})
+</script>

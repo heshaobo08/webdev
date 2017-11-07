@@ -1,0 +1,47 @@
+<!-- conts begin -->
+<div class="details">
+	<h3 class="titleText">会员登录日志</h3>
+	<div class="loginLog">
+		<table>
+			<thead>
+				<tr>
+					<th width="60%">登录时间</th>
+					<th width="40%">登陆IP</th>
+				</tr>
+			</thead>
+			<tbody id='logListCon'>			
+			</tbody>
+		</table>
+		<!-- 分页 -->
+		<div class="page" id="topPager">
+		</div>
+	</div>
+</div>
+<!-- conts end -->
+<!--中间内容区域 end-->
+<div class="btnMain">
+	<a href="javascript:;" class="button" data-href='?m=xhr_id_33_34_detail&id=${source.userId}'  data-title='会员管理-注册会员管理-会员详情'>返回</a>
+</div>
+
+<!-- 分页模板 -->
+<script id='pageListCon' type='text/x-jquery-tmpl'>
+      <a href="javascript:;" class="firstPage fL" data-displace="first">首页</a>
+        <a href="javascript:;" class="prve fL icon-56" data-displace="prev"></a>
+        <ul class="pagenumber" id="pager"></ul>
+        <a href="javascript:;" class="next fL icon-55" data-displace="next"></a>
+        <a href="javascript:;" class="lastPage" data-displace="last">尾页</a>
+</script>
+
+
+<script id='logListTmpl' type='text/x-jquery-tmpl'>
+	_[{if data}]_
+		_[{each(i,user) data}]_
+			<tr>
+				<td>$_[user.loginTime]_</td>
+				<td>$_[user.ip]_</td>
+			</tr>
+		_[{/each}]_
+	_[{else}]_
+		<tr><td colspan="2">暂无数据</td></tr>
+	_[{/if}]_
+</script>

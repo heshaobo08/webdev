@@ -1,0 +1,17 @@
+set_site_list.html                         -->     配置管理_1_站点管理列表
+set_site_view.html                         -->     配置管理_2_站点管理_站点详情
+set_site_edit.html                         -->     配置管理_3_站点管理_修改
+set_site_list_viplicensing.html            -->     配置管理_4_授权会员详情_授权中
+set_site_list_vipoverdue.html              -->     配置管理_5_授权会员详情_已过期
+set_sensitiveword_list.html                         -->     配置管理_9_敏感词列表
+set_logistics_list.html                         -->     配置管理_17_物流基础数据管理列表
+set_logistics_add.html                         -->     配置管理_18_添加修改物流信息
+set_saleproduct_list.html                         -->     配置管理_20_销售产品管理
+set_saleproduct_add.html                         -->     配置管理_21_新增销售产品
+set_saleproduct_view.html                         -->     配置管理_22_销售产品详情
+set_promotions_list.html  -->               配置管理_23_促销活动管理
+set_reject    -->    退货政策管理
+set_saleMoudular      -->        商品描述模版列表
+
+
+2015-09-17最新修改：物流基础数据管理列表改名为物流公司管理

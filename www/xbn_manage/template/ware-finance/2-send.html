@@ -1,0 +1,49 @@
+<div class="contsBox">
+    <div class="details">
+        <h3 class="titleText">基本信息</h3>
+        <form id="sendVoiceForm">
+            <div class="smallTable">
+                <table class="" border="0" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>申请编号</th>
+                            <th>发票抬头</th>
+                            <th>开票金额</th>
+                            <th>开票月份</th>
+                        </tr>
+                    </thead>
+                    <tbody id="listCon"></tbody>
+                </table>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="btnMain">
+    <a href="javascript:;" class="button mR20 js-send">提交</a>
+    <a href="javascript:history.go(-1);" class="buttonText">返回</a>
+</div>
+<script id="listTmpl" type="text/x-jquery-tmpl">
+    _[{each(i,c) list}]_
+        <tr data-id="$_[c.id]_">
+            <td>
+                <p class="lh40">$_[c.applyCode]_</p>
+                <p><input name="logisticsCompany" type="text" class="input w190" placeholder="物流公司" required data-cnmax="50"/></p>
+            </td>
+            <td>
+                <p class="lh40 white maxW300" title="$_[c.invoiceTitle]_">$_[c.invoiceTitle]_</p>
+                <p><input name="logisticsTrackingNumber" type="text" class="input w190" placeholder="物流跟踪号" required data-cnmax="50"/></p>
+            </td>
+            <td>
+                <p class="lh40"><span class="amount">$_[c.invoiceAmount]_</span> CNY</p>
+                <div class="deadline w200">
+                    <span class="dateInput" id="month$_[i]_"></span>
+                    <a class="icon-54 timeIco" href="javascript:;"></a>
+                </div>
+            </td>
+            <td>
+                <p class="lh40">$_[c.invoiceMonth]_</p>
+            </td>
+        </tr>
+
+    _[{/each}]_
+</script>

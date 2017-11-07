@@ -1,0 +1,22 @@
+{
+  "statusCode": "2000000",
+  "data": {
+    "userEmail": "test@xbniao.com",
+    "userMobile": "13691166454",
+    "id": "40289e964f88e774014f8b9df3820000",
+    "companyId": "companyId-20",
+    "userId": "40289e964efbab56014efbb18e710000",
+    "cnName": "cnName-2-3-4-5-6123",
+    "enName": "enName-2-3-4-5-6123",
+    "businessModel": "businessModel-2",
+    "brandType": "1",
+    "brandExpireTime": null,
+    "auditStatus": "0",
+    "createTime": null,
+    "updateTime": null,
+    "remark": "remark",
+    "certificate": "certificate",
+    "chkTime": null,
+    "isSync": null
+  }
+}

@@ -1,0 +1,32 @@
+
+        <!--头部开始-->
+        <div id="header">
+            <p>输入验证码</p>
+        </div>
+        <!--头部结束-->
+        <!--内容开始-->
+        <div id=content>
+            <div class="form_block">
+                <p class="phone_number">
+                    <label>手机号 :</label>
+                    <span class="cell_phone">1891179990</span>
+                </p>
+                <h5></h5>
+                <p>
+                    <label for="number_yzm">验证码 :</label>
+                    <input type="tel" id="number_yzm" placeholder="请输入验证码" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" maxlength="6"><span class="resend_code">重获验证码</span></p>
+                <h5></h5>
+                <h3 class="login_phone">提交</h3>
+            </div>
+            <p class="user_agreement">
+                <input type="checkbox" class="js_check" checked>我已阅读并同意《用户服务协议》
+                <br/>&nbsp;&nbsp;&nbsp;注册时有协议</p>
+            <div class="hint">
+                <p>返回修改手机号</p>
+            </div>
+        </div>
+        <!--内容结束-->
+        <!--尾部开始-->
+        <div id=footer></div>
+        <!--尾部结束-->
+        <script src="js/controllers/security_code_ctr.js"></script>

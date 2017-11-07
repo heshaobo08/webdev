@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>时间插件</title>
+<style>
+    .time{width:600px;margin:auto;}
+    .time label{width:140px;display: inline-block;}
+</style>
+<script language="javascript" type="text/javascript" src="My97DatePicker/WdatePicker.js"></script>
+</head>
+<body>
+    <div class="time">
+        <p><label>最简单的设置:</label><input class="Wdate" type="text" onClick="WdatePicker()"></p>
+        <p><label>显示年:</label><input class="Wdate" type="text" onClick="WdatePicker({dateFmt:'yyyy'})"></p>
+        <p><label>显示年月:</label><input class="Wdate" type="text" onClick="WdatePicker({dateFmt:'yyyyMM'})"></p>
+        <p><label>显示年月日:</label><input class="Wdate" type="text" onClick="WdatePicker({dateFmt:'yyyyMMdd'})"></p>
+        <p><label>显示年月日时分秒:</label><input class="Wdate" type="text" onClick="WdatePicker({dateFmt:'yyyyMMdd HH:mm:ss'})"></p>
+        <p><label>格式年月日时分秒:</label><input class="Wdate" type="text" onClick="WdatePicker({dateFmt:'yyyy年MM月dd日 HH时:mm分:ss秒'})" style="width:200px"></p>
+        
+        <p><label>设置只读:</label><input class="Wdate" type="text" onClick="WdatePicker({readOnly:true})"></p>
+        <p><label>隐藏清空按钮:</label><input class="Wdate" type="text" onClick="WdatePicker({isShowClear:false})"></p>
+        <p><label>设置今天最小日期:</label><input class="Wdate" type="text" onClick="WdatePicker({minDate:new Date()})"></p>
+        <p><label>设置今天最大日期:</label><input class="Wdate" type="text" onClick="WdatePicker({maxDate:new Date()})"></p>
+        <p><label>设置明天最小日期:</label><input class="Wdate" type="text" onClick="WdatePicker({minDate:'%y-%M-{%d+1}'})"></p>
+        <p><label>设置昨天最大日期:</label><input class="Wdate" type="text" onClick="WdatePicker({maxDate:'%y-%M-{%d-1}'})"></p>
+        
+        <p><label>只能选择本月第一天到最后一天:</label><input class="Wdate" type="text" onClick="WdatePicker({minDate:'%y-%M-01',maxDate:'%y-%M-%ld'})"></p>
+        
+        <p>
+            <label>开始日期不能大于结束日期</label>
+            <input class="Wdate" id="startDate1" type="text" onClick="WdatePicker({maxDate:'#F{$dp.$D(\'endDate1\')}'})">
+            <input class="Wdate" id="endDate1" type="text" onClick="WdatePicker({minDate:'#F{$dp.$D(\'startDate1\')}'})">
+        </p>
+        <p>
+            <label>开始日期不能大于结束日期，且都不能大于今天:</label>
+            <input class="Wdate" id="startDate" type="text" onClick="WdatePicker({maxDate:'#F{$dp.$D(\'endDate\')||\'new Date()\'}'})">
+            
+            <input class="Wdate" id="endDate" type="text" onClick="WdatePicker({minDate:'#F{$dp.$D(\'startDate\')}',maxDate:new Date()})">
+            
+           
+        </p>
+         <p><label>设置周:</label><input class="Wdate" type="text" onClick="WdatePicker({isShowWeek:true,readOnly:true})"></p>
+    </div>
+</body>
+</html>
+

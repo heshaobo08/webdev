@@ -1,0 +1,20 @@
+{
+	"statusCode": "2000000",
+	"data": {
+		"pageSize": 20,
+		"totalCount": 1,
+		"totalPages": 1,
+		"cPageNO": 1,
+		"list": [
+			{
+				"id": "4028e4184e527850014e52785d660000",
+				"uname": "uname",
+				"roleName": "roleName",
+				"remark": "Test data ...",
+				"isValid": true,
+				"createTime": "2015-04-08 10:04:26",
+				"updateTime": "2015-04-08 10:04:26"
+			}
+		]
+	}
+}

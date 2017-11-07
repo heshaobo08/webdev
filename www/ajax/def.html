@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>deferred对象</title>
+<script src="jquery.min.js"></script>
+<script>
+$(function(){
+    var deferred = $.Deferred();
+    $.ajax({
+        url : "1.php",
+        type : "get", 
+        success: function(data){
+            deferred.resolve(data);
+        },
+        error: function(){
+            deferred.reject('请求失败');
+        }
+        
+    })
+    deferred.then(function(data){
+        $("#div1").html(data);
+    })
+})  
+</script>
+</head>
+<body>
+    <div id="div1"></div>
+</body>
+</html>

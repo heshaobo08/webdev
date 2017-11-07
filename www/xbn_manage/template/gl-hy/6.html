@@ -1,0 +1,121 @@
+<div class="serch">
+<form id='customerSearchForm'>
+    <div class="serch_main">
+        <div class="serch_conts">
+            <dl>
+                <dt>所属用户 :</dt>
+                <dd><input type="text" name="userID" class="defaultInput" /></dd>
+            </dl>
+            <dl>
+                <dt>联系人 : </dt>
+                <dd><input type="text" class="defaultInput" name='contacts' /></dd>
+            </dl>
+            <dl>
+                <dt>邮箱 : </dt>
+                <dd><input type="text" class="defaultInput" name='eMail' /></dd>
+            </dl>
+        </div>
+        <div class="serch_conts">
+            <dl>
+                <dt>账户来源 : </dt>
+                <dd class="h34">
+                    <div class="select w190" style="z-index: 100;">
+                        <input index-data="" name='platformID' type="hidden" value="请选择">
+                        <i>请选择</i>
+                        <em class="icon-52"></em>
+                        <ul style="">
+                            <li index-data=""><span>请选择</span></li>
+                            <li index-data="1"><span>ebay</span></li>
+                            <li index-data="2"><span>amazon</span></li>
+                            <li index-data="3"><span>newegg</span></li>
+                        </ul>
+                    </div>
+                </dd>
+            </dl>
+            <dl>
+                <dt>添加时间 : </dt>
+                <dd>
+                    <div class="defaultData">
+                        <div class="dataBegin">
+                            <span class="dataInput" id="startTime" name='startTime'></span>
+                            <a href="javascript:;" class="timeStart icon-54"></a>
+                        </div>
+                        <span class="point"></span>
+                        <div class="dataEnd">
+                            <span class="dataInput" id="endTime" name='endTime'></span>
+                            <a href="javascript:;" class="timeEnd icon-54"></a>
+                        </div>
+                    </div>
+                </dd>
+            </dl>
+			<dl class="serchDl">
+				<dt>&emsp;</dt>
+				<dd>
+                    {{if source.operateData.moduleData && source.operateData.actionData && source.operateData.operate['h02090001']}} 
+                    <a href="javascript:;" class="button js-customerSearch">Search</a>
+                    {{/if}}
+                </dd>
+			</dl>
+        </div>
+    </div>
+    </form>
+    <div class="addbutton none">您所搜索的，共有<i id='searchTotalCount'>${source.totalCount}</i>条内容符合。</div>
+</div>
+<!--serch end-->
+<!-- conts begin -->
+<div class="contsBox">
+    <div class="bigTable">
+        <table class="layout" border="0" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>所属用户</th>
+                    <th>联系人</th>
+                    <th>邮箱</th>
+                    <th>账户来源</th>
+                    <th>添加时间</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody id='customerListCon'>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="page" id="topPager">
+	</div>
+
+</div>
+
+<!-- 分页模板 -->
+<script id='pageListCon' type='text/x-jquery-tmpl'>
+    <a href="javascript:;" class="firstPage fL" data-displace="first">首页</a>
+    <a href="javascript:;" class="prve fL icon-56" data-displace="prev"></a>
+    <ul class="pagenumber" id="pager"></ul>
+    <a href="javascript:;" class="next fL icon-55" data-displace="next"></a>
+    <a href="javascript:;" class="lastPage" data-displace="last">尾页</a>
+</script>
+
+
+<!-- 客户列表模板 -->
+<script id='customerListTmpl' type='text/x-jquery-tmpl'>
+_[{if list && list.length}]_
+    _[{each(i,customer) list}]_
+    <tr>
+        <td>$_[customer.userName || "没有用户"]_</td>
+        <td>$_[customer.contacts]_</td>
+        <td>$_[customer.eMail]_</td>
+        <td>_[{if customer.platformID=='1'}]_ebay_[{else customer.platformID=='2'}]_amazon_[{else customer.platformID=='3'}]_newegg_[{/if}]_</td>
+        <td>$_[customer.createTime]_</td>
+        <td>
+            _[{if operateData.moduleData && operateData.actionData && operateData.operate['h02090002']}]_
+            <a href="javascript:;" class="blue" data-title='会员管理-客户管理-查看' data-href='?m=xhr_id_33_83_view&id=$_[customer.id]_'>$_[operateData.operate['h02090002'].menuName]_</a>
+            _[{/if}]_
+        </td>
+    </tr>
+    _[{/each}]_
+_[{else}]_
+    <tr>
+        <td colspan="6">暂无数据</td>
+    </tr>
+_[{/if}]_
+</script>

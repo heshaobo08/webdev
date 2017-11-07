@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0 user-scalable=no" />
+<title>验证手机号码</title>
+<link href="css/base.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<script src="js/jquery.js"></script>
+<script>
+$(function() {
+    /*阻止默认事件*/
+    var stopDefault = function(e) {
+        e.preventDefault();
+    }
+    $(".yzm_tip").on("click",function() {
+        $("#cover").show();
+        $(".yzm_box").show();
+        $(window).on("touchmove",stopDefault);
+    })
+    $(".yzm_box h6").on("click",function() {
+        $("#cover").hide();
+        $(".yzm_box").hide();
+        $(window).off("touchmove",stopDefault);
+    })
+    
+    //下一步
+    $(".bank_next").on("click",function() {
+        var str_yzm = $("#number_yzm").val();
+        if(str_yzm==""){
+            appearDiv("输入短信验证码！");
+            return false;
+        }
+        $("#cover").show();
+        $(".data").show();
+        setTimeout(function(){
+             window.location="success.html";
+        },1000)
+       
+        
+    })
+    //重发验证码
+    var timeoff=true;
+    $(".resend_code").on("click",function() {
+        var count = 60;
+        if(timeoff){
+            countdown = setInterval(CountDown, 1000);
+            CountDown();
+        }
+		function CountDown() {
+            timeoff=false;
+			$(".resend_code").html(count + "秒后重发");
+			if (count == 0) {
+				$('.resend_code').html("重发验证码");
+                timeoff=true;
+				clearInterval(countdown);
+			}
+			count--;
+		}
+		
+    })
+    
+    //弹层函数
+    function appearDiv(str) {
+        $("#cover").show();
+        $(".phone_error").fadeIn(400).find('h4').text(str);
+        $(window).on("touchmove",stopDefault);
+    }
+    
+    $(".phone_error p").on("click",function() {
+        $("#cover").hide();
+        $(".phone_error").hide();
+        $(window).off("touchmove",stopDefault);
+    })
+    
+})
+</script>
+</head>
+<body>
+<!--弹窗-->
+<div id="cover"></div>
+<div class="phone_error">
+    <h4>手机验证码输入错误，请查看您的手机。</h4>
+    <p>确定</p>
+</div>
+<div class="data"><img src="images/data.png"></div>
+<div class="yzm_box">
+    <h4>收不到验证码</h4>
+    <p>验证码传送至你的银行预设手机号码</p>
+    <p>1、请确认当前手机是否使用预设手机号码</p>
+    <p>2、请查看是否被手机安全软件拦截</p>
+    <p>3、若预设号码已停用，请联系银行客服咨询</p>
+    <p>4、获取更多帮助，请致电客服电话</p>
+    <p>＋86-010-58103559。 </p>
+    <h6>知道了</h6>
+</div>
+<div id="wapper">
+    <!--头部开始-->
+    <div id="header">
+        <a href="javascript:history.go(-1)" class="back"><img src="images/back.png"><span>返回</span></a>
+        <p>验证手机号码</p>
+    </div>
+    <!--头部结束-->
+    <!--内容开始-->
+    <div id=content>
+        <div class="bank_card">
+            <h6>绑定银行卡需要短信确认，验证码已发送至手机号码：<em>137****6445</em>，请按提示操作。</h6>
+            <h5></h5>
+            <p><label for="number_yzm">验证码</label><input type="tel" id="number_yzm" placeholder="输入短信验证码"><span class="resend_code">重发验证码</span></p>
+            <h5></h5>
+            <h3 class="bank_next">下一步</h3>
+            <h3 class="yzm_tip">收不到验证码？</h3>
+        </div>
+    </div>
+    <!--内容结束-->
+    <!--尾部开始-->
+    <div id=footer></div>
+    <!--尾部结束-->
+</div>
+</body>
+</html>

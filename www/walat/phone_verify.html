@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0 user-scalable=no" />
+    <title>验证手机号</title>
+    <link href="css/base.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <script src="js/jquery.js"></script>
+</head>
+
+<body>
+    <!--弹窗-->
+    <div id="cover"></div>
+    <div class="phone_error">
+        <h4>手机号码与银行预留不一致，请确认并重新输入。</h4>
+        <p>确定</p>
+    </div>
+    <div id="wapper">
+        <!--头部开始-->
+        <div id="header">
+            <p>验证手机号</p>
+        </div>
+        <!--头部结束-->
+        <!--内容开始-->
+        <div id=content>
+            <div class="form_block">
+                <p id="add_message">验证码已发送至手机：<span>188****9598</span>请按提示操作</p>
+                <h5></h5>
+                <p>
+                    <label for="number_yzm">验证码</label>
+                    <input type="tel" id="number_yzm" placeholder="请输入验证码"><span class="resend_code">重获验证码</span>
+                </p>
+                <h5></h5>
+                <a href="bind_success.html"><h3 class="next_step">下一步</h3></a>
+            </div>
+        </div>
+        <!--内容结束-->
+        <!--尾部开始-->
+        <div id=footer></div>
+        <!--尾部结束-->
+    </div>
+</body>
+<script>
+    $(function () {
+        /*阻止默认事件*/
+        var stopDefault = function (e) {
+                e.preventDefault();
+            }
+            //弹层函数
+        function appearDiv(str) {
+            $("#cover").show();
+            $(".phone_error").fadeIn(400).find('h4').text(str);
+            $(window).on("touchmove", stopDefault);
+        }
+        $(".phone_error p").on("click", function () {
+                $("#cover").hide();
+                $(".phone_error").hide();
+                $(window).off("touchmove", stopDefault);
+            })
+            //点击按钮逐个删除
+        $(".del_tip").on("click", function () {
+                var card_str = $("#number_card").val();
+                var card_arr = card_str.split(" ");
+                var new_str = card_arr.join("");
+                var new_arr = [];
+                for (var i = 0; i < new_str.length; i++) {
+                    new_arr.push(new_str[i]);
+                }
+                if (new_arr.length) {
+                    new_arr.length--;
+                    var str_c = new_arr.join("");
+                    $("#number_card").val(str_c.replace(/\D/g, '').replace(/....(?!$)/g, '$& '))
+                }
+
+            })
+            //重发验证码
+        var timeoff = true;
+        var count = 60;
+        //初始化读秒
+        if (timeoff) {
+            countdown = setInterval(CountDown, 1000);
+            CountDown();
+        }
+
+        //重发验证码
+        $(".resend_code").on("click", function () {
+            if (timeoff) {
+                countdown = setInterval(CountDown, 1000);
+                CountDown();
+            }
+        });
+
+        function CountDown() {
+            timeoff = false;
+            $(".resend_code").html(count + "秒后重发");
+            if (count == 0) {
+                $('.resend_code').html("重发验证码");
+                timeoff = true;
+                count = 60;
+                clearInterval(countdown);
+            }
+            count--;
+        }
+        // 下一步
+        $(".next_step").on("click", function () {
+            var str_yzm = $("#number_yzm").val().trim();
+            if (!str_yzm) {
+                appearDiv("输入短信验证码！");
+                return false;
+            }
+            window.location = "bind_success.html";
+        })
+    })
+</script>
+
+</html>

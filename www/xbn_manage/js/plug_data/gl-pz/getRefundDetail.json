@@ -1,0 +1,18 @@
+{
+    "statusCode":"2000000",
+    "data" :{        
+                "id": "站点ID",
+                "platform": "所属平台",
+                "siteId": "站点ID",
+                "isReturns": "1",
+                "returnType": "2",
+                "undertaker": "1",
+                "returnDateNumber": "1",
+                "updateTime": "修改时间",
+                "createTime": "创建时间",
+                "categoryId": " 小笨鸟分类",
+                "remark":"退货描述",
+                "operator": "操作人"
+
+            } 
+}

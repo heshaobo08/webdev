@@ -1,0 +1,268 @@
+<div class="serch">
+    <!-- serch begin -->
+    <form id="searchForm">
+    <div class="serch_main">
+        <div class="serch_conts">
+            <dl>
+                <dt>预报编码：</dt>
+                <dd><input type="text" name="forecastCode" value="" class="defaultInput" /></dd>
+            </dl>
+            <dl>
+                <dt>提交人：</dt>
+                <dd><input type="text" name="createUser" value="" class="defaultInput" /></dd>
+            </dl>
+            <dl>
+                <dt>处理状态：</dt>
+                <dd>
+                    <div class="select w190">
+                        <input index-data="" name="status" type="hidden" value="请选择"/>
+                        <i>否</i>
+                        <em class="icon-52"></em>
+                        <ul>
+                            <li index-data=""><span>全部</span></li>
+                            {{each(i,e) getConstName("OwmsReceiptForecastStatusEnum")}}
+                            <li index-data="${i}"><span>${e}</span></li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                </dd>
+            </dl>
+        </div>
+        <div class="serch_conts">
+            <dl>
+                <dt>处理地点：</dt>
+                <dd>
+                    <div class="select w190">
+                        <input index-data="" name="disposalSite" type="hidden" value="请选择"/>
+                        <i>否</i>
+                        <em class="icon-52"></em>
+                        <ul>
+                            <li index-data=""><span>请选择</span></li>
+                            {{each(i,e) getConstName("OwmsDisposalSiteEnum")}}
+                            <li index-data="${i}"><span>${e}</span></li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                </dd>
+            </dl>
+            <dl>
+                <dt>目的仓库：</dt>
+                <dd>
+                    <div class="select w190">
+                        <input index-data="" name="destinationStoreCode" type="hidden" value="请选择"/>
+                        <i>否</i>
+                        <em class="icon-52"></em>
+                        <ul>
+                            <li index-data=""><span>请选择</span></li>
+                            {{if source.stores.length}}
+                            {{each(i,item) source.stores}}
+                            <li index-data="${item.storeCode}"><span>${item.storeName}</span></li>
+                            {{/each}}
+                            {{/if}}
+                        </ul>
+                    </div>
+                </dd>
+            </dl>
+            <dl>
+                <dt>物流方式：</dt>
+                <dd>
+                    <div class="select w190">
+                        <input index-data="" name="logisticsType" type="hidden" value="请选择"/>
+                        <i>否</i>
+                        <em class="icon-52"></em>
+                        <ul>
+                            <li index-data=""><span>请选择</span></li>
+                            {{each(i,e) getConstName("OwmsLogisticsServerTypeEnum")}}
+                            <li index-data="${i}"><span>${e}</span></li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                </dd>
+            </dl>
+        </div>
+        <div class="serch_conts">
+            <dl>
+                <dt>预报时间：</dt>
+                <dd>
+                    <div class="defaultData">
+                        <div class="dataBegin">
+                            <span class="dateInput" id="forecastTime-start" data-operator="ge" data-key="forecastTime"></span>
+                            <a href="javascript:;" class="timeStart icon-54"></a>
+                        </div>
+                        <span class="point"></span>
+                        <div class="dataEnd">
+                            <span class="dateInput" id="forecastTime-end" data-operator="le" data-key="forecastTime"></span>
+                            <a href="javascript:;" class="timeEnd icon-54"></a>
+                        </div>
+                    </div>
+                </dd>
+            </dl>
+            <dl>
+                <dt>总运费（CNY）：</dt>
+                <dd>
+                    <div class="defaultPrice">
+                        <input type="text" name="totalFreight" data-key="totalFreight" data-operator="ge" pattern="^([1-9]\d{0,9}|0)(\.\d{1,2})?$" class="priceBegin" />
+                        <span class="point"></span>
+                        <input type="text" name="totalFreight" data-key="totalFreight" data-operator="le" pattern="^([1-9]\d{0,9}|0)(\.\d{1,2})?$" class="priceEnd" />
+                    </div>
+                </dd>
+            </dl>
+        </div>
+        <div class="serch_conts">
+            <dl>
+                <dt>扣款情况：</dt>
+                <dd>
+                    <div class="select w190">
+                        <input index-data="" name="chargebackSituation" type="hidden" value="请选择"/>
+                        <i>否</i>
+                        <em class="icon-52"></em>
+                        <ul>
+                            <li index-data=""><span>请选择</span></li>
+                            {{each(i,e) getConstName("OwmsChargebackSituationEnum")}}
+                            <li index-data="${i}"><span>${e}</span></li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                </dd>
+            </dl>
+            <dl>
+                <dt>&emsp;</dt>
+                <dd><a href="javascript:;" class="button js-search">Search</a></dd>
+            </dl>
+        </div>
+    </div>
+    </form>
+    <!-- serch end -->
+    <div class="addbutton">
+        {{if source.operateData.moduleData && source.operateData.actionData && source.operateData.operate['HWC20106001']}}
+        <a href="javascript:;" class="button mR20 js-batchExamine">审核</a>
+        {{/if}}
+        {{if source.operateData.moduleData && source.operateData.actionData && source.operateData.operate['HWC20106002']}}
+        <a href="javascript:;" class="buttonText mR20 js-batchReject">驳回</a>
+        {{/if}}
+        {{if source.operateData.moduleData && source.operateData.actionData && source.operateData.operate['HWC20106003']}}
+        <a href="javascript:;" class="buttonText mR20 js-update" data-href="?m=xhr_id_20100000_20106000_updateProcess" data-title="海外仓业务管理-收货预报管理-批量更新进程">更新进程</a>
+        {{/if}}
+        {{if source.operateData.moduleData && source.operateData.actionData && source.operateData.operate['HWC20106004']}}
+        <a href="javascript:;" class="buttonText mR20 js-printBarCode" data-href="?m=xhr_id_20100000_20106000_printBarCode" data-title="海外仓业务管理-收货预报管理-打印货品条码">打印货品条码</a>
+        {{/if}}
+        {{if source.operateData.moduleData && source.operateData.actionData && source.operateData.operate['HWC20106005']}}
+        <a href="javascript:;" class="buttonText mR20 js-printBoxCode" data-href="?m=xhr_id_20100000_20106000_printBoxCode" data-title="海外仓业务管理-收货预报管理-打印箱子标签">打印箱子标签</a>
+        {{/if}}
+        {{if source.operateData.moduleData && source.operateData.actionData && source.operateData.operate['HWC20106006']}}
+        <a href="javascript:;" class="buttonText mR20 js-export">导出收货预报</a>
+        {{/if}}
+    </div>
+    <em class="mL50 none">您所搜索的，共有<i id='searchTotalCount'>${source.totalCount}</i>条内容符合。</em>
+</div>
+<!-- conts begin -->
+<div class="contsBox">
+    <div class="bigTable">
+        <table class="highTable" border="0" cellspacing="0" r-box="all">
+            <thead>
+            <tr>
+                <th width="20"><input type="checkbox" name="all"></th>
+                <th width="140">预报编码</th>
+                <th width="">提交人</th>
+                <th width="">预报时间</th>
+                <th width="">处理状态</th>
+                <th width="">处理地点</th>
+                <th width="">目的仓库</th>
+                <th width="">物流方式</th>
+                <th width="">物流信息</th>
+                <th width="">费用信息</th>
+                <th width="">扣款情况</th>
+                <th>备注</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody id="listCon">
+            </tbody>
+        </table>
+    </div>
+    <div class="page" id="topPager"></div>
+</div>
+<form id="export" action="/owms/forecast/export" method="post" class="inline_block" style="position:fixed;left:-99999px;"  >
+    <input type="submit" value="导出报关信息"/>
+</form>
+<script id="pageListTmpl" type="text/x-jquery-tmpl">
+    <a href="javascript:;" class="firstPage fL" data-displace="first">首页</a>
+    <a href="javascript:;" class="prve fL icon-56" data-displace="prev"></a>
+    <ul class="pagenumber" id="pager"></ul>
+    <a href="javascript:;" class="next fL icon-55" data-displace="next"></a>
+    <a href="javascript:;" class="lastPage" data-displace="last">尾页</a>
+</script>
+<script id="listTmpl" type="text/x-jquery-tmpl">
+    _[{if list.length}]_
+    _[{each(i,c) list}]_
+    <tr data-id="$_[c.id]_" data-status="$_[c.status]_">
+        <td><input type="checkbox" name=""/></td>
+        <td class="Truncate" title="$_[c.forecastCode]_">$_[c.forecastCode]_</td>
+        <td>$_[c.userName]_</td>
+        <td>$_[c.forecastTime]_</td>
+        <td>$_[getConstName("OwmsReceiptForecastStatusEnum",c.status)]_</td>
+        <td>$_[c.disposalSite]_</td>
+        <td>$_[c.destinationStoreName]_</td>
+        <td>$_[getConstName("OwmsLogisticsServerTypeEnum",c.logisticsType)]_</td>
+        <td><p>预报箱数：$_[c.forecastBoxNum]_</p><p>预报货品总数：$_[c.forecastCommodityNum]_</p></td>
+        <td><p>总运费：$_[c.totalFreight]_ CNY</p><p>税金：$_[c.tax]_ CNY</p></td>
+        <td>
+        _[{if c.totalFreight || c.tax || c.premium}]_
+        <p>已扣除：</p>
+        _[{else}]_
+        <p>未扣款</p>
+        _[{/if}]_
+        _[{if c.totalFreight}]_
+        <p>头程运费</p>
+        _[{/if}]_
+        _[{if c.tax}]_
+        <p>税金</p>
+        _[{/if}]_
+        _[{if c.premium}]_
+        <p>保费</p>
+        _[{/if}]_
+        </td>
+        <td class="Truncate" title="$_[c.remark || '暂无备注']_">$_[c.remark || '暂无备注']_</td>
+        <td>
+            _[{if operateData.moduleData && operateData.actionData && operateData.operate['HWC20106011']}]_
+            <a data-href="?m=xhr_id_20100000_20106000_detail&id=$_[c.id]_" class="blue mR10" data-title="海外仓业务管理-收货预报管理-详情">详情</a>
+            _[{/if}]_
+            _[{if c.status>=4&&c.status<=10}]_
+            _[{if c.totalFreight&&c.tax&&c.premium}]_
+
+            _[{else}]_
+            _[{if operateData.moduleData && operateData.actionData && operateData.operate['HWC20106010']}]_
+            <a href="javascript:;" data-href="?m=xhr_id_20100000_20106000_fee&id=$_[c.id]_" data-title="海外仓业务管理-收货预报管理-扣款" class="blue mR10">扣款</a>
+            _[{/if}]_
+            _[{/if}]_
+            _[{/if}]_
+            _[{if c.status == 2}]_
+            _[{if operateData.moduleData && operateData.actionData && operateData.operate['HWC20106008']}]_
+            <a data-href="javascript:;" class="blue mR10 js-examine">审核</a>
+            _[{/if}]_
+            _[{/if}]_
+            _[{if c.status == 2 || c.status == 3}]_
+            _[{if operateData.moduleData && operateData.actionData && operateData.operate['HWC20106009']}]_
+            <a data-href="javascript:;" class="blue mR10 js-reject">驳回</a>
+            _[{/if}]_
+            _[{/if}]_
+            _[{if c.status != 1 && c.status != 2 && c.status != 3 && c.status != 11}]_
+            _[{if operateData.moduleData && operateData.actionData && operateData.operate['HWC20106022']}]_
+            <a data-href="?m=xhr_id_20100000_20106000_addBox&id=$_[c.id]_" class="blue mR10" data-title="海外仓业务管理-收货预报管理-详情-增箱">增箱</a>
+            _[{/if}]_
+            _[{if operateData.moduleData && operateData.actionData && operateData.operate['HWC20106023']}]_
+            <a data-href="?m=xhr_id_20100000_20106000_minusBox&id=$_[c.id]_" class="blue mR10" data-title="海外仓业务管理-收货预报管理-详情-减箱">减箱</a>
+            _[{/if}]_
+            _[{/if}]_
+            _[{if operateData.moduleData && operateData.actionData && operateData.operate['HWC20106007']}]_
+            <a href="javascript:;" class="blue js-editRemak">备注</a>
+            _[{/if}]_
+        </td>
+    </tr>
+    _[{/each}]_
+    _[{else}]_
+    <tr>
+        <td colspan="13">暂无数据</td>
+    </tr>
+    _[{/if}]_
+</script>

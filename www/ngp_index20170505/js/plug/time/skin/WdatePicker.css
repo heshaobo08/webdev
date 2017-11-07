@@ -1,0 +1,9 @@
+.Wdate{
+	background:#fff url(time_logo.png) no-repeat 162px 8px;
+}
+.Wdate::-ms-clear{display:none;}
+
+.WdateFmtErr{
+	font-weight:bold;
+	color:red;
+}

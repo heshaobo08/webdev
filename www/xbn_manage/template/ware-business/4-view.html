@@ -1,0 +1,124 @@
+<div class="contsBox">
+    <div class="details">
+        <h3 class="titleText">基本信息</h3>
+        <div class="mT20">
+            <dl class="invoice_dl">
+                <dt class="invoice_dt_title"></dt>
+                <dd>
+                    <dl class="fix">
+                        <dt class="invoice_dt">称呼：</dt>
+                        <dd class="invoice_dd">${source.callName}</dd>
+                    </dl>
+                </dd>
+                <dd>
+                    <dl class="fix">
+                        <dt class="invoice_dt">联系邮箱：</dt>
+                        <dd class="invoice_dd">${source.email}</dd>
+                    </dl>
+                </dd>
+                <dd>
+                    <dl class="fix">
+                        <dt class="invoice_dt">联系电话：</dt>
+                        <dd class="invoice_dd">${source.telephone}</dd>
+                    </dl>
+                </dd>
+                <dd>
+                    <dl class="fix">
+                        <dt class="invoice_dt">处理状态：</dt>
+                        <dd class="invoice_dd">{{if source.status==1}}新建{{else source.status==2}}已处理{{/if}}</dd>
+                    </dl>
+                </dd>
+                <dd>
+                    <dl class="fix">
+                        <dt class="invoice_dt">意见等级：</dt>
+                        <dd class="invoice_dd">{{if source.suggestLevel==1}}一般{{else source.suggestLevel==2}}<span
+                                style="color:#f90">重要</span>{{else source.suggestLevel==3}}<span style="color:#f16161">非常重要{{else}}</span>--{{/if}}
+                        </dd>
+                    </dl>
+                </dd>
+                <dd>
+                    <dl class="fix">
+                        <dt class="invoice_dt">意见内容：</dt>
+                        <dd class="invoice_dd">${source.content}</dd>
+                    </dl>
+                </dd>
+                <dd>
+                    <dl class="fix">
+                        <dt class="invoice_dt">处理结果：</dt>
+                        <dd class="invoice_dd">${source.dealResult}</dd>
+                    </dl>
+                </dd>
+            </dl>
+        </div>
+    </div>
+    <div class="details">
+        <h3 class="titleText">修改信息</h3>
+
+        <div class="mT20">
+            <dl class="invoice_dl">
+                <dt class="invoice_dt_title"></dt>
+                <dd>
+                    <dl class="fix">
+                        <dt class="invoice_dt">创建人：</dt>
+                        <dd class="invoice_dd">${source.createUser}</dd>
+                    </dl>
+                </dd>
+                <dd>
+                    <dl class="fix">
+                        <dt class="invoice_dt">创建时间：</dt>
+                        <dd class="invoice_dd">${source.createTime}</dd>
+                    </dl>
+                </dd>
+                <dd>
+                    <dl class="fix">
+                        <dt class="invoice_dt">最后修改人：</dt>
+                        <dd class="invoice_dd">${source.lastUpdateUser}</dd>
+                    </dl>
+                </dd>
+                <dd>
+                    <dl class="fix">
+                        <dt class="invoice_dt">最后修改时间：</dt>
+                        <dd class="invoice_dd">${source.lastUpdateTime}</dd>
+                    </dl>
+                </dd>
+            </dl>
+        </div>
+    </div>
+</div>
+<!-- conts end -->
+<div class="btnMain">
+    {{if source.status==1}}
+    {{if source.operateData.moduleData && source.operateData.actionData && source.operateData.operate['HWC20109001'] && source.operateData.operate['HWC20109001'].childOpt['HWC20109002']}}
+    <a href="javascript:;" class="button mR20 js-handle" data-id="${source.id}">处理</a>
+    {{/if}}
+    <a href="javascript:history.go(-1);" onclick="document.title='海外仓业务管理-意见管理'" sdata-href="?m=xhr_id_20100000_20109000" class="buttonText">返回</a>
+    {{else}}
+    <a href="javascript:history.go(-1);" onclick="document.title='海外仓业务管理-意见管理'" sdata-href="?m=xhr_id_20100000_20109000" class="button">返回</a>
+    {{/if}}
+
+</div>
+<script id="dealBox" type="text/x-jquery-tmpl">
+<form id="dealForm">
+    <dl class="editDl mL30 mT40">
+        <dt>意见等级：</dt>
+        <dd>
+            <div class="select w190" id="dealLevel">
+                <input index-data="" type="hidden" value="" required data-target="dealLevel" name="suggestLevel"/>
+                <i>请选择</i><em class="icon-52"></em>
+                <ul>
+                    <li index-data=""><span>请选择</span></li>
+                    <li index-data="1" {{if source.suggestLevel==1}}class="active"{{/if}}><span>一般</span></li>
+                    <li index-data="2" {{if source.suggestLevel==2}}class="active"{{/if}}><span>重要</span></li>
+                    <li index-data="3" {{if source.suggestLevel==3}}class="active"{{/if}}><span>非常重要</span></li>
+                </ul>
+            </div>
+        </dd>
+    </dl>
+    <dl class="editDl neweditDl mL30">
+        <dt>处理结果：</dt>
+        <dd>
+            <textarea class="textarea w300 h80" placeholder="最多2000个字符" required data-cnmax="2000" name="dealResult">${source.dealResult}</textarea>
+        </dd>
+    </dl>
+</form>
+ </script>

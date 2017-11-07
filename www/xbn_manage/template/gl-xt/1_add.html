@@ -1,0 +1,45 @@
+<!-- conts begin -->
+<div class="details">
+    <h3 class="titleText">账户信息</h3>
+    <div class="initBox">
+    <form id="serviceForm">
+        <dl class="editDl">
+            <dt><font>*</font>账户名称：</dt>
+            <dd><input type="tel|email" name="uname" class="input w240" required data-max="50"></dd>
+        </dl>
+        <dl class="editDl">
+            <dt><font>*</font>账户密码：</dt>
+            <dd><input type="password" name="pwd" class="input w240" required data-max="50"></dd>
+        </dl>
+        <dl class="editDl">
+            <dt><font>*</font>重复密码：</dt>
+            <dd><input type="password" name="repwd" class="input w240" required></dd>
+        </dl>
+        <dl class="editDl">
+            <dt><font>*</font>账户权限配置：</dt>
+            <dd>
+                <div class="select w240" id="roleId">
+                    <input index-data="" type="hidden" value="请选择" name="roleId" required data-target="roleId">
+                    <i>请选择</i>
+                    <em class="icon-52"></em>
+                    <ul>
+                    	<li index-data=""><span>请选择</span></li>
+                    	{{each(i,c) source.data}}
+                        <li index-data="${c.id}"><span>${c.roleName}</span></li>
+                    	{{/each}}    
+                    </ul>
+                </div>
+            </dd>
+        </dl>
+    </form>    
+    </div>
+</div>
+
+<!-- conts end -->
+<!--中间内容区域 end-->
+
+<div class="btnMain">
+    <a href="javascript:;" class="button js-submit">确认</a>
+    <a href="javascript:history.go(-1);" class="buttonText pad20" sdata-href="?m=xhr_id_1_9" data-title="系统管理-管理账户">返回</a>
+</div>
+					

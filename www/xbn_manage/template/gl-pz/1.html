@@ -1,0 +1,283 @@
+<div class="fc_conts">
+    <div class="serch">
+        <form id='searchForm'>
+            <div class="serch_main">
+                <div class="serch_conts">
+                    <dl>
+                        <dt>敏感词关键字 :</dt>
+                        <dd class="">
+                            <input type="text" class="defaultInput" name='keywordValue'/></dd>
+                    </dl>
+                    <dl>
+                        <dt>特殊用户名 :</dt>
+                        <dd><input type="text" value="" class="defaultInput" name='exceptantUsers'></dd>
+                    </dl>
+                    <dl>
+                        <dt>平台 :</dt>
+                        <dd>
+                            <div class="select w190">
+                                <input index-data="" type="hidden" value="请选择" name='platform'>
+                                <i>请选择平台</i>
+                                <em class="icon-52"></em>
+                                <ul style="">
+                                    <li index-data=""><span>请选择</span></li>
+                                    <li index-data="1"><span>ebay</span></li>
+                                    <li index-data="2"><span>amazon</span></li>
+                                    <li index-data="3"><span>newegg</span></li>
+                                </ul>
+                            </div>
+                        </dd>
+                    </dl>
+                </div>
+                <div class="serch_conts">
+                    <dl>
+                        <dt>状态 :</dt>
+                        <dd>
+                            <div class="select w190">
+                                <input index-data="" type="hidden" value="请选择" name='status'>
+                                <i>请选择状态</i>
+                                <em class="icon-52"></em>
+                                <ul style="">
+                                    <li index-data=""><span>全部</span></li>
+                                    <li index-data="false"><span>禁止</span></li>
+                                    <li index-data="true"><span>启用</span></li>
+                                </ul>
+                            </div>
+                        </dd>
+                    </dl>
+                    <dl class="serchDl">
+                        <dt></dt>
+                        <dd>
+                            {{if source.operateData.moduleData && source.operateData.actionData &&
+                            source.operateData.operate["h06060001"]}}
+                            <a href="javascript:;" class="button js-sensitiveSearch">Search</a>
+                            {{/if}}
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+            <div class="addbutton">
+                <!-- Todo 没有权限 -->
+                <a href="javascript:;" class="button mR30 js-addSens">添加敏感词</a>
+                {{if source.operateData.moduleData && source.operateData.actionData &&
+                source.operateData.operate["h06060006"]}}
+                <a href="javascript:;" class="blue mR30 js-deleteSens">批量删除</a>
+                {{/if}}
+                {{if source.operateData.moduleData && source.operateData.actionData &&
+                source.operateData.operate["h06060007"]}}
+                <a href="javascript:;" class="blue mR30 js-batchSet">批量添加特殊用户</a>
+                {{/if}}
+                {{if source.operateData.moduleData && source.operateData.actionData &&
+                source.operateData.operate["h06060008"]}}
+                <a href="javascript:;" class="blue mR30 js-forbidSens">禁用</a>
+                {{/if}}
+                {{if source.operateData.moduleData && source.operateData.actionData &&
+                source.operateData.operate["h06060009"]}}
+                <a href="javascript:;" class="blue mr30 js-startSens">启用</a>
+                {{/if}}
+            </div>
+            <div class="addbutton none" style="padding-top: 0">您所搜索的，共有<i id="searchTotalCount">${source.totalCount}</i>条内容符合。</div>
+        </form>
+    </div>
+    <!-- conts begin -->
+    <div class="contsBox">
+        <div class="bigTable">
+            <table r-box="all">
+                <thead>
+                <tr>
+                    <th width="3%"><input type="checkbox" name='all' class="mR10"/></th>
+                    <th width="20%">
+                        <a href="javascript:;" class="underline js-orderSensitive" data-isasc='asc'
+                           data-order='keywordValue'>敏感词<span>↓</span></a>
+                    </th>
+                    <th width="10%">平台</th>
+                    <th width="32%">特殊用户</th>
+                    <th width="15%">
+                        <a href="javascript:;" class="underline js-orderSensitive" data-isasc='asc'
+                           data-order='creaTime'>发布时间 <span>↓</span></a>
+                    </th>
+                    <th width="10%">状态</th>
+                    <th width="10%">操作</th>
+                </tr>
+                </thead>
+                <tbody id='showSensitiveList'>
+
+                </tbody>
+            </table>
+        </div>
+        <!-- 翻页 begin -->
+        <div class="page" id="topPager">
+        </div>
+        <!--翻页 end-->
+    </div>
+    <!-- conts end -->
+    <!--中间内容区域 end-->
+</div>
+
+<div class="layerHtmlBox none"></div>
+<!-- 分页模板 -->
+<script id='pageListCon' type='text/x-jquery-tmpl'>
+    <a href="javascript:;" class="firstPage fL" data-displace="first">首页</a>
+    <a href="javascript:;" class="prve fL icon-56" data-displace="prev"></a>
+    <ul class="pagenumber" id="pager"></ul>
+    <a href="javascript:;" class="next fL icon-55" data-displace="next"></a>
+    <a href="javascript:;" class="lastPage" data-displace="last">尾页</a>
+
+</script>
+
+<!-- 敏感词列表 -->
+<script id='sensitiveListCon' type='text/x-jquery-tmpl'>
+_[{if list}]_
+    _[{each(i,list) list}]_
+    <tr>
+        <td><input type="checkbox" data-id='$_[list.id]_'/></td>
+        <td class='keyVal'><span class="Truncate inline_block w300">$_[list.keywordValue]_</span></td>
+        <td>_[{if list.platform=='1'}]_ebay _[{else list.platform=='2'}]_ amazon _[{else list.platform=='3'}]_ newegg _[{/if}]_</td>
+        <td><span class="Truncate inline_block w400">$_[list.exceptantUsers]_
+            _[{if list.exceptantUsers}]_</span>
+                _[{if operateData.moduleData && operateData.actionData && operateData.operate['h06060004']}]_
+                <a href="javascript:;" class="blue mL15 js-set" data-id='$_[list.id]_'>修改</a>
+                _[{/if}]_
+            _[{else}]_
+                _[{if operateData.moduleData && operateData.actionData && operateData.operate['h06060005']}]_
+                <a href="javascript:;" class="blue js-set" data-id='$_[list.id]_'>添加特殊用户</a>
+                _[{/if}]_
+            _[{/if}]_
+        </td>
+        <td>$_[list.creaTime]_</td>
+        <td>
+            _[{if list.status}]_<em>启用</em>_[{else}]_<em class="red">禁用</em>_[{/if}]_
+        </td>
+        <td class="table_op">
+           _[{if list.status}]_
+                _[{if operateData.moduleData && operateData.actionData && operateData.operate['h06060002']}]_
+                <span class="blue mR15 js-editSens" data-id='$_[list.id]_'  data-code='$_[list.code]_'>修改</span>
+                _[{/if}]_
+                _[{if operateData.moduleData && operateData.actionData && operateData.operate['h06060003']}]_
+                <span class="blue js-deleteSens" data-id='$_[list.id]_'  data-code='$_[list.code]_'>删除</span>
+                _[{/if}]_
+            _[{else}]_
+                <span class="blue mR15"></span>
+                _[{if operateData.moduleData && operateData.actionData && operateData.operate['h06060003']}]_
+                <span class="blue js-deleteSens" data-id='$_[list.id]_'  data-code='$_[list.code]_'>删除</span>
+                _[{/if}]_
+           _[{/if}]_
+        </td>
+    </tr>
+    _[{/each}]_
+_[{else}]_
+<tr><td colspan="3">暂无数据</td></tr>
+_[{/if}]_
+
+</script>
+
+<script id='setLayerCon' type='text/x-jquery-tmpl'>
+<div class='layBox'>
+    <form id='layBoxForm'>
+    _[{if type=='set'}]_
+    <div class='jsSetCon'>
+        <div class='tips w400'>
+            <dl class='editDl'>
+                <dt><font>*</font>
+                    敏感词 ：
+                </dt>
+                <dd>
+                    $_[keywordValue]_
+                    <input type='hidden' name='ids' value='$_[ids]_'>
+                    <input type='hidden' name='id' value='$_[id]_'>
+                </dd>
+            </dl>
+            <dl class='editTextarea'>
+                <dt> <font>*</font>
+                    特殊用户 ：
+                </dt>
+                <dd>
+                    <textarea placeholder='特殊用户英文逗号分隔多个用户名称' name='exceptantUsers' required>$_[exceptantUsers]_</textarea>
+                </dd>
+            </dl>
+            <dl class='editDl'>
+                <dt>
+                    <font></font>
+                    示例 ：
+                </dt>
+                <dd>zhangping</dd>
+            </dl>
+        </div>
+    </div>
+    _[{else type=='add'}]_
+    <div class='jsAddCon'>
+        <div class='tips w400'>
+            <dl class='editDl'>
+                <dt>
+                    <font>*</font>
+                    关联平台 ：
+                </dt>
+                <dd>
+                    <div class='select w190 fL' id='jb-platform'>
+                        <input type='hidden' name='platform' value='请选择' index-data='' required data-target='jb-platform'> <i>请选择</i> <em class='icon-52'></em>
+                        <ul>
+                            <li index-data=''><span>请选择</span></li>
+                            <li index-data='1'><span>ebay</span></li>
+                            <li index-data='2'><span>amazon</span></li>
+                            <li index-data='3'><span>newegg</span></li>
+                        </ul>
+                    </div>
+                </dd>
+            </dl>
+            <dl class='editTextarea'>
+                <dt>
+                    <font>*</font>
+                    敏感词 ：
+                </dt>
+                <dd>
+                    <textarea placeholder='添加多个敏感词请用逗号隔开，最多30个字符' name='keyWordValues' required data-max="30"></textarea>
+                </dd>
+            </dl>
+            <dl class='editDl'>
+                <dt>
+                    <font></font>
+                    示例 ：
+                </dt>
+                <dd>毒品,枪支</dd>
+            </dl>
+        </div>
+    </div>
+    _[{else type=='edit'}]_
+    <div class='jsEditCon'>
+        <div class='tips w400'>
+            <dl class='editDl'>
+                <input type='hidden' name='id' value='$_[id]_'>
+                <dt>
+                    <font>*</font>
+                    关联平台 ：
+                </dt>
+                <dd>
+                    <div class='select w190 fL' id='jb-platform'>
+                        <input type='hidden' value='' name='platform' index-data='$_[platform]_'  required data-target='jb-platform'>
+                        <i>_[{if platform=='1'}]_ebay _[{else platform=='2'}]_amazon _[{else platform=='3'}]_newegg_[{else}}请选择{{/if}]_</i>
+                        <em class='icon-52'></em>
+                        <ul>
+                            <li index-data=''><span>请选择</span></li>
+                            <li index-data='1' _[{if platform=='1'}]_class='active'_[{/if}]_><span>ebay</span></li>
+                            <li index-data='2' _[{if platform=='2'}]_class='active'_[{/if}]_><span>amazon</span></li>
+                            <li index-data='3' _[{if platform=='3'}]_class='active'_[{/if}]_><span>newegg</span></li>
+                        </ul>
+                    </div>
+                </dd>
+            </dl>
+            <dl class='editDl'>
+                <dt>
+                    <font>*</font>
+                    敏感词名称：
+                </dt>
+                <dd>
+                    <input class='input w190' type='text' name='keywordValue' required data-max="30" value='$_[keywordValue]_' pattern="^((?!,).)*$" placeholder='添加违禁词，不能输入,英文符号，最多30个字符'></dd>
+            </dl>
+        </div>
+    </div>
+    _[{/if}]_
+    </form>
+</div>
+
+</script>
+

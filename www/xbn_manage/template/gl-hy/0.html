@@ -1,0 +1,158 @@
+<div class="serch">
+<!-- serch begin -->
+<div class="serch_main">
+	<form id='userSearchForm'>
+	<div class="serch_conts">
+        <dl>
+            <dt>用户名 :</dt>
+            <dd><input type="text" value="" name='name' class="defaultInput" /></dd>
+        </dl>
+		<dl>
+			<dt>电话 :</dt>
+			<dd><input type="tel" value="" name='mobile' class="defaultInput" /></dd>
+		</dl>
+	<!-- 	<dl>
+			<dt>登录次数 :  </dt>
+			<dd><input type="number" value="" class="defaultInput" /></dd>
+		</dl> -->
+	</div>
+	<div class="serch_conts">
+		<dl>
+			<dt>会员状态 :</dt>
+			<dd>
+				<div class="select w190">
+					<input index-data="" name='userStatus' type="hidden" value="请选择"/>
+					<i>请选择</i>
+					<em class="icon-52"></em>
+					<ul>
+						<li index-data=""><span>请选择</span></li>
+						<li index-data="1"><span>已启用</span></li>
+						<li index-data="0"><span>已禁用</span></li>
+						<li index-data="2"><span>已冻结</span></li>
+					</ul>
+				</div>
+			</dd>
+		</dl>
+		<dl>
+			<dt>注册时间 : </dt>
+			<dd>
+				<div class="defaultData">
+                    <div class="dataBegin">
+                        <span class="dataInput" id="startTime" name='beginRegisterTime'></span>
+                        <a href="javascript:;" class="timeStart icon-54"></a>
+                    </div>
+                    <span class="point"></span>
+                    <div class="dataEnd">
+                        <span class="dataInput" id="endTime" name='endRegisterTime'></span>
+                        <a href="javascript:;" class="timeEnd icon-54"></a>
+                    </div>
+                </div>
+			</dd>
+		</dl>
+	</div>
+	<div class="serch_conts">
+		<!-- <dl>
+			<dt>最后登录时间 :</dt>
+			<dd>
+				<div class="defaultData">
+                    <div class="dataBegin">
+                        <span class="dataInput" id="startTime"></span>
+                        <a href="javascript:;" class="timeStart icon-54"></a>
+                    </div>
+                    <span class="point"></span>
+                    <div class="dataEnd">
+                        <span class="dataInput" id="endTime"></span>
+                        <a href="javascript:;" class="timeEnd icon-54"></a>
+                    </div>
+                </div>
+			</dd>
+		</dl> -->
+		<dl>
+			<dt>&emsp;</dt>
+			<dd><a href="javascript:;" class="button js-userListSearch" >Search</a></dd>
+		</dl>
+	</div>
+	</form>
+</div>
+<!-- serch end -->
+<div class="addbutton">
+    {{if source.operateData.moduleData && source.operateData.actionData && source.operateData.operate['h02010001']}}
+	<a href="javascript:;" class="button" data-href='?m=xhr_id_33_34_add' data-title='会员管理-注册会员管理-新增会员'>新增会员</a>
+    {{/if}}
+	<em class="mL50 none">您所搜索的，共有<i id='searchTotalCount'>${source.totalCount}</i>条内容符合。</em>
+</div>
+</div>
+<!-- conts begin -->
+<div class="contsBox">
+<div class="bigTable">
+	<table class="" border="0" cellspacing="0">
+		<thead>
+			<tr>
+				<th>用户名</th>
+				<th>手机号</th>
+				<th>邮箱</th>
+				<th>注册时间</th>
+				<th>状态</th>
+				<th>操作</th>
+			</tr>
+		</thead>
+		<tbody id='userListCon'>
+			
+		</tbody>
+	</table>
+</div>
+<!-- 分页 -->
+<div class="page" id="topPager">
+</div>
+</div>
+
+<!-- 分页模板 -->
+<script id='pageListCon' type='text/x-jquery-tmpl'>
+      <a href="javascript:;" class="firstPage fL" data-displace="first">首页</a>
+        <a href="javascript:;" class="prve fL icon-56" data-displace="prev"></a>
+        <ul class="pagenumber" id="pager"></ul>
+        <a href="javascript:;" class="next fL icon-55" data-displace="next"></a>
+        <a href="javascript:;" class="lastPage" data-displace="last">尾页</a>
+</script>
+
+
+<script id='userListTmpl' type='text/x-jquery-tmpl'>
+_[{if list}]_
+	_[{each(i,user) list}]_
+	<tr>
+		<td>$_[user.name]_</td>
+		<td>$_[user.mobile]_</td>
+		<td>$_[user.email]_ </td>
+		<td>$_[user.registerTime]_</td>
+		<td class="red">
+			_[{if user.userStatus=="1"}]_ 已启用 _[{else user.userStatus=="0"}]_ 已禁用 _[{else user.userStatus=="2"}]_ 已冻结 _[{/if}]_
+		</td>
+		<td>
+            _[{if operateData.moduleData && operateData.actionData && operateData.operate['h02010003']}]_
+                   <a href="javascript:;" data-href='?m=xhr_id_33_34_detail&id=$_[user.id]_' data-code="$_[user.code]_" class="blue mR10" data-title='会员管理-注册会员管理-会员查看'>查看</a>
+            _[{/if}]_
+			
+
+			_[{if user.userStatus=="1"}]_
+                _[{if operateData.moduleData && operateData.actionData && operateData.operate['h02010004']}]_
+				<a href="javascript:;" class="blue mR10 js-userStatusFrozen"  data-code='$_[user.code]_' data-id='$_[user.id]_' >$_[operateData.operate['h02010004'].menuName]_</a>
+                _[{/if}]_
+                _[{if operateData.moduleData && operateData.actionData && operateData.operate['h02010007']}]_
+				<a href="javascript:;" class="blue mR10 js-userStatusReset" data-code='$_[user.code]_'  data-id='$_[user.id]_'>$_[operateData.operate['h02010007'].menuName]_</a>
+                _[{/if}]_
+			_[{else user.userStatus=="2"}]_ 
+                _[{if operateData.moduleData && operateData.actionData && operateData.operate['h02010005']}]_
+				<a href="javascript:;" class="blue mR10 js-userStatusreFrozen" data-code='$_[user.code]_' data-id='$_[user.id]_'>$_[operateData.operate['h02010005'].menuName]_</a>
+                _[{/if}]_
+				<a href="javascript:;" class="blue mR10 js-userStatusForbid" data-id='$_[user.id]_'>禁用</a>
+			_[{/if}]_
+
+		</td>
+	</tr>
+	_[{/each}]_
+_[{else}]_
+    <tr>
+        <td colspan="6">暂无数据</td>
+    </tr>
+_[{/if}]_
+</script>

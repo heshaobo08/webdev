@@ -1,0 +1,616 @@
+    /* animation sets */
+    /*新添*/
+    /*第一页动画*/
+    /*    渐入渐入*/
+    
+    .pt-page-fadeIn {
+        -webkit-animation: fadeIn 1s ease-out both;
+        animation: fadeIn 1s ease-out both;
+    }
+    
+    @-webkit-keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+        60% {
+            opacity: 0.4;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+    
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+        60% {
+            opacity: 0.4;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+    /* 带上下波动的渐入渐出*/
+    
+    .pt-page-fadeIn1 {
+        -webkit-animation: fadeIn1 1s 4s ease-out both;
+        animation: fadeIn1 1s 4s ease-out both;
+    }
+    
+    @-webkit-keyframes fadeIn1 {
+        0% {
+            opacity: 0;
+        }
+        20% {
+            opacity: 0.8;
+            transform: translateY(-1%) translateX(-1%);
+        }
+        30% {
+            opacity: 0.8;
+            transform: translateY(0%) translateX(0%);
+        }
+        40% {
+            opacity: 0.8;
+            transform: translateY(1%) translateX(1%);
+        }
+        50% {
+            opacity: 0.8;
+            transform: translateY(0%) translateX(0%);
+        }
+        60% {
+            opacity: 0.8;
+            transform: translateY(-1%) translateX(-1%);
+        }
+        70% {
+            opacity: 0.8;
+            transform: translateY(0%) translateX(0%);
+        }
+        80% {
+            opacity: 0.8;
+            transform: translateY(1%) translateX(1%);
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+    
+    @keyframes fadeIn1 {
+        0% {
+            opacity: 0;
+        }
+        20% {
+            opacity: 0.8;
+            transform: translateY(-1%) translateX(-1%);
+        }
+        30% {
+            opacity: 0.8;
+            transform: translateY(0%) translateX(0%);
+        }
+        40% {
+            opacity: 0.8;
+            transform: translateY(1%) translateX(1%);
+        }
+        50% {
+            opacity: 0.8;
+            transform: translateY(0%) translateX(0%);
+        }
+        60% {
+            opacity: 0.8;
+            transform: translateY(-1%) translateX(-1%);
+        }
+        70% {
+            opacity: 0.8;
+            transform: translateY(0%) translateX(0%);
+        }
+        80% {
+            opacity: 0.8;
+            transform: translateY(1%) translateX(1%);
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+    /*    从右边滑入*/
+    /*    延迟12s*/
+    
+    .pt-page-moveFromRight8 {
+        -webkit-animation: moveFromRight 2s 12s ease both;
+        animation: moveFromRight 2s 12s ease both;
+    }
+    /*    延迟10s*/
+    
+    .pt-page-moveFromRight7 {
+        -webkit-animation: moveFromRight 2s 10s ease both;
+        animation: moveFromRight 2s 10s ease both;
+    }
+    /*    延迟8s*/
+    
+    .pt-page-moveFromRight6 {
+        -webkit-animation: moveFromRight 2s 8s ease both;
+        animation: moveFromRight 2s 8s ease both;
+    }
+    /*    延迟6s*/
+    
+    .pt-page-moveFromRight5 {
+        -webkit-animation: moveFromRight 2s 6s ease both;
+        animation: moveFromRight 2s 6s ease both;
+    }
+    /*    延迟4s*/
+    
+    .pt-page-moveFromRight4 {
+        -webkit-animation: moveFromRight 2s 4s ease both;
+        animation: moveFromRight 2s 4s ease both;
+    }
+    /*    延迟2s*/
+    
+    .pt-page-moveFromRight3 {
+        -webkit-animation: moveFromRight 2s 2s ease both;
+        animation: moveFromRight 2s 2s ease both;
+    }
+    /*    延迟2s*/
+    
+    .pt-page-moveFromRight2 {
+        -webkit-animation: moveFromRight 1s 2s ease both;
+        animation: moveFromRight 1s 2s ease both;
+    }
+    /*    延迟1s*/
+    
+    .pt-page-moveFromRight1 {
+        -webkit-animation: moveFromRight 1s 1s ease both;
+        animation: moveFromRight 1s 1s ease both;
+    }
+    
+    @-webkit-keyframes moveFromRight {
+        from {
+            -webkit-transform: translateX(400%);
+        }
+    }
+    
+    @keyframes moveFromRight {
+        from {
+            -webkit-transform: translateX(400%);
+            transform: translateX(400%);
+        }
+    }
+    /*    流星从右上方滑落*/
+    
+    .pt-page-moveFromTopRight {
+        -webkit-animation: moveFromTopRight 2s 2s ease-out both;
+        animation: moveFromTopRight 2s 2s ease-out both;
+    }
+    
+    @-webkit-keyframes moveFromTopRight {
+        from {
+            -webkit-transform: translateX(300%) translateY(-200%);
+        }
+    }
+    
+    @keyframes moveFromTopRight {
+        from {
+            -webkit-transform: translateX(300%) translateY(-200%);
+            transform: translateX(300%) translateY(-200%);
+        }
+    }
+    /*  三角旋转*/
+    
+    .pt-page-rotate360 {
+        -webkit-animation: rotate360 5s 4s linear infinite;
+        animation: rotate360 5s 4s linear infinite;
+    }
+    
+    @-webkit-keyframes rotate360 {
+        from {
+            -webkit-transform: rotate(0deg);
+        }
+        to {
+            -webkit-transform: rotate(360deg);
+        }
+    }
+    
+    @keyframes rotate360 {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+    }
+    /*    页尾小圆圈的动画*/
+    
+    .pt-page-moveFromBottom1 {
+        -webkit-animation: moveFromBottom .6s 5s ease both;
+        animation: moveFromBottom .6s ease 5s both;
+    }
+    
+    .pt-page-moveFromBottom2 {
+        -webkit-animation: moveFromBottom .6s 8s ease both;
+        animation: moveFromBottom .6s ease 8s both;
+    }
+    
+    .pt-page-moveFromBottom3 {
+        -webkit-animation: moveFromBottom .6s 6s ease both;
+        animation: moveFromBottom .6s ease 6s both;
+    }
+    
+    .pt-page-moveFromBottom4 {
+        -webkit-animation: moveFromBottom .6s 10s ease both;
+        animation: moveFromBottom .6s ease 10s both;
+    }
+    
+    .pt-page-moveFromBottom5 {
+        -webkit-animation: moveFromBottom .6s 14s ease both;
+        animation: moveFromBottom .6s ease 14s both;
+    }
+    
+    .pt-page-moveFromBottom6 {
+        -webkit-animation: moveFromBottom .6s 12s ease both;
+        animation: moveFromBottom .6s ease 12s both;
+    }
+    
+    .pt-page-moveFromBottom7 {
+        -webkit-animation: moveFromBottom .6s 2s ease both;
+        animation: moveFromBottom .6s ease 2s both;
+    }
+    
+    @-webkit-keyframes moveFromBottom {
+        from {
+            -webkit-transform: translateY(200%);
+        }
+    }
+    
+    @keyframes moveFromBottom {
+        from {
+            -webkit-transform: translateY(200%);
+            transform: translateY(200%);
+        }
+    }
+    /*第二页动画 由小变大*/
+    
+    .pt-page-smallToBig1 {
+        -webkit-animation: smallToBig 2s ease-in both;
+        animation: smallToBig 2s ease-in both;
+    }
+    
+    .pt-page-smallToBig2 {
+        -webkit-animation: smallToBig 2s 2s ease-in both;
+        animation: smallToBig 2s 2s ease-in both;
+    }
+    
+    .pt-page-smallToBig3 {
+        -webkit-animation: smallToBig 2s 4s ease-in both;
+        animation: smallToBig 2s 4s ease-in both;
+    }
+    
+    .pt-page-smallToBig4 {
+        -webkit-animation: smallToBig 2s 6s ease-in both;
+        animation: smallToBig 2s 6s ease-in both;
+    }
+    
+    @-webkit-keyframes smallToBig {
+        0% {
+            display: none;
+            opacity: 0;
+        }
+        40% {
+            display: block;
+            opacity: 1;
+            -webkit-transform: scale(1.2);
+        }
+        60% {
+            opacity: 1;
+            -webkit-transform: scale(1);
+        }
+        80% {
+            opacity: 1;
+            -webkit-transform: scale(1.2);
+        }
+        100% {
+            opacity: 1;
+            -webkit-transform: scale(1);
+        }
+    }
+    
+    @keyframes smallToBig {
+        0% {
+            display: none;
+            opacity: 0;
+        }
+        40% {
+            display: block;
+            opacity: 1;
+            -webkit-transform: scale(1.2);
+        }
+        60% {
+            opacity: 1;
+            -webkit-transform: scale(1);
+        }
+        80% {
+            opacity: 1;
+            -webkit-transform: scale(1.2);
+        }
+        100% {
+            opacity: 1;
+            -webkit-transform: scale(1);
+        }
+    }
+    /*    页面上面标题的动画*/
+    
+    .pt-page-fadeIn2 {
+        -webkit-animation: fadeIn2 2s ease-out both;
+        animation: fadeIn2 2s ease-out both;
+    }
+    
+    @-webkit-keyframes fadeIn2 {
+        0% {
+            opacity: 0;
+        }
+        20% {
+            opacity: 0.4;
+            transform: translateX(-0.5%);
+        }
+        30% {
+            opacity: 0.8;
+            transform: translateX(0%);
+        }
+        40% {
+            opacity: 1;
+            transform: translateX(0.5%);
+        }
+        50% {
+            opacity: 0.4;
+            transform: translateX(0%);
+        }
+        60% {
+            opacity: 0.8;
+            transform: translateX(-0.5%);
+        }
+        70% {
+            opacity: 1;
+            transform: translateX(0%);
+        }
+        80% {
+            opacity: 0.4;
+            transform: translateX(0.5%);
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+    
+    @keyframes fadeIn2 {
+        0% {
+            opacity: 0;
+        }
+        20% {
+            opacity: 0.4;
+            transform: translateX(-0.5%);
+        }
+        30% {
+            opacity: 0.8;
+            transform: translateX(0%);
+        }
+        40% {
+            opacity: 1;
+            transform: translateX(0.5%);
+        }
+        50% {
+            opacity: 0.4;
+            transform: translateX(0%);
+        }
+        60% {
+            opacity: 0.8;
+            transform: translateX(-0.5%);
+        }
+        70% {
+            opacity: 1;
+            transform: translateX(0%);
+        }
+        80% {
+            opacity: 0.4;
+            transform: translateX(0.5%);
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+    /* 第十页动画*/
+    /*    延迟7s*/
+    
+    .pt-page-flipInTop6 {
+        -webkit-transform-origin: 50% 50%;
+        transform-origin: 50% 50%;
+        -webkit-animation: flipInTop 1s 7s both ease-out;
+        animation: flipInTop 1s 7s both ease-out;
+    }
+    /*    延迟6s*/
+    
+    .pt-page-flipInTop5 {
+        -webkit-transform-origin: 50% 50%;
+        transform-origin: 50% 50%;
+        -webkit-animation: flipInTop 1s 6s both ease-out;
+        animation: flipInTop 1s 6s both ease-out;
+    }
+    /*    延迟5s*/
+    
+    .pt-page-flipInTop4 {
+        -webkit-transform-origin: 50% 50%;
+        transform-origin: 50% 50%;
+        -webkit-animation: flipInTop 1s 5s both ease-out;
+        animation: flipInTop 1s 5s both ease-out;
+    }
+    /*    延迟4s*/
+    
+    .pt-page-flipInTop3 {
+        -webkit-transform-origin: 50% 50%;
+        transform-origin: 50% 50%;
+        -webkit-animation: flipInTop 1s 4s both ease-out;
+        animation: flipInTop 1s 4s both ease-out;
+    }
+    /*    延迟3s*/
+    
+    .pt-page-flipInTop2 {
+        -webkit-transform-origin: 50% 50%;
+        transform-origin: 50% 50%;
+        -webkit-animation: flipInTop 1s 3s both ease-out;
+        animation: flipInTop 1s 3s both ease-out;
+    }
+    /*    延迟2s*/
+    
+    .pt-page-flipInTop1 {
+        -webkit-transform-origin: 50% 50%;
+        transform-origin: 50% 50%;
+        -webkit-animation: flipInTop 1s 2s both ease-out;
+        animation: flipInTop 1s 2s both ease-out;
+    }
+    
+    @-webkit-keyframes flipInTop {
+        from {
+            -webkit-transform: translateZ(-2000px) rotateX(90deg);
+            opacity: 0.2;
+        }
+    }
+    
+    @keyframes flipInTop {
+        from {
+            -webkit-transform: translateZ(-2000px) rotateX(90deg);
+            transform: translateZ(-2000px) rotateX(90deg);
+            opacity: 0.2;
+        }
+    }
+    /*    第十一页动画*/
+    
+    .pt-page-widthAndFade1 {
+        -webkit-animation: widthAndFade 2s 2s both ease-out;
+        animation: widthAndFade 2s 2s both ease-out;
+    }
+    
+    .pt-page-widthAndFade2 {
+        -webkit-animation: widthAndFade 2s 4s both ease-out;
+        animation: widthAndFade 2s 4s both ease-out;
+    }
+    
+    .pt-page-widthAndFade3 {
+        -webkit-animation: widthAndFade3 2s 6s both ease-out;
+        animation: widthAndFade3 2s 6s both ease-out;
+    }
+    
+    @-webkit-keyframes widthAndFade3 {
+        0% {
+            opacity: 0;
+        }
+        25% {
+            opacity: 0.2;
+        }
+        50% {
+            opacity: 0.3;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+    
+    @keyframes widthAndFade3 {
+        0% {
+            opacity: 0;
+        }
+        25% {
+            opacity: 0.2;
+        }
+        50% {
+            opacity: 0.3;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+    
+    @-webkit-keyframes widthAndFade {
+        from {
+            opacity: 0;
+        }
+    }
+    
+    @keyframes widthAndFade {
+        from {
+            opacity: 0;
+        }
+    }
+    /*    第十三页动画*/
+    
+    .pt-page-scaleUp2 {
+        -webkit-animation: scaleUp 2s 4s ease-out both;
+        animation: scaleUp 2s 4s ease-out both;
+    }
+    
+    .pt-page-scaleUp1 {
+        -webkit-animation: scaleUp 2s 2s ease-out both;
+        animation: scaleUp 2s 2s ease-out both;
+    }
+    
+    @-webkit-keyframes scaleUp {
+        from {
+            opacity: 0;
+            -webkit-transform: scale(.1);
+        }
+    }
+    
+    @keyframes scaleUp {
+        from {
+            opacity: 0;
+            -webkit-transform: scale(.1);
+            transform: scale(.1);
+        }
+    }
+    /*    第十五页的动画*/
+    
+    .pt-page-moveFromBottomFade {
+        -webkit-animation: moveFromBottomFade 2s ease-out both;
+        animation: moveFromBottomFade 2s ease-out both;
+    }
+    
+    @-webkit-keyframes moveFromBottomFade {
+        0% {
+            opacity: 0;
+            -webkit-transform: translateY(80%);
+            transform: translateY(80%);
+        }
+        20% {
+            opacity: 1;
+        }
+        40% {
+            opacity: 0.3;
+        }
+        60% {
+            opacity: 1;
+        }
+        80% {
+            opacity: 0.5;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+    
+    @keyframes moveFromBottomFade {
+        0% {
+            opacity: 0;
+            -webkit-transform: translateY(80%);
+            transform: translateY(80%);
+        }
+        20% {
+            opacity: 1;
+        }
+        40% {
+            opacity: 0.3;
+        }
+        60% {
+            opacity: 1;
+        }
+        80% {
+            opacity: 0.5;
+        }
+        100% {
+            opacity: 1;
+        }
+    }

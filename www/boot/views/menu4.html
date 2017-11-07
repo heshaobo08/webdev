@@ -1,0 +1,18 @@
+<div class="container-fluid">
+    <div  class="alert alert-warning">
+        <a href="#" class="close" data-dismiss="alert">&times;</a>
+        <p><string>警告！</string>您的电脑已中毒，请更换系统！</p>
+    </div>
+    <div id="myalert" class="alert alert-success">
+        <a href="#" class="close" data-dismiss="alert">&times;</a>
+        <p><strong>成功</strong> 终于成功了</p>
+    </div>
+</div>
+<script>
+    $(function(){
+        $(".close").on("click",function(){
+            $("#myalert").alert();
+        })
+    });
+</script>
+

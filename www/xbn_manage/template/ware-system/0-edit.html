@@ -1,0 +1,50 @@
+<form id='addCountryForm'>
+    <div class="details">
+        <h3 class="titleText">基本信息</h3>
+        <input type="hidden" value="${source.id}" name="countryId"/>
+        <div class="initBox">
+            <dl class="neweditDl">
+                <dt><font>*</font>国家：</dt>
+                <dd><input type="text" name="country" class="input w240" required data-cnmax="50" value="${source.country}"/></dd>
+            </dl>
+            <dl class="neweditDl">
+                <dt><font>*</font>货币单位：</dt>
+                <dd><input type="text" name="currencyUnit" class="input w240" required data-cnmax="3" pattern="^[A-Z]{3}$"  value="${source.currencyUnit}"/></dd>
+            </dl>
+            <dl class="neweditDl">
+                <dt><font></font>报关名称过滤：</dt>
+                <dd><textarea class="textarea w430 h80" pattern="^[^\uFF0C]+$" placeholder="最多250个字，关键字之间用英文逗号区隔" name="forbiddenKeys" data-cnmax="250">${source.forbiddenKeys}</textarea></dd>
+            </dl>
+            <dl class="neweditDl">
+                <dt><font>*</font>报关名称提示：</dt>
+                <dd><textarea class="textarea w430 h80" required data-cnmax="250" name="applyWarn">${source.applyWarn}</textarea></dd>
+            </dl>
+        </div>
+    </div>
+    <div class="details">
+        <h3 class="titleText">修改信息</h3>
+        <div class="initBox">
+            <dl class="neweditDl">
+                <dt><font></font>创建人：</dt>
+                <dd class="lh34">${source.createUser}</dd>
+            </dl>
+            <dl class="neweditDl">
+                <dt><font></font>创建时间：</dt>
+                <dd class="lh34">${source.createTime}</dd>
+            </dl>
+            <dl class="neweditDl">
+                <dt><font></font>最后修改人：</dt>
+                <dd class="lh34">${source.lastUpdateUser || '无'}</dd>
+            </dl>
+            <dl class="neweditDl">
+                <dt><font></font>最后修改时间：</dt>
+                <dd class="lh34">${source.lastUpdateTime}</dd>
+            </dl>
+        </div>
+        <div class="btnMain">
+            <a href="javascript:;" class="button js-submit">保存</a>
+            <a href="javascript:history.go(-1);" onclick="document.title='海外仓系统设置-国家设置'" class="buttonText pad20" sdata-href="?m=xhr_id_20300000_20301000"
+               data-title="海外仓系统设置-国家设置">返回</a>
+        </div>
+    </div>
+</form>

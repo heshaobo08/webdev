@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>404</title>
+<meta charset="utf-8" />
+</head>
+<style>
+#content {
+    background: url(images/404.png) center center no-repeat #fff;
+    height: 633px;
+    width: 880px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -316px;
+    margin-left: -440px;
+}
+#content img {
+    margin-top: 168px;
+}
+#content img.active{animation:myfirst .2s;-moz-animation:myfirst .2s;-webkit-animation:myfirst .2s;-o-animation:myfirst .2s}
+@keyframes myfirst{0%{transform:rotate(0deg);-ms-transform:rotate(0deg)}25%{transform:rotate(3deg);-ms-transform:rotate(3deg)}50%{transform:rotate(0deg);-ms-transform:rotate(0deg)}75%{transform:rotate(-3deg);-ms-transform:rotate(-3deg)}100%{transform:rotate(0deg);-ms-transform:rotate(0deg)}}@-moz-keyframes myfirst{0%{-moz-transform:rotate(0deg)}25%{-moz-transform:rotate(3deg)}50%{-moz-transform:rotate(0deg)}75%{-moz-transform:rotate(-3deg)}100%{-moz-transform:rotate(0deg)}}
+</style>
+<body>
+<div id="content">
+    <img id="imgs" src="images/404logo.png" alt=""/>
+</div>
+</body>
+<script src="js/jquery.js"></script>
+<script>
+$(document).ready(function(){
+     setInterval(function(){
+        $("#imgs").addClass("active");
+    },200);
+    setInterval(function(){
+        $("#imgs").removeClass("active");
+    },500);
+})
+</script>
+</html>

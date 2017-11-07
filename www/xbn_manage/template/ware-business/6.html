@@ -1,0 +1,117 @@
+<div class="serch">
+    <!-- serch begin -->
+    <form id="searchForm">
+    <div class="serch_main">
+        <div class="serch_conts">
+            <dl>
+                <dt>库存编码：</dt>
+                <dd><input type="text" value="" name="inventoryCode" class="defaultInput" /></dd>
+            </dl>
+            <dl>
+                <dt>货主：</dt>
+                <dd><input type="text" value="" name="userName" class="defaultInput" /></dd>
+            </dl>
+            <dl>
+                <dt>商家SKU：</dt>
+                <dd><input type="text" value="" name="merchantSku" class="defaultInput" /></dd>
+            </dl>
+            <dl>
+                <dt>货品名称：</dt>
+                <dd><input type="text" value="" name="title" class="defaultInput" /></dd>
+            </dl>
+            <dl>
+                <dt>规格型号：</dt>
+                <dd><input type="text" value="" name="specsModel" class="defaultInput" /></dd>
+            </dl>
+            <dl>
+                <dt>来源：</dt>
+                <dd>
+                    <div class="select w190">
+                        <input index-data="" type="hidden" name="source" value="请选择"/>
+                        <i>否</i>
+                        <em class="icon-52"></em>
+                        <ul>
+                            <li index-data=""><span>请选择</span></li>
+                            {{each(i,e) getConstName("OwmsDataSourceEnum")}}
+                            <li index-data="${i}"><span>${e}</span></li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                </dd>
+            </dl>
+            <dl style="margin-right:0">
+                <dt>&nbsp;</dt>
+                <dd><a href="javascript:;" class="button js-search">Search</a></dd>
+            </dl>
+        </div>
+    </div>
+    </form>
+    <!-- serch end -->
+    <div class="addbutton">
+        {{if source.operateData.moduleData && source.operateData.actionData && source.operateData.operate['HWC20105001']}}
+        <a href="javascript:;" class="button js-print" data-title="海外仓业务管理-货品管理-打印货品条码" data-href="?m=xhr_id_20100000_20105000_print">打印货品条码</a>
+        {{/if}}
+        {{if source.operateData.moduleData && source.operateData.actionData && source.operateData.operate['HWC20105002']}}
+        <a href="javascript:;" class="buttonText pad20 js-export">导出货品</a>
+        {{/if}}
+        <em class="mL50 none">您所搜索的，共有<i id='searchTotalCount'>${source.totalCount}</i>条内容符合。</em>
+    </div>
+</div>
+<form style="position:absolute;left:-9999px" action="/owms/commodity/export" method="post" class="js-exportGoods"  >
+    <input type="submit" value="下载" />
+</form>
+<!-- conts begin -->
+<div class="contsBox">
+    <div class="bigTable">
+        <table class="" border="0" cellspacing="0" r-box="all">
+            <thead>
+                <tr>
+                    <th width="5%"><input type="checkbox" name="all"></th>
+                    <th width="">库存编码</th>
+                    <th width="">货主</th>
+                    <th width="">商家SKU</th>
+                    <th width="">货品名称</th>
+                    <th width="">规格型号</th>
+                    <th width="">来源</th>
+                    <th width="">备注</th>
+                    <th width="">操作</th>
+                </tr>
+            </thead>
+            <tbody id="listCon">
+            </tbody>
+        </table>
+    </div>
+    <div class="page" id="topPager"></div>
+</div>
+<script id="pageListTmpl" type="text/x-jquery-tmpl">
+    <a href="javascript:;" class="firstPage fL" data-displace="first">首页</a>
+    <a href="javascript:;" class="prve fL icon-56" data-displace="prev"></a>
+    <ul class="pagenumber" id="pager"></ul>
+    <a href="javascript:;" class="next fL icon-55" data-displace="next"></a>
+    <a href="javascript:;" class="lastPage" data-displace="last">尾页</a>
+</script>
+<script id="listTmpl" type="text/x-jquery-tmpl">
+    _[{if list.length}]_
+    _[{each(i,c) list}]_
+    <tr data-id="$_[c.id]_">
+        <td><input type="checkbox" name=""></td>
+        <td>$_[c.inventoryCode]_</td>
+        <td>$_[c.userName]_</td>
+        <td>$_[c.merchantSku]_</td>
+        <td>$_[c.title]_</td>
+        <td><span class="white inline_block" title="$_[c.specsModel || '暂无规格型号']_">$_[c.specsModel || "暂无规格型号"]_</span></td>
+        <td>$_[c.source == '1' ? '站外' : '小笨鸟']_</td>
+        <td><p class="Truncate">$_[c.description || '暂无备注']_</p></td>
+        <td>
+        _[{if operateData.moduleData && operateData.actionData && operateData.operate['HWC20105003']}]_
+            <a data-title="海外仓业务管理-货品管理-详情" data-href="?m=xhr_id_20100000_20105000_detail&id=$_[c.id]_" class="blue">详情</a>
+            _[{/if}]_
+        </td>
+    </tr>
+    _[{/each}]_
+    _[{else}]_
+    <tr>
+        <td colspan="4">暂无数据</td>
+    </tr>
+    _[{/if}]_
+</script>

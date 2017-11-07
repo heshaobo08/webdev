@@ -1,0 +1,167 @@
+<form id='searchForm'>
+    <!--serch-->
+    <div class="serch">
+        <div class="serch_main">
+            <div class="serch_conts">
+                <!-- <dl>
+                    <dt>用户名 : </dt>
+                    <dd><input type="text" name="userName" class="defaultInput" /></dd>
+                </dl> -->
+                <dl>
+                    <dt>名称 :</dt>
+                    <dd><input type="text" name="depositUserName" class="defaultInput"/></dd>
+                </dl>
+                <dl>
+                    <dt>支付状态 :</dt>
+                    <dd class="h34">
+                        <div class="select w190" style="z-index: 100;">
+                            <input index-data="" type="hidden" value="请选择" name="payStatus">
+                            <i>请选择</i>
+                            <em class="icon-52"></em>
+                            <ul style="">
+                                <li index-data=""><span>请选择</span></li>
+                                <li index-data="0"><span>未付款</span></li>
+                                <li index-data="1"><span>已提交凭证</span></li>
+                                <li index-data="2"><span>已付款</span></li>
+                            </ul>
+                        </div>
+                    </dd>
+                </dl>
+            </div>
+            <div class="serch_conts">
+                <dl>
+                    <dt>操作人 :</dt>
+                    <dd><input type="text" class="defaultInput" name="oprationBy"/></dd>
+                </dl>
+                <dl>
+                    <dt>应付时间 :</dt>
+                    <dd>
+                        <div class="defaultData">
+                            <div class="dataBegin">
+                                <span class="dataInput" id="paystartTime"></span>
+                                <a href="javascript:;" class="paytimeStart icon-54"></a>
+                            </div>
+                            <span class="point"></span>
+
+                            <div class="dataEnd">
+                                <span class="dataInput" id="payendTime"></span>
+                                <a href="javascript:;" class="paytimeEnd icon-54"></a>
+                            </div>
+                        </div>
+                    </dd>
+                </dl>
+            </div>
+            <div class="serch_conts">
+                <dl>
+                    <dt>确认到款时间 :</dt>
+                    <dd>
+                        <div class="defaultData">
+                            <div class="dataBegin">
+                                <span class="dataInput" id="startTime"></span>
+                                <a href="javascript:;" class="timeStart icon-54"></a>
+                            </div>
+                            <span class="point"></span>
+
+                            <div class="dataEnd">
+                                <span class="dataInput" id="endTime"></span>
+                                <a href="javascript:;" class="timeEnd icon-54"></a>
+                            </div>
+                        </div>
+                    </dd>
+                </dl>
+                <dl class="serchDl">
+                    <dt>&emsp;</dt>
+                    <dd><a href="javascript:;" class="button js-search">Search</a></dd>
+                </dl>
+            </div>
+        </div>
+        <div class="addbutton none">您所搜索的，共有<i id="searchTotalCount">${source.totalCount}</i>条内容符合。</div>
+    </div>
+    <!--serch end-->
+</form>
+
+<!-- conts begin -->
+<div class="contsBox">
+    <div class="bigTable">
+        <table class="layout" border="0" cellspacing="0" width="1570px">
+            <thead>
+            <tr>
+                <!--<th>用户名</th>-->
+                <th>名称</th>
+                <th>应付时间</th>
+                <th>应付金额</th>
+                <th>确认到款时间</th>
+                <th>实付金额</th>
+                <th>支付状态</th>
+                <th>操作人</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody id="listCon">
+
+            </tbody>
+        </table>
+    </div>
+
+    <div class="page" id="topPager">
+
+    </div>
+
+</div>
+<!-- conts end -->
+<script id='pageListCon' type='text/x-jquery-tmpl'>
+	<a href="javascript:;" class="firstPage fL" data-displace="first">首页</a>
+	<a href="javascript:;" class="prve fL icon-56" data-displace="prev"></a>
+	<ul class="pagenumber" id="pager"></ul>
+	<a href="javascript:;" class="next fL icon-55" data-displace="next"></a>
+	<a href="javascript:;" class="lastPage" data-displace="last">尾页</a>
+
+
+</script>
+<script id="list" type="text/x-jquery-tmpl">
+_[{if list && list.length}]_
+				_[{each(i,c) list}]_
+				<tr>
+					<!--<td>$_[c.userName]_</td>-->
+					<td>$_[c.depositUserName]_</td>
+					<td>$_[c.planPayTime]_</td>
+					<td>$_[c.planPayAmount]_</td>
+					<td>$_[c.actualPayTime]_</td>
+					<td>$_[c.actualPayAmount]_</td>
+					<td>
+					_[{if c.payStatus == "0"}]_
+						未付款
+					_[{/if}]_	
+					_[{if c.payStatus == "1"}]_
+						已提交凭证
+					_[{/if}]_	
+					_[{if c.payStatus == "2"}]_
+						已付款
+					_[{/if}]_
+					</td>
+					<td>_[{if operatorList[c.oprationBy]}]_$_[operatorList[c.oprationBy].uname]__[{/if}]_</td>
+					<td>
+                    _[{if operateData.moduleData && operateData.actionData && operateData.operate['h05070003']}]_
+    					_[{if c.payStatus == "0"}]_
+    						<a href="javascript:;" class="blue" data-title="财务管理-保证金管理-服务信息" data-href="?m=xhr_id_173_195_status&id=$_[c.id]_&userId=$_[c.userId]_">确认到款</a>
+    					_[{/if}]_	
+    					_[{if c.payStatus == "1"}]_
+    						<a href="javascript:;" class="blue" data-title="财务管理-保证金管理-服务信息" data-href="?m=xhr_id_173_195_status&id=$_[c.id]_&userId=$_[c.userId]_">确认到款</a>
+    					_[{/if}]_	
+                    _[{/if}]_
+					_[{if c.payStatus == "2"}]_
+                        _[{if operateData.moduleData && operateData.actionData && operateData.operate['h05070002']}]_
+						<a href="javascript:;" class="blue" data-title="财务管理-保证金管理-服务信息" data-href="?m=xhr_id_173_195_status&id=$_[c.id]_&userId=$_[c.userId]_">查看</a>
+                        _[{/if}]_
+					_[{/if}]_
+					</td>
+				</tr>	
+				_[{/each}]_
+				_[{else}]_
+<tr><td colSpan="8">暂无数据</td></tr>
+_[{/if}]_
+
+
+</script>
+
+                

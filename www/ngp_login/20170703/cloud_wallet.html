@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf8">
+<title>云钱包</title>
+<link href="css/base.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<script src="js/jquery.js"></script>
+    <script>
+        $(function(){
+            $(".login_nav_active").on("click",function(e){
+                $(".sub_nav").show();
+                e.stopPropagation();
+            });
+            $(document).click(function(){
+                $(".sub_nav").hide();
+        });
+        })
+    </script>
+</head>
+<body>
+    <div class="warpper">
+        <!--头部开始-->
+        <div class="login_header">
+            <p>
+                <span class="login_hd_active"><a href="#">企业版</a></span>
+                <span class="help_center"><a href="#">帮助中心</a></span>
+            </p>
+        </div>
+        <div class="login_nav_bg">
+            <div class="login_nav">
+                <div class="login_nav_left">
+                    <p>
+                        <img src="images/logo.png">
+                        <span class="logo_hx"></span>
+                        <span class="logo_text">企业版</span>
+                    </p>
+                </div>
+                <div class="login_nav_right">
+                    <ul>
+                        <li><a href="#">首页</a></li>
+                        <li><a href="#">产品中心</a></li>
+                        <li class="login_nav_active"><a href="#">行业解决方案</a>
+                            <p class="sub_nav"><a href="#">订阅支付</a></p>
+                            <p class="sub_nav"><a href="#">云钱包</a></p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--头部结束-->
+        <!--内容开始-->
+        <div class="login_content">
+            <div class="cloud_box"></div>
+            <div class="cloud_ct">
+                <div class="cloud_ct_one">
+                    <p>帮助企业平台打造自身【个人用户资金账户体系】</p>
+                    <ul>
+                        <li>
+                            <p><img src="images/c_icon_yezh.png"></p>
+                            <h3>余额账户</h3>
+                            <h6>存放用户的资金，</h6>
+                            <h6>用于个人用户，</h6>
+                            <h6>在平台的资金出入。</h6>
+                        </li>
+                        <li>
+                            <p><img src="images/c_icon_cz.png"></p>
+                            <h3>充值</h3>
+                            <h6>企业平台仅需要将用户的信息</h6>
+                            <h6>通过API接口的形式传输，</h6>
+                            <h6>后续操作由【云钱包】完成。</h6>
+                        </li>
+                        <li>
+                            <p><img src="images/c_icon_tx.png"></p>
+                            <h3>提现</h3>
+                            <h6>用户在企业平台发起提现操作，</h6>
+                            <h6>企业通过API传递，【云钱包】</h6>
+                            <h6>处理结束后反馈结果给企业。</h6>
+                        </li>
+                        <li>
+                            <p><img src="images/c_icon_zz.png"></p>
+                            <h3>转账</h3>
+                            <h6>社交（其他）平台用户间需要资金</h6>
+                            <h6>往来，没关系，企业将相关信息传</h6>
+                            <h6>递，剩余交给【云钱包】处理。</h6>
+                        </li>
+                        <li>
+                            <p><img src="images/c_icon_gd.png"></p>
+                            <h3>更多</h3>
+                            <h6>红包、担保交易、分润……、</h6>
+                            <h6>更多场景……</h6>
+                            <h6>更多服务……</h6>
+                        </li>
+                    </ul>
+                </div>
+                <div class="clear"></div>
+                <p class="subscribe_hx"></p>
+                <div class="cloud_ct_two">
+                    <p>全场景支付解决方案</p>
+                    <div class="cloud_ct_two_l"><img src="images/c_bj_qcjzfjjfa.png"></div>
+                    <div class="cloud_ct_two_r">
+                        <h6>聚合支付</h6>
+                        <p>微信、支付宝、统统支持提供更多支付渠道</p>
+                        <h6>快捷支付</h6>
+                        <p>支持用户绑定银行卡</p>
+                        <h6>预付卡支付（PC端）</h6>
+                        <p>企业签约快捷产品用户通过快捷支付完成付款</p>
+                        <h6>协议收款（代收）</h6>
+                        <p>企业签约代收产品与用户签协议，后期【云钱包】完成收款。</p>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <p class="subscribe_hx"></p>
+                <div class="cloud_ct_three">
+                    <p>稳定高效的运营服务平台</p>
+                    <ul>
+                       <li>
+                            <p><img src="images/c_icon_lhpz.png"></p>
+                            <h3>灵活配置</h3>
+                            <h6>风控规则、平台分润</h6>
+                            <h6>定制开发全部支持</h6>
+                        </li>
+                        <li>
+                            <p><img src="images/c_icon_zwgl.png"></p>
+                            <h3>账务管理</h3>
+                            <h6>对账文件下载、对账查询</h6>
+                            <h6>差错通知机制</h6>
+                        </li>
+                        <li>
+                            <p><img src="images/c_icon_bb.png"></p>
+                            <h3>报表</h3>
+                            <h6>商户签约分润产品</h6>
+                            <h6>由汇付宝完成利润资金的分配</h6>
+                        </li>
+                    </ul>
+                </div>
+                <div class="clear"></div>
+                <p class="subscribe_hx"></p>
+                 <div class="cloud_ct_four">
+                    <p>其它产品</p>
+                    <ul>
+                       <li>
+                            <p><img src="images/c_icon_smrzjq.png"></p>
+                            <h3>实名认证鉴权</h3>
+                            <h6>商户签约鉴权产品</h6>
+                            <h6>汇付宝对商家用户实名认证</h6>
+                        </li>
+                    </ul>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    <!--内容结束-->
+        <!--尾部开始-->
+        <div class="login_footer">
+            <div class="login_footer_ct">
+                <p>关于我们 | 合作伙伴 | 商务合作 | 联系我们</p>
+                <p>Copyright © since 2008 汇元银通（北京）在线支付技术有限公司 版权所有 侵权必究 </p>
+            </div>
+        </div>
+        <!--尾部结束-->
+    </div>
+</body>
+</html>

@@ -1,0 +1,279 @@
+<div class="contsBox">
+    <!-- serch begin -->
+    <div class="serch_main fix">
+        <form name="" id="searchForm">
+            <div class="serch_conts">
+                <dl>
+                    <dt>条件搜索 :</dt>
+                    <dd>
+                        <div class="select w140 fL">
+                            <input type="hidden" value="" index-data="" name="queryType">
+                            <i index-data="">请选择</i>
+                            <em class="icon-52"></em>
+                            <ul>
+                                <li index-data="">
+                                    <span>请选择</span>
+                                </li>
+                                <li index-data="1">
+                                    <span>退换货编号</span>
+                                </li>
+                                <li index-data="2">
+                                    <span>订单号</span>
+                                </li>
+                                <li index-data="3">
+                                    <span>买家</span>
+                                </li>
+                                <li index-data="4">
+                                    <span>卖家</span>
+                                </li>
+                                <li index-data="5">
+                                    <span>管理员</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <input class="defaultInput mL10" type="txet" value="" name="queryStr">
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>类型 :</dt>
+                    <dd>
+                        <div class="select w190">
+                            <input index-data="" type="hidden" value="" name="returnType">
+                            <i index-data="">请选择</i>
+                            <em class="icon-52"></em>
+                            <ul style="">
+                                <li index-data=""><span>请选择</span>
+                                </li>
+                                <li index-data="1"><span>退货退款-买家承担运费</span>
+                                </li>
+                                <li index-data="2"><span>退货退款-卖家承担运费</span>
+                                </li>
+                                <li index-data="3"><span>全额退款</span>
+                                </li>
+                                <li index-data="4"><span>部分退款</span>
+                                </li>
+                                <li index-data="5"><span>买卖双方协调</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </dd>
+                </dl>
+            </div>
+            <div class="serch_conts">
+                <dl>
+                    <dt>状态 :</dt>
+                    <dd>
+                        <div class="select w190">
+                            <input index-data="" type="hidden" value="" name="returnStatus">
+                            <i index-data="">请选择</i>
+                            <em class="icon-52"></em>
+                            <ul style="">
+                                <li index-data=""><span>请选择</span>
+                                </li>
+                                <li index-data="1"><span>卖家未回复</span>
+                                </li>
+                                <li index-data="2"><span>卖家已回复</span>
+                                </li>
+                                <li index-data="3"><span>申请处理中</span>
+                                </li>
+                                <li index-data="4"><span>申请已拒绝</span>
+                                </li>
+                                <li index-data="5"><span>商品待退货</span>
+                                </li>
+                                <li index-data="6"><span>商品退货中</span>
+                                </li>
+                                <li index-data="7"><span>退货未收到</span>
+                                </li>
+                                <li index-data="8"><span>申请已关闭</span>
+                                </li>
+                                <li index-data="9"><span>待操作退款</span>
+                                </li>
+                                <li index-data="10"><span>退款已完成</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>申请时间 :</dt>
+
+                    <dd>
+                        <div class="defaultData fL mL10">
+                            <div class="dataBegin">
+                                <span class="dataInput" index-data="" name="applyStartTime" id="dateStart"></span>
+                                <a href="javascript:;" class="icon-54 timeStart"></a>
+                            </div>
+                            <span class="point"></span>
+
+                            <div class="dataEnd">
+                                <span class="dataInput" index-data="" name="applyEndTime" id="dateOver"></span>
+                                <a href="javascript:;" class="icon-54 timeEnd"></a>
+                            </div>
+                        </div>
+                    </dd>
+                </dl>
+            </div>
+            <div class="serch_conts">
+                <dl>
+                    <dt> </dt>
+                    <dd><a href="javascript:;" class="button" id="queryButton">Search</a>
+                    </dd>
+                </dl>
+            </div>
+        </form>
+    </div>
+    <!-- serch end -->
+
+    <div class="addbutton">
+        {{each(r,rol) roles[168]}} {{if rol.code == "h04020004"}}
+        <a href="javascript:;" class="autobutton" data-href="?m=xhr_id_163_164" data-title="订单管理-订单列表">创建退换货申请</a>
+        {{/if}} {{/each}}
+        <!--
+        <a href="javascript:;" class="category">需回复卖家（<em>0</em>）</a>
+        <a href="javascript:;" class="category">需平台仲裁（<em>0</em>）</a>
+        <a href="javascript:;" class="category">商品待退货（<em>0</em>）</a>
+        <a href="javascript:;" class="category">待操作退款（<em>0</em>）</a>
+        -->
+        <em class="mL50 none">您所搜索的，共有<i id='searchTotalCount'></i>条内容符合。</em>
+    </div>
+    <div class="">
+        <div class="bigTable">
+            <table class="" border="0" cellspacing="0">
+                <thead>
+                <tr>
+                    <th>退换货&amp;退款编号</th>
+                    <th>订单号</th>
+                    <th>买家</th>
+                    <th>卖家</th>
+                    <th>管理员</th>
+                    <th>申请时间</th>
+                    <th>申请超时时间</th>
+                    <th>确认收货超时时间</th>
+                    <th>状态</th>
+                </tr>
+                </thead>
+                <tbody id="lists"></tbody>
+            </table>
+        </div>
+        <div class="page" id="topPager">
+            <a href="javascript:;" class="firstPage fL" data-displace="first">首页</a>
+            <a href="javascript:;" class="prve fL icon-56" data-displace="prev"></a>
+            <ul class="pagenumber" id="pager"></ul>
+            <a href="javascript:;" class="next fL icon-55" data-displace="next"></a>
+            <a href="javascript:;" class="lastPage" data-displace="last">尾页</a>
+        </div>
+    </div>
+    <script type="text/tcl" id="listsTmpl">
+        _[{each(i,l) source.list}]_
+        <tr>
+            <td>$_[l.returnID]_</td>
+            <td>$_[l.orderID]_</td>
+            <td>$_[l.buyer]_</td>
+            <td>$_[l.seller]_</td>
+            <td>$_[l.admin]_</td>
+            <td>$_[l.applyCreateTime]_</td>
+            <td>$_[l.applyExprieTime]_</td>
+            <td>$_[l.refundCommodityTime]_</td>
+            <td>
+
+_[{if l.returnStatus == 1 }]_ 
+	_[{each(r,rol) roles[168]}]_ 
+		_[{if rol.code == "h04020011"}]_ 
+			_[{each(r,rol) roles[168]}]_ 
+				_[{if rol.code == "h04020006"}]_
+				
+					<a href="javascript:;" data-href="?m=xhr_id_168_return_applyDetails&id=$_[l.returnID]_" data-title="订单管理-退换货&amp;退款管理-卖家未回复" class="blue">卖家未回复</a> 
+				_[{/if}]_ 
+			_[{/each}]_ 
+		_[{/if}]_ 
+	_[{/each}]_ 
+	
+_[{else l.returnStatus == 2}]_ 
+	_[{each(r,rol) roles[168]}]_ 
+		_[{if rol.code == "h04020011"}]_ 
+			_[{each(r,rol) roles[168]}]_ 
+				_[{if rol.code == "h04020005"}]_ 
+					_[{each(r,rol) roles[168]}]_ 
+						_[{if rol.code == "h04020006"}]_
+							<a href="javascript:;" class="blue" data-href="?m=xhr_id_168_return_applyDetails&id=$_[l.returnID]_" data-title="订单管理-退换货&amp;退款管理-卖家已回复">卖家已回复</a>
+						_[{/if}]_ 
+					_[{/each}]_ 
+				_[{/if}]_ 
+			_[{/each}]_ 
+		_[{/if}]_ 
+	_[{/each}]_ 
+	
+_[{else l.returnStatus == 3}]_ 
+	_[{each(r,rol) roles[168]}]_ 
+		_[{if rol.code == "h04020011"}]_
+            <a href="javascript:;" class="blue" data-href="?m=xhr_id_168_return_applyDetails&id=$_[l.returnID]_" data-title="订单管理-退换货&amp;退款管理-申请处理中">申请处理中</a> 
+		_[{/if}]_ 
+	_[{/each}]_ 
+	
+_[{else l.returnStatus == 4}]_ 
+	_[{each(r,rol) roles[168]}]_ 
+		_[{if rol.code == "h04020011"}]_ 
+			_[{each(r,rol) roles[168]}]_ 
+				_[{if rol.code == "h04020007"}]_ 
+					_[{each(r,rol) roles[168]}]_ 
+						_[{if rol.code == "h04020008"}]_
+							<a href="javascript:;" class="blue" data-href="?m=xhr_id_168_return_applyDetails&id=$_[l.returnID]_" data-title="订单管理-退换货&amp;退款管理-申请已拒绝">申请已拒绝</a> 
+						_[{/if}]_ 
+					_[{/each}]_ 
+				_[{/if}]_ 
+			_[{/each}]_ 
+		_[{/if}]_ 
+	_[{/each}]_ 
+	
+_[{else l.returnStatus == 5}]_ 
+	_[{each(r,rol) roles[168]}]_ 
+		_[{if rol.code == "h04020011"}]_ 
+			_[{each(r,rol) roles[168]}]_ 
+				_[{if rol.code == "h04020012"}]_
+					<a href="javascript:;" class="blue" data-href="?m=xhr_id_168_return_applyDetails&id=$_[l.returnID]_" data-title="订单管理-退换货&amp;退款管理-商品待退货">商品待退货</a> 
+				_[{/if}]_ 
+			_[{/each}]_ 
+		_[{/if}]_
+	_[{/each}]_ 
+	
+_[{else l.returnStatus == 6}]_ 
+	_[{each(r,rol) roles[168]}]_ 
+		_[{if rol.code == "h04020011"}]_ 
+			_[{each(r,rol) roles[168]}]_ 
+				_[{if rol.code == "h04020013"}]_
+					<a href="javascript:;" class="blue" data-href="?m=xhr_id_168_return_applyDetails&id=$_[l.returnID]_" data-title="订单管理-退换货&amp;退款管理-商品退货中">商品退货中</a> 
+				_[{/if}]_ 
+			_[{/each}]_ 
+		_[{/if}]_ 
+	_[{/each}]_ 
+	
+_[{else l.returnStatus == 7}]_ 
+	_[{each(r,rol) roles[168]}]_ 
+		_[{if rol.code == "h04020011"}]_ 
+			_[{each(r,rol) roles[168]}]_ 
+				_[{if rol.code == "h04020013"}]_
+					<a href="javascript:;" class="blue" data-href="?m=xhr_id_168_return_applyDetails&id=$_[l.returnID]_" data-title="订单管理-退换货&amp;退款管理-商品退货中">退货未收到</a> 
+				_[{/if}]_ 
+			_[{/each}]_ 
+		_[{/if}]_ 
+	_[{/each}]_
+	
+_[{else l.returnStatus == 8}]_
+    <a href="javascript:;" class="blue" data-href="?m=xhr_id_168_return_applyDetails&id=$_[l.returnID]_" data-title="订单管理-退换货&amp;退款管理-申请已关闭">申请已关闭</a> 
+_[{else l.returnStatus == 9}]_
+    <a href="javascript:;" class="blue" data-href="?m=xhr_id_168_return_applyDetails&id=$_[l.returnID]_" data-title="订单管理-退换货&amp;退款管理-待操作退款">待操作退款</a> 
+_[{else l.returnStatus == 10}]_
+    <a href="javascript:;" class="blue" data-href="?m=xhr_id_168_return_applyDetails&id=$_[l.returnID]_" data-title="订单管理-退换货&amp;退款管理-退款已完成">退款已完成</a> 
+_[{/if}]_
+            </td>
+        </tr>
+
+        _[{/each}]_
+
+
+    </script>
+    <script type="text/tcl" id="listsNotTmpl">
+        <tr><td colspan="9">$_[source.msg]_</td></tr>
+    </script>
+</div>

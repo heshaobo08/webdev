@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>填写营业信息</title>
+<link href="css/base.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<link href="css/select2.css" rel="stylesheet">
+<script src="js/jquery.js"></script>
+<script src="js/plug/select/select2.js"></script>
+<script src="js/plug/time/WdatePicker.js"></script>
+<script src="js/information.js"></script>
+</head>
+<body>
+<!--弹窗-->
+<div id="cover"></div>
+<div class="pop_message">
+    <div class="pop_hd">
+        <p>信息确认<img src="images/del.png"></p>
+    </div>
+    <div class="pop_message_box">
+        <p><em>公司名称</em><span>汇元银通（北京）在线支付技术有限公司</span></p>
+        <p><em>网站名称</em><span>汇付宝</span></p>
+        <p><em>网址</em><span>https://www.heepay.com</span></p>
+        <p><em>ICP备案号</em><span>京ICP备09070617号-8</span></p>
+        <p><em>营业执照号</em><span>420103000057404</span></p>
+        <p><em>组织机构代码</em><span>12345678-1</span></p>
+        <p><em>税务登记证号码</em><span>420103000057404</span></p>
+        <p><em>法定代表人</em><span>吴宏斌</span></p>
+        <p><em>法人身份证号</em><span>11111111111111111</span></p>
+        <p><em>证件有效期</em><span>长期</span></p>
+        <p><em>联系号码</em><span>010-59798877</span></p>
+        <p><em>通讯地址</em><span>北京市海淀区人民大学北路33号大行基业大厦10层</span></p>
+        <h3><span class="pop_confirm">确认</span><span class="pop_revised">修改</span></h3>
+    </div>
+</div>    
+
+<div id="wapper">
+    
+    <!--头部开始-->
+    <div class="header">
+        <div class="top">
+            <div class="top_left">
+                <a href="#"><img src="images/logo.png"></a><img src="images/fg.png" class="split_one"><span class="regi">企业实名认证</span>
+            </div>
+            <div class="top_right">
+                <p>你好 baibiu121@126.com<img src="images/fg1.png" class="split_s">退出<img src="images/fg1.png" class="split_s">我的汇付宝</p>
+            </div> 
+        </div>
+    </div>
+    <!--头部结束-->
+    
+    <!--内容开始-->
+    <div class="content">
+        <div class="step">
+            <ul>
+                <li><img src="images/one.png"><span class="step_text step_ative">填写营业信息</span><span class="step_line step_line_on"></span></li>
+                <li><img src="images/two.png"><span class="step_text">上传证件照片</span><span class="step_line"></span></li>
+                <li><img src="images/three.png"><span class="step_text">填写银行卡信息</span><span class="step_line"></span></li>
+                <li><img src="images/four.png"><span class="step_text">提交成功</span></li>
+            </ul>
+        </div>
+        <div class="clear"></div>
+        <div class="message_box">
+            <div class="message_one">
+                <p class="message_hd">单位类型</p>
+                <div class="message_radio">
+                    <em>选择单位类型</em>
+                    <p class="radio_type">
+                        <span><input type="radio" name="radio" value="1" class="radio" checked><label class="radio"><b>企业</b></label></span>
+                        <span><input type="radio" name="radio" value="2" class="radio"><label class="radio"><b>事业单位</b></label></span>
+                        <span><input type="radio" name="radio" value="3" class="radio"><label class="radio"><b>民办非企业单位</b></label></span>
+                    </p>
+                    <p class="radio_type">
+                        <span><input type="radio" name="radio" value="4" class="radio"><label class="radio"><b>个体工商户</b></label></span>
+                        <span><input type="radio" name="radio" value="5" class="radio"><label class="radio"><b>社会团体</b></label></span>
+                        <span><input type="radio" name="radio" value="6" class="radio"><label class="radio"><b>党政及国家机关</b></label></span>
+                    </p>
+                </div>
+            </div>
+            <div class="message_two">
+                <p class="message_hd">企业信息<em>按照证书上的内容逐字填写</em></p>
+                <div class="message_company">
+                    <em>证件类型</em>
+                    <p class="radio_type radio_w">
+                        <span><input type="radio" name="radio1" value="ORDINA" class="radio" checked><label class="radio"><b>普通营业执照（存在独立的组织机构代码证）</b></label></span>
+                    </p>
+                    <p class="radio_type radio_w">
+                        <span><input type="radio" name="radio1" value="MULTIP" class="radio"><label class="radio"><b>多证合一营业执照（不存在独立的组织机构代码证）</b></label></span>
+                    </p>
+                </div>
+                <div class="company_box">
+                    <p><label class="label_w">企业名称</label><input type="text" class="name_w b_color"></p>
+                    <p class="company_sel"><label class="label_w">证件地址</label>
+			            <select id="loc_province" style="width:180px;"></select>
+			            <select id="loc_city" style="width:180px;"></select>
+			            <select id="loc_town" style="width:180px;"></select>
+                    </p>
+                    <p><label class="label_w">详细地址</label><input type="text" class="name_w b_color"></p>
+                    <p><label class="label_w">公司网址</label><input type="text" class="name_w b_color"></p>
+                    <p><label class="label_w">ICP备案号</label><input type="text" class="name_w b_color"></p>
+                    <p><label class="label_w">营业执照号</label><input type="text" class="name_w b_color" placeholder="如：00000000001234"></p>
+                    <p>
+                        <label class="label_w">营业执照有效期</label><input class="Wdate time_w b_color" id="startDate1" type="text" onClick="WdatePicker({maxDate:'#F{$dp.$D(\'endDate1\')}'})" readonly="readonly"><em class="time_hx"></em>
+                        <input class="Wdate time_w b_color" id="endDate1" type="text" onClick="WdatePicker({minDate:'#F{$dp.$D(\'startDate1\')}'})">
+                        <input type="checkbox" class="checkbox"><label class="checkbox label_secl"></label><span>长期</span>
+                    </p>
+                    <p class="code_number"><label class="label_w">组织机构代码</label><input type="text" class="name_w b_color" placeholder="如：00001234-1"></p>
+                    <p class="tax_code"><label class="label_w">税务登记证号码</label><input type="text" class="name_w b_color"></p>
+                    <p><label class="label_w">经营范围</label><input type="text" class="name_w b_color" ></p>
+                </div>
+                
+            </div>
+            <div class="message_three">
+                <p class="message_hd">法人代表/经营者信息</p>
+                <div class="company_box">
+                    <p><label class="label_w">法定代表人姓名</label><input type="text" class="name_w b_color"></p>
+                    <p><label class="label_w">法定代表人身份证</label><input type="text" class="name_w b_color"></p>
+                    <p><label class="label_w">证件有效期</label><input type="text" class="time_w b_color">
+                       <input type="checkbox" class="checkbox"><label class="checkbox label_secl"></label><span>长期</span>
+                    </p>
+                </div>
+            </div>
+            
+            <div class="message_four">
+                <p class="message_hd">联系人信息</p>
+                <div class="company_box">
+                    <p><label class="label_w">联系人姓名</label><input type="text" class="name_w b_color"></p>
+                    <p><label class="label_w">联系人身份证</label><input type="text" class="name_w b_color"></p>
+                    <p><label class="label_w">证件有效期</label><input type="text" class="time_w b_color">
+                       <input type="checkbox" class="checkbox"><label class="checkbox label_secl"></label><span>长期</span>
+                    </p>
+                    <p><label class="label_w">联系人手机</label><input type="text" class="name_w b_color"></p>
+                </div>
+            </div>
+            <h3 class="message_next">下一步</h3>
+        </div>
+        
+    </div>
+    <!--内容结束-->
+    
+    <!--尾部开始-->
+    <div class="footer">
+        <p>关于我们 | 合作伙伴 | 商务合作 | 联系我们</p>
+        <p>Copyright © since 2008 汇元银通（北京）在线支付技术有限公司 版权所有 侵权必究 </p>
+    </div>
+    <!--尾部结束-->
+</div>    
+</body>
+</html>

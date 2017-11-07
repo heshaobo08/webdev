@@ -1,0 +1,168 @@
+<div class="details">
+    <div class="stateText">
+        <p>资质状态： {{if source.auditStatus=="1"}}<span>待审核</span> {{else source.auditStatus=="2"}}<span>已授权</span><em class="mL50">授权时间：${source.chkTime}</em> {{else source.auditStatus=="3"}}<span>审核驳回</span> {{else source.auditStatus=="6"}}<span>已冻结</span> {{else source.auditStatus=="7"}} <span>已过期</span>{{/if}}
+        </p>
+        {{if source.auditStatus=="3"}}
+        <p class="reason">驳回原因：<span class="mL25">${source.remark}</span></p>
+        {{/if}}
+    </div>
+</div>
+
+<div class="details">
+    <h3 class="titleText">关联会员</h3>
+    <div class="related">
+        <dl class="fL">
+            <dt>手机号：</dt>
+            <dd>${source.userMobile}</dd>
+        </dl>
+        <dl class="fR">
+            <dt>邮箱：</dt>
+            <dd>${source.userEmail}</dd>
+        </dl>
+    </div>
+    <div class="related">
+        <dl class="fL">
+            <dt>会员名称：</dt>
+            <dd>${source.companyName}</dd>
+        </dl>
+    </div>
+</div>
+<div class="details">
+    <h3 class="titleText">品牌信息</h3>
+    <div class="relatedBox">
+        <dl class="textDl">
+            <dt>品牌ID：</dt>
+            <dd>${source.id}</dd>
+        </dl>
+        <dl class="textDl">
+            <dt>中文名称：</dt>
+            <dd>${source.cnName}</dd>
+        </dl>
+        <dl class="textDl">
+            <dt>英文名称：</dt>
+            <dd>${source.enName}</dd>
+        </dl>
+
+        <dl class="textImg overflow">
+            <dt>品牌LOGO：</dt>
+            <dd>{{if source.filedata && source.filedata['0']}}<img src="${source.filedata['0'][0].fileOriginalurl}" data-filedId='${source.filedata['0'][0].relFileId}'/>{{/if}}</dd>
+        </dl>
+
+        {{if source.businessModel=='agent'}}
+        <dl class="textDl">
+            <dt>经营模式：</dt>
+            <dd>代理品牌</dd>
+        </dl>
+        <dl class="textDl">
+            <dt>品牌商品名：</dt>
+            <dd>${source.brandType}</dd>
+        </dl>
+        <dl class="textDl">
+            <dt>授权有限期至：</dt>
+            <dd>
+                ${source.brandExpireTime}
+            </dd>
+        </dl>
+        {{else source.businessModel=='own'}}
+         <dl class="textDl">
+            <dt>经营模式：</dt>
+            <dd>自有品牌</dd>
+        </dl>
+        <dl class="textDl">
+            <dt>商标类型：</dt>
+            <dd>${source.brandType}标</dd>
+        </dl>
+        <dl class="textDl">
+            <dt>商标有限期至：</dt>
+            <dd>${source.brandExpireTime}</dd>
+        </dl>
+        {{/if}}
+
+        <dl class="textImg">
+            <dt>资质证书：</dt>
+            <dd>
+                <div>
+            {{if  source.filedata && source.filedata['1']}}
+                {{each(i,img) source.filedata['1']}}
+                    <img src="${img.fileOriginalurl}" class="mR10" data-filedId='${img.relFileId}'/>
+                {{/each}}
+                </div>
+                {{if source.businessModel=='agent'}}
+                <span class="explainText">销售授权书或进货发票</span>
+                {{else source.businessModel=='own'}}
+                <span class="explainText">商标注册证或商标注册申请受理书</span>
+                {{/if}}
+            {{/if}}
+            </dd>
+        </dl>
+
+        <dl class="textDl">
+            <dt>授权站点：</dt>
+            <dd class="siteShow">
+            {{if source.siteAuthList.length}}
+                {{each(i,site) source.siteAuthList}}
+                <a href="javascript:;" data-siteId='${site.siteId}'>${site.siteName}</a>
+                {{/each}}
+            {{else}}
+                未授权
+            {{/if}}
+            </dd>
+            {{if source.returnUrl}}
+            <dd>
+                <a class="button js-editBrandSite mT9" href="javascript:;" data-id='${source.id}'>编辑授权站点</a>
+            </dd>
+            {{/if}}
+        </dl>
+    </div>
+</div>
+<!-- conts end -->
+<!--中间内容区域 end-->
+<div class="btnMain">
+    {{if source.pageStatus=='audit'}}
+        <a href="javascript:;" class="button js-brandAuditPass mR20" data-id='${source.id}'>审核通过</a>
+        <a href="javascript:;" class="button js-brandAuditUnPass mR20" data-id='${source.id}'>审核驳回</a>
+    {{/if}}
+    <a href="javascript:;" class="button"  data-href='{{if source.returnUrl}}?m=${source.returnUrl}{{else}}?m=xhr_id_33_47{{/if}}' data-title='会员管理-品牌管理'>返回</a>
+    <!-- <a href="javascript:;" class="buttonText pad20">查看操作记录</a> -->
+
+</div>
+<div class="layercon none"></div>
+
+
+
+<script id='allSiteTmpl' type='text/x-jquery-tmpl'>
+<div class="">
+    <form id='siteAuthEditForm'>
+    <input type="hidden" name='qualificationId' value="$_[id]_"/>
+    <input type="hidden" name='userId' value="$_[userId]_"/>
+    <dl class="licenseEdit">
+        <dt>品牌名称：</dt>
+        <dd>$_[cnName]_</dd>
+    </dl>
+    <dl class="licenseEdit">
+        <dt>选择站点：</dt>
+        <dd>
+            _[{if hasSelectData}]_
+                _[{each(i,site) siteAuthList}]_
+                <span class="">
+                    <input type="checkbox" class="mR5" name='siteId' required disabled $_[hasSelectData[site.siteId]]_ value="$_[site.siteId]_" data-name="$_[site.siteName]_"/> $_[site.siteName]_</span>
+                _[{/each}]_
+                _[{each(i,site) unAuthList}]_
+                <span class="">
+                    <input type="checkbox" class="mR5" name='siteId' $_[hasSelectData[site.siteId]]_ value="$_[site.siteId]_" data-name="$_[site.siteName]_"/>$_[site.siteName]_</span>
+                _[{/each}]_
+            _[{else}]_
+                _[{each(i,site) siteAuthList}]_
+                <span class="">
+                    <input type="checkbox" class="mR5" name='siteId' required checked disabled value="$_[site.siteId]_" data-name="$_[site.siteName]_"/>$_[site.siteName]_</span>
+                _[{/each}]_
+                _[{each(i,site) unAuthList}]_
+                <span class="">
+                    <input type="checkbox" class="mR5" name='siteId' value="$_[site.siteId]_" data-name="$_[site.siteName]_"/>$_[site.siteName]_</span>
+                _[{/each}]_
+            _[{/if}]_
+        </dd>
+    </dl>
+    </form>
+</div>
+</script>

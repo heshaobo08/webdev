@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>对公银行账户信息</title>
+<link href="css/base.css" rel="stylesheet">
+<link href="css/select2.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<script src="js/jquery.js"></script>
+<script src="js/plug/select/select2.js"></script>
+<script src="js/bank_card.js"></script>
+</head>
+<body>
+<div id="wapper">
+    
+    <!--头部开始-->
+    <div class="header">
+        <div class="top">
+            <div class="top_left">
+                <a href="#"><img src="images/logo.png"></a><img src="images/fg.png" class="split_one"><span class="regi">企业实名认证</span>
+            </div>
+            <div class="top_right">
+                <p>你好 baibiu121@126.com<img src="images/fg1.png" class="split_s">退出<img src="images/fg1.png" class="split_s">我的汇付宝</p>
+            </div> 
+        </div>
+    </div>
+    <!--头部结束-->
+    
+    <!--内容开始-->
+    <div class="content">
+        <div class="message_box">
+            <p class="message_hd">对公银行账户信息</p>
+            <div class="company_box">
+                <p><label class="label_w">银行开户名</label><input type="text" class="name_w b_color"></p>
+                <p><label class="label_w">开户银行</label><select id="open_bank" style="width:360px;"></select></p>
+                <p class="company_sel"><label class="label_w">开户银行所在地</label>
+                    <select id="loc_province" style="width:180px;"></select>
+                    <select id="loc_city" style="width:180px;"></select>
+                    <select id="loc_town" style="width:180px;"></select>
+                </p>
+                <p><label class="label_w">开户银行支行名称</label><select id="open_bank_name" style="width:360px;"></select></p>
+                
+                <p><label class="label_w">对公银行账户</label><input type="text" class="name_w b_color"></p>
+            </div>
+            
+            <h3><span class="pop_confirm upload_next">下一步</span></h3>
+        </div>
+    </div>
+    <!--内容结束-->
+    
+    <!--尾部开始-->
+    <div class="footer">
+        <p>关于我们 | 合作伙伴 | 商务合作 | 联系我们</p>
+        <p>Copyright © since 2008 汇元银通（北京）在线支付技术有限公司 版权所有 侵权必究 </p>
+    </div>
+    <!--尾部结束-->
+</div>    
+</body>
+</html>

@@ -1,0 +1,352 @@
+<div class="contsBox">
+    <!-- serch begin -->
+    <form name="" id="searchForm">
+        <div class="serch_main fix">
+            <div class="serch_conts">
+                <dl>
+                    <dt>内容搜索 : </dt>
+                    <dd>
+                        <div class="select w140 fL">
+                            <input type="hidden" name="mainQueryType" value="" index-data="">
+                            <i index-data="">请选择</i>
+                            <em class="icon-52"></em>
+                            <ul>
+                                <li index-data="">
+                                    <span>请选择</span>
+                                </li>
+                                <li index-data="item">
+                                    <span>订单商品</span>
+                                </li>
+                                <li index-data="orderId">
+                                    <span>小笨鸟订单号</span>
+                                </li>
+                                <li index-data="platformOrderId">
+                                    <span>来源站点订单号</span>
+                                </li>
+                                <li index-data="userName">
+                                    <span>小笨鸟用户名</span>
+                                </li>
+                                <li index-data="sellerId">
+                                    <span>卖家名称</span>
+                                </li>
+                                <li index-data="buyers">
+                                    <span>买家名称</span>
+                                </li>
+                                <li index-data="addressee">
+                                    <span>收件人</span>
+                                </li>
+                                <li index-data="trackingNumber">
+                                    <span>物流跟踪号</span>
+                                </li>
+                                <li index-data="itemSku">
+                                    <span>SKU</span>
+                                </li>
+                                <li index-data="addresseeCountry">
+                                    <span>收件人国家</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <input class="defaultInput mL10" type="text" name="mainQueryValue" value="">
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>订单状态 : </dt>
+                    <dd>
+                        <div class="select w190">
+                            <input index-data="" type="hidden" name="status" value="">
+                            <i index-data="">请选择</i>
+                            <em class="icon-52"></em>
+                            <ul style="">
+                                <li index-data="">
+                                    <span>请选择</span>
+                                </li>
+                                <li index-data="PartiallyShipped">
+                                    <span>已部分发货</span>
+                                </li>
+                                <li index-data="Pending">
+                                    <span>未付款订单</span>
+                                </li>
+                                <li index-data="Unshipped">
+                                    <span>待发货订单</span>
+                                </li>
+                                <li index-data="Shipped">
+                                    <span>已发货订单</span>
+                                </li>
+                                <li index-data="Canceled">
+                                    <span>已取消订单</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </dd>
+                </dl>
+
+                <dl>
+                    <dt>会员等级 : </dt>
+                    <dd>
+                        <div class="select w190" style="z-index: 100;">
+                            <input index-data="" type="hidden" name="userGroup" value="">
+                            <i index-data="">请选择</i>
+                            <em class="icon-52"></em>
+                            <ul style="">
+                                <li index-data="">
+                                    <span>请选择</span>
+                                </li>
+
+                                <li index-data="true">
+                                    <span>自营</span>
+                                </li>
+                                <li index-data="false">
+                                    <span>第三方商家（非自营）</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </dd>
+                </dl>
+
+            </div>
+            <div class="serch_conts">
+                <dl>
+                    <dt>来源平台 : </dt>
+                    <dd>
+                        <div class="select w190">
+                            <input index-data="" type="hidden" value="" name="platform">
+                            <i index-data="">请选择</i>
+                            <em class="icon-52"></em>
+                            <ul style="" id="platformSite">
+                                <li index-data="">
+                                    <span>请选择</span>
+                                </li>
+                                <li index-data="1">
+                                    <span>eBay</span>
+                                </li>
+                                <li index-data="2">
+                                    <span>Amazon</span>
+                                </li>
+                                <li index-data="3">
+                                    <span>Newegg</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>来源站点 : </dt>
+                    <dd>
+                        <div class="select w190" id="selectSite">
+                            <input index-data="" type="hidden" value="" name="site">
+                            <i index-data="">请选择</i>
+                            <em class="icon-52"></em>
+                            <ul style="" id="siteRoom">
+                                <li index-data="">
+                                    <span>请选择</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>订单金额 : </dt>
+                    <dd>
+                        <div class="defaultPrice">
+                            <input type="text" class="priceBegin" name="amountStart" value="">
+                            <span class="point"></span>
+                            <input type="text" class="priceEnd" name="amountEnd" value="">
+                        </div>
+                    </dd>
+                </dl>
+            </div>
+            <div class="serch_conts">
+
+                <dl>
+                    <dt>时间搜索 : </dt>
+                    <dd>
+                        <div class="select w140 fL">
+                            <input type="hidden" value="" name="dateQueryType" index-data="">
+                            <i index-data="">请选择</i>
+                            <em class="icon-52"></em>
+                            <ul>
+                                <li index-data="">
+                                    <span>请选择</span>
+                                </li>
+                                <li index-data="purchaseDate">
+                                    <span>下单时间</span>
+                                </li>
+                                <li index-data="paymentDate">
+                                    <span>付款时间</span>
+                                </li>
+                                <li index-data="shipDate">
+                                    <span>发货时间</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="defaultData fL mL10">
+                            <div class="dataBegin">
+                                <span class="dataInput" index-data="" name="dateQueryValueS" id="dateStart"></span>
+                                <a href="javascript:;" class="icon-54 timeStart"></a>
+                            </div>
+                            <span class="point"></span>
+                            <div class="dataEnd">
+                                <span class="dataInput" index-data="" name="dateQueryValueE" id="dateOver"></span>
+                                <a href="javascript:;" class="icon-54 timeEnd"></a>
+                            </div>
+                        </div>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt></dt>
+                    <dd class="orderCond">
+                        <label>
+                            <input type="checkbox" name="isReturnMoney" value="true" class="mR5 check_box">有退款</label>
+                        <label>
+                            <input type="checkbox" value="true" name="isReturn" class="mR5 check_box">有退换货申请</label>
+                        <label>
+                            <input type="checkbox" value="true" name="isMessage" class="mR5 check_box">有新消息</label>
+                    </dd>
+                </dl>
+
+            </div>
+            <div class="serch_conts">
+                <dl>
+                    <dt> </dt>
+                    <dd><a href="javascript:;" class="button" id="submitButton">Search</a>
+                    </dd>
+                </dl>
+            </div>
+
+        </div>
+        <div class="addbutton none">您所搜索的，共有<i id="searchTotalCount">0</i>条内容符合。</div>
+    </form>
+
+    <!-- serch end -->
+    <div class="ordertable tdVT">
+        <table class="" border="0" cellspacing="0">
+            <thead>
+                <tr>
+                    <!--<td class="tC" width="3%">
+                       <input type="checkbox" name="">
+                    </td>-->
+                    <td width="7%">商品图片</td>
+                    <td width="50%">商品名称</td>
+                    <td width="10%">SKU</td>
+                    <td width="10%">金额</td>
+                    <td width="5%">数量</td>
+                    <td width="5%">运费</td>
+                    <td width="10%">订单状态</td>
+                </tr>
+            </thead>
+        </table>
+        <table class="" border="0" cellspacing="0" id="lists"></table>
+        <div id="listsNotConts"></div>
+    </div>
+
+    <div class="page" id="topPager">
+        <a href="javascript:;" class="firstPage fL" data-displace="first">首页</a>
+        <a href="javascript:;" class="prve fL icon-56" data-displace="prev"></a>
+        <ul class="pagenumber" id="pager"></ul>
+        <a href="javascript:;" class="next fL icon-55" data-displace="next"></a>
+        <a href="javascript:;" class="lastPage" data-displace="last">尾页</a>
+    </div>
+    <script type="text/tcl" id="listsTmpl">
+        _[{each(i,k) source.list}]_
+        <tbody data-lid="$_[k.xbnOrderId]_">
+            <tr>
+                <!--
+                    <td class="tC">
+                        <input type="checkbox" name="">
+                    </td>
+-->
+                <td colspan="6" width="90%">
+                    <ul class="">
+                        <li>订单号：<a href="javascript:;" data-href="?m=xhr_id_164_details_abstract&pl=_[{if k.orderPlatform == 1}]_ebay_[{else k.orderPlatform == 2}]_amazon_[{else k.orderPlatform == 3}]_newegg_[{/if}]_&id=$_[k.xbnOrderId]_" data-title="订单管理-订单列表- 订单详情">$_[k.xbnOrderId]_</a>
+                        </li>
+                        <li>
+                            _[{if k.orderPlatform == 1}]_ ebay _[{else k.orderPlatform == 2}]_ amazon _[{else k.orderPlatform == 3}]_ newegg _[{/if}]_ 订单号：$_[k.platformOrderId]_
+                        </li>
+                        <li>下单时间：$_[k.purchaseDate]_</li>
+                        <li>订单金额：$_[k.currencySymbol]_$_[k.amount]_(含运费)</li>
+                        <li>退款金额：
+                            <em class="red">
+                                $_[k.currencySymbol]_
+                                    _[{if k.refundMoney}]_
+                                        $_[k.refundMoney]_
+                                    _[{else}]_
+                                        0
+                                    _[{/if}]_
+                            </em>
+                        </li>
+                        <li>销售站点：$_[k.site]_</li>
+                        <li>买家：$_[k.buyerName]_</li>
+                        <li>卖家：$_[k.sellerId]_</li>
+                        <li>用户名：$_[k.userName]_</li>
+                    </ul>
+                </td>
+                <td>
+                    <p>
+                    _[{if k.status == "Pending"}]_
+                    未付款
+                    _[{else k.status == "Unshipped"}]_
+                    待发货
+                    _[{else k.status == "PartiallyShipped"}]_
+                    已部分发货
+                    _[{else k.status == "Shipped"}]_
+                    已发货
+                    _[{else k.status == "Canceled"}]_
+                    已取消
+                    _[{/if}]_
+                    </p>
+                    _[{if k.status != "Pending" && k.status != "Canceled"}]_
+                    <!--权限-->
+                    _[{each(r,l) roles[164]}]_
+                        _[{if l.code == "h04010005"}]_
+
+                            _[{if k.returnStatus == null&&k.returnType ==null}]_
+                            <!--全新创建退货申请单-->
+                                <a href="javascript:;" class="blue" data-href="?m=xhr_id_168_return_apply&pl=_[{if k.orderPlatform == 1}]_ebay_[{else k.orderPlatform == 2}]_amazon_[{else k.orderPlatform == 3}]_newegg_[{/if}]_&id=$_[k.xbnOrderId]_" data-title="订单管理-退换货&amp;退款管理-创建退换货申请">创建退换货申请</a>
+
+                            _[{else k.returnType =="4"&&(k.returnStatus =="8"||k.returnStatus =="10")&&(Number(k.amount)+Number(k.shippingAmount))>Number(refundMoney)}]_
+                            <!--部分退货后如果状态未匹配，再次创建申请单  ||k.returnStatus =="9"-->
+                                <a href="javascript:;" class="blue" data-href="?m=xhr_id_168_return_apply&pl=_[{if k.orderPlatform == 1}]_ebay_[{else k.orderPlatform == 2}]_amazon_[{else k.orderPlatform == 3}]_newegg_[{/if}]_&id=$_[k.xbnOrderId]_" data-title="订单管理-退换货&amp;退款管理-创建退换货申请">创建退换货申请</a>
+
+                            _[{else k.returnStatus =="8"||k.returnStatus =="10"}]_
+                            <!-- ||k.returnStatus =="9"  -->
+                            <span class="red">操作已经完成</span>
+
+                            _[{else}]_
+                            <span class="red">已经创建操退换货申请</span>
+                            _[{/if}]_
+
+                        _[{/if}]_
+                    _[{/each}]_
+                    _[{/if}]_
+                </td>
+            </tr>
+            _[{each(c,m) k.items}]_
+            <tr class="orderTr">
+                <!--<td></td>-->
+                <td colspan="2" width="57%">
+                    <dl>
+                        <dt><img src="images/defineImg.png" id="$_[m.xbnItemId]_" width="48" height="48"></dt>
+                        <dd>
+                            <a href="$_[siteList[k.siteCode].commodityPrefixUrl]_$_[m.itemId]_" target="_blank">$_[m.title]_</a>
+                            <p class="order_choice">$_[m.variationValues]_
+                                <!--<span>2XL</span><span>红色</span>-->
+                            </p>
+                        </dd>
+                    </dl>
+                </td>
+                <td width="10%">$_[m.sku]_ </td>
+                <td width="10%">$_[k.currencySymbol]_$_[m.price]_</td>
+                <td width="5%">$_[m.num]_</td>
+                <td width="5%">$_[m.freight]_</td>
+                <td width="10%"></td>
+            </tr>
+            _[{/each}]_
+        </tbody>
+        _[{/each}]_
+    </script>
+    <script type="text/tcl" id="listsNotTmpl">
+        <tbody>
+            <tr><td>$_[source.msg]_</td></tr>
+        </tbody>
+    </script>
+</div>

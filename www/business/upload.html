@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>上传证件照片</title>
+<link href="css/base.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<script src="js/jquery.js"></script>
+<script src="js/plug/upload/webuploader.min.js"></script>
+<script src="js/upload.js"></script>
+</head>
+<body>
+<!--弹窗-->
+<div id="cover"></div>
+<div class="pop_upload_message">
+    <div class="pop_hd">
+        <p>提示<img src="images/del.png"></p>
+    </div>
+    <p class="upload_text_tip"></p>
+</div>
+
+<div id="wapper">
+    
+    <!--头部开始-->
+    <div class="header">
+        <div class="top">
+            <div class="top_left">
+                <a href="#"><img src="images/logo.png"></a><img src="images/fg.png" class="split_one"><span class="regi">企业实名认证</span>
+            </div>
+            <div class="top_right">
+                <p>你好 baibiu121@126.com<img src="images/fg1.png" class="split_s">退出<img src="images/fg1.png" class="split_s">我的汇付宝</p>
+            </div> 
+        </div>
+    </div>
+    <!--头部结束-->
+    
+    <!--内容开始-->
+    <div class="content">
+        <div class="step">
+            <ul>
+                <li><img src="images/one.png"><span class="step_text step_ative">填写营业信息</span><span class="step_line step_line_on"></span></li>
+                <li><img src="images/two_on.png"><span class="step_text step_ative">上传证件照片</span><span class="step_line"></span></li>
+                <li><img src="images/three.png"><span class="step_text">填写银行卡信息</span><span class="step_line"></span></li>
+                <li><img src="images/four.png"><span class="step_text">提交成功</span></li>
+            </ul>
+        </div>
+        <div class="clear"></div>
+        <div class="message_box">
+            <div class="upload_box">
+                <p class="message_hd">营业执照</p>
+                <div class="upload_one">
+                    <p>营业执照</p>
+                    <div class="upload_img">
+                        <!--上传-->
+                        <div id="uploader" class="uploader_style">
+							<div class="queueList">
+								<div id="dndArea" class="placeholder">
+									<input type="hidden" name="uploadImgHidden" id="uploadImgHidden" value=""/>
+									<div id="filePicker"><img src="images/upload.png"></div>
+								</div>
+								<div class="number_img_edit"></div>
+							</div>
+				       </div>	
+                    </div>
+                    <div class="upload_tip">
+                        <div><img src="images/upload_tip.png"></div>
+                    </div>
+                <div class="clear"></div>
+                <p class="upload_tip_text">组织机构代码必须是清晰有效真实的彩色原件电子版，可以是扫描件或数码拍摄照片。上传图片格式仅支持. jpg   . gif。<em>上传文件大小不能超过2M。</em></p>
+                </div>
+            </div>
+            
+            <div class="upload_box">
+                <p class="message_hd">组织机构代码</p>
+                <div class="upload_one">
+                    <p>组织机构代码</p>
+                    <div class="upload_img">
+                        <!--上传-->
+                        <div id="uploader_two" class="uploader_style">
+							<div class="queueList">
+								<div id="dndArea_two" class="placeholder">
+									<div id="filePicker_two"><img src="images/upload.png"></div>
+								</div>
+								<div class="number_img_edit"></div>
+							</div>
+				       </div>	
+                    </div>
+                    <div class="upload_tip">
+                        <div><img src="images/upload_tip.png"></div>
+                    </div>
+                <div class="clear"></div>
+                <p class="upload_tip_text">组织机构代码必须是清晰有效真实的彩色原件电子版，可以是扫描件或数码拍摄照片。上传图片格式仅支持. jpg   . gif。<em>上传文件大小不能超过2M。</em></p>
+                </div>
+            </div>
+            
+            <div class="upload_box">
+                <p class="message_hd">税务登记证</p>
+                <div class="upload_one">
+                    <p>税务登记证</p>
+                    <div class="upload_img">
+                        <!--上传-->
+                        <div id="uploader_three" class="uploader_style">
+							<div class="queueList">
+								<div id="dndArea_three" class="placeholder">
+									<div id="filePicker_three"><img src="images/upload.png"></div>
+								</div>
+								<div class="number_img_edit"></div>
+							</div>
+				       </div>	
+                    </div>
+                    <div class="upload_tip">
+                        <div><img src="images/upload_tip.png"></div>
+                    </div>
+                <div class="clear"></div>
+                <p class="upload_tip_text">组织机构代码必须是清晰有效真实的彩色原件电子版，可以是扫描件或数码拍摄照片。上传图片格式仅支持. jpg   . gif。<em>上传文件大小不能超过2M。</em></p>
+                </div>
+            </div>
+            
+            <div class="upload_box">
+                <p class="message_hd">开户许可证</p>
+                <div class="upload_one">
+                    <p>开户许可证</p>
+                    <div class="upload_img">
+                        <p>正面</p>
+                        <!--上传-->
+                        <div id="uploader_four" class="uploader_style">
+							<div class="queueList">
+								<div id="dndArea_four" class="placeholder">
+									<div id="filePicker_four"><img src="images/upload.png"></div>
+								</div>
+								<div class="number_img_edit"></div>
+							</div>
+				       </div>	
+                    </div>
+                    <div class="upload_tip">
+                        <p>&nbsp;</p>
+                        <div><img src="images/upload_tip.png"></div>
+                    </div>
+                <div class="clear"></div>
+                <p class="upload_tip_text">组织机构代码必须是清晰有效真实的彩色原件电子版，可以是扫描件或数码拍摄照片。上传图片格式仅支持. jpg   . gif。<em>上传文件大小不能超过2M。</em></p>
+                </div>
+            </div>
+            
+            <div class="upload_box">
+                <p class="message_hd">法定代表人证件照片</p>
+                <div class="upload_one">
+                    <p>法定代表人证件照片</p>
+                    <div class="upload_img">
+                        <p>个人信息页</p>
+                        <!--上传-->
+                        <div id="uploader_five" class="uploader_style">
+							<div class="queueList">
+								<div id="dndArea_five" class="placeholder">
+									<div id="filePicker_five"><img src="images/upload.png"></div>
+								</div>
+								<div class="number_img_edit"></div>
+							</div>
+				       </div>	
+                        <div><img src="images/upload_tip.png"></div>
+                    </div>
+                    <div class="upload_tip">
+                        <p>国徽页</p>
+                        <!--上传-->
+                        <div id="uploader_sex" class="uploader_style">
+							<div class="queueList">
+								<div id="dndArea_sex" class="placeholder">
+									<div id="filePicker_sex"><img src="images/upload.png"></div>
+								</div>
+								<div class="number_img_edit"></div>
+							</div>
+				       </div>
+                        <div><img src="images/upload_tip.png"></div>
+                    </div>
+                <div class="clear"></div>
+                <p class="upload_tip_text">组织机构代码必须是清晰有效真实的彩色原件电子版，可以是扫描件或数码拍摄照片。上传图片格式仅支持. jpg   . gif。<em>上传文件大小不能超过2M。</em></p>
+                </div>
+            </div>
+            <h3><span class="pop_confirm upload_next">下一步</span><span class="pop_revised upload_last">上一步</span></h3>
+        </div>
+    </div>
+    <!--内容结束-->
+    
+    <!--尾部开始-->
+    <div class="footer">
+        <p>关于我们 | 合作伙伴 | 商务合作 | 联系我们</p>
+        <p>Copyright © since 2008 汇元银通（北京）在线支付技术有限公司 版权所有 侵权必究 </p>
+    </div>
+    <!--尾部结束-->
+</div>    
+</body>
+</html>

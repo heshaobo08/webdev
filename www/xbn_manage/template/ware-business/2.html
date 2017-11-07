@@ -1,0 +1,222 @@
+<div class="serch">
+    <form id="searchForm">
+        <!-- serch begin -->
+        <div class="serch_main">
+            <div class="serch_conts">
+                <dl>
+                    <dt>物流编码：</dt>
+                    <dd><input type="text" class="defaultInput" name="logisticsCode"/></dd>
+                </dl>
+                <dl>
+                    <dt>处理地点：</dt>
+                    <dd>
+                        <div class="select w190">
+                            <input index-data="" type="hidden" value="请选择" name="disposalSite"/>
+                            <i>全部</i>
+                            <em class="icon-52"></em>
+                            <ul>
+                                <li index-data=""><span>请选择</span></li>
+                                {{each(i,c) getConstName("OwmsDisposalSiteEnum")}}
+                                <li index-data="${i}"><span>${c}</span></li>
+                                {{/each}}
+                            </ul>
+                        </div>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>物流方式：</dt>
+                    <dd>
+                        <div class="select w190">
+                            <input index-data="" type="hidden" value="请选择" name="logisticsType"/>
+                            <i>全部</i>
+                            <em class="icon-52"></em>
+                            <ul>
+                                <li index-data=""><span>请选择</span></li>
+                                {{each(i,c) getConstName("OwmsLogisticsServerTypeEnum")}}
+                                <li index-data="${i}"><span>${c}</span></li>
+                                {{/each}}
+                            </ul>
+                        </div>
+                    </dd>
+                </dl>
+            </div>
+            <div class="serch_conts">
+                <dl>
+                    <dt>目的仓库：</dt>
+                    <dd>
+                        <div class="select w190">
+                            <input index-data="" type="hidden" value="请选择" name="destinationStoreCode"/>
+                            <i>否</i>
+                            <em class="icon-52"></em>
+                            <ul>
+                                <li index-data=""><span>请选择</span></li>
+                                {{if source.stores.length}}
+                                {{each(i,item) source.stores}}
+                                <li index-data="${item.storeCode}"><span>${item.storeName}</span></li>
+                                {{/each}}
+                                {{/if}}
+                            </ul>
+                        </div>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>截至下单时间：</dt>
+                    <dd>
+                        <div class="defaultData">
+                            <div class="dataBegin">
+                                <span class="dateInput" id="sendTimeLimit-start" data-key="sendTimeLimit" data-operator="ge"></span>
+                                <a href="javascript:;" class="timeStart icon-54"></a>
+                            </div>
+                            <span class="point"></span>
+
+                            <div class="dataEnd">
+                                <span class="dateInput" id="sendTimeLimit-end" data-key="sendTimeLimit" data-operator="le"></span>
+                                <a href="javascript:;" class="timeEnd icon-54"></a>
+                            </div>
+                        </div>
+                    </dd>
+                </dl>
+            </div>
+            <div class="serch_conts">
+                <dl>
+                    <dt>截至收货时间：</dt>
+                    <dd>
+                        <div class="defaultData">
+                            <div class="dataBegin">
+                                <span class="dateInput" id="receiveTimeLimit-start" data-key="receiveTimeLimit" data-operator="ge"></span>
+                                <a href="javascript:;" class="timeStart icon-54"></a>
+                            </div>
+                            <span class="point"></span>
+
+                            <div class="dataEnd">
+                                <span class="dateInput" id="receiveTimeLimit-end" data-key="receiveTimeLimit" data-operator="le"></span>
+                                <a href="javascript:;" class="timeEnd icon-54"></a>
+                            </div>
+                        </div>
+                    </dd>
+                </dl>
+            </div>
+            <div class="serch_conts">
+                <dl>
+                    <dt>预计到货日期：</dt>
+                    <dd>
+                        <div class="defaultData">
+                            <div class="dataBegin">
+                                <span class="dateInput" id="expectedArrivalDate-start" data-key="expectedArrivalDate" data-operator="ge"></span>
+                                <a href="javascript:;" class="timeStart icon-54"></a>
+                            </div>
+                            <span class="point"></span>
+
+                            <div class="dataEnd">
+                                <span class="dateInput" id="expectedArrivalDate-end" data-key="expectedArrivalDate" data-operator="le"></span>
+                                <a href="javascript:;" class="timeEnd icon-54"></a>
+                            </div>
+                        </div>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>始发站：</dt>
+                    <dd><input type="text" class="defaultInput" name="startStation"/></dd>
+                </dl>
+            </div>
+            <div class="serch_conts">
+                <dl>
+                    <dt>终点站：</dt>
+                    <dd><input type="text" class="defaultInput" name="lastStation"/></dd>
+                </dl>
+                <dl class="serchDl">
+                    <dt>&emsp;</dt>
+                    <dd><a href="javascript:;" class="button js-search">Search</a></dd>
+                </dl>
+            </div>
+        </div>
+        <!-- serch end -->
+        <div class="addbutton">
+            {{if source.operateData.moduleData && source.operateData.actionData && source.operateData.operate['HWC20104001']}}
+            <a data-title="海外仓业务管理-物流计划管理-新增" data-href="?m=xhr_id_20100000_20104000_add" class="button"
+               href="javascript:;">新增</a>
+            {{/if}}
+            {{if source.operateData.moduleData && source.operateData.actionData && source.operateData.operate['HWC20104002']}}
+            <a href="javascript:;" class="buttonText pad20 js-batchUpload">批量上传</a>
+            {{/if}}
+            {{if source.operateData.moduleData && source.operateData.actionData && source.operateData.operate['HWC20104003']}}
+            <a href="javascript:;" class="buttonText pad20 js-batchDelete">删除</a>
+            {{/if}}
+            <em class="mL50 none">您所搜索的，共有<i id='searchTotalCount'>${source.totalCount}</i>条内容符合。</em>
+        </div>
+    </form>
+</div>
+<!-- conts begin -->
+<div class="contsBox">
+    <div class="bigTable">
+        <table border="0" cellspacing="0" r-box="all0">
+            <thead>
+            <tr>
+                <th width="30"><input type="checkbox" name="all0"/></th>
+                <th>物流编码</th>
+                <th>处理地点</th>
+                <th>物流方式</th>
+                <th>目的仓库</th>
+                <th>截止下单时间</th>
+                <th>截止收货时间</th>
+                <th>预计到货日期</th>
+                <th>始发站</th>
+                <th>终点站</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody id="listCon"></tbody>
+        </table>
+    </div>
+    <div class="page" id="topPager"></div>
+</div>
+<script id="pageListTmpl" type="text/x-jquery-tmpl">
+    <a href="javascript:;" class="firstPage fL" data-displace="first">首页</a>
+    <a href="javascript:;" class="prve fL icon-56" data-displace="prev"></a>
+    <ul class="pagenumber" id="pager"></ul>
+    <a href="javascript:;" class="next fL icon-55" data-displace="next"></a>
+    <a href="javascript:;" class="lastPage" data-displace="last">尾页</a>
+</script>
+<script id="listTmpl" type="text/x-jquery-tmpl">
+    _[{if list.length}]_
+    _[{each(i,c) list}]_
+    <tr>
+        <td><input type="checkbox" data-id="$_[c.id]_" name="accountId"/></td>
+        <td>$_[c.logisticsCode]_</td>
+        <td>$_[getConstName("OwmsDisposalSiteEnum",c.disposalSite)]_</td>
+        <td>$_[getConstName("OwmsLogisticsServerTypeEnum",c.logisticsType)]_</td>
+        <td>$_[c.destinationStoreName]_</td>
+        <td>$_[c.sendTimeLimit]_</td>
+        <td>$_[c.receiveTimeLimit]_</td>
+        <td>$_[c.expectedArrivalDate.substring(0,10)]_</td>
+        <td>$_[c.startStation]_</td>
+        <td>$_[c.lastStation]_</td>
+        <td>
+        _[{if operateData.moduleData && operateData.actionData && operateData.operate['HWC20104006']}]_
+            <a class="blue mR10" data-href="?m=xhr_id_20100000_20104000_view&id=$_[c.id]_" data-title="海外仓业务管理-物流计划管理-详情">详情</a>
+            _[{/if}]_
+            _[{if operateData.moduleData && operateData.actionData && operateData.operate['HWC20104004']}]_
+            <a class="blue mR10" data-href="?m=xhr_id_20100000_20104000_edit&id=$_[c.id]_" data-title="海外仓业务管理-物流计划管理-修改">修改</a>
+            _[{/if}]_
+            _[{if operateData.moduleData && operateData.actionData && operateData.operate['HWC20104005']}]_
+            <a href="javascript:;" class="blue js-delete" data-id="$_[c.id]_">删除</a>
+            _[{/if}]_
+        </td>
+    </tr>
+    _[{/each}]_
+    _[{else}]_
+    <tr>
+        <td colspan="11">暂无数据</td>
+    </tr>
+    _[{/if}]_
+</script>
+<script id="importTmpl" type="text/x-jquery-tmpl">
+    <div class="tips f14">
+        <p class="col_cccccc">请将物流计划信息填入《物流计划上传模板》，然后通过以下方式上传。</p>
+        <a href="../template/ware-business/物流计划导入模板.xls" class="blue lh40">获取《物流计划上传模板》</a>
+        <form method="post" enctype="multipart/form-data" id="formSubmit">
+            <input type="file" class="uploadFile none" id="importLogisticsPlanTemplate" name="importLogisticsPlanTemplate"/>
+        </form>
+        <p class="f18 none" id="fileName"><em></em></p>
+    </div>
+</script>

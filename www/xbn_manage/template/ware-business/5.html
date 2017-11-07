@@ -1,0 +1,77 @@
+<div class="serch">
+    <form id="searchForm">
+        <div class="serch_main">
+            <div class="serch_conts">
+                <dl>
+                    <dt>姓名：</dt>
+                    <dd><input type="text" class="defaultInput" name="name"/></dd>
+                </dl>
+                <dl>
+                    <dt>QQ号：</dt>
+                    <dd><input type="text" class="defaultInput" name="qq"/></dd>
+                </dl>
+                <dl>
+                    <dt>&nbsp;</dt>
+                    <dd><a href="javascript:;" class="button js-search">Search</a></dd>
+                </dl>
+            </div>
+        </div>
+        <!-- serch end -->
+        <div class="addbutton">
+            {{if source.operateData.moduleData && source.operateData.actionData && source.operateData.operate['HWC20108001']}}
+            <a href="javascript:;" class="button" data-href="?m=xhr_id_20100000_20108000_add" data-title="海外仓业务管理-客服信息管理-新增">新增</a>
+            {{/if}}
+            {{if source.operateData.moduleData && source.operateData.actionData && source.operateData.operate['HWC20108002']}}
+            <a href="javascript:;" class="buttonText pad20 js-batchDelete">删除</a>
+            {{/if}}
+        </div>
+    </form>
+    <em class="mL50 none">您所搜索的，共有<i id='searchTotalCount'>${source.totalCount}</i>条内容符合。</em>
+</div>
+
+<div class="contsBox">
+    <div class="bigTable">
+        <table border="0" cellspacing="0" r-box="all0">
+            <thead>
+            <tr>
+                <th width="30"><input type="checkbox" name="all0"/></th>
+                <th>姓名</th>
+                <th>QQ号</th>
+                <th width="100">操作</th>
+            </tr>
+            </thead>
+            <tbody id="listCon"></tbody>
+        </table>
+    </div>
+    <div class="page" id="topPager"></div>
+</div>
+<script id="pageListTmpl" type="text/x-jquery-tmpl">
+    <a href="javascript:;" class="firstPage fL" data-displace="first">首页</a>
+    <a href="javascript:;" class="prve fL icon-56" data-displace="prev"></a>
+    <ul class="pagenumber" id="pager"></ul>
+    <a href="javascript:;" class="next fL icon-55" data-displace="next"></a>
+    <a href="javascript:;" class="lastPage" data-displace="last">尾页</a>
+</script>
+<script id="listTmpl" type="text/x-jquery-tmpl">
+    _[{if list.length}]_
+    _[{each(i,c) list}]_
+    <tr>
+        <td><input type="checkbox" data-id="$_[c.id]_" name="accountId"/></td>
+        <td>$_[c.name]_</td>
+        <td>$_[c.qq]_</td>
+        <td>
+            _[{if operateData.moduleData && operateData.actionData && operateData.operate['HWC20108003']}]_
+            <a class="blue mR10" data-href="?m=xhr_id_20100000_20108000_edit&id=$_[c.id]_" data-title="海外仓业务管理-客服信息管理-修改">修改</a>
+            _[{/if}]_
+            _[{if operateData.moduleData && operateData.actionData && operateData.operate['HWC20108004']}]_
+            <a href="javascript:;" class="blue js-delete" data-id="$_[c.id]_">删除</a>
+            _[{/if}]_
+        </td>
+    </tr>
+    _[{/each}]_
+    _[{else}]_
+    <tr>
+        <td colspan="4">暂无数据</td>
+    </tr>
+    _[{/if}]_
+</script>

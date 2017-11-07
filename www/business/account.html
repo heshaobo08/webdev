@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>完善账户信息</title>
+<link href="css/base.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<script src="js/jquery.js"></script>
+<script src="js/account.js"></script>
+</head>
+<body>
+<div id="wapper">
+    
+    <!--头部开始-->
+    <div class="header">
+        <div class="top">
+            <div class="top_left">
+                <a href="#"><img src="images/logo.png"></a><img src="images/fg.png" class="split_one"><span class="regi">注册商家账户</span>
+            </div>
+            <div class="top_right">
+                <p>登录<img src="images/fg1.png" class="split_s">注册<img src="images/fg1.png" class="split_s">帮助中心</p>
+            </div> 
+        </div>
+    </div>
+    <!--头部结束-->
+    
+    <!--内容开始-->
+    <div class="content">
+        <div class="step">
+            <ul>
+                <li><img src="images/one.png"><span class="step_text step_ative">创建账户</span><span class="step_line step_line_on"></span></li>
+                <li><img src="images/two_on.png"><span class="step_text step_ative">完善账户信息</span><span class="step_line"></span></li>
+                <li><img src="images/three.png"><span class="step_text">填写实名信息</span><span class="step_line"></span></li>
+                <li><img src="images/four.png"><span class="step_text">提交成功</span></li>
+            </ul>
+        </div>
+        <div class="clear"></div>
+        <div class="account_box">
+            <p class="user_name">汇付宝账户名<em>babiu121@126.com</em></p>
+            <div class="account_pwd">
+                <h5><em>登录密码</em><span>登录时需验证，保护账户信息</span></h5>
+                <div class="account_tip">
+                    <p>
+                        <label for="password">登录密码</label><input type="password" id=password class="name_w b_color" placeholder="请输入登录密码">
+                    </p>
+                    <div class="password_tip">
+                        <h6><em></em>6-20位字符</h6>
+                        <h6><em></em>只能包含大小写字母、数字以及符号</h6>
+                        <h6><em></em>大写字母、小写字母、数字和符号至少包含两种</h6>
+                    </div>
+                    <div class="password_tip_error">
+                        <h6 class="password_tip_h"><img src="images/error_tip.png"><b>密码设置不符合要求，请重新设置</b></h6>
+                    </div>
+                    <div class="password_tip_succ">
+                        <h6 class="password_tip_h"><img src="images/succ_tip.png"></h6>
+                    </div>
+                    <div class="password_tip_safe">
+                        <h6>安全程度:
+                            <span class="default_color"></span>
+                            <span class="default_color"></span>
+                            <span class="default_color"></span>
+                            <em>低</em>
+                        </h6>
+                    </div>
+                </div>
+                <div class="account_tip">
+                    <p>
+                        <label for="pwd_agin">再输入一次</label><input type="password" id=pwd_agin class="name_w b_color">
+                    </p>
+                    <div class="password_tip">
+                        <h6 class="password_tip_h"><em></em>请再次输入登录密码</h6>
+                    </div>
+                    <div class="password_tip_error">
+                        <h6 class="password_tip_h"><img src="images/error_tip.png"><b>登录密码输入不一致，请重新输入</b></h6>
+                    </div>
+                    <div class="password_tip_succ">
+                        <h6 class="password_tip_h"><img src="images/succ_tip.png"></h6>
+                    </div>
+                </div>
+                <h4></h4>
+                <h5><em>支付密码</em><span>交易付款或账户信息更改时需输入，与登录密码不一样，安全级别更高</span></h5>
+                <div class="account_tip">
+                    <p>
+                        <label for="password">支付密码</label><input type="password" id=pay_password class="name_w b_color" placeholder="请输入支付密码">
+                    </p>
+                    <div class="password_tip">
+                        <h6><em></em>与登录密码不同</h6>
+                        <h6><em></em>6-20位字符</h6>
+                        <h6><em></em>只能包含大小写字母、数字以及符号</h6>
+                        <h6><em></em>大写字母、小写字母、数字和符号至少包含两种</h6>
+                    </div>
+                    <div class="password_tip_error">
+                        <h6 class="password_tip_h"><img src="images/error_tip.png"><b>支付密码设置不符合要求，请重新设置</b></h6>
+                    </div>
+                    <div class="password_tip_same">
+                        <h6 class="password_tip_h"><img src="images/error_tip.png"><b>支付密码不能与登录密码一致</b></h6>
+                    </div>
+                    <div class="password_tip_succ">
+                        <h6 class="password_tip_h"><img src="images/succ_tip.png"></h6>
+                    </div>
+                    <div class="password_tip_safe">
+                        <h6>安全程度:
+                            <span class="default_color"></span>
+                            <span class="default_color"></span>
+                            <span class="default_color"></span>
+                            <em>低</em>
+                        </h6>
+                    </div>
+                </div>
+                <div class="account_tip">
+                    <p>
+                        <label for="pwd_agin">再输入一次</label><input type="password" id=pay_pwd_agin class="name_w b_color">
+                    </p>
+                    <div class="password_tip">
+                        <h6 class="password_tip_h"><em></em>请再次输入支付密码</h6>
+                    </div>
+                    <div class="password_tip_error">
+                        <h6 class="password_tip_h"><img src="images/error_tip.png"><b>支付密码输入不一致，请重新输入</b></h6>
+                    </div>
+                    <div class="password_tip_succ">
+                        <h6 class="password_tip_h"><img src="images/succ_tip.png"></h6>
+                    </div>
+                </div>
+                <h4></h4>
+                <h5><em>安全保护问题</em><span>忘记密码时，可通过回答问题找回密码</span></h5>
+                <div class="safe_box">
+                    <div class="safe_problem">安全保护问题</div>
+                    <div class="nice-select" name="nice-select">
+                       <input type="text" readonly placeholder="请选择">
+                       <ul>
+                          <li data-value="1">我妈妈的名字</li>
+                          <li data-value="2">我爸爸的名字</li>
+                          <li data-value="3">我的生日</li>
+                          <li data-value="4">我的出生地</li>
+                       </ul>
+                    </div>
+                </div>
+                <div class="account_tip">
+                    <p>
+                        <label for="safe">安全保护答案</label><input type="text" id=safe class="name_w b_color">
+                    </p>
+                    <div class="password_tip">
+                        <h6 class="password_tip_h"><em></em>答案长度2-32字符</h6>
+                    </div>
+                </div>
+                <h3 class="account_next">下一步</h3>
+            </div>
+        </div>
+        
+    </div>
+    <!--内容结束-->
+    
+    <!--尾部开始-->
+    <div class="footer">
+        <p>关于我们 | 合作伙伴 | 商务合作 | 联系我们</p>
+        <p>Copyright © since 2008 汇元银通（北京）在线支付技术有限公司 版权所有 侵权必究 </p>
+    </div>
+    <!--尾部结束-->
+</div>    
+</body>
+</html>

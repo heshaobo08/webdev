@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <link href="../../hyui.weui/demos/example/example.css" rel="stylesheet" />
+    <script src="../zepto.js"></script>
+    <script data-hy-role="jslib" src="../hy.mobile.js"></script>
+    <script src="../hy.mobile.hyapp.js"></script>
+    <script>
+
+        $(function () {
+            pageload();
+        });
+
+        function pageload() {
+
+            var home = {
+                name: "home",
+                url: "#home",
+                template: '#tpl_home',
+                events: {
+                    '#toTest': {
+                        click: function () {
+                            hm.pageMgr.go("test");
+                        }
+                    }
+                }
+            };
+
+            var test = {
+                name: "test",
+                url: "#test",
+                template: '#tpl_test',
+                events: {
+                    "#toHome": {
+                        click: function () {
+                            hm.pageMgr.go("home");
+                        }
+                    }
+                }
+            };
+
+            var pageArr = [home, test];
+            hm.pageMgr.init(pageArr);
+
+        }
+
+    </script>
+
+</head>
+<body>
+    <div data-hy-role="tplpage"></div>
+
+    <script data-hy-role="template" type="text/html" id="tpl_home">
+        <div>
+            <div>这是home</div>
+            <div><button id="toTest">去test</button></div>
+        </div>
+    </script>
+    <script type="text/html" id="tpl_test">
+        <div>
+            <div>这是test</div>
+            <div><button id="toHome">去home</button></div>
+        </div>
+    </script>
+</body>
+</html>

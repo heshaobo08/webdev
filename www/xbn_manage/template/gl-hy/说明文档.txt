@@ -1,0 +1,38 @@
+
+system_admin_list.html		-->	系统_1_管理员列表
+
+system_admin_add.html		-->	系统_2_管理员列表 - 新增管理员
+
+system_admin_edit.html		-->	系统_3_管理员列表 - 角色修改
+
+system_adminAccount_add.html	-->	系统_5_管理账户列表 - 新增管理账户
+
+system_adminAccount_edit.html	-->	系统_6_管理账户列表 - 修改管理账户
+
+system_adminAccount_list.html		-->	系统_4_管理账户列表
+
+system_adminRole_add.html		-->	系统_12_角色管理_添加角色
+
+system_adminRole_edit.html		-->	系统_11_角色管理_编辑角色
+
+system_adminRole_list.html		-->	系统_10_角色管理列表
+
+system_authority_add.html		-->	系统_24_权限列表_添加菜单
+
+system_authority_list.html		-->	系统_22_权限列表
+
+system_grade_add.html		-->	系统_16_等级管理_添加等级
+
+system_grade_edit.html		-->	系统_17_等级管理_编辑等级
+
+system_grade_list.html		-->	系统_15_等级列表
+
+system_log_back.html		-->	系统_8_操作日志 - 后台
+
+system_log_front.html		-->	系统_7_操作日志 - 前台
+
+system_service_add.html		-->	系统_20_业务管理_添加业务
+
+system_service_edit.html		-->	系统_21_业务管理_编辑业务
+
+system_service_list.html		-->	系统_19_业务列表

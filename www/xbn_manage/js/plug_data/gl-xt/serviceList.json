@@ -1,0 +1,35 @@
+{
+	"statusCode": "2000000",
+	"data": {
+		"pageSize": 20,
+		"totalCount": 1,
+		"totalPages": 1,
+		"cPageNO": 1,
+		"list": [
+			{
+				"id": "4028e4174e62690f014e62691e7f0000",
+				"roleName": "b9c5e641a1a74220ab44e864d119472c",
+				"isValid": true,
+				"remark": "Test data ...",
+				"createTime": "2015-04-08 10:04:26",
+				"updateTime": "2015-04-08 10:04:26"
+			},
+			{
+				"id": "4028e4174e62690f014e62691e7f0000",
+				"roleName": "b9c5e641a1a74220ab44e864d119472c",
+				"isValid": true,
+				"remark": "Test data ...",
+				"createTime": "2015-04-08 10:04:26",
+				"updateTime": "2015-04-08 10:04:26"
+			},
+			{
+				"id": "4028e4174e62690f014e62691e7f0000",
+				"roleName": "b9c5e641a1a74220ab44e864d119472c",
+				"isValid": true,
+				"remark": "Test data ...",
+				"createTime": "2015-04-08 10:04:26",
+				"updateTime": "2015-04-08 10:04:26"
+			}
+		]
+	}
+}

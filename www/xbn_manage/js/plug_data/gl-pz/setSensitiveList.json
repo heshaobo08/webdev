@@ -1,0 +1,29 @@
+{
+  "statusCode": "2000000",
+  "data": {
+    "pageSize": 10,
+    "totalCount": 16,
+    "totalPages": 2,
+    "cPageNO": 1,
+    "list": [
+      {
+        "id": "40289e964e8f4e7a014e8f7dbf900000",
+        "keywordValue": "111",
+        "creaTime": "2015-07-15 10:14:19",
+        "updateTime": null,
+        "exceptantUsers": "494018648@qq.com",
+        "platform": "2",
+        "status": false
+      },
+      {
+        "id": "40289e964e8f4e7a014e8f7dbfd60001",
+        "keywordValue": "222",
+        "creaTime": "2015-07-15 10:14:19",
+        "updateTime": null,
+        "exceptantUsers": null,
+        "platform": "2",
+        "status": true
+      }
+    ]
+  }
+}

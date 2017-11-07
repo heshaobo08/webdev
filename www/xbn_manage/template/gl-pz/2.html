@@ -1,0 +1,69 @@
+<div class="serch">
+    <!-- serch begin -->
+    <div class="serch_main">
+        <div class="serch_conts">
+            <span>
+                {{if source.operateData.moduleData && source.operateData.actionData && source.operateData.operate['h06070002']}}
+                <a class="button mR30" data-href='?m=xhr_id_199_240_edit' data-title='配置管理-物流公司管理-新增'>添加</a>
+                {{/if}}
+                {{if source.operateData.moduleData && source.operateData.actionData && source.operateData.operate['h06070003']}}
+                <a class="blue mR30 js-logisticDelete" href="javascript:;">删除</a>
+                {{/if}}
+            </span>
+        </div>
+    </div>
+    <!-- serch end -->
+</div>
+<!-- conts begin -->
+<div class="contsBox">
+    <div class="bigTable">
+        <table class="" border="0" cellspacing="0"  r-box="all">
+            <thead>
+               <tr>
+                    <th><input type="checkbox" name='all'></th>
+                    <th>物流名称</th>
+                    <th>物流公司</th>
+                    <th>物流代码</th>
+                    <th>物流产品</th>
+                    <th>查询网址</th>
+                    <th>操作</th>
+               </tr>
+            </thead>
+            <tbody id='logisticsList'>
+
+            </tbody>
+        </table>
+    </div>
+    <!-- 翻页 begin -->
+    <div class="page" id="topPager">
+    </div>
+    <!--翻页 end-->
+</div>
+<script id='logisticsTmpl' type='text/x-jquery-tmpl'>
+_[{if list && list.length}]_
+    _[{each(i,list) list}]_
+    <tr>
+        <td><input type="checkbox" name="" data-id='$_[list.id]_'></td>
+        <td>$_[list.name]_</td>
+        <td>_[{if logisticsData[list.companyName]}]_$_[logisticsData[list.companyName].name]__[{/if}]_</td>
+        <td>$_[list.code]_</td>
+        <td>$_[list.product]_</td>
+        <td>$_[list.url]_</td>
+        <td>
+            _[{if operateData.moduleData && operateData.actionData && operateData.operate['h06070001']}]_
+            <a href="javascript:;" class="blue mR15" data-code='$_[list.code]_' data-href='?m=xhr_id_199_240_edit&id=$_[list.id]_' data-title='配置管理-物流公司管理-修改'>修改</a>
+            _[{/if}]_
+        </td>
+    _[{/each}]_
+_[{else}]_
+<tr><td colSpan="7">暂无数据</td></tr>
+_[{/if}]_
+</script>
+<!-- 分页模板 -->
+<script id='pageListCon' type='text/x-jquery-tmpl'>
+    <a href="javascript:;" class="firstPage fL" data-displace="first">首页</a>
+    <a href="javascript:;" class="prve fL icon-56" data-displace="prev"></a>
+    <ul class="pagenumber" id="pager"></ul>
+    <a href="javascript:;" class="next fL icon-55" data-displace="next"></a>
+    <a href="javascript:;" class="lastPage" data-displace="last">尾页</a>
+</script>

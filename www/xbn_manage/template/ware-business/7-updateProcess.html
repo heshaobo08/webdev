@@ -1,0 +1,113 @@
+<div class="contsBox">
+    <div class="details" style="">
+        <h3 class="titleText">进程信息</h3>
+        <div class="processTable">
+            <form id="trakForm">
+                <table cellspacing="0" border="0" class="">
+                <thead>
+                    <tr>
+                        <th>预报编码</th>
+                        <th width="252px">码头已发货</th>
+                        <th width="172px">发往海外</th>
+                        <th width="172px">到达目的港</th>
+                        <th width="172px">送往海外仓</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{each(i,e) source}}
+                    <tr data-id="${e.forecastId}">
+                        <td><p class="mR10 Truncate w80" title="${e.forecastCode}">${e.forecastCode}</p></td>
+                        <td class="rel">
+                            <div class="updata" data-code="5" data-id="{{if e.item[0]}}${e.item[0].id}{{/if}}">
+                                <div class="deadline w170 fL mR5">
+                                    <input class="dataInput timeInp w125" id="sendTime-5-${i}" readonly required value="{{if e.item[0]}}${e.item[0].handleTime}{{/if}}" />
+                                    <a href="javascript:;" class="icon-54 timeStart"></a>
+                                </div>
+                                <input type="text" name="receiveBoxNum" value="${e.siteReceiveBoxNum}" required placeholder="实收箱数" class="w68 mR5 input" pattern='^[1-9]\d{0,8}$' patterntext="整数位最多9位整数"/>
+                                <p>
+                                    {{if !e.item[1]}}
+                                    <em class="blue mL145 js-updata">更新</em>
+                                    {{/if}}
+                                </p>
+                            </div>
+                        </td>
+                        <td>
+                            {{if e.item[1]}}
+                            <div class="updata" data-code="6" data-id="{{if e.item[1]}}${e.item[1].id}{{/if}}">
+                            {{else}}
+                            <div class="updata none" data-code="6">
+                            {{/if}}
+                                <div class="deadline w170 fL mR10">
+                                    {{if e.item[1]}}
+                                    <input class="dataInput timeInp w125" id="sendTime-6-${i}" readonly required value="${e.item[1].handleTime}" />
+                                    {{else}}
+                                    <input class="dataInput timeInp w125" id="sendTime-6-${i}" disabled readonly required value="" />
+                                    {{/if}}
+                                    <a href="javascript:;" class="icon-54 timeStart"></a>
+                                </div>
+                                <p class="tR">
+                                    {{if !e.item[2]}}
+                                    <em class="blue mR10 js-updata">更新</em>
+                                    {{/if}}
+                                    {{if !e.item[1]}}
+                                    <em class="blue mR10 js-cancle">取消</em>
+                                    {{/if}}
+                                </p>
+                            </div>
+                        </td>
+                        <td>
+                            {{if e.item[2]}}
+                            <div class="updata" data-code="7" data-id="{{if e.item[2]}}${e.item[2].id}{{/if}}">
+                            {{else}}
+                            <div class="updata none" data-code="7">
+                            {{/if}}
+                                <div class="deadline w170 fL mR10">
+                                    {{if e.item[2]}}
+                                    <input class="dataInput timeInp w125" id="sendTime-7-${i}" readonly required value="${e.item[2].handleTime}" />
+                                    {{else}}
+                                    <input class="dataInput timeInp w125" id="sendTime-7-${i}" disabled readonly required value="" />
+                                    {{/if}}
+                                    <a href="javascript:;" class="icon-54 timeStart"></a>
+                                </div>
+                                <p class="tR">
+                                    {{if !e.item[3]}}
+                                    <em class="blue mR10 js-updata">更新</em>
+                                    {{/if}}
+                                    {{if !e.item[2]}}
+                                    <em class="blue mR10 js-cancle">取消</em>
+                                    {{/if}}
+                                </p>
+                            </div>
+                        </td>
+                        <td>
+                            {{if e.item[3]}}
+                            <div class="updata" data-code="8" data-id="{{if e.item[3]}}${e.item[3].id}{{/if}}">
+                            {{else}}
+                            <div class="updata none" data-code="8">
+                            {{/if}}
+                                <div class="deadline w170 fL mR10">
+                                    {{if e.item[3]}}
+                                    <input class="dataInput timeInp w125" id="sendTime-8-${i}" readonly required value="${e.item[3].handleTime}" />
+                                    {{else}}
+                                    <input class="dataInput timeInp w125" id="sendTime-8-${i}" disabled readonly required value="" />
+                                    {{/if}}
+                                    <a href="javascript:;" class="icon-54 timeStart"></a>
+                                </div>
+                                <p class="tR">
+                                    {{if !e.item[3]}}
+                                    <em class="blue mR10 js-cancle">取消</em>
+                                    {{/if}}
+                                </p>
+                            </div>
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+            </form>
+        </div>
+</div>
+<div class="btnMain">
+    <a href="javascript:;" class="button js-save mR20">保存</a>
+    <a href="javascript:history.go(-1);" class="buttonText">返回</a>
+</div>

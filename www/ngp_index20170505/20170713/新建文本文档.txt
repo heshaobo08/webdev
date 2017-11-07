@@ -1,0 +1,112 @@
+/*ÒøÁª¶þÎ¬Âë*/
+.unionpay_box{
+    width: 400px;
+    margin: auto;
+    margin-top: 30px;
+    border: dashed 1px #ccc;
+    cursor: pointer;
+}
+.unionpay_box h6{
+    text-align: center;
+    margin-top: 20px;
+}
+.unionpay_box p{
+    text-align: center;
+    margin-top: 10px;
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 20px;
+}
+.unionpay_table{
+    margin:5px 20px;
+}
+.unionpay_table p{
+    font-size: 14px;
+    color: #333;
+}
+
+
+.unionpay_pop_box{
+    position: absolute;
+    width:600px;
+    height:400px;
+    top:50%;
+    left:50%;
+    background-color:#fff;
+    z-index:8;
+    margin-left:-300px;
+    margin-top:-200px;
+    border-radius: 5px;
+    display: none;
+    border: solid 2px rgba(0,0,0,0.5);
+}
+.unionpay_pop_box h5{
+    border-bottom: solid 1px #eee;
+    margin-top: 15px;
+}
+.qr_code_one{
+    margin-left: 20px;
+}
+.qr_code_one_l{
+    float: left;
+    margin-top: 20px;
+}
+.qr_code_one_l p{
+    font-size: 14px;
+    color: #333;
+}
+.qr_code_one_r{
+    float: left;
+    margin-left: 20px;
+}
+.qr_code_one_r p{
+   margin-top: 20px;
+}
+.qr_code_input{
+    width: 200px;
+    height: 35px;
+    line-height: 35px;
+    border: solid 1px #eee;
+    outline: none;
+}
+
+.qr_code_two{
+    margin-top: 40px;
+    display: none;
+}
+.qr_code_two p{
+    text-align: center;
+    font-size: 14px;
+    color: #333;
+}
+.qr_code_two h6{
+    text-align: center;
+    margin-top: 40px;
+}
+.qr_code_two h4{
+    text-align: center;
+    margin-top: 40px;
+}
+.qr_confirm{
+    width: 120px;
+    height: 35px;
+    display: inline-block;
+    background:#4287f5;
+    line-height: 35px;
+    text-align: center;
+    font-size: 14px;
+    color: #fff;
+    cursor: pointer;
+}
+.qr_down{
+    width: 120px;
+    height: 35px;
+    display: inline-block;
+    background:#4287f5;
+    line-height: 35px;
+    text-align: center;
+    font-size: 14px;
+    color: #fff;
+    cursor: pointer;
+    margin-left: 20px;
+}

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf8">
+<title>行业解决方案</title>
+<link href="css/base.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<script src="js/jquery.js"></script>
+    <script>
+        $(function(){
+            $(".login_nav_active").on("click",function(e){
+                $(".sub_nav").show();
+                e.stopPropagation();
+            });
+            $(document).click(function(){
+                $(".sub_nav").hide();
+        });
+        })
+    </script>
+</head>
+<body>
+    <div class="warpper">
+        <!--头部开始-->
+        <div class="login_header">
+            <p>
+                <span class="login_hd_active"><a href="#">企业版</a></span>
+                <span class="help_center"><a href="#">帮助中心</a></span>
+            </p>
+        </div>
+        <div class="login_nav_bg">
+            <div class="login_nav">
+                <div class="login_nav_left">
+                    <p>
+                        <img src="images/logo.png">
+                        <span class="logo_hx"></span>
+                        <span class="logo_text">企业版</span>
+                    </p>
+                </div>
+                <div class="login_nav_right">
+                    <ul>
+                        <li><a href="#">首页</a></li>
+                        <li><a href="#">产品中心</a></li>
+                        <li class="login_nav_active"><a href="#">行业解决方案</a>
+                            <p class="sub_nav"><a href="#">订阅支付</a></p>
+                            <p class="sub_nav"><a href="#">云钱包</a></p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--头部结束-->
+        <!--内容开始-->
+        <div class="login_content">
+            <div class="commerce_box"></div>
+            <div class="commerce_ct">
+                <h6 class="commerce_hd">什么是电商托管</h6>
+                <div class="commerce_ct_one">
+                    <div class="commerce_ct_one_l"><img src="images/e_icon_dstg.png"></div>
+                    <div class="commerce_ct_one_r">
+                        <p>电商托管是汇付宝最新开发的针对电子商务平台设计的、采用“云钱包账户体系+资金增值服务+交易担保支付机制”的电商解决方案，为电商平台提供安全、全面、高效的支付结算工具。</p>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <p class="h_industry_hx"></p>
+                <h6 class="commerce_hd">为什么需要电商托管</h6>
+                <div class="commerce_ct_two">
+                    <div class="commerce_ct_two_l">
+                         <p>“互联网+”新常态下，电子商务与实体经济各个产业已经深度融合。各个行业纷纷尝试通过电子商务平台加速转型升级，借此进一步提升供应链上下游资源的整合能力，因此越来越多的行业进入电子商务领域。电子商务的市场日益庞大，正处于几家电商平台独大、众多小型电商平台竞相瓜分市场的局面。于此同时市场监管体制陆续跟上，对于平台的资金流向和业务规范监管越来越严，电商平台创建和运营的难程度提升。为了解决这些电商平台遇到的问题并为其提供资金解决方案，“电商托管”应运而生。</p>
+                    </div>
+                    <div class="commerce_ct_two_r">
+                       <p><img src="images/e_icon_xydatg.png"></p>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <p class="h_industry_hx"></p>
+                <h6 class="commerce_hd">可以提供的产品功能</h6>
+                <div class="commerce_ct_three">
+                    <ul>
+                        <li>
+                            <h6><img src="images/e_icon_yezh.png"></h6>
+                            <h5>开通服务</h5>
+                            <p>
+                                会员在电商平台实现注册<br>
+                                即可实现汇付宝账号的开通<br>
+                                不需登录汇付宝注册
+                            </p>
+                        </li>
+                        <li>
+                            <h6><img src="images/e_icon_cz.png"></h6>
+                            <h5>充值</h5>
+                            <p>
+                                提供多种充值方式<br>
+                                用户充值的资金托管在汇付宝<br>
+                                可直接使用充值余额进行消费
+                            </p>
+                        </li>
+                        <li>
+                            <h6><img src="images/e_icon_zz.png"></h6>
+                            <h5>支付</h5>
+                            <p>
+                                为平台提供担保支付机制为<br>
+                                会员提供订单预支付、确认支付<br>
+                                分期支付、订单退款等支付服务
+                            </p>
+                        </li>
+                        <li>
+                            <h6><img src="images/e_icon_tx.png"></h6>
+                            <h5>提现</h5>
+                            <p>
+                                平台会员可以在平台<br>
+                                直接发起提现操作
+                            </p>
+                        </li>
+                        <li>
+                            <h6><img src="images/e_icon_gd.png"></h6>
+                            <h5>其他</h5>
+                            <p>
+                                为会员提供订单查询服务<br>
+                                为平台提供详尽的<br>
+                                对账功能和差异处理功能
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="clear"></div>
+                <p class="h_industry_hx"></p>
+                <h6 class="commerce_hd">我们的优势</h6>
+                <div class="commerce_ct_four">
+                    <div class="commerce_four_l"><img src="images/e_icon_yqbti.png"></div>
+                    <div class="commerce_four_r">
+                        <h6>云钱包体系</h6>
+                        <p>电商平台与电商托管系统对接后，我们可自动为会员建立钱包账户体系</p>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <div class="commerce_ct_four">
+                    <div class="commerce_four_l"><img src="images/e_icon_zffs.png"></div>
+                    <div class="commerce_four_r">
+                        <h6>支持多种支付方式</h6>
+                        <p>支持平台用户多渠道支付及充值方式，如网银支付、快捷支付、第三方支付、订阅支付等。</p>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <div class="commerce_ct_four">
+                    <div class="commerce_four_l"><img src="images/e_icon_aqkk.png"></div>
+                    <div class="commerce_four_r">
+                        <h6>安全可靠</h6>
+                        <p>为平台每个用户设置一个支付密码，此密码仅存储在汇付宝，<br>
+                            电商平台无法获取，确保每笔支付、提现等资金划转交易只能由本人才能发起。
+                        </p>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    <!--内容结束-->
+        <!--尾部开始-->
+        <div class="login_footer">
+            <div class="login_footer_ct">
+                <p>关于我们 | 合作伙伴 | 商务合作 | 联系我们</p>
+                <p>Copyright © since 2008 汇元银通（北京）在线支付技术有限公司 版权所有 侵权必究 </p>
+            </div>
+        </div>
+        <!--尾部结束-->
+    </div>
+</body>
+</html>

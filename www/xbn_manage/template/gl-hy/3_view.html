@@ -1,0 +1,203 @@
+<input type="hidden" name="registeredNo" value="${source.registeredNo}" />
+<input type="hidden" name="companyName" value="${source.companyName}" />
+<div class="details">
+    <div class="stateText">
+            {{if source.auditStatus=='1'}}
+                <p class="mB20">入驻状态： <span>审核中</span></p>
+            {{else source.auditStatus=='2'}}
+                <p class="mB20">入驻状态： <span>待确认收款</span></p>
+            {{else source.auditStatus=='3'}}
+                <p class="mB20">入驻状态： <span>已驳回</span></p>
+                <p class="reason">驳回原因：<span class="mL25">${source.remark}</span></p>
+            {{else source.auditStatus=='4'}}
+                <p class="mB20">入驻状态： <span>待开通</span></p>
+            {{/if}}
+    </div>
+</div>
+<div class="details">
+    <h3 class="titleText">关联会员</h3>
+    <div class="related">
+        <dl class="fL">
+            <dt>手机号：</dt>
+                <dd>${source.userDetail.mobile}</dd>
+        </dl>
+        <dl class="fR">
+            <dt>邮箱：</dt>
+                <dd>${source.userDetail.email}</dd>
+        </dl>
+    </div>
+</div>
+{{if source.companyType && source.companyType == 2}}
+<div class="details">
+    <h3 class="titleText">基本信息</h3>
+    <div class="relatedBox">
+        <dl class="textDl">
+            <dt>入驻类型：</dt>
+            <dd>
+                个人
+            </dd>
+        </dl>
+        <dl class="textDl">
+            <dt>申请人姓名：</dt>
+                <dd>${source.companyName||"&nbsp;"}</dd>
+        </dl>
+        <dl class="textDl">
+            <dt>身份证号码：</dt>
+                <dd>${source.registeredNo||"&nbsp;"}{{if source.idcardstatus == "1"}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;实名认证通过{{/if}}</dd>
+                {{if source.auditStatus!='3' && source.idcardstatus != "1"}}
+                <dd><a href="javascript:;" class="button js-verifyIdCard">实名认证</a></dd>
+                {{/if}}
+        </dl>
+        <dl class="textDl editTXA">
+            <dt>身份证正面：</dt>
+                <dd>{{if source.fileOriginalurl0}}
+                    <img style="width:164px;height:113px;" src="${source.fileOriginalurl0}" data-id='' />
+                {{/if}}</dd>
+        </dl>
+        <dl class="textDl editTXA">
+            <dt>身份证反面：</dt>
+                <dd>{{if source.fileOriginalurl1}}
+                    <img style="width:164px;height:113px;" src="${source.fileOriginalurl1}" data-id='' />
+                {{/if}}</dd>
+        </dl>
+        <dl class="textDl editTXA">
+            <dt>手持身份证照：</dt>
+                <dd>{{if source.fileOriginalurl2}}
+                    <img style="width:164px;height:113px;" src="${source.fileOriginalurl2}" data-id='' />
+                {{/if}}</dd>
+        </dl>
+        <dl class="textDl editTXA">
+            <dt>手持手稿照：</dt>
+                <dd>{{if source.fileOriginalurl3}}
+                    <img style="width:164px;height:113px;" src="${source.fileOriginalurl3}" data-id='' />
+                {{/if}}</dd>
+        </dl>
+        <dl class="textDl">
+            <dt>联系地址：</dt>
+                <dd>${source.addressData} ${source.address}</dd>
+        </dl>
+    </div>
+</div>
+{{else}}
+<div class="details">
+    <h3 class="titleText">基本信息</h3>
+    <div class="relatedBox">
+        <dl class="textDl">
+            <dt>入驻类型：</dt>
+            <dd>
+                企业
+            </dd>
+        </dl>
+        <dl class="textDl">
+            <dt>企业名称：</dt>
+                <dd>${source.companyName||"&nbsp;"}</dd>
+        </dl>
+        <dl class="textDl">
+            <dt>企业地址：</dt>
+                <dd>${source.addressData} ${source.address}</dd>
+        </dl>
+        <dl class="textDl">
+            <dt>邮编：</dt>
+                <dd>${source.postcode||"&nbsp;"}</dd>
+        </dl>
+        <dl class="textDl">
+            <dt>法人代表：</dt>
+                <dd>${source.legalRepresent||"&nbsp;"}</dd>
+        </dl>
+        <dl class="textDl">
+            <dt>工商注册号：</dt>
+                <dd>${source.registeredNo||"&nbsp;"}</dd>
+        </dl>
+        <dl class="textDl editTXA">
+            <dt>营业执照（副本）：</dt>
+                <dd>{{if source.fileOriginalurl || source.businessLicense}}
+                    <img src="${source.fileOriginalurl || source.businessLicense}" data-id='${source.businessLicense}' />
+                {{/if}}</dd>
+        </dl>
+        <!-- <dl class="textDl">
+                <dt>企业性质：</dt>
+                <dd>${source.postcode}</dd>
+            </dl> -->
+        <dl class="textDl">
+            <dt>单品SKU总量：</dt>
+                <dd>${source.skuTotal||"&nbsp;"}</dd>
+        </dl>
+        <dl class="textDl">
+            <dt>单品均价：</dt>
+                <dd>{{if source.averageSkuPrice=='1'}}1-100{{/if}}
+                {{if source.averageSkuPrice=='2'}}101-200{{/if}}
+                {{if source.averageSkuPrice=='3'}}201-300{{/if}}
+                {{if source.averageSkuPrice=='4'}}301-500{{/if}}
+                {{if source.averageSkuPrice=='5'}}501-1000{{/if}}
+                {{if source.averageSkuPrice=='6'}}1000以上{{/if}}</dd>
+        </dl>
+        <dl class="textDl">
+            <dt>企业简介：</dt>
+                <dd>${source.description||"&nbsp;"}</dd>
+        </dl>
+    </div>
+</div>
+<div class="details">
+    <h3 class="titleText">银行信息</h3>
+    <div class="relatedBox">
+        <dl class="textDl">
+            <dt>开户银行：</dt>
+                <dd>{{if source.bankdata &&  source.dictionaryBankList[source.bankdata.bank]}}${source.dictionaryBankList[source.bankdata.bank].name}{{else source.bankdata}}${source.bankdata.bank}{{else}}&nbsp;{{/if}}</dd>
+        </dl>
+        <dl class="textDl">
+            <dt>银行网点：</dt>
+                <dd>{{if source.bankdata}}${source.bankdata.branch}{{else}}&nbsp;{{/if}}</dd>
+        </dl>
+        <dl class="textDl">
+            <dt>开户名：</dt>
+                <dd>{{if source.bankdata}}${source.bankdata.accountName}{{else}}&nbsp;{{/if}}</dd>
+        </dl>
+        <dl class="textDl">
+            <dt>银行账号：</dt>
+                <dd>{{if source.bankdata}}${source.bankdata.bankAccount}{{else}}&nbsp;{{/if}}</dd>
+        </dl>
+        <dl class="editTXA">
+            <dt>银行开户许可证：</dt>
+            {{if source.bankdata}}
+                <dd>{{if source.bankfileOriginalurl || source.bankdata.licence}}
+                <img src="${source.bankfileOriginalurl || source.bankdata.licence}" data-id='${source.bankdata.licence}' />
+                {{/if}}</dd>
+            {{/if}}
+        </dl>
+    </div>
+</div>
+{{/if}}
+<!-- conts end -->
+<!--中间内容区域 end-->
+<div class="btnMain" data-uid="${source.userDetail.id}">
+   {{if source.auditStatus=='1'}}
+        {{if source.userDetail.ifCharge==='0'}} <!--初始状态-->
+            <a href="javascript:;" class="autobutton mR20 js-setPlatFee">设置平台使用费</a>
+            <a href="javascript:;" class="button mR20 js-UserjoinUnPass" data-id='${source.id}'>审核驳回</a>
+        {{else source.userDetail.ifCharge=='1'}} <!--收费-->
+            {{if source.userDetail.ifPayment==='1'}} <!--已支付-->
+                {{if source.audit}}
+                    {{if source.companyType && source.companyType == 2 && source.idcardstatus != 1}}
+                    <a href="javascript:;" class="autobutton mR20 grey" data-id='${source.id}'>平台使用费支付成功，审核通过</a>
+                    {{else}}
+                    <a href="javascript:;" class="autobutton mR20 js-UserjoinPass" data-id='${source.id}'>平台使用费支付成功，审核通过</a>
+                    {{/if}}
+                {{/if}}
+            {{else source.userDetail.ifPayment==='0'}}<!--支付失败-->
+                <a href="javascript:;" class="autobutton mR20 grey">平台使用费支付失败</a>
+            {{else}}
+                <a href="javascript:;" class="autobutton mR20 grey">平台使用费支付中…</a>
+            {{/if}}
+        {{else source.userDetail.ifCharge=='2'}} <!--不收费-->
+            {{if source.audit}}
+                {{if source.companyType && source.companyType == "2" && source.idcardstatus != "1"}}
+                <a href="javascript:;" class="button mR20 grey" data-id='${source.id}'>审核通过</a>
+                {{else}}
+                <a href="javascript:;" class="button mR20 js-UserjoinPass" data-id='${source.id}'>审核通过</a>
+                {{/if}}
+                <a href="javascript:;" class="button mR20 js-UserjoinUnPass" data-id='${source.id}'>审核驳回</a>
+            {{/if}}
+        {{/if}}
+    {{/if}}
+    <a href="javascript:history.go(-1);" class="button" sdata-href='?m=xhr_id_33_58' data-title='会员管理-入驻审核'>返回</a>
+</div>

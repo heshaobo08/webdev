@@ -1,0 +1,165 @@
+<div class="serch">
+    <form id='messageSearchFrom'>
+        <div class="serch_tab">
+            <ul>
+                <li class="{{if source.platformShow=='1'}}on{{/if}}">
+                    <a href="javascript:;" data-href='?m=xhr_id_33_78&p=1'>Ebay</a>
+                </li>
+                <!-- <li class="{{if source.platformShow=='2'}}on{{/if}}">
+                    <a href="javascript:;" data-href='?m=xhr_id_33_78&p=2'>Amazon</a>
+                </li>
+                <li class="{{if source.platformShow=='3'}}on{{/if}}">
+                    <a href="javascript:;" data-href='?m=xhr_id_33_78&p=3'>newegg</a>
+                </li> -->
+            </ul>
+        </div>
+        <!-- serch begin -->
+        <div class="serch_main">
+            <div class="serch_conts">
+                <dl>
+                    <dt>所属用户 :</dt>
+                    <dd><input type="text" value="" class="defaultInput" name='userID'/></dd>
+                </dl>
+                <dl>
+                    <dt>标记:</dt>
+                    <dd class="h34">
+                        <div class="select w190">
+                            <input index-data="" name='flag' type="hidden" value="请选择">
+                            <i>请选择</i>
+                            <em class="icon-52"></em>
+                            <ul style="">
+                                <li index-data=""><span>请选择</span></li>
+                                <li index-data="0"><span>灰旗</span></li>
+                                <li index-data="1"><span>蓝旗</span></li>
+                                <li index-data="2"><span>红旗</span></li>
+                            </ul>
+                        </div>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>消息标题 :</dt>
+                    <dd><input type="text" value="" class="defaultInput" name="messageTitle"/></dd>
+                </dl>
+            </div>
+            <div class="serch_conts">
+                <dl>
+                    <dt>发信人 :</dt>
+                    <dd><input type="text" value="" class="defaultInput" name="sender"/></dd>
+                </dl>
+                <dl>
+                    <dt>收信人 :</dt>
+                    <dd><input type="text" value="" class="defaultInput" name="receiver"/></dd>
+                </dl>
+            </div>
+            <div class="serch_conts">
+                <dl>
+                    <dt>时间范围 :</dt>
+                    <dd>
+                        <div class="defaultData">
+                            <div class="dataBegin">
+                                <span class="dataInput" id="startTime" name='startTime'></span>
+                                <a href="javascript:;" class="timeStart icon-54"></a>
+                            </div>
+                            <span class="point"></span>
+
+                            <div class="dataEnd">
+                                <span class="dataInput" id="endTime" name='endTime'></span>
+                                <a href="javascript:;" class="timeEnd icon-54"></a>
+                            </div>
+                        </div>
+                    </dd>
+                </dl>
+                <dl class="serchDl">
+                    <dt>&emsp;</dt>
+                    <dd>
+                        {{if source.operateData.moduleData && source.operateData.actionData &&
+                        source.operateData.operate['h02070001']}}
+                        <a href="javascript:;" class="button js-messageSearch">Search</a>
+                        {{/if}}
+                    </dd>
+                </dl>
+            </div>
+        </div>
+        <!-- serch end -->
+    </form>
+    <div class="addbutton none">
+        <!--<a href="javascript:;" data-href='?m=xhr_id_33_78_apply&p=${source.platformShow}'  data-title='会员管理-消息管理-录入' class="button">新增信件</a>-->
+        您所搜索的，共有<i id="searchTotalCount">${source.totalCount}</i>条内容符合。
+    </div>
+</div>
+<!-- conts begin -->
+<div class="contsBox">
+    <div class="bigTable">
+        <table class="layout" border="0" cellspacing="0">
+            <thead>
+            <tr>
+                <th width="6%">标签</th>
+                <th width="15%">所属用户</th>
+                <th width="8%">站点</th>
+                <th width="2%">附件</th>
+                <th width="30%">消息标题</th>
+                <th width="8%">发信人</th>
+                <th width="8%">收信人</th>
+                <th width="15%">时间</th>
+                <th width="10%">操作</th>
+            </tr>
+            </thead>
+            <tbody id='messageListCon'>
+
+            </tbody>
+        </table>
+    </div>
+
+    <div class="page" id="topPager">
+    </div>
+
+</div>
+<!-- 分页模板 -->
+<script id="pageListTmpl" type="text/x-jquery-tmpl">
+    <a href="javascript:;" class="firstPage fL" data-displace="first">首页</a>
+    <a href="javascript:;" class="prve fL icon-56" data-displace="prev"></a>
+    <ul class="pagenumber" id="pager"></ul>
+    <a href="javascript:;" class="next fL icon-55" data-displace="next"></a>
+    <a href="javascript:;" class="lastPage" data-displace="last">尾页</a>
+
+</script>
+
+<!-- 消息列表模板 -->
+<script id="messageListTmpl" type="text/x-jquery-tmpl">
+_[{if list && list.length}]_
+    _[{each(i,message) list}]_
+        <tr>
+            <td>
+                <div class="levelSelect">
+                    <i class="icon-58 _[{if message.flag=='0'}]_isgray_[{else message.flag=='1'}]_isblue_[{else message.flag=='2'}]_isred_[{/if}]_"></i>
+                    <div class="flag" data-id='$_[message.id]_' data-userId='$_[message.userID]_'>
+                        <ul>
+                            <li><em class="icon-58 isgray" index-data='0'></em></li>
+                            <li><em class="icon-58 isblue" index-data='1'></em></li>
+                            <li><em class="icon-58 isred" index-data='2'></em></li>
+                        </ul>
+                    </div>
+                </div>
+            </td>
+            <td class="white">$_[message.userName]_</td>
+            <td>$_[message.siteCnName]_</td>
+            <td>_[{if message.fileStatus=='0'}]__[{else}]_<em class="icon-41"></em>_[{/if}]_</td>
+            <td class="white">$_[message.messageTitle]_</td>
+            <td>$_[message.sender]_</td>
+            <td>$_[message.receiver]_</td>
+            <td>$_[message.receiveTime]_</td>
+            <td>
+                _[{if operateData.moduleData && operateData.actionData && operateData.operate['h02070002']}]_
+                <a href="javascript:;" class="blue mR10" data-href='?m=xhr_id_33_78_view&p=$_[platformShow]_&id=$_[message.id]_' data-title='会员管理-消息管理-查看'>$_[operateData.operate['h02070002'].menuName]_</a>
+                _[{/if}]_
+                <!--<a href="javascript:;" class="blue mR10" data-href='?m=xhr_id_33_78_reply&p=$_[platformShow]_&id=$_[message.id]_' data-title='会员管理-消息管理-录入'>录入</a>-->
+            </td>
+        </tr>
+    _[{/each}]_
+_[{else}]_
+    <tr>
+        <td colspan="8">暂无数据</td>
+    </tr>
+_[{/if}]_
+
+</script>

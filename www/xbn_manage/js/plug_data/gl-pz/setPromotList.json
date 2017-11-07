@@ -1,0 +1,71 @@
+{
+    "statusCode": "2000000",
+    "data": {
+        "totalCount": "6",
+        "pageSize": "10",
+        "start": "1",
+        "totalPage": "1",
+        "promotionList": [
+            {
+                "promotionName": "test promotion1",
+                "promotionType": "0",
+                "promotionStartTime": "2015-06-08 13:39:24",
+                "promotionEndTime": "2015-06-09 13:39:24",
+                "isEffective": "2",
+                "promotionStatus": "1",
+                "createTime": "2015-06-08 10:24:07",
+                "createBy": "guohaifei"
+            },
+            {
+                "promotionName": "test promotion2",
+                "promotionType": "0",
+                "promotionStartTime": "2015-06-08 13:39:24",
+                "promotionEndTime": "2015-06-09 13:39:24",
+                "isEffective": "2",
+                "promotionStatus": "1",
+                "createTime": "2015-06-09 14:43:15",
+                "createBy": "guohaifei"
+            },
+            {
+                "promotionName": "test promotion3",
+                "promotionType": "0",
+                "promotionStartTime": "2015-06-10 13:39:24",
+                "promotionEndTime": "2015-06-15 13:39:24",
+                "isEffective": "2",
+                "promotionStatus": "1",
+                "createTime": "2015-06-09 15:02:58",
+                "createBy": "guohaifei"
+            },
+            {
+                "promotionName": "test promotion2",
+                "promotionType": "0",
+                "promotionStartTime": "2015-06-10 13:39:24",
+                "promotionEndTime": "2015-06-11 13:39:24",
+                "isEffective": "2",
+                "promotionStatus": "1",
+                "createTime": "2015-06-09 18:40:16",
+                "createBy": "guohaifei"
+            },
+            {
+                "promotionName": "test promotion2",
+                "promotionType": "0",
+                "promotionStartTime": "2015-06-12 13:39:24",
+                "promotionEndTime": "2015-06-13 13:39:24",
+                "isEffective": "2",
+                "promotionStatus": "1",
+                "createTime": "2015-06-09 18:45:33",
+                "createBy": "guohaifei"
+            },
+            {
+                "promotionName": "test promotion2",
+                "promotionType": "0",
+                "promotionStartTime": "2015-06-14 13:39:24",
+                "promotionEndTime": "2015-06-15 13:39:24",
+                "isEffective": "2",
+                "promotionStatus": "1",
+                "createTime": "2015-06-10 10:00:26",
+                "createBy": "guohaifei"
+            }
+        ]
+    }
+}

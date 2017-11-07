@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>汇付宝</title>
+<link href="css/base.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<script src="js/jquery.js"></script>
+<script src="js/plug/time/WdatePicker.js"></script>
+<script src="js/account_management.js"></script>
+</head>
+<body>
+    <div id="cover"></div>
+    <div class="ngp_pop_three">
+        <h6 class="ngp_pop_hd">提示<em><img src="images/ngp_del.png"></em></h6>
+        <p><img src="images/refund_tip.png"><em>确认删除该子账户？</em></p>
+        <h3 class="ngp_pop_btn">确认</h3>
+    </div>
+    <div class="account_pop">
+        <h6 class="ngp_pop_hd">提示<em><img src="images/ngp_del.png"></em></h6>
+        <img src="images/refund_tip.png">
+        <p class="account_email">邮件已发送，请查收</p>
+        <p class="account_text">请在30分钟内，根据邮箱内的初始登录密码登录激活并修改密码</p>
+        <h3 class="ngp_pop_btn">确认</h3>
+    </div>
+    <div id="ngp_warpper">
+        <!--头部开始-->
+        <div class="ngp_header">
+            <div class="ngp_top">
+                <div class="ngp_logo">
+                   <img src="images/logo.png">
+                   <span class="logo_hx"></span>
+                   <span class="logo_text">商户服务</span>
+                </div>
+                <div class="ngp_top_right">
+                    <span>您好！ Acdbm@9186.com</span>
+                    <b></b>
+                    <span>退出</span>
+                    <b></b>
+                    <span>帮助中心</span>
+                </div>
+            </div>
+        </div>
+        <div class="ngp_nav">
+            <div class="nav_list">
+                <ul>
+                    <li class="nav_ative"><a href="index.html">我的汇付宝</a></li>
+                    <li><a href="transaction.html">交易管理</a></li>
+                    <li><a href="#">结算管理</a></li>
+                    <li><a href="account_management.html">账户管理</a></li>
+                </ul>
+            </div> 
+        </div>
+        <!--头部结束-->
+        
+        <!--内容开始-->
+        <div class="ngp_content">
+            <div class="recharge_box">
+                <div class="transaction_box">
+                    <div class="transaction_tab">
+                        <div class="account_tab_l">
+                            <ul>
+                                <li>签约管理</li>
+                                <li class="tab_active">员工管理</li>
+                                <li>账户安全</li>
+                            </ul>
+                        </div>
+                        <div class="account_tab_r"></div>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="transaction_query">
+                        
+                        <p class="management_hand">已签约产品<span><img src="images/management_add_tip.png">签约新产品</span></p>
+                        <div class="transaction_tabel">
+                            <table class="tbl_contents">
+                                <thead>
+                                    <tr class="thead">
+                                        <td width="20%">产品名称</td>
+                                        <td width="20%">有效期限</td>
+                                        <td width="15%">签约费率</td>
+                                        <td width="10%">密钥</td>
+                                        <td width="10%">备注</td>
+                                        <td width="25%">操作</td>
+                                    </tr>
+                                </thead>
+                                <tbody class="record_list">
+                                    <tr>
+                                        <td>充值（网银B2B）</td>
+                                        <td>2016.10.19-2019.10.19</td>
+                                        <td>0.1%</td>
+                                        <td><span class="record_look"><a href="">查看</a></span></td>
+                                        <td>无</td>
+                                        <td>自动续签</td>
+                                    </tr>
+                                    <tr>
+                                        <td>充值（网银B2B）</td>
+                                        <td>2016.10.19-2019.10.19</td>
+                                        <td>0.1%</td>
+                                        <td><span class="record_look"><a href="">查看</a></span></td>
+                                        <td>无</td>
+                                        <td>自动续签</td>
+                                    </tr>
+                                    <tr>
+                                        <td>充值（网银B2B）</td>
+                                        <td>2016.10.19-2019.10.19</td>
+                                        <td>0.1%</td>
+                                        <td><span class="record_look"><a href="">查看</a></span></td>
+                                        <td>无</td>
+                                        <td>自动续签</td>
+                                    </tr>
+                                    <tr>
+                                        <td>充值（网银B2B）</td>
+                                        <td>2016.10.19-2019.10.19</td>
+                                        <td>0.1%</td>
+                                        <td><span class="record_look"><a href="">查看</a></span></td>
+                                        <td>无</td>
+                                        <td>自动续签</td>
+                                    </tr>
+                                    <tr>
+                                        <td>快捷-PC-储蓄卡</td>
+                                        <td>2016.10.19-2019.10.19</td>
+                                        <td>2元／笔</td>
+                                        <td><span class="record_look"><a href="">查看</a></span></td>
+                                        <td>退还手续费</td>
+                                        <td>自动续签</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <p class="management_hand" style="margin-top:20px;">签约中的产品</p>
+                        <div class="transaction_tabel">
+                            <table class="tbl_contentone">
+                                <thead>
+                                    <tr class="thead">
+                                        <td width="10%">申请批次</td>
+                                        <td width="20%">产品名称</td>
+                                        <td width="20%">签约费率</td>
+                                        <td width="30%">签约进度</td>
+                                        <td width="20%">操作</td>
+                                    </tr>
+                                </thead>
+                                <tbody class="record_list">
+                                    <tr>
+                                        <td rowspan="2">01</td>
+                                        <td>充值（网银B2B）</td>
+                                        <td>
+                                            <p>储蓄卡-0.1%  坐扣-商户</p>
+                                            <p>信用卡-0.1%  坐扣-商户</p>
+                                        </td>
+                                        <td rowspan="2">
+                                            <p>提交申请 － 审核通过 － 验证成功 － 签约成功</p>
+                                            <p>2016.10.19 2016.10.19</p>
+                                        </td>
+                                        <td rowspan="2">再次提交</td>
+                                    </tr>
+                                    <tr>
+                                        <td>充值（网银B2B）</td>
+                                        <td>
+                                            <p>储蓄卡-0.1%  坐扣-商户</p>
+                                            <p>信用卡-0.1%  坐扣-商户</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>02</td>
+                                        <td>充值（网银B2B）</td>
+                                        <td>
+                                            <p>储蓄卡-0.1%  坐扣-商户</p>
+                                            <p>信用卡-0.1%  坐扣-商户</p>
+                                        </td>
+                                        <td>
+                                            <p>提交申请 － 审核通过 － 验证成功 － 签约成功</p>
+                                            <p>2016.10.19 2016.10.19</p>
+                                        </td>
+                                        <td>再次提交</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        
+                        
+                        
+                        <div class="transaction_bt">
+                            <div class="page">
+                                <p>
+                                    <span>首页</span>
+                                    <span>上一页</span>
+                                    <span>下一页</span>
+                                    <span>尾页</span>
+                                    <span>2/5页，</span>
+                                    <span>共30条 每页
+                                        <select class="page_select">
+                                            <option>10</option>
+                                            <option>20</option>
+                                            <option>30</option>
+                                            <option>40</option>
+                                        </select>条，
+                                    </span>
+                                    <span>到第<input type="text" class="page_input">页</span>
+                                </p>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </div>
+                    <div class="transaction_query" style="display:block">
+                        <p class="accunt_input">
+                            <input type="text" placeholder="输入邮箱或手机号码"><span class="accunt_btn">查询</span>
+                            <span class="account_hx"></span>
+                            <span class="account_add"><a href="account_management_add.html"><img src="images/account_add.png">添加子账户</a></span>
+                        </p>
+                        <div class="transaction_tabel">
+                            <table class="tbl_content">
+                                <thead>
+                                    <tr class="thead">
+                                        <td width="20%">账户</td>
+                                        <td width="15%">手机号码</td>
+                                        <td width="15%">备注</td>
+                                        <td width="15%">最近编辑时间</td>
+                                        <td width="10%">状态</td>
+                                        <td width="25%">操作</td>
+                                    </tr>
+                                </thead>
+                                <tbody class="record_list">
+                                    <tr>
+                                        <td>heshaobo08@163.com</td>
+                                        <td>15911025276</td>
+                                        <td>主账户</td>
+                                        <td>2016-06-23</td>
+                                        <td>正常使用</td>
+                                        <td><span class="record_look"><a href="account_management_look.html">查看</a></span><span class="record_refund is_account_del">删除</span><span class="record_refund is_account_edit"><a href="account_management_edit.html">编辑账户</a></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>heshaobo08@163.com</td>
+                                        <td>15911025276</td>
+                                        <td>主账户</td>
+                                        <td>2016-06-23</td>
+                                        <td>正常使用</td>
+                                       <td><span class="record_look"><a href="account_management_look.html">查看</a></span><span class="record_refund is_account_del">删除</span><span class="record_refund is_account_edit"><a href="account_management_edit.html">编辑账户</a></span></td>
+                                   </tr>
+                                    <tr>
+                                        <td>heshaobo08@163.com</td>
+                                        <td>15911025276</td>
+                                        <td>主账户</td>
+                                        <td>2016-06-23</td>
+                                        <td>正常使用</td>
+                                       <td><span class="record_look"><a href="account_management_look.html">查看</a></span><span class="record_refund is_account_del">删除</span><span class="record_refund is_account_edit"><a href="account_management_edit.html">编辑账户</a></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>heshaobo08@163.com</td>
+                                        <td>15911025276</td>
+                                        <td>主账户</td>
+                                        <td>2016-06-23</td>
+                                        <td>正常使用</td>
+                                        <td><span class="record_look"><a href="account_management_look.html">查看</a></span><span class="record_refund is_account_del">删除</span><span class="record_refund is_account_edit"><a href="account_management_edit.html">编辑账户</a></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>heshaobo08@163.com</td>
+                                        <td>15911025276</td>
+                                        <td>主账户</td>
+                                        <td>2016-06-23</td>
+                                        <td>正常使用</td>
+                                        <td><span class="record_look js_account_email">重新发送验证邮件</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="transaction_bt">
+                            <div class="page">
+                                <p>
+                                    <span>首页</span>
+                                    <span>上一页</span>
+                                    <span>下一页</span>
+                                    <span>尾页</span>
+                                    <span>2/5页，</span>
+                                    <span>共30条 每页
+                                        <select class="page_select">
+                                            <option>10</option>
+                                            <option>20</option>
+                                            <option>30</option>
+                                            <option>40</option>
+                                        </select>条，
+                                    </span>
+                                    <span>到第<input type="text" class="page_input">页</span>
+                                </p>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                    <div class="transaction_query">
+                        <table class="tbl_content">
+                            <thead>
+                                <tr class="thead">
+                                    <td width="25%">安全类别</td>
+                                    <td width="35%">描述</td>
+                                    <td width="20%">状态</td>
+                                    <td width="20%">操作</td>
+                                </tr>
+                            </thead>
+                            <tbody class="record_list">
+                                <tr>
+                                    <td>登录密码</td>
+                                    <td>账户登录时使用的密码</td>
+                                    <td><span class="account_set">已设置</span></td>
+                                    <td><span class="account_pwd_modify">修改</span></td>
+                                </tr>
+                                <tr>
+                                    <td>支付密码</td>
+                                    <td>用于支付转账的校验</td>
+                                    <td><span class="account_set">已设置</span></td>
+                                    <td><span class="account_pwd_modify">修改</span></td>
+                               </tr>
+                                <tr>
+                                    <td>绑定手机</td>
+                                    <td>可以作为找回密码的凭证</td>
+                                    <td><span class="account_set">已设置</span></td>
+                                    <td><span class="account_pwd_modify">修改</span></td>
+                               </tr>
+                               <tr>
+                                    <td>绑定邮箱</td>
+                                    <td>账户登录时作为账户名称wufengde@gmail.com</td>
+                                    <td><span class="account_set">已绑定</span></td>
+                                    <td></td>
+                               </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--内容结束-->
+        
+        <!--尾部开始-->
+        <div class="ngp_footer">
+            <p>
+                <span>关于我们</span>
+                <span>合作伙伴</span>
+                <span>商务合作</span>
+                <span>联系我们</span>
+            </p>
+            <p class="ngp_ft">Copyright © since 2008 汇元银通（北京）在线支付技术有限公司  版权所有 侵权必究</p>
+        </div>
+        <!--尾部结束-->
+        
+    </div>
+</body>
+</html>

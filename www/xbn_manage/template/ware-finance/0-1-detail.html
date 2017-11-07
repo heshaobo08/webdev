@@ -1,0 +1,163 @@
+<div class="serch">
+    <form id='publishSearchForm'>
+        <!-- tab 切换 begin -->
+        <div class="serch_tab pL5">
+            <ul>
+                <li {{if source.activePos==1}}class="on"{{/if}}><a data-href="?m=xhr_id_20200000_20203000_detail&p=1&uid=${source.userId}&aid=${source.applyId}" href="javascript:;">收货预报</a></li>
+                <li {{if source.activePos==2}}class="on"{{/if}}><a data-href="?m=xhr_id_20200000_20203000_detail&p=2&uid=${source.userId}&aid=${source.applyId}" href="javascript:;">发货单</a></li>
+                <li {{if source.activePos==3}}class="on"{{/if}}><a data-href="?m=xhr_id_20200000_20203000_detail&p=3&uid=${source.userId}&aid=${source.applyId}" href="javascript:;">库存</a></li>
+            </ul>
+        </div>
+        <!-- tab 切换 end -->
+        <div class="addbutton mT20 mB20">
+            {{if source.applyId}}
+            <a data-href="?m=xhr_id_20200000_20203000_view&id=${source.applyId}" class="button">返回</a>
+            {{else}}
+            <a data-href="?m=xhr_id_20200000_20203000" class="button">返回</a>
+            {{/if}}
+        </div>
+    </form>
+</div>
+
+<!-- conts begin -->
+<div class="contsBox">
+    <div class="bigTable">
+        <table class="" border="0" cellspacing="0">
+            <thead>
+                <tr>
+                    {{if source.activePos==1}}
+                    <th width="10%">预报编码</th>
+                    <th width="10%">提交人</th>
+                    <th width="10%">预报时间</th>
+                    <th width="10%">处理状态</th>
+                    <th width="5%">处理地点</th>
+                    <th width="5%">目的仓库</th>
+                    <th width="5%">物流方式</th>
+                    <th width="10%">货物信息</th>
+                    <th width="10%">费用信息</th>
+                    <th width="10%">扣款情况</th>
+                    <th width="10%">备注</th>
+                    <th width="5%">操作</th>
+                    {{else source.activePos==2}}
+                    <th>发货单号</th>
+                    <th>提交人</th>
+                    <th>来源</th>
+                    <th>小笨鸟订单号</th>
+                    <th>原始订单号</th>
+                    <th>提交时间</th>
+                    <th>发货仓库</th>
+                    <th>总运费</th>
+                    <th>处理状态</th>
+                    <th>备注</th>
+                    <th>操作</th>
+                    {{else source.activePos==3}}
+                    <th width="10%">库存编码</th>
+                    <th width="10%">货主</th>
+                    <th width="10%">商家SKU</th>
+                    <th width="20%">货品名称</th>
+                    <th width="15%">规格型号</th>
+                    <th width="5%">在途数</th>
+                    <th width="5%">库存总数</th>
+                    <th width="5%">可售数</th>
+                    <th width="5%">预占数</th>
+                    <th width="5%">待上架数</th>
+                    <th width="5%">冻结数</th>
+                    <th width="5%">报废数</th>
+                    {{/if}}
+                </tr>
+            </thead>
+            <tbody id="listCon"></tbody>
+        </table>
+    </div>
+    <div class="page" id="topPager"></div>
+</div>
+<script id='pageListTmpl' type='text/x-jquery-tmpl'>
+    <a href="javascript:;" class="firstPage fL" data-displace="first">首页</a>
+    <a href="javascript:;" class="prve fL icon-56" data-displace="prev"></a>
+    <ul class="pagenumber" id="pager"></ul>
+    <a href="javascript:;" class="next fL icon-55" data-displace="next"></a>
+    <a href="javascript:;" class="lastPage" data-displace="last">尾页</a>
+</script>
+
+<script id="listTmpl" type="text/x-jquery-tmpl">
+ _[{if activePos==1}]_
+  _[{if list.length}]_
+    _[{each(i,c) list}]_
+    <tr>
+        <td>$_[c.forecastCode]_</td>
+        <td>$_[c.userName]_</td>
+        <td>$_[c.forecastTime]_</td>
+        <td>$_[getConstName("OwmsReceiptForecastStatusEnum",c.status)]_</td>
+        <td>$_[c.disposalSite]_</td>
+        <td>$_[c.destinationStoreCode]_</td>
+        <td>$_[getConstName("OwmsLogisticsServerTypeEnum",c.logisticsType)]_</td>
+        <td><p>预报箱数：$_[c.forecastBoxNum]_</p><p>预报货品总数：$_[c.forecastCommodityNum]_</p></td>
+        <td><p>总运费：$_[c.totalFreight]_ $_[c.currencyUnit]_</p><p>税金：$_[c.freightPrice]_ $_[c.currencyUnit]_</p></td>
+        <td>$_[c.chargebackSituation]_</td>
+        <td><p class="Truncate">$_[c.remark || '暂无备注']_</p></td>
+        <td>
+            <a data-href="?m=xhr_id_20200000_20203000_business&p=1&id=$_[c.id]_" class="blue mR10" data-title="海外仓财物管理-退款管理-退款申请详情-未完成业务-收货预报详情" href="javascript:;">详情</a>
+        </td>
+    </tr>
+    _[{/each}]_
+        _[{else}]_
+        <tr>
+            <td colspan="12">暂无数据</td>
+        </tr>
+    _[{/if}]_
+ _[{else activePos==2}]_
+  _[{if list.length}]_
+    _[{each(i,c) list}]_
+    <tr>
+        <td>$_[c.invoiceCode]_</td>
+        <td>$_[c.userName]_</td>
+        <td>$_[getConstName("OwmsDataSourceEnum",c.source)]_</td>
+        <td>$_[c.orderCode]_</td>
+        <td>$_[c.originalCode]_</td>
+        <td>$_[c.orderTime]_</td>
+        <td>$_[c.sendStoreName]_</td>
+        <td>$_[c.totalFreight]_</td>
+        <td>$_[getConstName("OwmsInvoiceStatusEnum",c.status)]_</td>
+        <td><p class="Truncate">$_[c.merchantRemark || '暂无备注']_</p></td>
+        <td>
+            <a data-href="?m=xhr_id_20200000_20203000_business&p=2&id=$_[c.id]_" class="blue mR10" data-title="海外仓财物管理-退款管理-退款申请详情-未完成业务-发货单详情" href="javascript:;">详情</a>
+        </td>
+    </tr>
+    _[{/each}]_
+        _[{else}]_
+        <tr>
+            <td colspan="11">暂无数据</td>
+        </tr>
+    _[{/if}]_
+ _[{else activePos==3}]_
+  _[{if list.length}]_
+    _[{each(i,c) list}]_
+    <tr>
+        <td>$_[c.inventoryCode]_</td>
+        <td>$_[c.userName]_</td>
+        <td>$_[c.merchantSku]_</td>
+        <td><p class="Truncate">$_[title]_</p></td>
+        <td><p class="Truncate">$_[c.specsModel]_</p></td>
+        <td>$_[c.onthewayNum]_</td>
+        <td>$_[c.totalNum]_</p></td>
+        <td>$_[c.couldsellNum]_</td>
+        <td>$_[c.distributeNum]_</p></td>
+        <td>$_[c.waitingNum]_</td>
+        <td>$_[c.freezeNum]_</td>
+        <td>$_[c.discardNum]_</td>
+    </tr>
+    _[{/each}]_
+        _[{else}]_
+        <tr>
+            <td colspan="12">暂无数据</td>
+        </tr>
+    _[{/if}]_
+ _[{/if}]_
+</script>
+<script id="pageListTmpl" type="text/x-jquery-tmpl">
+    <a href="javascript:;" class="firstPage fL" data-displace="first">首页</a>
+    <a href="javascript:;" class="prve fL icon-56" data-displace="prev"></a>
+    <ul class="pagenumber" id="pager"></ul>
+    <a href="javascript:;" class="next fL icon-55" data-displace="next"></a>
+    <a href="javascript:;" class="lastPage" data-displace="last">尾页</a>
+</script>

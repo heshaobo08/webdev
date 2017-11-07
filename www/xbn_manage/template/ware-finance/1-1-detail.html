@@ -1,0 +1,686 @@
+<div class="contsBox">
+    <div class="details">
+        <h3 class="titleText">基本信息</h3>
+        <div class="otherConts newConts" id="details">
+
+
+        </div>
+    </div>
+    <div class="btnMain">
+        {{if source.accountDetailDTO.dealItem==2 && source.accountDetailDTO.dealStatus==1}}
+        <a href="javascript:;" class="buttonText js-offline mR20" data-id="${source.detailId}">充值确认</a>
+        {{/if}}
+        {{if source.accountDetailDTO.dealType == 2 && (source.accountDetailDTO.dealStatus==2 || source.accountDetailDTO.dealStatus==4)}}
+        <a href="javascript:;" class="buttonText js-refund mR20" data-dealamount="${source.insuredAmount}" data-id="${source.detailId}" data-code="${source.dealCode}">退款</a>
+        {{/if}}
+        <a class="buttonText" data-shref="?m=xhr_id_20200000_20201000_view" href="javascript:history.go(-1);">返回</a>
+    </div>
+</div>
+
+<!--线上充值-->
+<script id="details_online" type="text/x-jquery-tmpl">
+    <div class="details_L">
+        <dl>
+            <dt>交易编号：</dt>
+            <dd>$_[accountDetailDTO.dealCode]_</dd>
+        </dl>
+        <dl>
+            <dt>交易金额：</dt>
+            <dd>$_[accountDetailDTO.dealAmount]_ CNY</dd>
+        </dl>
+        <dl>
+            <dt>交易时间：</dt>
+            <dd>$_[accountDetailDTO.dealTime]_</dd>
+        </dl>
+        <dl>
+            <dt>交易类型：</dt>
+            <dd>$_[getConstName("OwmsDealTypeEnum",accountDetailDTO.dealType)]_</dd>
+        </dl>
+        <dl>
+            <dt>交易项目：</dt>
+            <dd>$_[getConstName("OwmsDealItemEnum",accountDetailDTO.dealItem)]_</dd>
+        </dl>
+        <dl>
+            <dt>交易状态：</dt>
+            <dd>$_[getConstName("OwmsDealStatusEnum", accountDetailDTO.dealStatus)]_</dd>
+        </dl>
+        <dl>
+            <dt>交易平台：</dt>
+            <dd>$_[getConstName("OwmsPlatformEnum", dealPlatform)]_</dd>
+        </dl>
+        <dl>
+            <dt>交易银行：</dt>
+            <dd>$_[dealBank]_</dd>
+        </dl>
+    </div>
+    <div class="details_R">
+        <dl>
+            <dt>银行卡类型：</dt>
+            <dd>$_[getConstName("OwmsCardTypeEnum", cardType)]_</dd>
+        </dl>
+        <dl>
+            <dt>付款人账号：</dt>
+            <dd>$_[payAccount == null ? "暂无付款人账号" : payAccount.replace(/\D/g, '').replace(/....(?!$)/g, '$& ')]_</dd>
+        </dl>
+        <dl>
+            <dt>付款人名称：</dt>
+            <dd>$_[payName]_</dd>
+        </dl>
+        <dl>
+            <dt>收款人开户银行：</dt>
+            <dd>$_[receiptBankName]_</dd>
+        </dl>
+        <dl>
+            <dt>收款人户名全称：</dt>
+            <dd>$_[receiptUserFullName]_</dd>
+        </dl>
+        <dl>
+            <dt>收款人银行账号：</dt>
+            <dd>$_[receiptBankAccount]_</dd>
+        </dl>
+        <dl>
+            <dt>交易流水号：</dt>
+            <dd>$_[detailCode]_</dd>
+        </dl>
+    </div>
+</script>
+
+<!--线下充值-->
+<script id="details_offline" type="text/x-jquery-tmpl">
+    <div class="details_L">
+        <dl>
+            <dt>交易编号：</dt>
+            <dd>$_[accountDetailDTO.dealCode]_</dd>
+        </dl>
+        <dl>
+            <dt>交易金额：</dt>
+            <dd>$_[accountDetailDTO.dealAmount]_ CNY</dd>
+        </dl>
+        <dl>
+            <dt>交易时间：</dt>
+            <dd>$_[accountDetailDTO.dealTime]_</dd>
+        </dl>
+        <dl>
+            <dt>交易类型：</dt>
+            <dd>$_[getConstName("OwmsDealTypeEnum",accountDetailDTO.dealType)]_</dd>
+        </dl>
+        <dl>
+            <dt>交易项目：</dt>
+            <dd>$_[getConstName("OwmsDealItemEnum",accountDetailDTO.dealItem)]_</dd>
+        </dl>
+        <dl>
+            <dt>交易状态：</dt>
+            <dd>$_[getConstName("OwmsDealStatusEnum", accountDetailDTO.dealStatus)]_</dd>
+        </dl>
+        <dl>
+            <dt>交易流水号：</dt>
+            <dd>$_[detailCode]_</dd>
+        </dl>
+        <dl>
+            <dt>确认操作人：</dt>
+            <dd>$_[confirmUser]_</dd>
+        </dl>
+        <dl>
+            <dt>确认时间：</dt>
+            <dd>$_[confirmTime]_</dd>
+        </dl>
+    </div>
+    <div class="details_R">
+        <dl>
+            <dt>付款人开户银行：</dt>
+            <dd>$_[payBankName]_</dd>
+        </dl>
+        <dl>
+            <dt>付款人户名全称：</dt>
+            <dd>$_[payUserFullName]_</dd>
+        </dl>
+        <dl>
+            <dt>付款人银行账号：</dt>
+            <dd>$_[payBankAccount]_</dd>
+        </dl>
+        <dl>
+            <dt>收款人开户银行：</dt>
+            <dd>$_[receiptBankName]_</dd>
+        </dl>
+        <dl>
+            <dt>收款人户名全称：</dt>
+            <dd>$_[receiptUserFullName]_</dd>
+        </dl>
+        <dl>
+            <dt>收款人银行账号：</dt>
+            <dd>$_[receiptBankAccount]_</dd>
+        </dl>
+    </div>
+</script>
+
+<!--小笨鸟充值-->
+<script type="text/tcl" id="details_xbn">
+    <div class="details_C">
+        <dl>
+            <dt>
+                <font></font>交易编号：
+            </dt>
+            <dd>$_[accountDetailDTO.dealCode]_</dd>
+        </dl>
+        <dl>
+            <dt>
+                <font></font>交易金额：
+            </dt>
+            <dd>_[{if accountDetailDTO.dealAmount}]_ $_[accountDetailDTO.dealAmount]_ _[{else}]_ 0 _[{/if}]_ CNY</dd>
+        </dl>
+        <dl>
+            <dt>
+                <font></font>交易时间：
+            </dt>
+            <dd>$_[accountDetailDTO.dealTime]_</dd>
+        </dl>
+        <dl>
+            <dt>
+                <font></font>交易类型：
+            </dt>
+            <dd>
+            $_[getConstName("OwmsDealTypeEnum",accountDetailDTO.dealType)]_
+            </dd>
+        </dl>
+        <dl>
+            <dt>
+                <font></font>交易项目：
+            </dt>
+            <dd>$_[getConstName("OwmsDealItemEnum",accountDetailDTO.dealItem)]_</dd>
+        </dl>
+        <dl>
+            <dt>
+                <font></font>交易状态：
+            </dt>
+            <dd>
+            $_[getConstName("OwmsDealStatusEnum", accountDetailDTO.dealStatus)]_
+            </dd>
+        </dl>
+        <dl>
+            <dt>
+                <font></font>充值操作人：
+            </dt>
+            <dd>$_[createUser]_</dd>
+        </dl>
+        <dl>
+            <dt>
+                <font></font>充值原因：
+            </dt>
+            <dd>$_[rechargeReason]_</dd>
+        </dl>
+    </div>
+</script>
+
+<!--头程运费-->
+<script type="text/tcl" id="details_firstLeg">
+    <div class="details_C">
+        <dl>
+            <dt>交易编号：</dt>
+            <dd>$_[accountDetailDTO.dealCode]_</dd>
+        </dl>
+        <dl>
+            <dt><font></font>交易金额：</dt>
+            <dd>_[{if accountDetailDTO.dealAmount}]_ $_[accountDetailDTO.dealAmount]_ _[{else}]_ 0 _[{/if}]_ CNY</dd>
+        </dl>
+        <dl>
+            <dt><font></font>交易时间：</dt>
+            <dd>$_[accountDetailDTO.dealTime]_</dd>
+        </dl>
+        <dl>
+            <dt><font></font>交易类型：</dt>
+            <dd>
+            $_[getConstName("OwmsDealTypeEnum",accountDetailDTO.dealType)]_
+            </dd>
+        </dl>
+        <dl>
+            <dt><font></font>交易项目：</dt>
+            <dd>$_[getConstName("OwmsDealItemEnum",accountDetailDTO.dealItem)]_</dd>
+        </dl>
+        <dl>
+            <dt><font></font>交易状态：</dt>
+            <dd>
+            $_[getConstName("OwmsDealStatusEnum", accountDetailDTO.dealStatus)]_
+            </dd>
+        </dl>
+        <dl>
+            <dt>收货预报编码</dt>
+            <dd>$_[forecastCode]_</dd>
+        </dl>
+        <dl>
+            <dt>运费单价：</dt>
+            <dd>$_[freightPrice]_ CNY/CBM</dd>
+        </dl>
+        <dl>
+            <dt>计费体积：</dt>
+            <dd>_[{if freightVolume}]_ $_[freightVolume]_ _[{else}]_ 0 _[{/if}]_ CBM</dd>
+        </dl>
+        <dl>
+            <dt>计费重量：</dt>
+            <dd>_[{if freightWeight}]_ $_[freightWeight]_ _[{else}]_ 0 _[{/if}]_ KG</dd>
+        </dl>
+        <dl>
+            <dt>退款交易编码：</dt>
+            <dd>$_[refundDealCode]_</dd>
+        </dl>
+        <dl>
+            <dt>已退金额：</dt>
+            <dd>_[{if refundAmount}]_ $_[refundAmount]_ _[{else}]_ 0 _[{/if}]_ CNY</dd>
+        </dl>
+    </div>
+</script>
+
+<!--保费-->
+<script type="text/tcl" id="details_premium">
+    <div class="details_C">
+        <dl>
+            <dt>交易编号：</dt>
+            <dd>$_[accountDetailDTO.dealCode]_</dd>
+        </dl>
+        <dl>
+            <dt><font></font>交易金额：</dt>
+            <dd>_[{if accountDetailDTO.dealAmount}]_ $_[accountDetailDTO.dealAmount]_ _[{else}]_ 0 _[{/if}]_ CNY</dd>
+        </dl>
+        <dl>
+            <dt><font></font>交易时间：</dt>
+            <dd>$_[accountDetailDTO.dealTime]_</dd>
+        </dl>
+        <dl>
+            <dt><font></font>交易类型：</dt>
+            <dd>
+            $_[getConstName("OwmsDealTypeEnum",accountDetailDTO.dealType)]_
+            </dd>
+        </dl>
+        <dl>
+            <dt><font></font>交易项目：</dt>
+            <dd>$_[getConstName("OwmsDealItemEnum",accountDetailDTO.dealItem)]_</dd>
+        </dl>
+        <dl>
+            <dt><font></font>交易状态：</dt>
+            <dd>
+            $_[getConstName("OwmsDealStatusEnum", accountDetailDTO.dealStatus)]_
+            </dd>
+        </dl>
+        <dl>
+            <dt>收货预报编码</dt>
+            <dd>$_[forecastCode]_</dd>
+        </dl>
+        <dl>
+            <dt>保价系数：</dt>
+            <dd>$_[insuredCoefficient]_</dd>
+        </dl>
+        <dl>
+            <dt>保额：</dt>
+            <dd>_[{if insuredAmount}]_ $_[insuredAmount]_ _[{else}]_ 0 _[{/if}]_ CNY</dd>
+        </dl>
+        <dl>
+            <dt>退款交易编码：</dt>
+            <dd>$_[refundDealCode]_</dd>
+        </dl>
+        <dl>
+            <dt>已退金额：</dt>
+            <dd>_[{if refundAmount}]_ $_[refundAmount]_ _[{else}]_ 0 _[{/if}]_ CNY</dd>
+        </dl>
+    </div>
+</script>
+
+<!--税费-->
+<script type="text/tcl" id="details_rent">
+    <div class="details_C">
+        <dl>
+            <dt>交易编号：</dt>
+            <dd>$_[accountDetailDTO.dealCode]_</dd>
+        </dl>
+        <dl>
+            <dt><font></font>交易金额：</dt>
+            <dd>_[{if accountDetailDTO.dealAmount}]_ $_[accountDetailDTO.dealAmount]_ _[{else}]_ 0 _[{/if}]_ CNY</dd>
+        </dl>
+        <dl>
+            <dt><font></font>交易时间：</dt>
+            <dd>$_[accountDetailDTO.dealTime]_</dd>
+        </dl>
+        <dl>
+            <dt><font></font>交易类型：</dt>
+            <dd>
+            $_[getConstName("OwmsDealTypeEnum",accountDetailDTO.dealType)]_
+            </dd>
+        </dl>
+        <dl>
+            <dt><font></font>交易项目：</dt>
+            <dd>$_[getConstName("OwmsDealItemEnum",accountDetailDTO.dealItem)]_</dd>
+        </dl>
+        <dl>
+            <dt><font></font>交易状态：</dt>
+            <dd>
+            $_[getConstName("OwmsDealStatusEnum", accountDetailDTO.dealStatus)]_
+            </dd>
+        </dl>
+        <dl>
+            <dt>收货预报编码</dt>
+            <dd>$_[forecastCode]_</dd>
+        </dl>
+        <dl>
+            <dt>关税：</dt>
+            <dd>$_[tariff]_ CNY（货值：$_[commodityValue]_ $_[currencyUnit]_，税率：$_[tariffTate]_%）</dd>
+        </dl>
+        <dl>
+            <dt>VAT/GST：</dt>
+            <dd>_[{if vatGst}]_ $_[vatGst]_ _[{else}]_ 0 _[{/if}]_ CNY（税率：$_[tariffTate]_%）</dd>
+        </dl>
+        <dl>
+            <dt>退款交易编码：</dt>
+            <dd>$_[refundDealCode]_</dd>
+        </dl>
+        <dl>
+            <dt>已退金额：</dt>
+            <dd>_[{if refundAmount}]_ $_[refundAmount]_ _[{else}]_ 0 _[{/if}]_ CNY</dd>
+        </dl>
+    </div>
+</script>
+
+<!--仓储-->
+<script type="text/tcl" id="details_warehouse">
+    <div class="details_C">
+        <dl>
+            <dt>交易编号：</dt>
+            <dd>$_[accountDetailDTO.dealCode]_</dd>
+        </dl>
+        <dl>
+            <dt><font></font>交易金额：</dt>
+            <dd>_[{if accountDetailDTO.dealAmount}]_ $_[accountDetailDTO.dealAmount]_ _[{else}]_ 0 _[{/if}]_ CNY</dd>
+        </dl>
+        <dl>
+            <dt><font></font>交易时间：</dt>
+            <dd>$_[accountDetailDTO.dealTime]_</dd>
+        </dl>
+        <dl>
+            <dt><font></font>交易类型：</dt>
+            <dd>
+            $_[getConstName("OwmsDealTypeEnum",accountDetailDTO.dealType)]_
+            </dd>
+        </dl>
+        <dl>
+            <dt><font></font>交易项目：</dt>
+            <dd>$_[getConstName("OwmsDealItemEnum",accountDetailDTO.dealItem)]_</dd>
+        </dl>
+        <dl>
+            <dt><font></font>交易状态：</dt>
+            <dd>
+            $_[getConstName("OwmsDealStatusEnum", accountDetailDTO.dealStatus)]_
+            </dd>
+        </dl>
+        <dl>
+            <dt>计费仓库</dt>
+            <dd>$_[storeName]_</dd>
+        </dl>
+        <dl>
+            <dt>计费单价：</dt>
+            <dd>_[{if unitPrice}]_ $_[unitPrice]_ _[{else}]_ 0 _[{/if}]_ CNY</dd>
+        </dl>
+        <dl>
+            <dt>计费体积：</dt>
+            <dd>_[{if vatGst}]_ $_[vatGst]_ _[{else}]_ 0 _[{/if}]_ kg</dd>
+        </dl>
+        <dl>
+            <dt>计费开始时间</dt>
+            <dd>$_[beginTime]_</dd>
+        </dl>
+        <dl>
+            <dt>计费截止时间</dt>
+            <dd>$_[endTime]_</dd>
+        </dl>
+        <dl>
+            <dt>退款交易编码：</dt>
+            <dd>$_[refundDealCode]_</dd>
+        </dl>
+        <dl>
+            <dt>已退金额：</dt>
+            <dd>_[{if refundAmount}]_ $_[refundAmount]_ _[{else}]_ 0 _[{/if}]_ CNY</dd>
+        </dl>
+    </div>
+</script>
+
+<!--订单处理费-->
+<script type="text/tcl" id="details_orderFee">
+    <div class="details_C">
+        <dl>
+            <dt>交易编号：</dt>
+            <dd>$_[accountDetailDTO.dealCode]_</dd>
+        </dl>
+        <dl>
+            <dt><font></font>交易金额：</dt>
+            <dd>_[{if accountDetailDTO.dealAmount}]_ $_[accountDetailDTO.dealAmount]_ _[{else}]_ 0 _[{/if}]_ CNY</dd>
+        </dl>
+        <dl>
+            <dt><font></font>交易时间：</dt>
+            <dd>$_[accountDetailDTO.dealTime]_</dd>
+        </dl>
+        <dl>
+            <dt><font></font>交易类型：</dt>
+            <dd>
+            $_[getConstName("OwmsDealTypeEnum",accountDetailDTO.dealType)]_
+            </dd>
+        </dl>
+        <dl>
+            <dt><font></font>交易项目：</dt>
+            <dd>$_[getConstName("OwmsDealItemEnum",accountDetailDTO.dealItem)]_</dd>
+        </dl>
+        <dl>
+            <dt><font></font>交易状态：</dt>
+            <dd>
+            $_[getConstName("OwmsDealStatusEnum", accountDetailDTO.dealStatus)]_
+            </dd>
+        </dl>
+        <dl>
+            <dt>计费重量</dt>
+            <dd>$_[num]_</dd>
+        </dl>
+        <dl>
+            <dt>计费重量段：</dt>
+            <dd>$_[step]_</dd>
+        </dl>
+        <dl>
+            <dt>发货单号：</dt>
+            <dd>$_[cardType]_</dd>
+        </dl>
+        <dl>
+            <dt>小笨鸟订单</dt>
+            <dd>$_[orderCode]_</dd>
+        </dl>
+        <dl>
+            <dt>原始订单号</dt>
+            <dd>$_[originalCode]_</dd>
+        </dl>
+        <dl>
+            <dt>退款交易编码：</dt>
+            <dd>$_[refundDealCode]_</dd>
+        </dl>
+        <dl>
+            <dt>已退金额：</dt>
+            <dd>_[{if refundAmount}]_ $_[refundAmount]_ _[{else}]_ 0 _[{/if}]_ CNY</dd>
+        </dl>
+    </div>
+</script>
+
+<!--海外快递费-->
+<script type="text/tcl" id="details_overseas">
+    <div class="details_C">
+        <dl>
+            <dt>交易编号：</dt>
+            <dd>$_[accountDetailDTO.dealCode]_</dd>
+        </dl>
+        <dl>
+            <dt><font></font>交易金额：</dt>
+            <dd>_[{if accountDetailDTO.dealAmount}]_ $_[accountDetailDTO.dealAmount]_ _[{else}]_ 0 _[{/if}]_ CNY</dd>
+        </dl>
+        <dl>
+            <dt><font></font>交易时间：</dt>
+            <dd>$_[accountDetailDTO.dealTime]_</dd>
+        </dl>
+        <dl>
+            <dt><font></font>交易类型：</dt>
+            <dd>
+            $_[getConstName("OwmsDealTypeEnum",accountDetailDTO.dealType)]_
+            </dd>
+        </dl>
+        <dl>
+            <dt><font></font>交易项目：</dt>
+            <dd>$_[getConstName("OwmsDealItemEnum",accountDetailDTO.dealItem)]_</dd>
+        </dl>
+        <dl>
+            <dt><font></font>交易状态：</dt>
+            <dd>
+            $_[getConstName("OwmsDealStatusEnum", accountDetailDTO.dealStatus)]_
+            </dd>
+        </dl>
+        <dl>
+            <dt>计费重量</dt>
+            <dd>$_[num]_</dd>
+        </dl>
+        <dl>
+            <dt>计费重量段：</dt>
+            <dd>$_[step]_</dd>
+        </dl>
+        <dl>
+            <dt>发货单号：</dt>
+            <dd>$_[cardType]_</dd>
+        </dl>
+        <dl>
+            <dt>小笨鸟订单</dt>
+            <dd>$_[orderCode]_</dd>
+        </dl>
+        <dl>
+            <dt>原始订单号</dt>
+            <dd>$_[originalCode]_</dd>
+        </dl>
+        <dl>
+            <dt>退款交易编码：</dt>
+            <dd>$_[refundDealCode]_</dd>
+        </dl>
+        <dl>
+            <dt>已退金额：</dt>
+            <dd>_[{if refundAmount}]_ $_[refundAmount]_ _[{else}]_ 0 _[{/if}]_ CNY</dd>
+        </dl>
+    </div>
+</script>
+
+<!--退款到银行卡-->
+<script type="text/tcl" id="details_refundBalance">
+    <div class="details_C">
+        <dl>
+            <dt>交易编号：</dt>
+            <dd>$_[accountDetailDTO.dealCode]_</dd>
+        </dl>
+        <dl>
+            <dt><font></font>交易金额：</dt>
+            <dd>_[{if accountDetailDTO.dealAmount}]_ $_[accountDetailDTO.dealAmount]_ _[{else}]_ 0 _[{/if}]_ CNY</dd>
+        </dl>
+        <dl>
+            <dt><font></font>交易时间：</dt>
+            <dd>$_[accountDetailDTO.dealTime]_</dd>
+        </dl>
+        <dl>
+            <dt><font></font>交易类型：</dt>
+            <dd>
+            $_[getConstName("OwmsDealTypeEnum",accountDetailDTO.dealType)]_
+            </dd>
+        </dl>
+        <dl>
+            <dt><font></font>交易项目：</dt>
+            <dd>$_[getConstName("OwmsDealItemEnum",accountDetailDTO.dealItem)]_</dd>
+        </dl>
+        <dl>
+            <dt><font></font>交易状态：</dt>
+            <dd>
+            $_[getConstName("OwmsDealStatusEnum", accountDetailDTO.dealStatus)]_
+            </dd>
+        </dl>
+        <dl>
+            <dt>付款人开户银行</dt>
+            <dd>$_[payBankName]_</dd>
+        </dl>
+        <dl>
+            <dt>付款人户名全称：</dt>
+            <dd>$_[payUserFullName]_</dd>
+        </dl>
+        <dl>
+            <dt>付款人银行账号：</dt>
+            <dd>$_[payBankAccount]_</dd>
+        </dl>
+        <dl>
+            <dt>收款人开户银行：</dt>
+            <dd>$_[receiptBankName]_</dd>
+        </dl>
+        <dl>
+            <dt>收款人户名全称：</dt>
+            <dd>$_[receiptUserFullName]_</dd>
+        </dl>
+        <dl>
+            <dt>收款人银行账号：</dt>
+            <dd>$_[receiptBankAccount]_</dd>
+        </dl>
+        <dl>
+            <dt>交易流水号：</dt>
+            <dd>$_[detailCode]_</dd>
+        </dl>
+        <dl>
+            <dt>付款时间</dt>
+            <dd>$_[payTime]_</dd>
+        </dl>
+        <dl>
+            <dt>登记操作人：</dt>
+            <dd>$_[createUser]_</dd>
+        </dl>
+        <dl>
+            <dt>退款原因：</dt>
+            <dd>
+            $_[refundReason]_
+            </dd>
+        </dl>
+    </div>
+</script>
+
+<!--退款到余额-->
+<script type="text/tcl" id="details_refundMember">
+    <div class="details_C">
+        <dl>
+            <dt>交易编号：</dt>
+            <dd>$_[accountDetailDTO.dealCode]_</dd>
+        </dl>
+        <dl>
+            <dt><font></font>交易金额：</dt>
+            <dd>_[{if accountDetailDTO.dealAmount}]_ $_[accountDetailDTO.dealAmount]_ _[{else}]_ 0 _[{/if}]_ CNY</dd>
+        </dl>
+        <dl>
+            <dt><font></font>交易时间：</dt>
+            <dd>$_[accountDetailDTO.dealTime]_</dd>
+        </dl>
+        <dl>
+            <dt><font></font>交易类型：</dt>
+            <dd>
+            $_[getConstName("OwmsDealTypeEnum",accountDetailDTO.dealType)]_
+            </dd>
+        </dl>
+        <dl>
+            <dt><font></font>交易项目：</dt>
+            <dd>$_[getConstName("OwmsDealItemEnum",accountDetailDTO.dealItem)]_</dd>
+        </dl>
+        <dl>
+            <dt><font></font>交易状态：</dt>
+            <dd>
+            $_[getConstName("OwmsDealStatusEnum", accountDetailDTO.dealStatus)]_
+            </dd>
+        </dl>
+        <dl>
+            <dt>关联交易编号</dt>
+            <dd>$_[refundForDealCode]_</dd>
+        </dl>
+        <dl>
+            <dt>退款操作人：</dt>
+            <dd>$_[refundOperator]_</dd>
+        </dl>
+        <dl>
+            <dt>退款原因：</dt>
+            <dd>$_[refundReason]_</dd>
+        </dl>
+    </div>
+</script>

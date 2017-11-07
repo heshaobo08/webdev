@@ -1,0 +1,354 @@
+.clear {
+    clear: both;
+}
+
+.warpper {
+    width: 100%;
+    height: auto;
+}
+
+.login_header {
+    width: 100%;
+    height: 40px;
+    background: #0d0537;
+}
+
+.login_header p {
+    width: 1000px;
+    margin: auto;
+    line-height: 40px;
+    font-size: 12px;
+    background: #0d0537;
+}
+
+.login_header p a {
+    color: #aebbcb;
+}
+
+.login_header p a:hover {
+    color: #fff;
+}
+
+.help_center {
+    float: right;
+}
+
+.login_personal {
+    padding-left: 40px;
+}
+
+.login_header p span.login_hd_active a {
+    color: #fff;
+}
+
+.login_nav_bg {
+    opacity: 0.71;
+    background: #030011;
+    width: 100%;
+    height: 100px;
+    min-width: 1000px;
+    position: absolute;
+    left: 0px;
+    top: 40px;
+}
+
+.login_nav {
+    width: 1000px;
+    margin: auto;
+    opacity: 0.71;
+    background: #030011;
+}
+
+.login_nav_left {
+    float: left;
+}
+
+.login_nav_left p {
+    padding-top: 35px;
+}
+
+.logo_hx {
+    border-left: 1px solid #ffffff;
+    width: 1px;
+    height: 29px;
+    display: inline-block;
+    margin: 0px 15px;
+}
+
+.logo_text {
+    font-size: 24px;
+    color: #ffffff;
+    letter-spacing: 0px;
+    line-height: 24px;
+    text-align: left;
+    position: relative;
+    bottom: 7px;
+}
+
+.login_nav_right {
+    float: right;
+}
+
+.login_nav_right ul li {
+    float: left;
+    font-size: 16px;
+    line-height: 100px;
+    width: 100px;
+}
+
+.login_nav_right ul li a {
+    color: #ffffff;
+}
+
+.login_nav_right ul li a:hover {
+    color: #4287f5;
+}
+
+.login_nav_right ul li.login_nav_active a {
+    color: #4287f5;
+}
+
+.b_success_color {
+    border: solid 1px #2b91e6;
+}
+
+.b_error_color {
+    border: solid 1px red;
+}
+
+.login_hd {
+    width: 100%;
+    height: 500px;
+    background: url(../images/ngp_banner.jpg) center no-repeat;
+    min-width: 1000px;
+}
+
+.ngp_login_t {
+    width: 1000px;
+    margin: auto;
+    position: relative;
+}
+
+
+.ngp_login_box {
+    width: 320px;
+    float: right;
+    margin-top: 120px;
+    padding-bottom: 20px;
+    box-shadow: -2px 5px 4px 0px rgba(0, 0, 0, 0.50);
+    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#040113', endColorstr='#040113');
+    background-color: rgba(4, 1, 19, 0.7);
+}
+
+.login_box {
+    margin: 0px 19px;
+    position: relative;
+}
+
+.ngp_login_hd {
+    font-size: 16px;
+    color: #fff;
+    padding: 10px 0px;
+    border-bottom: solid 1px #ccc;
+    font-weight: 400;
+    text-align: center;
+}
+
+.login_box p {
+    margin-top: 20px;
+    position: relative;
+}
+
+.login_box p.login_name_top {
+    margin-top: 50px;
+}
+
+.login_name {
+    width: 39px;
+    height: 39px;
+    background: url(../images/login_name.png) no-repeat;
+    background-position: 1px 0px;
+    display: inline-block;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+.login_input {
+    width: 230px;
+    height: 38px;
+    outline: none;
+    padding-left: 50px;
+    font-size: 14px;
+    color: #333;
+    background: #fff;
+}
+.login_pswd_img {
+    position: absolute;
+    top: 56px;
+    left: 0px;
+}
+
+.login_bg {
+    border: 1px solid #d8d8d8;
+}
+
+.login_input_c {
+    font-size: 12px;
+    color: #0190ff;
+}
+
+.login_safe {
+    width: 39px;
+    height: 39px;
+    background: url(../images/login_name.png) no-repeat;
+    background-position: -139px 0px;
+    display: inline-block;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+.login_psd {
+    width: 39px;
+    height: 39px;
+    background: url(../images/login_name.png) no-repeat;
+    background-position: -279px 0px;
+    display: inline-block;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+.login_pwd_y {
+    display: none;
+}
+
+.login_yzm {
+    width: 39px;
+    height: 39px;
+    background: url(../images/login_name.png) no-repeat;
+    background-position: -559px 0px;
+    display: inline-block;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+.login_yzm_w {
+    width: 114px;
+    height: 38px;
+    outline: none;
+    padding-left: 50px;
+    font-size: 14px;
+    color: #333;
+}
+
+.login_yzm_box {
+    width: 70px;
+    height: 36px;
+    display: inline-block;
+    border: solid 2px #8c4614;
+    position: absolute;
+    top: 0px;
+    right: 38px;
+    line-height: 40px;
+    text-align: center;
+    font-size: 18px;
+    color: #462bcd;
+    letter-spacing: 5px;
+    font-style: italic;
+    text-shadow: #462bcd 5px 5px 5px;
+}
+
+.login_yzm_change {
+    position: absolute;
+    top: 12px;
+    right: -4px;
+    font-size: 12px;
+    color: #0190ff;
+    cursor: pointer;
+}
+
+.login_safe_c {
+    display: none;
+}
+
+.login_pwd_f {
+    display: -none;
+}
+
+.login_box h3 {
+    background: #0190ff;
+    width: 280px;
+    height: 40px;
+    font-size: 16px;
+    color: #fff;
+    font-weight: 400;
+    cursor: pointer;
+    line-height: 40px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.login_box h6 {
+    font-size: 12px;
+    color: #018eff;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.login_forget {
+    float: right;
+}
+
+.login_del {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    display: none;
+    cursor: pointer;
+}
+
+.login_yzm_del {
+    position: absolute;
+    right: 124px;
+    top: 10px;
+    display: none;
+    cursor: pointer;
+}
+
+.login_error_tip {
+    width: 282px;
+    height: 32px;
+    background: url(../images/login_name.png) no-repeat;
+    background-position: -699px 0px;
+    position: absolute;
+    top: -32px;
+    left: 0px;
+    font-size: 12px;
+    color: #ff0000;
+    line-height: 32px;
+    padding-left: 32px;
+    display: none;
+}
+
+.login_footer {
+    background: #0d0537;
+    width: 100%;
+    height: 220px;
+    min-width: 1000px;
+}
+
+.login_footer_ct {
+    width: 1000px;
+    margin: auto;
+    padding-top: 60px;
+}
+
+.login_footer_ct p {
+    font-size: 14px;
+    color: #fff;
+    text-align: center;
+    padding-top: 20px;
+}

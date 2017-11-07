@@ -1,0 +1,183 @@
+<div class="details">
+    <h3 class="titleText">关联会员</h3>
+    <div class="related">
+        <dl class="fL">
+            <dt>手机号：</dt>
+            <dd>${source.userMobile}</dd>
+        </dl>
+        <dl class="fR">
+            <dt>邮箱：</dt>
+            <dd>${source.userEmail}</dd>
+        </dl>
+    </div>
+    <div class="related">
+        <dl class="fL">
+            <dt>会员名称：</dt>
+            <dd>${source.companyName}</dd>
+        </dl>
+    </div>
+</div>
+<div class="details">
+<form id='brandAuthFrom'>
+    <h3 class="titleText">品牌信息</h3>
+    <input type="hidden" value='${source.id}' name='id'>
+    <input type="hidden" value='${source.companyId}' name='companyId'>
+    <input type="hidden" value='${source.userId}' name='userId'>
+    <div class="relatedBox">
+        <dl class="textDl">
+            <dt>中文名称：</dt>
+            <dd>
+            {{if source.returnUrl}}
+                <input type="text" class="input w240 js-checkName" name='cnName' value='${source.cnName}' required>
+            {{else}}
+                ${source.cnName}
+            {{/if}}
+            </dd>
+        </dl>
+        <dl class="textDl">
+            <dt>英文名称：</dt>
+            <dd>
+            {{if source.returnUrl}}
+            <input type="text" class="input w240 js-checkName" name='enName' value='${source.enName}' required pattern='^[\w]+\s*[\w]+$'>
+            {{else}}
+            ${source.enName}
+            {{/if}}
+            </dd>
+        </dl>
+        <dl class="textImg" id="logoItem">
+            <dt>品牌LOGO：</dt>
+            <dd>
+                {{if typeof source.filedata['0']!='undefined'}}
+                <img src="${source.filedata['0'][0].fileOriginalurl}" data-filedId='${source.filedata["0"][0].relFileId}'/>
+                {{else}}
+                <img src="" alt="" class='none'>
+                {{/if}}
+                <a href="javascript:;" class="button rel fix">添加图片<input type="file" class='uploadBtn'  id='js-centifyLogo'></a>
+                <input type="hidden" name='centifyLogo'  required data-target='js-centifyLogo' value='{{if source.filedata["0"]}}${source.filedata["0"][0].relFileId}{{/if}}'>
+            </dd>
+        </dl>
+        <dl class="textDl">
+            <dt>经营模式：</dt>
+            <dd>
+                <span class="mR40">
+                    <input type="radio" name='businessModel' class="mR10" required value="own" {{if source.businessModel=='own'}} checked {{/if}} />自有品牌</span>
+                <span class="mR40">
+                    <input type="radio" name='businessModel' class="mR10" value="agent" {{if source.businessModel=='agent'}} checked {{/if}} />代理品牌</span>
+            </dd>
+        </dl>
+
+        <dl class="textDl {{if source.businessModel=='own'}}none{{/if}}" id='businessOwn'>
+            <dt>品牌商品名：</dt>
+            <dd><input type="text" class='input' value="{{if source.businessModel=='agent'}}${source.brandType}{{/if}}" name='brandType'></dd>
+        </dl>
+        <dl class="textDl {{if source.businessModel=='agent' || source.businessModel!='own'}}none{{/if}}" id='businessAgent'>
+            <dt>商标类型：</dt>
+            <dd>
+                <span class="mR40">
+                    <input type="radio" name='brandType' class="mR10" value='R' {{if source.businessModel=='own' && source.brandType=='R'}}checked{{/if}}/>R标</span>
+                <span class="mR40">
+                    <input type="radio" name='brandType' class="mR10" value='TM' {{if source.businessModel=='own' && source.brandType=='TM'}}checked{{/if}}/>TM标</span>
+                <span class="explainText" {{if source.businessModel=='own' && source.brandType=='TM'}}{{else}}style='display:none'{{/if}}>
+                    TM标有效期为商标申请受理书发文日期延后两年
+                </span>
+            </dd>
+        </dl>
+        <dl class="textDl">
+            <dt>商标有限期至：</dt>
+            <dd>
+                <div class="deadline">
+                    <div class="dataBegin">
+                        <span class="dataInput" id="startTime" name='brandExpireTime'>${source.brandExpireTime}</span>
+                        <input type="hidden" id='brandExpireTime' value="${source.brandExpireTime}" required data-target='jd-brandExpireTime'>
+                        <a href="javascript:;" class="timeStart icon-54"></a>
+                    </div>
+                </div>
+            </dd>
+        </dl>
+        <dl class="textImg">
+            <dt>资质证书：</dt>
+            <dd>
+                <div class="inline_block">
+                    <div class='setPic'>
+                    {{if  source.filedata && source.filedata['1']}}
+                        {{each(i,img) source.filedata['1']}}
+                            <a href="javascript:;" class='imgLink'><img src="${img.fileOriginalurl}" class="mR20" data-filedId='${img.relFileId}'/><span class="js-delThis">X</span></a>
+                        {{/each}}
+                    {{/if}}
+                    </div>
+                    <a href="javascript:;" class="button rel mT20">添加图片<input type="file" id="jd-uploadImgId"/></a>
+                    <input type="hidden" name="cnetifyLiencense" required data-target="jd-uploadImgId" value='{{if  source.filedata && source.filedata["1"]}}${source.filedata["1"][0].relFileId}{{/if}}'>
+                </div>
+                <!--代理品牌修改-->
+                <span class="explainText centifyAgent" {{if source.businessModel=='own'}}style='display:none'{{/if}}>请上传该品牌的销售授权书及进货发票，如果为多级授权，则需上传多级授权书附件</span>
+                <!--代理品牌修改end-->
+                <!--自有品牌修改-->
+                <span class="explainText centifyOwn" {{if source.businessModel=='agent' || source.businessModel!='own'}}style='display:none'{{/if}}>商标注册证或商标注册申请受理书</span>
+                <!--自有品牌修改end-->
+            </dd>
+        </dl>
+        <dl class="textDl">
+            <dt>授权站点：</dt>
+            <dd class="siteShow">
+            {{if source.siteAuthList.length}}
+                {{each(i,site) source.siteAuthList}}
+                <a href="javascript:;" data-siteId='${site.siteId}'>${site.siteName}</a>
+                {{/each}}
+            {{else}}
+                未授权
+            {{/if}}
+            </dd>
+            <dd>
+                <a class="button js-editBrandSite" href="javascript:;" data-id='${source.id}'>编辑授权站点</a>
+            </dd>
+        </dl>
+    </div>
+    </form>
+</div>
+<!-- conts end -->
+<!--中间内容区域 end-->
+<div class="btnMain">
+    <a href="javascript:;" class="button js-brandAuthSubmit">保存</a><a href="javascript:;" class="buttonText pad20" data-href='{{if source.returnUrl}}?m=${source.returnUrl}{{else}}?m=xhr_id_33_47{{/if}}' data-title='会员管理-品牌管理'>取消</a>
+</div>
+<div class="layercon none"></div>
+
+
+
+<script id='allSiteTmpl' type='text/x-jquery-tmpl'>
+<div class="">
+    <form id='siteAuthEditForm'>
+    <input type="hidden" name='qualificationId' value="$_[id]_"/>
+    <input type="hidden" name='userId' value="$_[userId]_"/>
+    <dl class="licenseEdit">
+        <dt>品牌名称：</dt>
+        <dd>$_[cnName]_</dd>
+    </dl>
+    <dl class="licenseEdit">
+        <dt>选择站点：</dt>
+        <dd>
+            _[{if hasSelectData}]_
+                _[{each(i,site) siteAuthList}]_
+                <span class="">
+                    <input type="checkbox" class="mR5" name='siteId' required disabled $_[hasSelectData[site.siteId]]_ value="$_[site.siteId]_" data-name="$_[site.siteName]_"/>$_[site.siteName]_</span>
+                _[{/each}]_
+                _[{each(i,site) unAuthList}]_
+                <span class="">
+                    <input type="checkbox" class="mR5" name='siteId' $_[hasSelectData[site.siteId]]_ value="$_[site.siteId]_" data-name="$_[site.siteName]_"/>$_[site.siteName]_</span>
+                _[{/each}]_
+            _[{else}]_
+                _[{each(i,site) siteAuthList}]_
+                <span class="">
+                    <input type="checkbox" class="mR5" name='siteId' required checked disabled value="$_[site.siteId]_" data-name="$_[site.siteName]_"/>$_[site.siteName]_
+                </span>
+                _[{/each}]_
+                _[{each(i,site) unAuthList}]_
+                <span class="">
+                    <input type="checkbox" class="mR5" name='siteId' value="$_[site.siteId]_" data-name="$_[site.siteName]_"/>$_[site.siteName]_
+                </span>
+                _[{/each}]_
+            _[{/if}]_
+        </dd>
+    </dl>
+    </form>
+</div>
+</script>

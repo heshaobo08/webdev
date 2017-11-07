@@ -1,0 +1,40 @@
+{
+	"statusCode" : "2000000",
+	"data"        : {
+		"id": "4028e4184e527850014e52785d660000",
+		"roleName": "9505e1b4fd4d400fb49e00fd9a634cfd",
+		"isValid": "false",
+		"remark": "Test data for edit ...",
+		"createTime": "2015-04-08 10:04:26",
+		"updateTime": "2015-04-08 10:04:26",
+		"menuIds": "245|246",
+		"menuList": [
+			{
+				"id": 245,
+				"parentId": -1,
+				"menuName": "3a7205bbcd434684a3971231f04141eb",
+				"level": 1,
+				"code": "c685944ef8e74d5ca3de813e3b303d89",
+				"isValid": "false",
+				"menuType": "1",
+				"sort": 2,
+				"remark": "Test data ...",
+				"createTime": "2015-04-08 10:04:26",
+				"updateTime": "2015-04-08 10:04:26"
+			},
+			{
+				"id": 246,
+				"parentId": -1,
+				"menuName": "3706c17bbced4e80b24bf9b92c932cf1",
+				"level": 1,
+				"code": "90605c0927454cf2b48534b8958e0c6f",
+				"isValid": "true",
+				"menuType": "1",
+				"sort": 3,
+				"remark": "Test data ...",
+				"createTime": "2015-04-08 10:04:26",
+				"updateTime": "2015-04-08 10:04:26"
+			}
+		]
+	}
+}

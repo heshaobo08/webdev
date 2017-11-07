@@ -1,0 +1,410 @@
+
+<input type="hidden" name='id' value="${source.id}">
+<input type="hidden" name='companyType' value="${source.companyType}">
+{{if !source.id}}
+<div class="details">
+    <h3 class="titleText">选择类型</h3>
+    <div class="initBox fix">
+        <dl class="editDl">
+            <dt><font>*</font>选择类型：</dt>
+            <dd>
+                <input type="radio" checked name="cType" value="1" class="mR10" /><i class="mR50">企业入驻</i>
+                <input type="radio" name="cType" value="2" class="mR10" /><i>个人入驻</i>
+            </dd>
+        </dl>
+    </div>
+</div>
+{{/if}}
+
+<!-- 其他 -->
+<form id='addRelateSubmitForm'>
+<div class="infos" id="infos">
+
+</div>
+</form>
+<!-- conts end -->
+<!--中间内容区域 end-->
+<div class="btnMain">
+    <a href="javascript:;" class="button js-addRelatedUserSubmit" data-id='${source.id}'>提交审核</a><a href="javascript:;" class="buttonText pad20" data-href='?m=xhr_id_33_58' data-title='会员管理-入驻审核'>取消</a>
+</div>
+
+<div class="layercon none"></div>
+
+<script id='addRelatedTmpl' type='text/x-jquery-tmpl'>
+    <div class="" style="padding:30px 40px;">
+    <form id='addRelateForm'>
+    <dl class="singleSearch">
+        <dd>
+            <div class="select w120 fL mR10" id='jd-orderSelect'>
+                <input index-data="" type="hidden" class='orderSelect' required data-target='jd-orderSelect'>
+                <i index-data="">按名称查询</i>
+                <em class="icon-52"></em>
+                <ul>
+                    <li index-data="mobile">
+                        <span>按手机号查询</span>
+                    </li>
+                    <li index-data="userName">
+                        <span>按用户名查询</span>
+                    </li>
+                </ul>
+            </div>
+            <input type="text" value="" class="input w190 orderBySelectField" required>
+            <a href="javascript:;" class="button mL10 js-selectRelatedSearch">search</a>
+        </dd>
+    </dl>
+    </form>
+    <div class="bigTable none">
+        <form id='addRelatedUserSelectTable'>
+        <table class="" border="0" cellspacing="0">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>用户名</th>
+                    <th>手机号</th>
+                    <th>状态</th>
+                </tr>
+            </thead>
+            <tbody id='selectRelatedUser'>
+
+            </tbody>
+        </table>
+        </form>
+    </div>
+
+</div>
+</script>
+
+
+<script id='companyTmpl' type='text/x-jquery-tmpl'>
+
+    _[{if userDetail}]_
+    <input type="hidden" name='userId' value="$_[userId]_">
+    <!-- 修改 -->
+    <div class="details">
+        <h3 class="titleText">关联会员</h3>
+        <div class="related">
+            <dl class="fL">
+                <dt>手机号：</dt>
+                <dd>_[{if userDetail}]_$_[userDetail.mobile]__[{/if}]_</dd>
+            </dl>
+            <dl class="fR">
+                <dt>邮箱：</dt>
+                <dd>_[{if userDetail}]_$_[userDetail.email]__[{/if}]_</dd>
+            </dl>
+        </div>
+    </div>
+    _[{else}]_
+    <!-- 新增 -->
+    <div class="details">
+        <h3 class="titleText">关联会员</h3>
+        <div class="initBox fix">
+            <dl class="editDl">
+                <dt><font>*</font>关联帐号：</dt>
+                <dd>
+                    <a href="javascript:;" class="button js-addRelatedAccount" id='jd-userId'>选择关联帐号</a>
+                </dd>
+            </dl>
+            <div class="related none">
+                <input type="hidden" name="userId" required data-target='jd-userId'>
+                <dl class="fL">
+                    <dt>手机号：</dt>
+                    <dd class='relatedMobile'></dd>
+                </dl>
+                <dl class="fR">
+                    <dt>用户名：</dt>
+                    <dd class='relatedName'></dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+    _[{/if}]_
+    <div class="details">
+        <h3 class="titleText">基本信息</h3>
+        <div class="initBox fix">
+            <dl class="editDl">
+                <dt><font>*</font>企业名称：</dt>
+                <dd><input type="text" name='companyName' value="$_[companyName]_" class="input w240 validName" required data-cnmax="60" maxlength="60"/></dd>
+            </dl>
+            <dl class="editTXA fix dlSele"  id="addressData">
+                <dt><font>*</font>企业地址：</dt>
+                <dd>
+                    <div class="select w140 fL mR20" id='jd-province'>
+                        <input index-data="$_[province]_" name='province' type="hidden" value="" required data-target='jd-province'>
+                        <i>请选择</i>
+                        <em class="icon-52"></em>
+                        <ul>
+                            <li index-data=""><span>请选择</span></li>
+                        </ul>
+                    </div>
+                    <div class="select w140 fL mR20" id='jd-city'>
+                        <input index-data="$_[city]_" name='city' type="hidden" value="请选择" required data-target='jd-city'>
+                        <i>请选择</i>
+                        <em class="icon-52"></em>
+                        <ul>
+                            <li index-data=""><span>请选择</span></li>
+                        </ul>
+                    </div>
+                    <div class="select w140 fL mR20" id='jd-county'>
+                        <input index-data="$_[county]_" name='county' type="hidden" value="请选择" required data-target='jd-county'>
+                        <i>请选择</i>
+                        <em class="icon-52"></em>
+                        <ul>
+                            <li index-data=""><span>请选择</span></li>
+                        </ul>
+                    </div>
+                    <input type="text" value="$_[address]_" name='address'  class="input w480 mT20" maxlength="80" required data-cnmax="80"/>
+                </dd>
+            </dl>
+            <dl class="editDl">
+                <dt><font></font>邮编：</dt>
+                <dd><input type="text" value="$_[postcode]_" name='postcode' class="input w240" pattern="^[0-9]{6}$"/></dd>
+            </dl>
+            <dl class="editDl">
+                <dt><font>*</font>法人代表：</dt>
+                <dd><input type="text" value="$_[legalRepresent]_" name='legalRepresent' class="input w240" required data-cnmax="40" maxlength="40" pattern="^[\u4e00-\u9fa5a-zA-Z\s]+$"/></dd>
+            </dl>
+            <dl class="editDl">
+                <dt><font>*</font>工商注册号：</dt>
+                <dd><input type="text" value="$_[registeredNo]_" name='registeredNo' pattern='^[1-9][\da-zA-Z]{14,17}$' required  maxlength="18" class="input w240 validName"/></dd>
+            </dl>
+
+            <dl class="editTXA">
+                <dt><font>*</font>营业执照(副本)：</dt>
+                <dd class="mL135">
+                    <span class="_[{if !fileOriginalurl && !businessLicense }]_none_[{/if}]_ businessLicenseImg">
+                        <img src="$_[fileOriginalurl || businessLicense]_" class="mB20 mR20">
+                    </span>
+                    <a href="javascript:;" class="button rel fix">添加图片<input type="file" class='uploadBtn' id='js-businessLicense'></a>
+                    <input type="hidden"  name='businessLicense'  required data-target='js-businessLicense' value='$_[relFileId]_'>
+                    <span class="explainText">小贴士：附件图片的格式为JPEG、PNG、BMP，单张图片大小≤2M，建议图片尺寸500*500以上。</span>
+                </dd>
+            </dl>
+            <dl class="editTXA">
+                <dt><font>*</font>企业简介：</dt>
+                <dd>
+                     <textarea class="w480 h90" name='description' required data-cnmax='1000' maxlength="1000">$_[description]_</textarea>
+                </dd>
+            </dl>
+            <dl class="editDl">
+                <dt><font>*</font>单品SKU总量：</dt>
+                <dd><input type="number" value="$_[skuTotal]_" name='skuTotal' class="input w240" required data-max="9" min="1" maxlength="9"/></dd>
+            </dl>
+            <dl class="editDl">
+                <dt><font>*</font>单品均价： </dt>
+                <dd>
+                    <div class="select w240 fL mR20 otherSelect" id="jd-averageSkuPrice">
+                        <input index-data="$_[averageSkuPrice]_" name='averageSkuPrice' type="hidden" value="请选择" required data-target='jd-averageSkuPrice'>
+                        <i>请选择</i>
+                        <em class="icon-52"></em>
+                        <ul>
+                            <li index-data=""><span>请选择</span></li>
+                            <li index-data="1" _[{if averageSkuPrice=='1'}]_class='active'_[{/if}]_><span>1-100</span></li>
+                            <li index-data="2" _[{if averageSkuPrice=='2'}]_class='active'_[{/if}]_><span>101-200</span></li>
+                            <li index-data="3" _[{if averageSkuPrice=='3'}]_class='active'_[{/if}]_><span>201-300</span></li>
+                            <li index-data="4" _[{if averageSkuPrice=='4'}]_class='active'_[{/if}]_><span>301-500</span></li>
+                            <li index-data="5" _[{if averageSkuPrice=='5'}]_class='active'_[{/if}]_><span>501-1000</span></li>
+                            <li index-data="6" _[{if averageSkuPrice=='6'}]_class='active'_[{/if}]_><span>1000以上</span></li>
+                        </ul>
+                    </div>
+                </dd>
+            </dl>
+        </div>
+    </div>
+    <div class="details">
+        <h3 class="titleText">银行结算账户信息</h3>
+        <div class="initBox fix">
+            <input type="hidden" name='bankId' value='_[{if bankdata}]_$_[bankdata.id]__[{/if}]_'>
+            <dl class="editDl">
+                <dt><font>*</font>开户银行：</dt>
+                <dd>
+                    <div class="select w240 fL mR20 otherSelect" id='jd-openbank'>
+                        <input index-data="_[{if bankdata}]_$_[bankdata.bank]__[{/if}]_" name="bank" type="hidden" value="请选择" required data-target='jd-openbank'>
+                        <i>请选择</i>
+                        <em class="icon-52"></em>
+                        <ul>
+                        _[{each(i,bank) dictionaryBankList}]_
+                            <li index-data="$_[bank.id]_" _[{if bankdata}]__[{if bankdata.bank==bank.id}]_class='active'_[{/if}]__[{/if}]_><span>$_[bank.name]_</span></li>
+                        _[{/each}]_
+                        </ul>
+                    </div>
+                </dd>
+            </dl>
+            <dl class="editDl">
+                <dt><font>*</font>银行网点：</dt>
+                <dd>
+                    <input type="text" value="_[{if bankdata}]_$_[bankdata.branch]__[{/if}]_" name='branch' class="input w240" data-cnmax='60' required pattern="^[\u4e00-\u9fa5a-zA-Z\d]+$" />
+                </dd>
+            </dl>
+            <dl class="editDl">
+                <dt><font>*</font>开户名：</dt>
+                <dd><input type="text" name='accountName' required class="input w240" value='_[{if bankdata}]_$_[bankdata.accountName]__[{/if}]_' name='accountName' data-cnmax='60'></dd>
+            </dl>
+            <dl class="editDl">
+                <dt><font>*</font>银行账号：</dt>
+                <dd><input type="text" required value="_[{if bankdata}]_$_[bankdata.bankAccount]__[{/if}]_" name='bankAccount' class="input w240 js-verify" maxlength="20" data-min="12" data-max="20" pattern="^\d{12,20}$"/></dd>
+            </dl>
+            <dl class="editTXA">
+                <dt><font>*</font>银行开户许可证：</dt>
+                <dd class="mL135">
+                    <span class="_[{if !bankdata}]_none_[{/if}]_ bankLicenseImg">
+                        <img src="_[{if bankfileOriginalurl}]_$_[bankfileOriginalurl]__[{else bankdata}]_$_[bankdata.licence]__[{/if}]_" class="mB20 mR20">
+                    </span>
+                    <a href="javascript:;" class="button rel fix">添加图片<input type="file" class='uploadBtn' id='js-bankLicense'></a>
+                    <input type="hidden"  name='bankLicense'  required data-target='js-bankLicense' value='_[{if bankrelFileId || bankdata}]_$_[bankrelFileId || bankdata.licence]__[{/if}]_'>
+                    <span class="explainText">请上传银行开户许可证扫描件或照片</span>
+                </dd>
+            </dl>
+        </div>
+    </div>
+</script>
+
+<script id='singleTmpl' type='text/x-jquery-tmpl'>
+    _[{if userDetail}]_
+    <input type="hidden" name='userId' value="$_[userId]_">
+    <!-- 修改 -->
+    <div class="details">
+        <h3 class="titleText">关联会员</h3>
+        <div class="related">
+            <dl class="fL">
+                <dt>手机号：</dt>
+                <dd>_[{if userDetail}]_$_[userDetail.mobile]__[{/if}]_</dd>
+            </dl>
+            <dl class="fR">
+                <dt>邮箱：</dt>
+                <dd>_[{if userDetail}]_$_[userDetail.email]__[{/if}]_</dd>
+            </dl>
+        </div>
+    </div>
+    _[{else}]_
+    <!-- 新增 -->
+    <div class="details">
+        <h3 class="titleText">关联会员</h3>
+        <div class="initBox fix">
+            <dl class="editDl">
+                <dt><font>*</font>关联帐号：</dt>
+                <dd>
+                    <a href="javascript:;" class="button js-addRelatedAccount" id='jd-userId'>选择关联帐号</a>
+                </dd>
+            </dl>
+            <div class="related none">
+                <input type="hidden" name="userId" required data-target='jd-userId'>
+                <dl class="fL">
+                    <dt>手机号：</dt>
+                    <dd class='relatedMobile'></dd>
+                </dl>
+                <dl class="fR">
+                    <dt>用户名：</dt>
+                    <dd class='relatedName'></dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+    _[{/if}]_
+    <div class="details">
+        <h3 class="titleText">基本信息</h3>
+        <div class="initBox fix">
+            <dl class="editDl">
+                <dt><font>*</font>申请人姓名：</dt>
+                <dd><input type="text" name='companyName' value="$_[companyName]_" class="input w240 validName" required data-min='2' data-cnmax="40" maxlength="40"/></dd>
+            </dl>
+            <dl class="editDl">
+                <dt><font>*</font>身份证号码：</dt>
+                <dd><input type="text" name='registeredNo' pattern='^(\d{6})(18|19|20)?(\d{2})([01]\d)([0123]\d)(\d{3})(\d|X)?$' value="$_[registeredNo]_" class="input w240 validName" required data-cnmax="30" maxlength="30"/></dd>
+            </dl>
+            <dl class="editTXA">
+                <dt><font>*</font>身份证正面：</dt>
+                <dd class="mL135">
+                    <a href="javascript:;" class="button rel fix">添加图片<input type="file" class='uploadBtn' id='js-facefile'></a>
+                    <input type="hidden"  name='facefile'  required data-target='js-facefile' value='$_[relFileId0]_'>
+                    <span class="explainText">请保证证件姓名、头像、证件号码清晰可识别。</span>
+                    <span class="facefile">
+                        _[{if fileOriginalurl0}]_
+                        <img style="width:164px;height:113px;" src="$_[fileOriginalurl0]_" class="mT20 mR20">
+                        _[{else}]_
+                        <img style="width:164px;height:113px;" src="../../images/card.jpg" class="mT20 mR20">
+                        _[{/if}]_
+                        <img style="width:164px;height:113px;" src="../../images/facefile.jpg" class="mT20 mR20">
+                    </span>
+                </dd>
+            </dl>
+            <dl class="editTXA">
+                <dt><font>*</font>身份证反面：</dt>
+                <dd class="mL135">
+                    <a href="javascript:;" class="button rel fix">添加图片<input type="file" class='uploadBtn' id='js-backfile'></a>
+                    <input type="hidden"  name='backfile'  required data-target='js-backfile' value='$_[relFileId1]_'>
+                    <span class="explainText">请保证证件签发机关、有效期限清晰可识别。</span>
+                    <span class="backfile">
+                        _[{if fileOriginalurl1}]_
+                        <img style="width:164px;height:113px;" src="$_[fileOriginalurl1]_" class="mT20 mR20">
+                        _[{else}]_
+                        <img style="width:164px;height:113px;" src="../../images/card.jpg" class="mT20 mR20">
+                        _[{/if}]_
+                        <img style="width:164px;height:113px;" src="../../images/backfile.jpg" class="mT20 mR20">
+                    </span>
+                </dd>
+            </dl>
+            <dl class="editTXA">
+                <dt><font>*</font>手持身份证照：</dt>
+                <dd class="mL135">
+                    <a href="javascript:;" class="button rel fix">添加图片<input type="file" class='uploadBtn' id='js-handsfile'></a>
+                    <input type="hidden"  name='handsfile'  required data-target='js-handsfile' value='$_[relFileId2]_'>
+                    <span class="explainText">请保证面部五官可见；请保证证件信息清晰且与上面上传的信息一致；请按照示例手势，单手手持身份证。</span>
+                    <span class="handsfile">
+                        _[{if fileOriginalurl2}]_
+                        <img style="width:164px;height:113px;" src="$_[fileOriginalurl2]_" class="mT20 mR20">
+                        _[{else}]_
+                        <img style="width:164px;height:113px;" src="../../images/card.jpg" class="mT20 mR20">
+                        _[{/if}]_
+                        <img style="width:164px;height:113px;" src="../../images/handsfile.jpg" class="mT20 mR20">
+                    </span>
+                </dd>
+            </dl>
+            <dl class="editTXA">
+                <dt><font>*</font>手持手稿照：</dt>
+                <dd class="mL135">
+                    <a href="javascript:;" class="button rel fix">添加图片<input type="file" class='uploadBtn' id='js-paperfile'></a>
+                    <input type="hidden"  name='paperfile'  required data-target='js-paperfile' value='$_[relFileId3]_'>
+                    <span class="explainText">请在空白纸中手书：“小笨鸟认证”与日期；请保证字迹清晰可见；请按照示例手势，双手手持手稿。</span>
+                    <span class="paperfile">
+                        _[{if fileOriginalurl3}]_
+                        <img style="width:164px;height:113px;" src="$_[fileOriginalurl3]_" class="mT20 mR20">
+                        _[{else}]_
+                        <img style="width:164px;height:113px;" src="../../images/card.jpg" class="mT20 mR20">
+                        _[{/if}]_
+                        <img style="width:164px;height:113px;" src="../../images/paperfile.jpg" class="mT20 mR20">
+                    </span>
+                </dd>
+            </dl>
+            <dl class="editTXA fix dlSele"  id="addressData">
+                <dt><font>*</font>联系地址：</dt>
+                <dd>
+                    <div class="select w140 fL mR20" id='jd-province'>
+                        <input index-data="$_[province]_" name='province' type="hidden" value="" required data-target='jd-province'>
+                        <i>请选择</i>
+                        <em class="icon-52"></em>
+                        <ul>
+                            <li index-data=""><span>请选择</span></li>
+                        </ul>
+                    </div>
+                    <div class="select w140 fL mR20" id='jd-city'>
+                        <input index-data="$_[city]_" name='city' type="hidden" value="请选择" required data-target='jd-city'>
+                        <i>请选择</i>
+                        <em class="icon-52"></em>
+                        <ul>
+                            <li index-data=""><span>请选择</span></li>
+                        </ul>
+                    </div>
+                    <div class="select w140 fL mR20" id='jd-county'>
+                        <input index-data="$_[county]_" name='county' type="hidden" value="请选择" required data-target='jd-county'>
+                        <i>请选择</i>
+                        <em class="icon-52"></em>
+                        <ul>
+                            <li index-data=""><span>请选择</span></li>
+                        </ul>
+                    </div>
+                    <input type="text" value="$_[address]_" name='address'  class="input w480 mT20" maxlength="80" required data-cnmax="80"/>
+                </dd>
+            </dl>
+        </div>
+    </div>
+</script>

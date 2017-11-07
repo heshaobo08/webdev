@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0 user-scalable=no" />
+    <title>登录</title>
+    <link href="css/base.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <script src="js/jquery.js"></script>
+</head>
+
+<body>
+    <!--弹窗-->
+    <div id="cover"></div>
+    <div class="cancel">
+        <h4>确认手机号码</h4>
+        <h5>我们将发送验证码到：</h5>
+        <h5>18911799970</h5>
+        <p><span class="repeal">Cancel</span><span class="phone_ok">OK</span></p>
+    </div>
+    <div class="phone_error">
+        <h4>手机号码与银行预留不一致，请确认并重新输入。</h4>
+        <p>确定</p>
+    </div>
+    <div id="wapper">
+        <!--头部开始-->
+        <div id="header">
+            <p>登录</p>
+        </div>
+        <!--头部结束-->
+        <!--内容开始-->
+        <ul class="select">
+            <li class="selected">手机验证码登录</li>
+            <li>账户密码登录</li>
+        </ul>
+        <div id=content>
+            <div class="code_login">
+                <div class="form_block">
+                    <p>
+                        <label for="phone_number">手机号</label>
+                        <input type="tel" id="phone_number" placeholder="请输入手机号" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" maxlength="11"><img src="images/delt.png" class="del_tip">
+                    </p>
+                    <p>
+                        <label for="phone_yzm">验证码</label>
+                        <input type="tel" id="phone_yzm" placeholder="请输入验证码" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" maxlength="6">
+                        <span class="yzm_box">获取验证码</span>
+                    </p>
+                    <h5></h5>
+                    <h3 class="login_phone">登录</h3>
+                    <h3 class="login_no">登录</h3>
+                </div>
+            </div>
+            <div class="psw_login">
+                <div class="form_block">
+                    <p>
+                        <label for="number_ph">手机号</label>
+                        <input type="tel" id="number_ph" placeholder="请输入手机号" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" maxlength="11">
+                    </p>
+                    <p>
+                        <label for="number_psw">输入密码</label>
+                        <input type="password" id="number_psw" placeholder="请输入验证码">
+                        <span class="show_psw">显示</span>
+                    </p>
+                    <h5></h5>
+                    <h3 class="login_in">登录</h3>
+                </div>
+                <div class="psw_hint">
+                    <p><a>忘记密码</a></p>
+                </div>
+            </div>
+            <p class="xieyi"><input type="checkbox" class="js_check" checked>我已阅读并同意《用户服务协议》</p>
+        </div>
+        <!--内容结束-->
+        <!--尾部开始-->
+        <div id=footer></div>
+        <!--尾部结束-->
+    </div>
+</body>
+<script>
+    $(function () {
+
+        /*阻止默认事件*/
+        var stopDefault = function (e) {
+                e.preventDefault();
+            }
+            //弹层函数
+        function appearDiv(str) {
+            $("#cover").height($(document).height());
+            $("#cover").show();
+            $(".phone_error").fadeIn(400).find('h4').text(str);
+            $(window).on("touchmove", stopDefault);
+        }
+        $(".phone_error p").on("click", function () {
+                $("#cover").hide();
+                $(".phone_error").hide();
+                $(window).off("touchmove", stopDefault);
+        });
+        //判断服务协议是否选中
+        $(".js_check").on("click",function(){
+            if(!$(this).is(':checked')){
+                $(".login_no").show();
+                $(".login_phone").hide();
+            }else{
+                $(".login_no").hide();
+                $(".login_phone").show();
+            }
+        });
+        //点击删除
+        $(".del_tip").on("click", function () {
+           $("#phone_number").val("");
+        })
+        //点击登录通过手机号登录
+        $(".login_phone").on("click", function () {
+            //手机号验证	
+            var reg = /(^13\d{9}$)|(^14\d{9}$)|(^15\d{9}$)|(^16\d{9}$)|(^17\d{9}$)|(^18\d{9}$)|(^19\d{9}$)/g;
+            var mobileP = $("#phone_number").val().trim();
+            var yzm_number = $("#phone_yzm").val().trim();
+            if (!mobileP) {
+                appearDiv("请输入手机号！");
+                return false;
+            }
+            if (!reg.test(mobileP)) {
+                appearDiv("手机号码输入错误！");
+                return false;
+            }
+             if (!yzm_number) {
+                appearDiv("请输入验证码！");
+                return false;
+            }
+            
+        });
+        $(".cancel .repeal").on("click", function () {
+            $("#cover").hide();
+            $(".cancel").hide();
+        });
+        //点击通过账号密码登录
+        $(".login_in").on("click", function () {
+            var psw = $("#number_psw").val().trim();
+            //手机号验证	
+            var reg = /(^13\d{9}$)|(^14\d{9}$)|(^15\d{9}$)|(^16\d{9}$)|(^17\d{9}$)|(^18\d{9}$)|(^19\d{9}$)/g;
+            var mobileP = $("#number_ph").val().trim();
+            if (!mobileP) {
+                appearDiv("请输入手机号！");
+                return false;
+            }
+            if (!reg.test(mobileP)) {
+                appearDiv("手机号码输入错误！");
+                return false;
+            }
+            if (!psw) {
+                appearDiv("请输入密码！");
+                return false;
+            }
+            window.location = "mine.html";
+        });
+        //手机登录和账号登录切换
+        $(".select li").on("click", function () {
+            $(this).addClass("selected").siblings('li').removeClass("selected");
+            if ($(this).hasClass("selected")) {
+                $("#content").children().eq($(this).index()).show().siblings('div').hide();
+
+            }
+        });
+        
+        //初始化读秒
+        var timeoff = true;
+        var count = 60;
+        //点击获取验证码
+        $(".yzm_box").on("click",function(){
+            //手机号验证	
+            var reg = /(^13\d{9}$)|(^14\d{9}$)|(^15\d{9}$)|(^16\d{9}$)|(^17\d{9}$)|(^18\d{9}$)|(^19\d{9}$)/g;
+            var mobileP = $("#phone_number").val().trim();
+            if (!mobileP) {
+                appearDiv("请输入手机号！");
+                return false;
+            }
+            if (!reg.test(mobileP)) {
+                appearDiv("手机号码输入错误！");
+                return false;
+            }
+            if(timeoff){
+                $("#cover").height($(document).height());
+                $("#cover").show();
+                $(".cancel").show();
+            }
+            //发送验证码
+            $(".phone_ok").on("click",function(){
+                if (timeoff) {
+                    countdown = setInterval(CountDown, 1000);
+                    CountDown();
+                }
+                $("#cover").hide();
+                $(".cancel").hide();
+                //请求后台发送验证码
+                
+            });
+            
+        });
+        //发送验证码函数
+        function CountDown() {
+            timeoff = false;
+            $(".yzm_box").html(count+"s");
+            if (count == 0) {
+                $('.yzm_box').html("重发验证码");
+                timeoff = true;
+                count = 60;
+                clearInterval(countdown);
+            }
+            count--;
+        }
+       
+        
+    });
+</script>
+
+</html>

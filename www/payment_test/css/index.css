@@ -1,0 +1,220 @@
+@charset 'utf-8';
+.header{
+    background: #4287f5;
+    width: 1000px;
+    margin: 0 auto;
+    height: 120px;
+    line-height: 100px;
+}
+.logo{
+    margin-left: 120px;
+}
+.logo img{
+    vertical-align: middle;
+}
+.logo .border{
+    width: 2px;
+    height: 50px;
+    background: #fff;
+    display: inline-block;
+    margin-left: 20px;
+    vertical-align: middle;
+}
+.logo .text{
+    height: 40px;
+    color:white;
+    font-size: 26px;
+    font-weight: bold;
+    display: inline-block;
+    margin-left: 30px;
+}
+
+input[type='button']{
+    border: none;
+}
+
+/*首页*/
+.main{
+    width: 1000px;
+    margin: 0 auto;
+    background: #C0DFFF;
+    height: 600px;
+}
+.main li{
+    width: 50%;
+    height: 200px;
+    background: #C0DFFF;
+    float: left;
+    text-align: center;
+    line-height: 200px;
+    border: 1px solid #fff;
+    box-sizing: border-box;
+}
+.main li a{
+    color: #4287f5;
+    font-size: 24px;
+}
+.main li a:hover{
+    
+    color: #2650EF;
+}
+.footer{
+    clear: both;
+    width: 1000px;
+    margin: 0 auto;
+    background:#4287f5; 
+    height: 100px;
+    color: white;
+    text-align: center;
+    padding-top: 50px;
+}
+.footer span{
+    margin-left: 10px;
+}
+.mark{
+    margin-top: 10px;
+}
+/*快捷支付API*/
+.quickAPI{
+    text-align: center;
+    padding-top:50px;
+}
+.quickAPI h3{
+    height: 45px;
+    line-height: 45px;
+    margin-left: -180px;
+   
+}
+.quickAPI p{
+    height: 35px;
+    line-height: 35px;
+}
+.quickAPI p:last-of-type{
+    height: 80px;
+    line-height: 80px;
+}
+.quickAPI p label{
+    display: inline-block;
+    width: 120px;
+    text-align: right;
+}
+.quickAPI p input[type='button']{
+    width: 120px;
+    height: 35px;
+    background:#4287f5;
+    color: white;
+    margin-left: 70px;
+}
+/*退款API*/
+.refundAPI{
+     padding-top:50px;
+}
+.refundAPI p{
+    height: 50px;
+    line-height: 50px;
+}
+.refundAPI p:first-of-type{
+    height: 60px;
+    line-height: 80px;
+}
+.refundAPI p lable{
+    display: inline-block;
+    width: 100px;
+    text-align: right;
+}
+.refundAPI p input[type='button']{
+    width: 100px;
+    height: 25px;
+    background: #4287f5;
+    color: white;
+     margin-left: 30px;
+}
+.refundAPI table{
+    margin-top: 20px;
+    border-color: #fff;
+}
+.refundAPI table th{
+    height: 35px;
+}
+.refundAPI table th:first-of-type{
+    width: 40px;
+}
+.refundAPI table td{
+    text-align: center;
+}
+.allRefund input[type='button']{
+    width:120px!important;
+    height: 35px!important;
+}
+/*快捷支付H5*/
+.quickH5{
+    text-align: center;
+     padding-top:150px;
+}
+.quickH5 p{
+    height: 50px;
+    line-height: 50px;
+}
+.quickH5 p lable{
+    display: inline-block;
+    width: 100px;
+    text-align: right;
+}
+.quickH5 p input[type='button']{
+    height: 25px;
+    width: 80px;
+   background: #4287f5;
+    color: white;
+    margin-left: 20px;
+}
+/*通知*/
+.confirm input[type='button']{
+    width: 100px !important;
+    height: 35px !important;
+    
+}
+/*收款*/
+.collection{
+    padding-top: 50px;
+}
+.collection table input[type='button']{
+    background:#4287f5; 
+    color: white;
+}
+.collection table td{
+    text-align: center;
+    
+}
+.collection table td:last-of-type{
+    width: 80px;
+}
+.collection table td:last-of-type input{
+    width: 80%;
+}
+.collection table input{
+    width: 100%;
+}
+.collection table th{
+    height: 35px;
+}
+.collection .handle {
+    margin-top: 20px;
+}
+.collection .handle div{
+    display: inline-block;
+    margin-left: 30px;
+  
+}
+.collection .handle div:last-of-type{
+      margin-left: 100px;
+}
+.collection .handle p{
+    height: 40px;
+    line-height: 40px;
+}
+.collection .handle input[type='button']{
+    background:#4287f5; 
+    padding: 0 20px;
+    color: white;
+    height: 30px;
+}

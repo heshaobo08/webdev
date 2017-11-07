@@ -1,0 +1,72 @@
+<!-- conts begin -->
+<div class="details">
+	<div class="personal">
+		<div class="personal_img">
+			<img src="${source.fileOriginalurl}"  class="mT20"/>
+		</div>
+		<div class="personal_text">
+			<dl>
+				<dt>用户名：</dt>
+				<dd>${source.name||"&nbsp;"}</dd>
+			</dl>
+			<dl>
+				<dt>性别：</dt>
+				<dd>{{if source.gender=='0'}}男{{else source.gender=='1'}}女{{else}}&nbsp; {{/if}}</dd>
+			</dl>
+			<dl>
+				<dt>手机号：</dt>
+				<dd>${source.mobile||"&nbsp;"}</dd>
+			</dl>
+			<dl>
+				<dt>邮箱：</dt>
+				<dd>${source.email}{{if source.isActiveEmail}}<span class="mL10">已绑定</span>{{else}}<span class="mL10">未绑定</span>{{/if}}</dd>
+			</dl>
+		</div>
+		<div class="personal_text">
+			<dl>
+				<dt>联系人姓名：</dt>
+				<dd>${source.realName||"&nbsp;"}</dd>
+			</dl>
+			<dl>
+				<dt>联系电话：</dt>
+				<dd>${source.phoneAreaCode}-${source.phoneNo}-${source.phoneExtension}</dd>
+			</dl>
+			<dl>
+				<dt>注册时间：</dt>
+				<dd>${source.registerTime||"&nbsp;"}</dd>
+			</dl>
+		</div>
+	</div>
+	<h3 class="titleText">会员登录日志</h3>
+	<div class="loginLog">
+		<table>
+			<thead>
+				<tr>
+					<th width="60%">登录时间</th>
+					<th width="40%">登陆IP</th>
+				</tr>
+			</thead>
+			<tbody>
+			{{if source.userLogList}}
+			{{each(i,user) source.userLogList}}
+				<tr>
+					<td>${user.loginTime}</td>
+					<td>${user.ip}</td>
+				</tr>
+			{{/each}}
+			{{else}}
+				<tr><td colspan="2">暂无数据</td></tr>
+			{{/if}}
+			</tbody>
+		</table>
+	</div>
+
+</div>
+<!-- conts end -->
+<!--中间内容区域 end-->
+<div class="btnMain">
+	<a href="javascript:;" class="button" data-href='?m=xhr_id_33_34' data-title='会员管理-注册会员管理'>返回</a>
+	{{if source.operateData.moduleData && source.operateData.actionData && source.operateData.operate['h02010006']}}
+	<a href="javascript:;" class="buttonText pad20" data-href='?m=xhr_id_33_34_log&id=${source.id}'  data-title='会员管理-注册会员管理-查看会员日志'>查看全部日志</a>
+	{{/if}}
+</div>

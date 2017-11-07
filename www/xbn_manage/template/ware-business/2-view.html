@@ -1,0 +1,86 @@
+<div class="contsBox">
+    <div class="details">
+        <h3 class="titleText">基本信息</h3>
+        <div class="newConts pL215">
+            <dl class="textDl">
+                <dt>物流编码：</dt>
+                <dd>${source.logisticsCode}</dd>
+            </dl>
+            <dl class="textDl">
+                <dt>处理地点：</dt>
+                <dd>{{if source.disposalSite == 1}}天津{{else source.disposalSite == 2}}上海{{else source.disposalSite == 3}}深圳{{else source.disposalSite == 4}}广州{{/if}}</dd>
+            </dl>
+            <dl class="textDl">
+                <dt>物流方式：</dt>
+                <dd>{{if source.logisticsType == 1}}海运{{else source.logisticsType == 2}}空运{{/if}}</dd>
+            </dl>
+            <dl class="textDl">
+                <dt>目的仓库：</dt>
+                <dd>${source.destinationStoreName}</dd>
+            </dl>
+            <dl class="textDl">
+                <dt>目的仓编码：</dt>
+                <dd>${source.destinationStoreCode}</dd>
+            </dl>
+            <dl class="textDl">
+                <dt>目的国家：</dt>
+                <dd>${source.destinationCountry}</dd>
+            </dl>
+            <dl class="textDl">
+                <dt>货币单位：</dt>
+                <dd>${source.currencyUnit}</dd>
+            </dl>
+            <dl class="textDl">
+                <dt>截止下单时间：</dt>
+                <dd>${source.sendTimeLimit}</dd>
+            </dl>
+            <dl class="textDl">
+                <dt>截止收货时间：</dt>
+                <dd>${source.receiveTimeLimit}</dd>
+            </dl>
+            <dl class="textDl">
+                <dt>预计到货日期：</dt>
+                <dd>${source.expectedArrivalDate.substring(0,10)}</dd>
+            </dl>
+            <dl class="textDl">
+                <dt>始发站：</dt>
+                <dd>${source.startStation}</dd>
+            </dl>
+            <dl class="textDl">
+                <dt>终点站：</dt>
+                <dd>${source.lastStation}</dd>
+            </dl>
+        </div>
+    </div>
+    <div class="details">
+        <h3 class="titleText">修改信息</h3>
+        <div class="newConts pL215">
+            <dl class="textDl">
+                <dt>创建人：</dt>
+                <dd>${source.createUser}</dd>
+            </dl>
+            <dl class="textDl">
+                <dt>创建时间：</dt>
+                <dd>${source.createTime}</dd>
+            </dl>
+            <dl class="textDl">
+                <dt>最后修改人：</dt>
+                <dd>${source.lastUpdateUser}</dd>
+            </dl>
+            <dl class="textDl">
+                <dt>最后修改时间：</dt>
+                <dd>${source.lastUpdateTime}</dd>
+            </dl>
+        </div>
+    </div>
+</div>
+<div class="btnMain">
+    {{if source.operateData.moduleData && source.operateData.actionData && source.operateData.operate['HWC20104006'] && source.operateData.operate['HWC20104006'].childOpt['HWC20104007']}}
+    <a data-title="海外仓业务管理-物流计划管理-修改" data-href="?m=xhr_id_20100000_20104000_edit&id=${source.id}" class="button">修改</a>
+    {{/if}}
+    {{if source.operateData.moduleData && source.operateData.actionData && source.operateData.operate['HWC20104006'] && source.operateData.operate['HWC20104006'].childOpt['HWC20104008']}}
+    <a href="javascript:;" class="buttonText pad20 js-delete" data-id="${source.id}">删除</a>
+    {{/if}}
+    <a href="javascript:history.go(-1);" onclick="document.title='海外仓业务管理-物流计划管理'" class="buttonText pad20" sdata-href="?m=xhr_id_20100000_20104000"
+       data-title="海外仓业务管理-物流计划管理">返回</a>
+</div>

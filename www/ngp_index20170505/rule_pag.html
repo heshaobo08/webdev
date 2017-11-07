@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>汇付宝</title>
+<link href="css/base.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<script src="js/jquery.js"></script>
+<style>
+    .rule_box{
+        margin:0px 20px;
+    }
+    .rule_ct{
+        margin-top: 30px;
+    }
+    .rule_l{
+        width: 150px;
+        float: left;
+    }
+    .rule_l p{
+        font-size: 14px;
+        color: #333;
+        height: 33px;
+        line-height: 33px;
+    }
+    .rule_r{
+        float: left;
+    }
+    .rule_r>p{
+        font-size: 14px;
+        color: #333;
+        height: 33px;
+        line-height: 33px;
+    }
+    .rule_type{
+        position: relative;
+        right: 15px;
+    }
+    .rule_type input[type='radio'].radio{
+        opacity:0; 
+        display:inline-block;
+        position:relative;
+        top:1px;
+        left:14px;
+        z-index: 10;
+        cursor: pointer;
+    }
+    .rule_type label.radio{
+        background:url(images/radio.png) no-repeat;
+        height:14px; 
+        padding-left:25px;
+        display:inline-block;
+        position: relative;
+        top:9px;
+        font-size: 14px;
+        color: #333;
+    }
+    .rule_type input[type='radio'].radio:checked + .radio{
+        background:url(images/radio1.png) no-repeat;
+        height:14px;
+    }
+    .rule_type b{
+        font-weight: 400;
+        position: relative;
+        bottom: 10px;
+    }
+    .rule_select {
+        width: 148px;
+        padding-left:10px;
+        height: 33px;
+        border: 1px solid #d8d8d8;
+        position: relative;
+        background: #fff url(images/select_tip.png) no-repeat 140px 14px;
+        cursor:pointer;
+        left:0px;
+        top:0px;
+        font-size: 14px;
+        float: left;
+    }
+    .rule_select input {
+        display: block;
+        width: 100%;
+        height: 33px;
+        line-height: 33px;
+        border: 0;
+        outline: 0;
+        background: none;
+        cursor:pointer;
+
+    }
+    .rule_select ul {
+        width: 100%;
+        display: none;
+        position: absolute;
+        left: -1px;
+        top: 33px;
+        overflow: hidden;
+        background-color: #fff;
+        max-height: 150px;
+        overflow-y: auto;
+        border: 1px solid #d8d8d8;
+        z-index:9999;
+        width: 158px;
+
+    }
+    .rule_select ul li {
+        height: 30px;
+        line-height: 30px;
+        overflow: hidden;
+        padding: 0 10px;
+        cursor: pointer;
+        color: #333;
+    }
+    .rule_select ul li.on {
+        background-color: #2b91e6;
+        color: #fff;
+    }
+    .rule_fs{
+        float: left;
+        margin-left: 80px;
+    }
+    .rule_fs p{
+        height: 33px;
+        line-height: 33px;
+        font-size: 14px;
+        color: #333;
+    }
+    .rule_btn{
+        background:#4287f5;
+        width:150px;
+        height:35px;
+        line-height: 35px;
+        text-align: center;
+        color: #fff;
+        margin-top:40px;
+        font-size: 14px;
+        font-weight: 400;
+        cursor: pointer;
+        margin-left: 150px;
+    }
+    .three_text,.four_text,.five_text,.six_text{
+        font-size: 14px;
+        color: #333;
+        height: 33px;
+        line-height: 33px;
+        margin-left: 10px;
+    }
+    .four_box,.five_box{
+        margin-left: 150px;
+        margin-top: 10px;
+        display: none;
+    }
+</style>
+<script>
+    $(function(){
+        /*下来菜单获取值*/
+        $('[name="rule_select"]').click(function(e){
+        $('[name="rule_select"]').find('ul').hide();
+        $(this).find('ul').show();
+        e.stopPropagation();
+        });
+        $('[name="rule_select"] li').hover(function(e){
+            $(this).toggleClass('on');
+            e.stopPropagation();
+        });
+        var off = "";
+        $('#rule_one li').click(function(e){
+            var val = $(this).text();
+            var dataVal = $(this).attr("data-value");
+            if(dataVal==1){
+                off=1
+                $(".rule_fs p").html("收款方式");
+                var _html = "<li data-value='4'>向银行卡收款</li>"+
+                            "<li data-value='5'>向余额收款</li>";
+                $("#rule_two ul").html(_html);
+                $(".three_text").html("每天17:00定时归集");
+            }else{
+                off=2
+                $(".rule_fs p").html("下放方式");
+                var _html = "<li data-value='6'>下放到银行卡</li>"+
+                            "<li data-value='7'>下放到余额</li>";
+                $("#rule_two ul").html(_html);
+                $(".three_text").html("每天17:00定时下放");
+            }
+            $(this).parents('[name="rule_select"]').find('input').val(val);
+            $('#rule_one ul').hide();
+            e.stopPropagation();
+        });
+        
+         $('#rule_two').on("click","li",function(e){
+            var val = $(this).text();
+            var dataVal = $(this).attr("data-value");
+            $(this).parents('[name="rule_select"]').find('input').val(val);
+            $('#rule_two ul').hide();
+            e.stopPropagation();
+         });
+        
+         $('#rule_two').on("hover","li",function(e){
+            $(this).toggleClass('on');
+            e.stopPropagation();
+         });
+        
+        
+        //选择规则模式
+         var off_one = ""
+         $('#rule_three li').click(function(e){
+            var val = $(this).text();
+            var dataVal = $(this).attr("data-value");
+            $("#rule_four input").val("");
+            $("#rule_moth input").val("");
+            $("#rule_days input").val("");
+            $(".four_text").html("");
+            $(".five_text").html("");
+            if(dataVal==1){
+                $(".four_box").hide();
+                $(".five_box").hide();
+                $(".three_text").show();
+            }else if(dataVal==2){
+                off_one = 1;
+                $(".four_box").show();
+                $(".three_text").hide();
+                $(".five_box").hide();
+                var _html = "<li data-value=''>周一</li>"+
+                            "<li data-value=''>周二</li>"+
+                            "<li data-value=''>周三</li>"+
+                            "<li data-value=''>周四</li>"+
+                            "<li data-value=''>周五</li>"+
+                            "<li data-value=''>周六</li>"+
+                            "<li data-value=''>周日</li>";
+                $("#rule_four ul").html(_html);
+            }else if(dataVal==3){
+                off_one = 2;
+                $(".four_box").show();
+                $(".three_text").hide();
+                $(".five_box").hide();
+                var _html = "<li data-value=''>1</li>"+
+                            "<li data-value=''>2</li>"+
+                            "<li data-value=''>3</li>"+
+                            "<li data-value=''>4</li>"+
+                            "<li data-value=''>5</li>"+
+                            "<li data-value=''>6</li>"+
+                            "<li data-value=''>7</li>"+
+                            "<li data-value=''>8</li>"+
+                            "<li data-value=''>9</li>"+
+                            "<li data-value=''>10</li>"+
+                            "<li data-value=''>11</li>"+
+                            "<li data-value=''>12</li>"+
+                            "<li data-value=''>13</li>"+
+                            "<li data-value=''>14</li>"+
+                            "<li data-value=''>15</li>"+
+                            "<li data-value=''>16</li>"+
+                            "<li data-value=''>17</li>"+
+                            "<li data-value=''>18</li>"+
+                            "<li data-value=''>19</li>"+
+                            "<li data-value=''>20</li>"+
+                            "<li data-value=''>21</li>"+
+                            "<li data-value=''>22</li>"+
+                            "<li data-value=''>23</li>"+
+                            "<li data-value=''>24</li>"+
+                            "<li data-value=''>25</li>"+
+                            "<li data-value=''>26</li>"+
+                            "<li data-value=''>27</li>"+
+                            "<li data-value=''>28</li>"+
+                            "<li data-value=''>29</li>"+
+                            "<li data-value=''>30</li>";
+                $("#rule_four ul").html(_html);
+                
+            }else if(dataVal==4){
+                $(".four_box").hide();
+                $(".three_text").hide();
+                $(".five_box").show();
+                $(".five_text").hide();
+                $(".six_text").show();
+                var moth = "<li data-value=''>1</li>"+
+                            "<li data-value=''>2</li>"+
+                            "<li data-value=''>3</li>"+
+                            "<li data-value=''>4</li>"+
+                            "<li data-value=''>5</li>"+
+                            "<li data-value=''>6</li>"+
+                            "<li data-value=''>7</li>"+
+                            "<li data-value=''>8</li>"+
+                            "<li data-value=''>9</li>"+
+                            "<li data-value=''>10</li>"+
+                            "<li data-value=''>11</li>"+
+                            "<li data-value=''>12</li>";
+                $("#rule_moth ul").html(moth);
+                
+                var days = "<li data-value=''>1</li>"+
+                            "<li data-value=''>2</li>"+
+                            "<li data-value=''>3</li>"+
+                            "<li data-value=''>4</li>"+
+                            "<li data-value=''>5</li>"+
+                            "<li data-value=''>6</li>"+
+                            "<li data-value=''>7</li>"+
+                            "<li data-value=''>8</li>"+
+                            "<li data-value=''>9</li>"+
+                            "<li data-value=''>10</li>"+
+                            "<li data-value=''>11</li>"+
+                            "<li data-value=''>12</li>"+
+                            "<li data-value=''>13</li>"+
+                            "<li data-value=''>14</li>"+
+                            "<li data-value=''>15</li>"+
+                            "<li data-value=''>16</li>"+
+                            "<li data-value=''>17</li>"+
+                            "<li data-value=''>18</li>"+
+                            "<li data-value=''>19</li>"+
+                            "<li data-value=''>20</li>"+
+                            "<li data-value=''>21</li>"+
+                            "<li data-value=''>22</li>"+
+                            "<li data-value=''>23</li>"+
+                            "<li data-value=''>24</li>"+
+                            "<li data-value=''>25</li>"+
+                            "<li data-value=''>26</li>"+
+                            "<li data-value=''>27</li>"+
+                            "<li data-value=''>28</li>"+
+                            "<li data-value=''>29</li>"+
+                            "<li data-value=''>30</li>";
+                $("#rule_days ul").html(days);
+                
+            }else if(dataVal==5){
+                $(".four_box").hide();
+                $(".three_text").hide();
+                $(".five_box").show();
+                $(".five_text").show();
+                $(".six_text").hide();
+                var moth = "<li data-value=''>1</li>"+
+                            "<li data-value=''>2</li>"+
+                            "<li data-value=''>3</li>"+
+                            "<li data-value=''>4</li>"+
+                            "<li data-value=''>5</li>"+
+                            "<li data-value=''>6</li>"+
+                            "<li data-value=''>7</li>"+
+                            "<li data-value=''>8</li>"+
+                            "<li data-value=''>9</li>"+
+                            "<li data-value=''>10</li>"+
+                            "<li data-value=''>11</li>"+
+                            "<li data-value=''>12</li>";
+                $("#rule_moth ul").html(moth);
+                
+                var days = "<li data-value=''>1</li>"+
+                            "<li data-value=''>2</li>"+
+                            "<li data-value=''>3</li>"+
+                            "<li data-value=''>4</li>"+
+                            "<li data-value=''>5</li>"+
+                            "<li data-value=''>6</li>"+
+                            "<li data-value=''>7</li>"+
+                            "<li data-value=''>8</li>"+
+                            "<li data-value=''>9</li>"+
+                            "<li data-value=''>10</li>"+
+                            "<li data-value=''>11</li>"+
+                            "<li data-value=''>12</li>"+
+                            "<li data-value=''>13</li>"+
+                            "<li data-value=''>14</li>"+
+                            "<li data-value=''>15</li>"+
+                            "<li data-value=''>16</li>"+
+                            "<li data-value=''>17</li>"+
+                            "<li data-value=''>18</li>"+
+                            "<li data-value=''>19</li>"+
+                            "<li data-value=''>20</li>"+
+                            "<li data-value=''>21</li>"+
+                            "<li data-value=''>22</li>"+
+                            "<li data-value=''>23</li>"+
+                            "<li data-value=''>24</li>"+
+                            "<li data-value=''>25</li>"+
+                            "<li data-value=''>26</li>"+
+                            "<li data-value=''>27</li>"+
+                            "<li data-value=''>28</li>"+
+                            "<li data-value=''>29</li>"+
+                            "<li data-value=''>30</li>";
+                $("#rule_days ul").html(days);
+                
+            }
+             
+            $(this).parents('[name="rule_select"]').find('input').val(val);
+            $('#rule_three ul').hide();
+            e.stopPropagation();
+        });
+        
+        $('#rule_four').on("click","li",function(e){
+            var val = $(this).text();
+            var dataVal = $(this).attr("data-value");
+            $(this).parents('[name="rule_select"]').find('input').val(val);
+            $('#rule_four ul').hide();
+            e.stopPropagation();
+            var _tmp = "";
+            var _tmp_one = "";
+            if(off==1){
+               _tmp="归集";
+            }else{
+                _tmp="下放";
+            }
+            if(off_one==1){
+                _tmp_one="每";
+            }else{
+                _tmp_one="每月";
+            }
+            $(".four_text").html(_tmp_one+val+"&nbsp;&nbsp;17:00定时"+_tmp);
+            
+         });
+        
+         $('#rule_four').on("hover","li",function(e){
+            $(this).toggleClass('on');
+            e.stopPropagation();
+         });
+        var gl = "";
+        $('#rule_moth').on("click","li",function(e){
+            var val = $(this).text();
+            gl = val;
+            var dataVal = $(this).attr("data-value");
+            $(this).parents('[name="rule_select"]').find('input').val(val);
+            $('#rule_moth ul').hide();
+            e.stopPropagation();
+         });
+        
+         $('#rule_moth').on("hover","li",function(e){
+            $(this).toggleClass('on');
+            e.stopPropagation();
+         });
+        
+        $('#rule_days').on("click","li",function(e){
+            var val = $(this).text();
+            var dataVal = $(this).attr("data-value");
+            $(this).parents('[name="rule_select"]').find('input').val(val);
+            var _tmp = "";
+            if(off==1){
+               _tmp="归集";
+            }else{
+                _tmp="下放";
+            }
+            $(".five_text").html("每年"+gl+"月"+val+"号17:00定时"+_tmp);
+            $(".six_text").html("每年"+gl+"月"+val+"号 +3月"+val+"号17:00定时"+_tmp);
+            $('#rule_days ul').hide();
+            e.stopPropagation();
+             
+         });
+        
+       
+        
+         $('#rule_days').on("hover","li",function(e){
+            $(this).toggleClass('on');
+            e.stopPropagation();
+         });
+        
+        $(document).click(function(){
+            $('[name="rule_select"] ul').hide();
+        });
+    })
+    
+</script>
+</head>
+<body>
+    <div id="ngp_warpper">
+        <!--头部开始-->
+        <div class="ngp_header">
+            <div class="ngp_top">
+                <div class="ngp_logo">
+                   <img src="images/logo.png">
+                   <span class="logo_hx"></span>
+                   <span class="logo_text">商户服务</span>
+                </div>
+                <div class="ngp_top_right">
+                    <span>您好！ Acdbm@9186.com</span>
+                    <b></b>
+                    <span>退出</span>
+                    <b></b>
+                    <span>帮助中心</span>
+                </div>
+            </div>
+        </div>
+        <div class="ngp_nav">
+            <div class="nav_list">
+                <ul>
+                    <li class="nav_ative"><a href="index.html">我的汇付宝</a></li>
+                    <li><a href="transaction.html">交易管理</a></li>
+                    <li><a href="#">结算管理</a></li>
+                    <li><a href="account_management.html">账户管理</a></li>
+                </ul>
+            </div> 
+        </div>
+        <!--头部结束-->
+        
+        <!--内容开始-->
+        <div class="ngp_content">
+            <div class="recharge_box">
+                <p class="recharge_name">添加规则</p>
+                <div class="rule_box">
+                    <div class="rule_ct">
+                        <div class="rule_l"><p>规则名称</p></div>
+                        <div class="rule_r"><p>规则1</p></div>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="rule_ct">
+                        <div class="rule_l"><p>规则类型</p></div>
+                        <div class="rule_r">
+                            <div class="rule_select" name="rule_select" id="rule_one">
+                               <input type="text" readonly placeholder="请选择规则类型">
+                               <ul>
+                                  <li data-value="1">归集</li>
+                                  <li data-value="2">下放</li>
+                               </ul>
+                            </div>
+                            <div class="rule_fs"><p>收款方式</p></div>
+                            <div class="rule_select" name="rule_select" id="rule_two" style="margin-left:10px;">
+                               <input type="text" readonly placeholder="请选择收款方式">
+                               <ul>
+                               </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="rule_ct">
+                        <div class="rule_l"><p>规则模式</p></div>
+                        <div class="rule_r">
+                            <p>
+                                <span class="rule_type">
+                                    <input type="radio" name="radio" class="radio" checked><label class="radio"><b>按时间</b></label>
+                                    <input type="radio" name="radio" class="radio"><label class="radio"><b>按规则</b></label>
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="rule_ct">
+                        <div class="rule_l"><p>请选择规则模式</p></div>
+                        <div class="rule_r">
+                            <div class="rule_select" name="rule_select" id="rule_three">
+                               <input type="text" readonly placeholder="请选择规则模式">
+                               <ul>
+                                  <li data-value="1">按日收款</li>
+                                  <li data-value="2">按周收款</li>
+                                  <li data-value="3">按月收款</li>
+                                  <li data-value="4">按季收款</li>
+                                  <li data-value="5">按年收款</li>
+                               </ul>
+                            </div>
+                            <span class="three_text"></span>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="four_box">
+                            <div class="rule_select" name="rule_select" id="rule_four">
+                               <input type="text" readonly placeholder="请选择日期">
+                               <ul>
+                               </ul>
+                            </div>
+                            <span class="four_text"></span>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="five_box">
+                            <div class="rule_r">
+                                <div class="rule_select" name="rule_select" id="rule_moth">
+                                   <input type="text" readonly placeholder="请选择日期">
+                                   <ul>
+                                   </ul>
+                                </div>
+                            </div>
+                            <div class="rule_r">
+                                <div class="rule_select" name="rule_select" id="rule_days" style="margin-left:10px;">
+                                   <input type="text" readonly placeholder="请选择日期">
+                                   <ul>
+                                   </ul>
+                                </div>
+                            </div>
+                            <span class="five_text"></span><span class="six_text"></span>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="rule_ct">
+                        <div class="rule_l"><p>规则状态</p></div>
+                        <div class="rule_r">
+                            <p>
+                                <span class="rule_type">
+                                    <input type="radio" name="radio1" class="radio" checked><label class="radio"><b>启用</b></label>
+                                    <input type="radio" name="radio1" class="radio"><label class="radio"><b>禁用 </b></label>
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                    <h3 class="rule_btn">添加规则</h3>
+                </div>
+            </div>
+        </div>
+        <!--内容结束-->
+        
+        <!--尾部开始-->
+        <div class="ngp_footer">
+            <p>
+                <span>关于我们</span>
+                <span>合作伙伴</span>
+                <span>商务合作</span>
+                <span>联系我们</span>
+            </p>
+            <p class="ngp_ft">Copyright © since 2008 汇元银通（北京）在线支付技术有限公司  版权所有 侵权必究</p>
+        </div>
+        <!--尾部结束-->
+        
+    </div>
+</body>
+</html>

@@ -1,0 +1,204 @@
+<div class="contsBox">
+    <div class="details">
+        <dl class="editDl mT30">
+            <dt>扣款项目：</dt>
+            <dd>
+                <div class="select w240 fL">
+                    <input index-data="" id="select" type="hidden" value="">
+                    <i index-data="">请选择</i>
+                    <em class="icon-52"></em>
+                    <ul>
+                        {{if !source.totalFreight}}
+                            <li class="active" index-data="1"><span>头程运费</span></li>
+                            {{if !source.tax}}
+                                <li index-data="2"><span>税金</span></li>
+                            {{/if}}
+                            {{if !source.premium}}
+                                <li index-data="3"><span>保费</span></li>
+                            {{/if}}
+                        {{else}}
+                            {{if !source.tax}}
+                                <li class="active" index-data="2"><span>税金</span></li>
+                                {{if !source.premium}}
+                                    <li index-data="3"><span>保费</span></li>
+                                {{/if}}
+                            {{else}}
+                                {{if !source.premium}}
+                                    <li class="active" index-data="3"><span>保费</span></li>
+                                {{/if}}
+                            {{/if}}
+                        {{/if}}
+                    </ul>
+                </div>
+            </dd>
+        </dl>
+    </div>
+    <form id="headCharge">
+    <!--头程运费扣款-->
+    {{if !source.totalFreight}}
+    <div class="details">
+    {{else}}
+    <div class="details none">
+    {{/if}}
+        <h3 class="titleText">测量信息</h3>
+        {{each(i,e) source.boxList}}
+        <div class="boxConts boxList" data-id="${e.id}">
+            <h3 class="boxTitle mB30">
+                ${e.boxCode}号箱
+            </h3>
+            <dl class="editDl">
+                <dt>装箱单号：</dt>
+                <dd>
+                    ${e.boxOrderCode}
+                </dd>
+            </dl>
+            <dl class="editDl">
+                <dt>实测重量：</dt>
+                <dd>
+                    <input type="text" value="" class="input w240 mR10 weight" pattern='^([1-9]\d{0,9}|0)(\.\d{1,3})?$' patternText="整数位最多10位，小数位精确到小数点后3位" required /> <em class="col_cccccc">（单位：KG。）</em>
+                </dd>
+                <!--<dd class="required none"><em></em>整数位最多4位，小数位精确到小数点后3位</dd>-->
+            </dl>
+            <dl class="editDl size">
+                <dt>实测尺寸：</dt>
+                <dd>
+                    <input type="text" value="" class="input w45 mR10 length" required pattern='^([1-9]\d{0,3}|0)(\.\d{1,1})?$' patternText="整数位最多4位，小数位精确到小数点后1位"> <em class="col_cccccc mR10">X</em><input type="text" value="" class="input w45 mR10 width" required pattern='^([1-9]\d{0,3}|0)(\.\d{1,1})?$' patternText="整数位最多4位，小数位精确到小数点后1位"> <em class="col_cccccc mR10">X</em><input type="text" value="" class="input w45 mR10 height" required pattern='^([1-9]\d{0,3}|0)(\.\d{1,1})?$' patternText="整数位最多4位，小数位精确到小数点后1位"><em class="col_cccccc">(长宽高，单位：CM。)</em>
+                </dd>
+                <!--<dd class="required none"><em></em>整数位最多4位，小数位精确到小数点后1位</dd>-->
+            </dl>
+            <dl class="editDl">
+                <dt>实测体积：</dt>
+                <dd>
+                    <input type="text" disabled value="" class="input w240 mR10 volume"> <em class="col_cccccc">（根据实测尺寸自动计算，单位：CBM。）</em>
+                </dd>
+                <!--<dd class="required none"><em></em>整数位最多4位，小数位精确到小数点后4位</dd>-->
+            </dl>
+        </div>
+        {{/each}}
+        <h3 class="titleText">费用信息</h3>
+        <div class="boxConts mT10">
+            <dl class="editDl">
+                <dt>运费单价：</dt>
+                <dd>
+                    <input type="text" value="" class="input w240 mR10 unitPrice" required pattern='^([1-9]\d{0,9}|0)(\.\d{1,2})?$' patternText="整数位最多10位，小数位精确到小数点后2位"> <em class="col_cccccc">{{if source.logisticsType == 1}}（单位：CNY/CBM。）{{else}}（单位：CNY/KG。）{{/if}}</em>
+                </dd>
+                <!--<dd class="required none"><em></em>整数位最多10位，小数位精确到小数点后2位</dd>-->
+            </dl>
+            <dl class="editDl">
+                <dt>计费体积：</dt>
+                <dd>
+                    <input type="text" value="" class="input w240 mR10 volumeTotal" disabled="disabled"> <em class="col_cccccc">（根据上方测量信息自动计算，单位：CBM。）</em>
+                </dd>
+            </dl>
+            <dl class="editDl">
+                <dt>计费重量：</dt>
+                <dd>
+                    <input type="text" value="" class="input w240 mR10 weightTotal" disabled="disabled"> <em class="col_cccccc">（根据上方测量信息自动计算，单位：KG。）</em>
+                </dd>
+            </dl>
+            <dl class="editDl">
+                <dt>总运费：</dt>
+                <dd>
+                    <input type="text" value="" class="input w240 mR10 freightTotal" disabled="disabled"> <em class="col_cccccc">（根据运费单价、计费体积、计费重量自动计算，单位：CNY。）</em>
+                </dd>
+            </dl>
+        </div>
+    </div>
+    <!--头程运费扣款end-->
+    </form>
+    <form id="taxCharge">
+    <!--扣款税金-->
+    {{if source.totalFreight}}
+        {{if !source.tax}}
+        <div class="details">
+        {{else}}
+        <div class="details none">
+        {{/if}}
+    {{else}}
+        <div class="details none">
+    {{/if}}
+        <h3 class="titleText">费用信息</h3>
+        <div class="boxConts mT10">
+            <dl class="editDl">
+                <dt>关税：</dt>
+                <dd>
+                    <input pattern='^([1-9]\d{0,9}|0)(\.\d{1,2})?$' patternText="整数位最多10位，小数位精确到小数点后2位" required type="text" value="" name="tariff" class="input w240 mR10"> <em class="col_cccccc">（单位：CNY。）</em>
+                </dd>
+                <!--<dd class="required none"><em></em>整数位最多10位，小数位精确到小数点后2位</dd>-->
+            </dl>
+            <dl class="editDl">
+                <dt>关税税率：</dt>
+                <dd>
+                    <input pattern='^([1-9]\d{0,2}|0)(\.\d{1,2})?$' patternText="整数位最多3位，小数位精确到小数点后2位" required type="text" value="" name="tariffRate" class="input w240 mR10"> <em class="col_cccccc">%</em>
+                </dd>
+                <!--<dd class="required none"><em></em>整数位最多10位，小数位精确到小数点后2位</dd>-->
+            </dl>
+            <dl class="editDl">
+                <dt>VAT/GST：</dt>
+                <dd>
+                    <input pattern='^([1-9]\d{0,9}|0)(\.\d{1,2})?$' patternText="整数位最多10位，小数位精确到小数点后2位" required type="text" value="" name="vatGst" class="input w240 mR10"> <em class="col_cccccc">（单位：CNY。）</em>
+                </dd>
+                <!--<dd class="required none"><em></em>整数位最多10位，小数位精确到小数点后2位</dd>-->
+            </dl>
+            <dl class="editDl">
+                <dt>VAT/GST税率：</dt>
+                <dd>
+                    <input pattern='^([1-9]\d{0,2}|0)(\.\d{1,2})?$' patternText="整数位最多3位，小数位精确到小数点后2位" required type="text" value="" name="vatGstRate" class="input w240 mR10"> <em class="col_cccccc">%</em>
+                </dd>
+                <!--<dd class="required none"><em></em>整数位最多10位，小数位精确到小数点后2位-->
+            </dl>
+            <dl class="editDl">
+                <dt>税金：</dt>
+                <dd>
+                    <input pattern='^([1-9]\d{0,9}|0)(\.\d{1,2})?$' patternText="整数位最多10位，小数位精确到小数点后2位" required type="text" value="" name="tax" class="input w240 mR10" disabled="disabled"> <em class="col_cccccc">（根据关税，VAT/GST自动计算，单位：CNY。）</em>
+                </dd>
+            </dl>
+        </div>
+    </div>
+    <!--扣款税金end-->
+    </form>
+    <form id="premiumCharge">
+    <!--扣款保费-->
+    {{if source.totalFreight}}
+        {{if source.tax}}
+            {{if !source.premium}}
+            <div class="details">
+            {{else}}
+            <div class="details none">
+            {{/if}}
+        {{else}}
+        <div class="details none">
+        {{/if}}
+    {{else}}
+    <div class="details none">
+    {{/if}}
+        <h3 class="titleText">费用信息</h3>
+        <div class="boxConts mT10">
+            <dl class="editDl">
+                <dt>保价系数：</dt>
+                <dd>
+                    <input pattern="^([1-9]\d{0,9}|0)(\.\d{1,2})?$" patternText="整数位最多10位，小数位精确到小数点后2位" required type="text" name="insuredCoefficient" value="" class="input w240 mR10">
+                </dd>
+                <!--<dd class="required none"><em></em>整数位最多10位，小数位精确到小数点后1位</dd>-->
+            </dl>
+            <dl class="editDl">
+                <dt>保额：</dt>
+                <dd>
+                    <input pattern="^([1-9]\d{0,9}|0)(\.\d{1,2})?$" patternText="整数位最多10位，小数位精确到小数点后2位" required type="text" name="coverage" value="" class="input w240 mR10"> <em class="col_cccccc">（单位：CNY/CBM。）</em>
+                </dd>
+                <!--<dd class="required none"><em></em>整数位最多10位，小数位精确到小数点后2位</dd>-->
+            </dl>
+            <dl class="editDl">
+                <dt>保费：</dt>
+                <dd>
+                    <input pattern="^([1-9]\d{0,9}|0)(\.\d{1,2})?$" patternText="整数位最多10位，小数位精确到小数点后2位" required type="text" value="" name="premium" class="input w240 mR10" disabled="disabled"> <em class="col_cccccc">（根据保价系数，保额自动计算，单位：CNY。）</em>
+                </dd>
+            </dl>
+        </div>
+    </div>
+    <!--扣款保费end-->
+    </form>
+</div>
+<div class="btnMain">
+    <a href="javascript:;" class="button js-save">保存</a><a href="javascript:history.go(-1);" class="buttonText pad20">取消</a>
+</div>

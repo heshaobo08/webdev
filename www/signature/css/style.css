@@ -1,0 +1,291 @@
+body{
+    height: 100%;
+}
+#wapper{
+    width: 100%;
+}
+.clear{
+    clear: both;
+}
+/*公用头部*/
+.header{
+    width: 100%;
+    height: 80px;
+    border-bottom: solid 1px #eee;
+}
+.top{
+    width: 1000px;
+    margin: auto;
+    padding-top:25px;
+}
+.top_left{
+    float: left;
+    
+}
+.split_one{
+    margin-left:10px;
+    margin-right:8px;
+    position: relative;
+    bottom: 2px;
+}
+.regi{
+    font-size:20px;
+    color:#666;
+    position: relative;
+    bottom: 8px;
+}
+.top_right{
+    float: right;
+}
+.top_right p{
+    font-size: 12px;
+    color: #333;
+    padding-top: 10px;
+    cursor: pointer;
+}
+.split_s{
+    margin-left:8px;
+    margin-right:8px;
+    position: relative;
+    top: 2px; 
+}
+
+.content{
+    width: 1000px;
+    margin: auto;
+    padding-top:40px;
+}
+.message_box{
+    border: solid 1px #eee;
+}
+
+.signaure_box{
+    margin-left: 170px;
+    margin-top: 20px;
+    position: relative;
+}
+.signaure_text{
+    float: left;
+}
+.signaure_text p{
+    font-size: 14px;
+    color: #333;
+    width: 100px;
+    height: 33px;
+    line-height: 33px;
+}
+
+.record_select {
+	width: 288px;
+	padding-left:10px;
+	height: 33px;
+	border: 1px solid #d8d8d8;
+	position: relative;
+	background: #fff url(../images/select_tip.png) no-repeat 280px 14px;
+	cursor:pointer;
+    left:0px;
+    top:0px;
+    font-size: 14px;
+    float: left;
+    
+}
+.record_select input {
+	display: block;
+	width: 100%;
+	height: 33px;
+	line-height: 33px;
+	border: 0;
+	outline: 0;
+	background: none;
+	cursor:pointer;
+    
+}
+.record_select ul {
+	width: 100%;
+	display: none;
+	position: absolute;
+	left: -1px;
+	top: 33px;
+	-overflow: hidden;
+	background-color: #fff;
+	-max-height: 150px;
+	-overflow-y: auto;
+	border: 1px solid #d8d8d8;
+	z-index:9999;
+    width: 298px;
+}
+.record_select ul li {
+	height: 30px;
+	line-height: 30px;
+	overflow: hidden;
+	padding: 0 10px;
+	cursor: pointer;
+    color: #333;
+    
+}
+.record_select ul li.on {
+	background-color: #2b91e6;
+    color: #fff;
+}
+
+.signaure_input{
+    float: left;
+}
+.signaure_input input{
+    height: 33px;
+    line-height: 33px;
+    width: 298px;
+    border: solid 1px #d8d8d8;
+}
+
+
+
+
+.message_hd{
+    margin-top:50px;
+    color: #2b91e6;
+    font-weight: 600;
+    margin-left:40px;
+    padding-bottom: 5px;
+    border-bottom: solid 1px #eee;
+}
+.message_hd em{
+    font-size: 12px;
+    color: #666;
+    margin-left: 20px;
+}
+
+.message_two{
+    margin-top:10px;
+    
+}
+.company_form_tip{
+    font-size: 12px;
+    color: #ff0000;
+    font-weight: 400;
+    margin-left:20px;
+    position: relative;
+    top: 7px;
+    display: none;
+}
+.company_form_tip em{
+   position: relative;
+   left:5px;
+   bottom: 3px;
+}
+
+.sign_l{
+    float: left;
+}
+.sign_l img{
+    width: 30px;
+    margin-top: 60px;
+}
+
+.sign_r{
+    float: left;
+    margin-left: 20px;
+}
+.sign_r p{
+    margin-top: 10px;
+    font-size: 14px;
+    color: #333;
+}
+.sign_r p span{
+    display: inline-block;
+    width: 110px;
+}
+.sign_r p>em{
+    display: inline-block;
+    width: 70px;
+}
+
+
+.sign_r p input[type='text']{
+   height: 33px;
+    line-height: 33px;
+    width: 150px;
+    border: solid 1px #d8d8d8;
+}
+.sign_r p input[type='checkbox']{
+    position: relative;
+    top: 2px;
+    
+}
+
+.sign_hx{
+    height: 1px;
+    background-color: #eee;
+    width: 700px;
+    margin: 20px auto;
+    
+}
+
+
+
+
+.message_next{
+    width: 180px;
+    height:40px;
+    margin: auto;
+    margin-top:80px;
+    margin-bottom: 80px;
+    line-height: 40px;
+    background-color:#2b91e6;
+    text-align: center;
+    color: #fff;
+    font-weight: 400;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+
+
+/*公共尾部*/
+.footer{
+    width: 1000px;
+    margin: auto;
+    margin-top:10px;
+    margin-bottom: 20px;
+}
+.footer p{
+    font-size: 12px;
+    color: #333;
+    text-align: center;
+    margin-top:15px;
+}
+
+.password_tip_safe{
+    position: absolute;
+    top: 50px;
+    left:220px;
+    font-size: 12px;
+    color: #666;
+    display: none;
+}
+.password_tip_safe span{
+    display: inline-block;
+    width: 25px;
+    height: 12px;
+    position: relative;
+    top:2px;
+    left: 5px;
+    margin-left: 4px;
+}
+.default_color{
+   background-color: #ccc; 
+}
+.low{
+    background-color: #ff0000;
+}
+.medium{
+    background-color: #ff9600;
+}
+.most{
+    background-color: #5acb02;
+}
+
+.password_tip_safe em{
+    margin-left: 8px;
+}

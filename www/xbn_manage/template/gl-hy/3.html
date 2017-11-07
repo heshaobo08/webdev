@@ -1,0 +1,204 @@
+<div class="serch">
+    <form id='joinSearchForm'>
+        <!-- serch begin -->
+        <div class="serch_main">
+            <div class="serch_conts">
+                <dl>
+                    <dt>用户名/手机/邮箱 :</dt>
+                    <dd><input type="text" value="" name='userMobile' class="defaultInput"/></dd>
+                </dl>
+                <dl>
+                    <dt>名称 :</dt>
+                    <dd><input type="text" value="" name='companyName' class="defaultInput"/></dd>
+                </dl>
+                <dl>
+                    <dt>审核状态 :</dt>
+                    <dd>
+                        <div class="select w190">
+                            <input index-data="" name='auditStatus' type="hidden" value="请选择">
+                            <i>全部</i>
+                            <em class="icon-52"></em>
+                            <ul style="">
+                                <li index-data=""><span>请选择</span></li>
+                                <li index-data="1"><span>待审核</span></li>
+                                <li index-data="2"><span>审核通过</span></li>
+                                <li index-data="3"><span>审核驳回</span></li>
+                                <li index-data="4"><span>待开通</span></li>
+                            </ul>
+                        </div>
+                    </dd>
+                </dl>
+            </div>
+            <div class="serch_conts">
+                <dl>
+                    <dt>入驻类型 :</dt>
+                    <dd>
+                        <div class="select w190">
+                            <input index-data="" name='companyType' type="hidden" value="请选择">
+                            <i>全部</i>
+                            <em class="icon-52"></em>
+                            <ul style="">
+                                <li index-data=""><span>请选择</span></li>
+                                <li index-data="1"><span>企业入驻</span></li>
+                                <li index-data="2"><span>个人入驻</span></li>
+                            </ul>
+                        </div>
+                    </dd>
+                </dl>
+            </div>
+            <div class="serch_conts">
+                <dl>
+                    <dt>申请时间 :</dt>
+                    <dd>
+                        <div class="defaultData">
+                            <div class="dataBegin">
+                                <span class="dataInput" id="startTime" name='startChkTime'></span>
+                                <a href="javascript:;" class="timeStart icon-54"></a>
+                            </div>
+                            <span class="point"></span>
+
+                            <div class="dataEnd">
+                                <span class="dataInput" id="endTime" name='endChkTime'></span>
+                                <a href="javascript:;" class="timeEnd icon-54"></a>
+                            </div>
+                        </div>
+                    </dd>
+                </dl>
+            </div>
+            <div class="serch_conts">
+                <dl>
+                    <dt>&emsp;</dt>
+                    <dd><a href="javascript:;" class="button js-joinSearch">Search</a></dd>
+                </dl>
+            </div>
+        </div>
+        <div class="addbutton">
+            {{if source.operateData.moduleData && source.operateData.actionData &&
+            source.operateData.operate['h02040003']}}
+            <a data-href='?m=xhr_id_33_58_edit' data-title='会员管理-入驻审核 -新增' class="button">添加入驻</a>
+            {{/if}}
+            <em class="mL50 none">您所搜索的，共有<i id='searchTotalCount'>${source.totalCount}</i>条内容符合。</em>
+        </div>
+    </form>
+</div>
+<!-- conts begin -->
+<div class="contsBox">
+    <div class="bigTable">
+        <table class="layout" border="0" cellspacing="0">
+            <thead>
+            <tr>
+                <th width="14%">用户名</th>
+                <th width="8%">入驻类型</th>
+                <th width="16%">名称</th>
+                <th width="12%">手机号</th>
+                <th width="16%">申请时间</th>
+                <th width="12%">审核状态</th>
+                <th width="12%">操作</th>
+            </tr>
+            </thead>
+            <tbody id='joinListCon'>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="page" id="topPager">
+    </div>
+
+</div>
+
+<div class="layerCon"></div>
+<!-- 分页模板 -->
+<script id='pageListCon' type='text/x-jquery-tmpl'>
+    <a href="javascript:;" class="firstPage fL" data-displace="first">首页</a>
+    <a href="javascript:;" class="prve fL icon-56" data-displace="prev"></a>
+    <ul class="pagenumber" id="pager"></ul>
+    <a href="javascript:;" class="next fL icon-55" data-displace="next"></a>
+    <a href="javascript:;" class="lastPage" data-displace="last">尾页</a>
+
+</script>
+
+<script id='joinListTmpl' type='text/x-jquery-tmpl'>
+_[{if list}]_
+    _[{each(i,site) list}]_
+        <tr>
+            <td>$_[site.userName]_</td>
+            <td>$_[site.companyType == 2 ? '个人' : '企业']_</td>
+            <td>$_[site.companyName]_</td>
+            <td>$_[site.userMobile]_</td>
+            <td>$_[site.createTime]_</td>
+            <td>_[{if site.auditStatus=='1'}]_待审核_[{else site.auditStatus=='2'}]_审核通过_[{else site.auditStatus=='3'}]_审核驳回_[{else site.auditStatus=='4'}]_待开通_[{/if}]_</td>
+            <td>
+                _[{if site.auditStatus=='1'}]_
+                    _[{if operateData.moduleData && operateData.actionData && operateData.operate['h02040004']}]_
+                    <a href="javascript:;" class="blue" data-href='?m=xhr_id_33_58_audit&id=$_[site.id]_' data-title='会员管理-入驻审核 -入驻审核'>$_[operateData.operate['h02040004'].menuName]_</a>
+                    _[{/if}]_
+                _[{else site.auditStatus=='2'}]_
+                    _[{if operateData.moduleData && operateData.actionData && operateData.operate['h02040002']}]_
+                    <a href="javascript:;" class="blue mR40" data-href='?m=xhr_id_33_58_view&id=$_[site.id]_' data-title='会员管理-入驻审核 -入驻查看'>$_[operateData.operate['h02040002'].menuName]_</a>
+                    _[{/if}]_
+                _[{else site.auditStatus=='3'}]_
+                    _[{if operateData.moduleData && operateData.actionData && operateData.operate['h02040002']}]_
+                    <a href="javascript:;" class="blue mR40" data-href='?m=xhr_id_33_58_view&id=$_[site.id]_' data-title='会员管理-入驻审核 -入驻查看'>$_[operateData.operate['h02040002'].menuName]_</a>
+                    _[{/if}]_
+                    _[{if operateData.moduleData && operateData.actionData && operateData.operate['h02040005']}]_
+                    <a href="javascript:;" class="blue" data-href='?m=xhr_id_33_58_edit&id=$_[site.id]_' data-title='会员管理-入驻审核 -入驻修改'>$_[operateData.operate['h02040005'].menuName]_</a>
+                    _[{/if}]_
+                _[{else site.auditStatus=='4'}]_
+                    _[{if operateData.moduleData && operateData.actionData && operateData.operate['h02040002']}]_
+                        <a href="javascript:;" class="blue mR40" data-href='?m=xhr_id_33_58_view&id=$_[site.id]_' data-title='会员管理-入驻审核 -入驻查看'>$_[operateData.operate['h02040002'].menuName]_</a>
+                    _[{/if}]_
+                    _[{if operateData.moduleData && operateData.actionData && operateData.operate['h02040006']}]_
+                        <a href="javascript:;" class="blue js-settledLock" data-id='$_[site.id]_' data-userId='$_[site.userId]_'>$_[operateData.operate['h02040006'].menuName]_</a>
+                    _[{/if}]_
+                _[{/if}]_
+            </td>
+        </tr>
+    _[{/each}]_
+_[{else}]_
+    <tr>
+        <td colspan="6">暂无数据</td>
+    </tr>
+_[{/if}]_
+
+</script>
+
+
+<!-- 修改角色等级 -->
+<script id='settledUserRoleTmpl' type='text/x-jquery-tmpl'>
+    <form id="settledUserRoleForm">
+    <input type="hidden" name="id" value="$_[userId]_">
+    <dl class="modify">
+        <dt>会员角色：</dt>
+        <dd>
+            <div class="select w140 fL mR20" id='js-role'>
+                <input index-data="" name='groupId' type="hidden" value="请选择" required data-target='js-role'>
+                <i>请选择</i>
+                <em class="icon-52"></em>
+                <ul>
+                    <li index-data=""><span>请选择</span></li>
+                    _[{each(i,roles) roleList}]_
+                        <li index-data="$_[roles.id]_"><span>$_[roles.groupName]_</span></li>
+                    _[{/each}]_
+                </ul>
+            </div>
+        </dd>
+    </dl>
+    <dl class="modify">
+        <dt>会员等级：</dt>
+        <dd>
+            <div class="select w140 fL mR20" id='js-level'>
+                <input index-data="" type="hidden" value="请选择" name='levelId' required data-target='js-level'>
+                <i>请选择</i>
+                <em class="icon-52"></em>
+                <ul>
+                    <li index-data=""><span>请选择</span></li>
+                    _[{each(i,levels) levelList}]_
+                        <li index-data="$_[levels.id]_"><span>$_[levels.levelName]_</span></li>
+                    _[{/each}]_
+                </ul>
+            </div>
+        </dd>
+    </dl>
+</div>
+
+</script>

@@ -1,0 +1,98 @@
+<!-- conts begin -->
+
+<div class="details">
+    <div class="state">
+   
+        <p>支付状态：<span> 
+        {{if source.payStatus == "0"}}
+            未付款
+        {{else source.payStatus == "1"}}
+            已提交凭证
+        {{else source.payStatus == "2"}}
+           已付款
+        {{/if}}
+        </span> </p>
+    </div>
+</div>
+<div class="details">
+    <h3 class="titleText">关联会员</h3>
+    <div class="related">
+        <dl class="fL">
+            <dt>用户名：</dt>
+            <dd>${source.userData.name}</dd>
+        </dl>
+        <dl class="fR">
+            <dt>手机号：</dt>
+            <dd>${source.userData.mobile}</dd>
+        </dl>
+    </div>
+</div>
+<div class="details">
+    <h3 class="titleText">保证金信息</h3>
+    <form id="financeForm">
+    <div class="relatedBox">
+        <dl class="editDl fix">
+            <dt>付款人名称：</dt>
+            <dd>${source.depositUserName}</dd>
+        </dl>
+        <dl class="editDl fix">
+            <dt>应付时间：</dt>
+            <dd>${source.planPayTime}</dd>
+        </dl>
+        <dl class="editDl fix">
+            <dt>应付金额：</dt>
+            <dd>${source.planPayAmount}</dd>
+        </dl>
+        <dl class="textImg mB20 fix">
+            <dt>汇款凭证：</dt>
+            <dd>
+            	<ul id="upload">
+                 {{if source.fileOriginalurl}}
+                    <img src="${source.fileOriginalurl}" data-filedid='${source.relFileId}'>
+                 {{/if}}   
+                </ul>
+            </dd>
+        </dl>
+        <!--待确认-->
+        {{if source.payStatus == "0" || source.payStatus == "1"}}
+        <dl class="editDl fix">
+            <dt>实付金额：</dt>
+            <dd>
+            <input class="input mR10" type="text" name="actualPayAmount" data-max="10" required>人民币
+            
+            <input type="hidden" name="id" value="${source.id}" />
+            <input type="hidden" name="userId" value="${source.userId}" />
+            </dd>
+        </dl>
+        {{else}}
+        <!--已确认-->
+        <dl class="editDl none fix">
+            <dt>确认到款时间：</dt>
+            <dd>${source.actualPayTime}</dd>
+        </dl>
+        <dl class="editDl fix">
+            <dt>实付金额：</dt>
+            <dd>
+                ${source.actualPayAmount}
+            </dd>
+        </dl>
+        {{/if}}
+    </div>
+    </form>
+</div>
+<!-- conts end -->
+<!--中间内容区域 end-->
+<!--待确认-->
+{{if source.payStatus == "0" || source.payStatus == "1"}}
+<div class="btnMain">
+    <a href="javascript:;" class="button mR20 js-submit">确认到款</a>
+    <a href="javascript:history.go(-1);" class="buttonText"  data-title="财务管理-保证金管理" sdata-href="?m=xhr_id_173_195" >返回</a>
+</div>
+{{else}}
+<!--已确认-->
+<div class="btnMain">
+    <a href="javascript:history.go(-1);" class="button"  data-title="财务管理-保证金管理" sdata-href="?m=xhr_id_173_195" >返回</a>
+</div>
+{{/if}}
+
+            

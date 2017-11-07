@@ -1,0 +1,207 @@
+<div class="serch">
+    <form id="searchForm">
+        <div class="serch_main">
+            <div class="serch_conts">
+                <dl>
+                    <dt>申请人：</dt>
+                    <dd><input type="text" class="defaultInput" name="applyer"/></dd>
+                </dl>
+                <dl>
+                    <dt>公司名称：</dt>
+                    <dd><input type="text" class="defaultInput" name="corporateName"/></dd>
+                </dl>
+                <dl>
+                    <dt>联系人姓名：</dt>
+                    <dd><input type="text" class="defaultInput" name="contactName"/></dd>
+                </dl>
+            </div>
+            <div class="serch_conts">
+                <dl>
+                    <dt>联系人电话：</dt>
+                    <dd><input type="tel" class="defaultInput" name="contactPhone"/></dd>
+                </dl>
+                <dl>
+                    <dt>货品种类：</dt>
+                    <dd><input type="text" class="defaultInput" name="goodsType"/></dd>
+                </dl>
+                <dl>
+                    <dt>是否含电池：</dt>
+                    <dd>
+                        <div class="select w190">
+                            <input index-data="" type="hidden" value="请选择" name="isContainBattery"/>
+                            <i>否</i>
+                            <em class="icon-52"></em>
+                            <ul>
+                                <li index-data=""><span>请选择</span></li>
+                                <li index-data="1"><span>是</span></li>
+                                <li index-data="0"><span>否</span></li>
+                            </ul>
+                        </div>
+                    </dd>
+                </dl>
+            </div>
+            <div class="serch_conts">
+                <dl>
+                    <dt>处理状态：</dt>
+                    <dd>
+                        <div class="select w190">
+                            <input index-data="" type="hidden" value="请选择" name="status"/>
+                            <i>全部</i>
+                            <em class="icon-52"></em>
+                            <ul>
+                                <li index-data=""><span>请选择</span></li>
+                                {{each(i,c) getConstName("OwmsOverseaStorageApplyEnum")}}
+                                <li index-data="${i}"><span>${c}</span></li>
+                                {{/each}}
+                            </ul>
+                        </div>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>申请时间 :</dt>
+                    <dd>
+                        <div class="defaultData">
+                            <div class="dataBegin">
+                                <span id="startTime" class="dataInput"></span>
+                                <a class="timeStart icon-54" href="javascript:;"></a>
+                            </div>
+                            <span class="point"></span>
+
+                            <div class="dataEnd">
+                                <span id="endTime" class="dataInput"></span>
+                                <a class="timeEnd icon-54" href="javascript:;"></a>
+                            </div>
+                        </div>
+                    </dd>
+                </dl>
+            </div>
+            <div class="serch_conts">
+                <dl>
+                    <dt>&emsp;</dt>
+                    <dd><a href="javascript:;" class="button js-search">Search</a></dd>
+                </dl>
+            </div>
+        </div>
+    </form>
+    <!--<div class="addbutton">
+        <a href="javascript:;" class="button js-batchReject">驳回</a>
+    </div>-->
+    <em class="mL50 none">您所搜索的，共有<i id='searchTotalCount'>${source.totalCount}</i>条内容符合。</em>
+</div>
+<!-- conts begin -->
+<div class="contsBox">
+    <div class="bigTable">
+        <table class="" border="0" cellspacing="0" r-box="all0">
+            <thead>
+            <tr>
+                <!--<th width="30"><input type="checkbox" name="all0"/></th>-->
+                <th>申请人</th>
+                <th>申请时间</th>
+                <th>公司名称</th>
+                <th>联系人姓名</th>
+                <th>联系人电话</th>
+                <th>货品种类</th>
+                <th>是否含电池</th>
+                <th>处理状态</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody id="listCon"></tbody>
+        </table>
+    </div>
+    <div class="page" id="topPager"></div>
+</div>
+<div class="layerBoxCon"></div>
+<script id='pageListTmpl' type='text/x-jquery-tmpl'>
+    <a href="javascript:;" class="firstPage fL" data-displace="first">首页</a>
+    <a href="javascript:;" class="prve fL icon-56" data-displace="prev"></a>
+    <ul class="pagenumber" id="pager"></ul>
+    <a href="javascript:;" class="next fL icon-55" data-displace="next"></a>
+    <a href="javascript:;" class="lastPage" data-displace="last">尾页</a>
+
+</script>
+<script id="listTmpl" type="text/x-jquery-tmpl">
+    _[{if list.length}]_
+    _[{each(i,c) list}]_
+    <tr>
+        <!--<td><input type="checkbox" data-id="$_[c.id]_" name="accountId"/></td>-->
+        <td>$_[c.applyer]_</td>
+        <td>$_[c.applyTime]_</td>
+        <td><span class="white inline_block" title="$_[c.corporateName]_">$_[c.corporateName]_</span></td>
+        <td><span class="white inline_block" title="$_[c.contactName]_">$_[c.contactName]_</span></td>
+        <td><span class="white inline_block" title="$_[c.contactPhone]_">$_[c.contactPhone]_</span></td>
+        <td><span class="white inline_block" title="$_[c.goodsType]_">$_[c.goodsType]_</span></td>
+        <td>_[{if c.isContainBattery == 1}]_ 是 _[{else}]_ 否 _[{/if}]_</td>
+        <td>$_[getConstName("OwmsOverseaStorageApplyEnum",c.status)]_</td>
+        <td>
+             _[{if operateData.moduleData && operateData.actionData && operateData.operate['HWC20101005']}]_
+             <a class="blue mR10 js-view" data-href="?m=xhr_id_20100000_20101000_view&id=$_[c.id]_" data-title="海外仓业务管理-海外仓申请管理-申请详情">$_[operateData.operate['HWC20101005'].menuName]_</a>
+             _[{/if}]_
+             _[{if c.status==1}]_
+             _[{if operateData.moduleData && operateData.actionData && operateData.operate['HWC20101003']}]_
+             <a href="javascript:;" class="blue mR10 js-pass" data-id="$_[c.id]_" data-userId="$_[c.userId]_">审核</a>
+             _[{/if}]_
+             _[{if operateData.moduleData && operateData.actionData && operateData.operate['HWC20101004']}]_
+             <a href="javascript:;" class="blue mR10 js-reject" data-id="$_[c.id]_">驳回</a>
+             _[{/if}]_
+             _[{/if}]_
+        </td>
+    </tr>
+    _[{/each}]_
+        _[{else}]_
+    <tr>
+        <td colspan="10">暂无数据</td>
+    </tr>
+    _[{/if}]_
+
+</script>
+<!-- 修改角色等级 -->
+<script id='settledUserRoleTmpl' type='text/x-jquery-tmpl'>
+    <form id="settledUserRoleForm">
+    <dl class="modify">
+        <input type="hidden" name="id" value="$_[id]_">
+        <dt>当前角色：</dt>
+        <dd>
+            <span class="Truncate block w240" title="_[{if roleList[role]}]_$_[roleList[role].groupName]__[{/if}]_">_[{if roleList[role]}]_$_[roleList[role].groupName]__[{/if}]_</span>
+        </dd>
+    </dl>
+    <dl class="modify">
+        <dt>修改为：</dt>
+        <dd>
+            <div class="select w140 fL mR20" id="js-role">
+                <input index-data="" name='groupId' type="hidden" value="请选择" required data-target="js-role">
+                <i>请选择</i>
+                <em class="icon-52"></em>
+                <ul>
+                    <li index-data=""><span>请选择</span></li>
+                    _[{each(i,roles) roleList}]_
+                        <li index-data="$_[roles.id]_" _[{if roles.id==role}]_ class="active" _[{/if}]_><span>$_[roles.groupName]_</span></li>
+                    _[{/each}]_
+                </ul>
+            </div>
+        </dd>
+    </dl>
+    <dl class="modify">
+        <dt>当前等级：</dt>
+        <dd>
+            <span class="Truncate block w240" title="_[{if levelList[level]}]_$_[levelList[level].levelName]__[{/if}]_">_[{if levelList[level]}]_$_[levelList[level].levelName]__[{/if}]_</span>
+        </dd>
+    </dl>
+    <dl class="modify">
+        <dt>修改为：</dt>
+        <dd>
+            <div class="select w140 fL mR20" id='js-level'>
+                <input index-data="" type="hidden" value="请选择" name='levelId' required data-target="js-level">
+                <i>请选择</i>
+                <em class="icon-52"></em>
+                <ul>
+                    <li index-data=""><span>请选择</span></li>
+                    _[{each(i,levels) levelList}]_
+                        <li index-data="$_[levels.id]_" _[{if levels.id==level}]_ class="active" _[{/if}]_><span>$_[levels.levelName]_</span></li>
+                    _[{/each}]_
+                </ul>
+            </div>
+        </dd>
+    </dl>
+</form>
+</script>

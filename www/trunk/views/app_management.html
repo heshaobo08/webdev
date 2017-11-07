@@ -1,0 +1,82 @@
+		<div class="app_location">
+			<p>位置：<a href="#">我是运营编辑</a>><a href="#">摇一摇</a>><span>应用管理11111</span></p>
+		</div>
+
+		<div class="app_serch">
+			 <div class="ipt_item">
+				<label for="name">应用名：</label>
+				<div class="iptCon">
+					<p><input type="text" id="name" placeholder="请输入应用名"/></p>
+				</div>
+			</div>
+			<div class="ipt_item">
+				<label>状态：</label>
+				<div class="iptsect">
+					<select> 
+						<option>全部</option>
+						<option>已发布</option> 
+						<option>未发布</option> 
+					</select> 
+				</div>
+			</div>
+			<div class="ac_serch_btn"><p><a class="ac_ser_reset">重置</a><a class="ac_ser_btn">筛选</a></p></div>
+			<div class="clearfix"></div>
+		</div>
+
+		<div class="app_list">
+				<!--<p class="ac_hd"><span>活动列表</span><a href="#" class="ac_bm_btn">新建活动</a></p>-->
+				<table class="tbl_content">
+					<thead>
+						<tr class="thead">
+							<td width="5%">选择</td>
+							<td width="30%">应用</td>
+							<td width="30%">状态</td>
+							<td width="35%">操作</td>
+						</tr>
+					</thead>
+					<tbody class="address_list_comm">
+						<tr>
+							<td><input type="checkbox" name="app_box"></td>
+							<td class="app_logo"><img src="img/temp1.png">&nbsp;&nbsp;等着我</td>
+							<td>已发布</td>
+							<td><a href="#/app_look">查看</a>&nbsp;&nbsp;<a href="#/app_information">编辑</a>&nbsp;&nbsp;<span class="app_online">上线</span></td>
+						</tr>
+						<tr>
+							<td><input type="checkbox" name="app_box"></td>
+							<td class="app_logo"><img src="img/temp1.png">&nbsp;&nbsp;等着我</td>
+							<td>未发布</td>
+							<td><a href="#/app_look">查看</a>&nbsp;&nbsp;<a href="#/app_information">编辑</a>&nbsp;&nbsp;<span class="app_offline">下线</span></td>
+						</tr>
+						<tr>
+							<td><input type="checkbox" name="app_box"></td>
+							<td class="app_logo"><img src="img/temp1.png">&nbsp;&nbsp;等着我</td>
+							<td>已发布</td>
+							<td><a href="#/app_information">编辑</a></td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="app_allbox">
+					<span class="mass_box"><input type="checkbox" id="comm_all"></span>
+					<span class="mass" id="mass_up">批量上线</span>
+					<span class="mass" id="mass_down">批量下线</span>
+				</div>
+				<div class="page_wper">
+				<div id="page_ct"><p>共有<span id="page_count"></span>条记录</p></div>
+				<div id="pageNav"></div>
+				<div id="page_chage">
+					<span>
+						<select id="page_nav"> 
+							<option value="10">10条</option>
+							<option value="20">20条</option> 
+							<option value="30">30条</option> 
+							<option value="40">40条</option> 
+						</select> 
+					</span>
+					<span class="page_number">
+						第<input type="text" id="page_num" value="1">页
+					</span>
+				</div>
+			</div>
+			<div style="clear:both"></div>
+		</div>
+		<script src="js/controllers/app_management_ctrl.js"></script>

@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>电子签章</title>
+<link href="css/base.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<script src="js/jquery.js"></script>
+<script src="js/signature.js"></script>
+</head>
+<body>
+<div id="wapper">
+    
+    <!--头部开始-->
+    <div class="header">
+        <div class="top">
+            <div class="top_left">
+                <a href="#"><img src="images/logo.png"></a><img src="images/fg.png" class="split_one"><span class="regi">电子签章</span>
+            </div>
+        </div>
+    </div>
+    <!--头部结束-->
+    
+    <!--内容开始-->
+    <div class="content">
+        <div class="message_box">
+            <div class="message_one">
+                <p class="message_hd">签约合同选择</p>
+                <div class="signaure_box">
+                    <div class="signaure_text">
+                        <p>请求签章系统</p>
+                    </div>
+                    <div class="record_select" name="record_select">
+                        <input type="text" readonly placeholder="请选择签章系统" id="signature_system">
+                        <ul>
+                           <li data-value="1">汇收银</li>
+                           <li data-value="2">汇付宝</li>
+                        </ul>
+                    </div>
+                    <b class="company_form_tip"><img src="images/login_error.png"><em>请选择签章系统</em></b>
+                    <div style="clear:both"></div>
+                </div>
+                <div class="signaure_box">
+                    <div class="signaure_text">
+                        <p>签约合同</p>
+                    </div>
+                    <div class="record_select" name="record_select">
+                        <input type="text" readonly placeholder="请选择合同" id="contract">
+                        <ul>
+                           <li data-value="3">1</li>
+                           <li data-value="4">2</li>
+                        </ul>
+                    </div>
+                    <b class="company_form_tip"><img src="images/login_error.png"><em>请选择合同</em></b>
+                    <div style="clear:both"></div>
+                </div>
+                
+            </div>
+            <div class="message_two">
+                <p class="message_hd">签约商户信息</p>
+                <div class="signaure_box">
+                    <div class="signaure_text">
+                        <p>签约公司名称</p>
+                    </div>
+                    <div class="signaure_input">
+                       <input type="text" id="company_name">
+                    </div>
+                    <b class="company_form_tip"><img src="images/login_error.png"><em>请填写签约公司名称</em></b>
+                    <div style="clear:both"></div>
+                </div>
+                <div class="signaure_box">
+                    <div class="signaure_text">
+                        <p>签约公司地址</p>
+                    </div>
+                    <div class="signaure_input">
+                       <input type="text" id="company_address">
+                    </div>
+                    <b class="company_form_tip"><img src="images/login_error.png"><em>请填写签约公司地址</em></b>
+                    <div style="clear:both"></div>
+                </div>
+                <div class="signaure_box">
+                    <div class="signaure_text">
+                        <p>企业类型</p>
+                    </div>
+                    <div class="record_select" name="record_select">
+                        <input type="text" readonly placeholder="请选择企业类型" id="enterprise_type">
+                        <ul>
+                           <li data-value="5">普通企业</li>
+                           <li data-value="6">社会团体</li>
+                           <li data-value="7">事业单位</li>
+                           <li data-value="8">民办非企业单位</li>
+                           <li data-value="9">党政及国家机构</li>
+                        </ul>
+                    </div>
+                    <b class="company_form_tip"><img src="images/login_error.png"><em>请选择企业类型</em></b>
+                    <div style="clear:both"></div>
+                </div>
+                <div class="signaure_box">
+                    <div class="signaure_text">
+                        <p>企业注册类型</p>
+                    </div>
+                    <div class="record_select" name="record_select">
+                        <input type="text" readonly placeholder="请选择企业注册类型" id="registration_type">
+                        <ul>
+                           <li data-value="10">代理人注册</li>
+                           <li data-value="11">法人注册</li>
+                        </ul>
+                    </div>
+                    <b class="company_form_tip"><img src="images/login_error.png"><em>请选择企业注册类型</em></b>
+                    <div style="clear:both"></div>
+                </div>
+                <div class="signaure_box">
+                    <div class="signaure_text">
+                        <p>证件类型</p>
+                    </div>
+                    <div class="record_select" name="record_select">
+                        <input type="text" readonly placeholder="请选择证件类型" id="certificates_type">
+                        <ul>
+                           <li data-value="1">1</li>
+                           <li data-value="2">2</li>
+                           <li data-value="3">3</li>
+                           <li data-value="4">4</li>
+                        </ul>
+                    </div>
+                    <b class="company_form_tip"><img src="images/login_error.png"><em>请选择证件类型</em></b>
+                    <div style="clear:both"></div>
+                </div>
+                <div class="signaure_box">
+                    <div class="signaure_text">
+                        <p style="line-height:20px;padding-top:2px;">工商注册号/统一信用代码</p>
+                    </div>
+                    <div class="signaure_input">
+                       <input type="text" id="company_number">
+                    </div>
+                    <b class="company_form_tip"><img src="images/login_error.png"><em>请填写工商注册号/统一信用代码</em></b>
+                    <div style="clear:both"></div>
+                </div>
+                <div class="signaure_box">
+                    <div class="signaure_text">
+                        <p>经营范围</p>
+                    </div>
+                    <div class="signaure_input">
+                       <input type="text" id="company_range">
+                    </div>
+                    <b class="company_form_tip"><img src="images/login_error.png"><em>请填写经营范围</em></b>
+                    <div style="clear:both"></div>
+                </div>
+            </div>
+            <div class="message_three">
+                <p class="message_hd">商户联系信息</p>
+                <div class="signaure_box">
+                    <div class="signaure_text">
+                        <p>法人姓名</p>
+                    </div>
+                    <div class="signaure_input">
+                       <input type="text" id="person_name">
+                    </div>
+                    <b class="company_form_tip"><img src="images/login_error.png"><em>请填写法人姓名</em></b>
+                    <div style="clear:both"></div>
+                </div>
+                <div class="signaure_box">
+                    <div class="signaure_text">
+                        <p>法人身份证号</p>
+                    </div>
+                    <div class="signaure_input">
+                       <input type="text" id="person_card">
+                    </div>
+                    <b class="company_form_tip"><img src="images/login_error.png"><em>请填写法人身份证号</em></b>
+                    <div style="clear:both"></div>
+                </div>
+                <div class="signaure_box">
+                    <div class="signaure_text">
+                        <p>法人归属地</p>
+                    </div>
+                    <div class="record_select" name="record_select">
+                        <input type="text" readonly placeholder="请选择法人归属地" id="person_address">
+                        <ul>
+                           <li data-value="1">1</li>
+                           <li data-value="2">2</li>
+                           <li data-value="3">3</li>
+                           <li data-value="4">4</li>
+                        </ul>
+                    </div>
+                    <b class="company_form_tip"><img src="images/login_error.png"><em>请选择法人归属地</em></b>
+                    <div style="clear:both"></div>
+                </div>
+                <div class="signaure_box agent_box">
+                    <div class="signaure_text">
+                        <p>代理人姓名</p>
+                    </div>
+                    <div class="signaure_input">
+                       <input type="text" id="agent_name">
+                    </div>
+                    <b class="company_form_tip"><img src="images/login_error.png"><em>请填写代理人姓名</em></b>
+                    <div style="clear:both"></div>
+                </div>
+                <div class="signaure_box agent_box">
+                    <div class="signaure_text">
+                        <p>代理人身份证号</p>
+                    </div>
+                    <div class="signaure_input">
+                       <input type="text" id="agent_card">
+                    </div>
+                    <b class="company_form_tip"><img src="images/login_error.png"><em>请填写代理人身份证号</em></b>
+                    <div style="clear:both"></div>
+                </div>
+                
+                <div class="signaure_box">
+                    <div class="signaure_text">
+                        <p>联系人姓名</p>
+                    </div>
+                    <div class="signaure_input">
+                       <input type="text" id="contacts_name">
+                    </div>
+                    <b class="company_form_tip"><img src="images/login_error.png"><em>请填写联系人姓名</em></b>
+                    <div style="clear:both"></div>
+                </div>
+                
+                <div class="signaure_box">
+                    <div class="signaure_text">
+                        <p>联系人手机号</p>
+                    </div>
+                    <div class="signaure_input">
+                       <input type="text" id="contacts_phone">
+                    </div>
+                    <b class="company_form_tip"><img src="images/login_error.png"><em>请填写联系人手机号</em></b>
+                    <div style="clear:both"></div>
+                </div>
+                
+                <div class="signaure_box">
+                    <div class="signaure_text">
+                        <p>联系人邮箱</p>
+                    </div>
+                    <div class="signaure_input">
+                       <input type="text" id="contacts_email">
+                    </div>
+                    <b class="company_form_tip"><img src="images/login_error.png"><em>请填写联系人邮箱</em></b>
+                    <div style="clear:both"></div>
+                </div>
+                
+            </div>
+            
+            <div class="message_four">
+                <p class="message_hd">签约产品信息</p>
+                <div class="signaure_box">
+                    <div class="sign_l"><img src="images/icon_weixin.png"></div>
+                    <div class="sign_r">
+                        <p>
+                            <input type="checkbox" id="wx_one"><span>微信扫码支付</span><em>签约费率</em><input type="text" id="weixin_one" disabled=disabled>%
+                            <b class="company_form_tip" style="margin-left:12px;top:1px;"><img src="images/login_error.png"><em>请填写签约费率</em></b>
+                        </p>
+                        <p>
+                            <input type="checkbox" id="wx_two"><span>微信刷卡支付</span><em>签约费率</em><input type="text" id="weixin_two" disabled=disabled>%
+                            <b class="company_form_tip" style="margin-left:12px;top:1px;"><img src="images/login_error.png"><em>请填写签约费率</em></b>
+                        </p>
+                        <p>
+                            <input type="checkbox" id="wx_three"><span>微信公众号支付</span><em>签约费率</em><input type="text" id="weixin_three" disabled=disabled>%
+                            <b class="company_form_tip" style="margin-left:12px;top:1px;"><img src="images/login_error.png"><em>请填写签约费率</em></b>
+                        </p>
+                    </div>
+                    <div style="clear:both"></div>
+                </div>
+                <div class="sign_hx"></div>
+                <div class="signaure_box">
+                    <div class="sign_l"><img src="images/icon_zhifubao.png" style="margin-top:35px;"></div>
+                    <div class="sign_r">
+                        <p>
+                            <input type="checkbox" id="zhb_one"><span>支付宝扫码支付</span><em>签约费率</em><input type="text" disabled=disabled id="zhifubao_one">%
+                            <b class="company_form_tip" style="margin-left:12px;top:1px;"><img src="images/login_error.png"><em>请填写签约费率</em></b>
+                        </p>
+                        
+                        <p>
+                            <input type="checkbox" id="zhb_two"><span>支付宝刷卡支付</span><em>签约费率</em><input type="text" disabled=disabled id="zhifubao_two">%
+                            <b class="company_form_tip" style="margin-left:12px;top:1px;"><img src="images/login_error.png"><em>请填写签约费率</em></b>
+                        </p>
+                    </div>
+                    <div style="clear:both"></div>
+                </div>
+                <div class="sign_hx"></div>
+                <div class="signaure_box">
+                    <div class="sign_l"><img src="images/unionpay_log.png"></div>
+                    <div class="sign_r">
+                        <p>
+                            <input type="checkbox" id="un_one"><span>银联刷卡</span><em>签约费率</em><input type="text" disabled=disabled id="unionpay_one">%
+                            <b class="company_form_tip" style="margin-left:12px;top:1px;"><img src="images/login_error.png"><em>请填写签约费率</em></b>
+                        </p>
+                        <p>
+                            <input type="checkbox" id="un_two"><span>银联扫码</span><em>签约费率</em><input type="text" disabled=disabled id="unionpay_two">%
+                            <b class="company_form_tip" style="margin-left:12px;top:1px;"><img src="images/login_error.png"><em>请填写签约费率</em></b>
+                        </p>
+                        <p>
+                            <input type="checkbox" id="un_three"><span>银联产品码</span><em>签约费率</em><input type="text" disabled=disabled id="unionpay_three">%
+                            <b class="company_form_tip" style="margin-left:12px;top:1px;"><img src="images/login_error.png"><em>请填写签约费率</em></b>
+                        </p>
+                    </div>
+                    <div style="clear:both"></div>
+                </div>
+            </div>
+            <h3 class="message_next">下一步</h3>
+        </div>
+        
+    </div>
+    <!--内容结束-->
+    
+    <!--尾部开始-->
+    <div class="footer">
+        <p>关于我们 | 合作伙伴 | 商务合作 | 联系我们</p>
+        <p>Copyright © since 2008 汇元银通（北京）在线支付技术有限公司 版权所有 侵权必究 </p>
+    </div>
+    <!--尾部结束-->
+</div>    
+</body>
+</html>

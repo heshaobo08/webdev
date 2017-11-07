@@ -1,0 +1,110 @@
+<style>
+    .xubox_dialog .layerBox {
+        position: relative;
+        padding: 20px;
+        padding-top: 0;
+        text-align: center;
+    }
+
+    .xubox_dialog .layerBox #closeLayer {
+        position: absolute;
+        top: -10px;
+        right: 10px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    .xubox_dialog .layerBox img {
+        max-width: 750px;
+        max-height: 550px;
+    }
+
+    .xubox_dialog .layerBox a {
+        font-family: serif;
+        cursor: pointer;
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        font-size: 30px;
+        border-radius: 50%;
+        background: rgba(0,0,0,0.3);
+        color: #fff;
+        text-align: center;
+        line-height: 40px;
+        top: 50%;
+        margin-top: -20px;
+    }
+
+    .xubox_dialog .layerBox a:hover {
+        background: rgba(0,0,0,0.6);
+    }
+
+    .xubox_dialog .layerBox .prevImg {
+        left: 30px;
+    }
+
+    .xubox_dialog .layerBox .nextImg {
+        right: 30px;
+    }
+
+</style>
+<div r-box="all0">
+    <div class="serch">
+    <form id="searchForm">
+        <!-- serch begin -->
+        <div class="serch_main">
+            <div class="serch_conts">
+                <dl>
+                    <dt>图片名称 : </dt>
+                    <dd>
+                        <input type="text" name="fileOriginalName" class="defaultText"/>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>上传用户 : </dt>
+                    <dd>
+                        <input type="text" name="fileCreateUserName" class="defaultText"/>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt> </dt>
+                    <dd>
+                        {{if source.operateData.moduleData && source.operateData.actionData && source.operateData.operate['h07010001']}}
+                        <a href="javascript:;" class="button js-search">Search</a>
+                        {{/if}}
+                    </dd>
+                </dl>
+            </div>
+        </div>
+        <div class="addbutton" >
+            <input type="checkbox" class="mR10" name="all0"/>
+            全选
+            {{if source.operateData.moduleData && source.operateData.actionData && source.operateData.operate['h07010002']}}
+            <a href="javascript:;" class="mL30 blue js-delAll">批量删除</a>
+            {{/if}}
+        </div>
+        <!-- serch end -->
+    </form>    
+    </div>
+    <!-- conts begin -->
+    <div class="contsPic" style='overflow:hidden'>
+            
+    </div>
+    <div class="endTip fix mT20 mB20" style='text-align:center'></div>
+    <!-- conts end -->
+</div>
+<script id="list" type="text/x-jquery-tmpl">
+_[{if list.length}]_
+	_[{each(i,c) list}]_
+	<span>
+		<img src="$_[protocol]_//timage.xbniao.com$_[c.fileOriginalUrl]_" alt="$_[c.fileOriginalName]_" width="202" height="202" class="js-image" data-user='$_[c.fileCreateUserName||"暂无用户名"]_' data-status='$_[c.fileState]_' data-name="$_[c.fileOriginalName]_"/>
+		<p>
+			<input type="checkbox" class="mR5" name="fileId" value="$_[c.fileId]_"/>
+			$_[c.fileOriginalName]_
+		</p>
+	</span>
+	_[{/each}]_
+_[{else}]_
+<span class='tL'>暂无数据</span>
+_[{/if}]_
+</script>

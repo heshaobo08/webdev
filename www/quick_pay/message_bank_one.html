@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0 user-scalable=no" />
+<title>填写银行卡信息</title>
+<link href="css/base.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<script src="js/jquery.js"></script>
+<script>
+$(function() {
+    /*阻止默认事件*/
+    var stopDefault = function(e) {
+        e.preventDefault();
+    }
+    $(".js_check").on("change",function() {
+        if($(this).prop("checked")) {
+            $("#cover").show();
+            $(".agreement").slideToggle(1000);
+            $(window).on("touchmove",stopDefault);
+        }
+        
+    })
+    $(".js_cancel").on("click",function() {
+        $("#cover").hide();
+        $(".agreement").slideToggle(1000);
+        $(window).off("touchmove",stopDefault);
+    })
+    
+    $(".js_phone_tip").on("click",function() {
+         $("#cover").show();
+        $(".phone_tip").show();
+        $(window).on("touchmove",stopDefault);
+    })
+    
+     $(".phone_tip h6").on("click",function() {
+        $("#cover").hide();
+        $(".phone_tip").hide();
+        $(window).off("touchmove",stopDefault);
+    })
+      
+     $(".js_name_tip").on("click",function() {
+        $("#cover").show();
+        $(".bank_explained").show();
+        $(window).on("touchmove",stopDefault);
+    })
+    
+    $(".bank_explained h6").on("click",function() {
+        $("#cover").hide();
+        $(".bank_explained").hide();
+        $(window).off("touchmove",stopDefault);
+    })
+    
+  
+    $(".bank_next").on("click",function() {
+        //验证持卡人
+        var name_card = $("#name_card").val().trim();
+        if(!name_card){
+            appearDiv("请输入持卡人姓名！");
+			return false;
+        }
+        //验证身份证
+        var number_id = $("#number_id").val().trim();
+        if(!number_id){
+             appearDiv("请输入身份证号码！");
+			return false;
+        }
+        //手机号验证	
+        var reg = /(^13\d{9}$)|(^14\d{9}$)|(^15\d{9}$)|(^16\d{9}$)|(^17\d{9}$)|(^18\d{9}$)|(^19\d{9}$)/g; 
+        var mobileP = $("#number_phone").val().trim();
+        if(!mobileP){
+            appearDiv("请输入手机号码！");
+			return false;
+        }
+        if(!reg.test(mobileP)){
+            appearDiv("手机号码输入错误！");
+			return false;
+        }
+        if(!$(".js_check").prop("checked")){
+            appearDiv("请勾选同意用户协议！");
+			return false;
+        }
+        
+        window.location="bank_phone.html";
+        
+    })
+    
+    //弹层函数
+    function appearDiv(str) {
+        $("#cover").show();
+        $(".phone_error").fadeIn(400).find('h4').text(str);
+        $(window).on("touchmove",stopDefault);
+    }
+    
+    $(".phone_error p").on("click",function() {
+        $("#cover").hide();
+        $(".phone_error").hide();
+        $(window).off("touchmove",stopDefault);
+    })
+    
+})
+</script>
+</head>
+<body>
+<!--弹窗-->
+<div id="cover"></div>
+<div class="phone_error">
+    <h4>手机号码与银行预留不一致，请确认并重新输入。</h4>
+    <p>确定</p>
+</div>
+<div class="phone_tip">
+    <h4>手机号码说明</h4>
+    <div class="bank_ms">
+        <h3>银行卡申请人信息</h3>
+        <p>****</p>
+        <p>手机号码 <em>xxxxxxx</em></p>
+        <p>****</p>
+    </div>
+    <p>银行预设的手机号码是你在办理该银行卡时所填写的联系手机号码。</p>
+    <p>忘记、没有或已停用手机号码的用户可致电相应行服务热线咨询。</p>
+    <h6>知道了</h6>
+</div>
+<div class="bank_explained">
+    <h4>持卡人说明</h4>
+    <p>为了你的账户资金安全，只能绑定持卡人的银行卡。</p>
+    <p>获取更多帮助，请致电电讯客服</p>
+    <p>＋86-010-58103559。</p>
+    <h6>知道了</h6>
+</div>
+<div class="agreement">
+    <p>汇付宝电子商务服务协议</p>
+    <p>汇付宝付款商务服务协议</p>
+    <p class="js_cancel">取消</p>
+</div>
+<div id="wapper">
+    <!--头部开始-->
+    <div id="header">
+        <a href="javascript:history.go(-1)" class="back">取消</a>
+        <p>填写银行卡信息</p>
+    </div>
+    <!--头部结束-->
+    <!--内容开始-->
+    <div id=content>
+        <div class="bank_card">
+            <h6>请添加持卡人本人的银行卡</h6>
+            <h5></h5>
+            <p>卡号码<span>4344 5343 3454 4343</span></p>
+            <h5></h5>
+            <p class="add_bank_name"><img src="images/bank_js.png">建设银行<span class="type_bank">储蓄卡</span></p>
+            <h5></h5>
+            <p><label for="name_card">持卡人</label><input type="text" id="name_card" placeholder="请输入持卡人姓名"><img src="images/name-tip.png" class="name_tip js_name_tip"></p>
+            <h5></h5>
+            <p><label for="number_id">身份证</label><input type="text" id="number_id" placeholder="请输入身份证"></p>
+            <h5></h5>
+             <p><label for="number_phone">手机号码</label><input type="tel" id="number_phone" placeholder="请输入银行预留手机号码"><img src="images/name-tip.png" class="name_tip js_phone_tip"></p>
+            <h5></h5>
+            <p><input type="checkbox" class="js_check"><b>同意<em>《用户协议》</em></b></p>
+            <h3 class="bank_next">下一步</h3>
+        </div>
+    </div>
+    <!--内容结束-->
+    <!--尾部开始-->
+    <div id=footer></div>
+    <!--尾部结束-->
+</div>
+</body>
+</html>

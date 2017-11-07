@@ -1,0 +1,151 @@
+<!-- serch begin -->
+<div class="serch">
+    <div class="serch_main">
+    <form id='promotFrom'>
+        <div class="serch_conts">
+            <dl>
+                <dt>促销活动名称 : </dt>
+                <dd><input type="text" value="" name='promotionName' class="defaultInput" placeholder="请输入搜索内容"></dd>
+            </dl>
+            <dl>
+                <dt>促销类型 : </dt>
+                <dd>
+                    <div class="select w190" style="z-index: 100;">
+                        <input name='promotionType' type="hidden" value="请选择">
+                        <i>全部</i>
+                        <em class="icon-52"></em>
+                        <ul style="">
+                            <li index-data=""><span>请选择</span></li>
+                            <li index-data="1"><span>组合促销</span></li>
+                            <li index-data="0"><span>单品促销</span></li>
+                        </ul>
+                    </div>
+                </dd>
+            </dl>
+            <dl>
+                <dt>是否在有效期 : </dt>
+                <dd>
+                    <div class="select w190" style="z-index: 100;">
+                        <input index-data="" name='isEffective' type="hidden" value="请选择">
+                        <i>全部</i>
+                        <em class="icon-52"></em>
+                        <ul style="">
+                            <li index-data=""><span>请选择</span></li>
+                            <li index-data="0"><span>未开始</span></li>
+                            <li index-data="1"><span>活动中</span></li>
+                            <li index-data="2"><span>已结束</span></li>
+                        </ul>
+                    </div>
+                </dd>
+            </dl>
+        </div>
+        <div class="serch_conts">
+            <dl>
+                <dt>状态 : </dt>
+                <dd>
+                    <div class="select w190" style="z-index: 100;">
+                        <input index-data="" name='promotionStatus' type="hidden" value="请选择">
+                        <i>全部</i>
+                        <em class="icon-52"></em>
+                        <ul style="">
+                            <li index-data=""><span>请选择</span></li>
+                            <li index-data="1"><span>正常</span></li>
+                            <li index-data="0"><span>暂停</span></li>
+                        </ul>
+                    </div>
+                </dd>
+            </dl>
+            <dl>
+                <dt>活动期限 : </dt>
+                <dd>
+                    <div class="defaultData">
+                        <div class="dataBegin">
+                            <span class="dataInput" id="startTime"></span>
+                            <input type="hidden" name='promotionStartTime' id='dataStart'>
+                            <a href="javascript:;" class="timeStart icon-54"></a>
+                        </div>
+                        <span class="point"></span>
+                        <div class="dataEnd">
+                            <span class="dataInput" id="endTime"></span>
+                            <input type="hidden" name='promotionEndTime' id='dataEnd'>
+                            <a href="javascript:;" class="timeEnd icon-54"></a>
+                        </div>
+                    </div>
+                </dd>
+            </dl>
+            <dl class="serchDl">
+                <dt></dt>
+                <dd>
+                    {{if source.operateData.moduleData && source.operateData.actionData && source.operateData.operate['h06050001']}}
+                    <a href="javascript:" class="button js-promotSearch">Search</a>
+                    {{/if}}
+                </dd>
+            </dl>
+        </div>
+    </form>
+    </div>
+    <div class="addbutton">
+        {{if source.operateData.moduleData && source.operateData.actionData && source.operateData.operate['h06050003']}}
+        <a href="javascript:;" data-href='?m=xhr_id_199_226_edit' data-title='配置管理-促销活动管理-新增' class="button">创建促销</a>
+        {{/if}}
+        <em class="mL50 none">您所搜索的，共有<i id="searchTotalCount">0</i>条内容符合。</em>
+        <!--simple2,multi-->
+    </div>
+</div>
+<!-- serch end -->
+
+<!-- conts begin -->
+<div class="contsBox">
+    <div class="bigTable">
+        <table class="" border="0" cellspacing="0">
+            <thead>
+            <tr>
+                <th>促销活动名称</th>
+                <th>促销类型</th>
+                <th>活动期限</th>
+                <th>是否在有效期</th>
+                <th>状态</th>
+                <th>创建时间</th>
+                <th>管理员</th>
+            </tr>
+            </thead>
+            <tbody id='promotListCon'>
+                
+            </tbody>
+        </table>
+    </div>
+	<div class="page" id="topPager">
+
+	</div>
+</div>
+<!-- 促销列表 -->
+<script id='promotListTmpl' type='text/x-jquery-tmpl'>
+_[{if promotionList.length}]_
+    _[{each(i,list) promotionList}]_
+    <tr>
+        <td>
+            _[{if operateData.moduleData && operateData.actionData && operateData.operate['h06050002']}]_
+            <a href="javascript:;" class='blue'  data-code='$_[list.code]_' data-href='?m=xhr_id_199_226_edit&id=$_[list.promotionId]_' data-title='配置管理-促销活动管理-新增'>$_[list.promotionName]_</a>
+            _[{/if}]_
+        </td>
+        <td>_[{if list.promotionType=='1'}]_组合促销_[{else list.promotionType=='0'}]_单品促销_[{/if}]_</td>
+        <td>$_[list.promotionStartTime]_ 至 $_[list.promotionEndTime]_</td>
+        <td>_[{if list.isEffective=='1'}]_活动中_[{else list.isEffective=='2'}]_已结束_[{else list.isEffective=='0'}]_未开始_[{/if}]_</td>
+        <td>_[{if list.promotionStatus=='1'}]_正常_[{else list.promotionType=='0'}]_暂停_[{/if}]_</td>
+        <td>$_[list.createTime]_</td>
+        <td>$_[list.createBy]_</td>
+    </tr>
+    _[{/each}]_
+_[{else}]_
+    <tr><td colSpan="7">暂无数据</td></tr>
+_[{/if}]_
+</script>
+
+<!-- 分页模板 -->
+<script id='pageListCon' type='text/x-jquery-tmpl'>
+    <a href="javascript:;" class="firstPage fL" data-displace="first">首页</a>
+    <a href="javascript:;" class="prve fL icon-56" data-displace="prev"></a>
+    <ul class="pagenumber" id="pager"></ul>
+    <a href="javascript:;" class="next fL icon-55" data-displace="next"></a>
+    <a href="javascript:;" class="lastPage" data-displace="last">尾页</a>
+</script>

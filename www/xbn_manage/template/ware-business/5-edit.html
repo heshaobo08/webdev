@@ -1,0 +1,23 @@
+<form id="addCustomerForm">
+    <div class="contsBox">
+        <div class="details">
+            <h3 class="titleText">基本信息</h3>
+            <input type="hidden" value="${source.id}" name="customerId"/>
+            <div class="newConts pL215">
+                <dl class="editDl">
+                    <dt><font>*</font>姓名：</dt>
+                    <dd><input type="text" name="name" class="input w240" required data-cnmax="20" value="${source.name}"/></dd>
+                </dl>
+                <dl class="editDl">
+                    <dt><font>*</font>QQ号：</dt>
+                    <dd><input type="text" name="qq" class="input w240" required data-cnmax="20" pattern="^[1-9][0-9]{4,19}" value="${source.qq}"/></dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+    <div class="btnMain">
+        <a href="javascript:;" class="button js-submit">保存</a>
+        <a href="javascript:history.go(-1);" onclick="document.title='海外仓业务管理-客服信息管理'" class="buttonText pad20" sdata-href="?m=xhr_id_20100000_20108000"
+           data-title="海外仓业务管理-客服信息管理">返回</a>
+    </div>
+</form>

@@ -1,0 +1,61 @@
+<!--中间内容区域 begin-->
+<div class="details siteDetail">
+    <form id='logisticsForm'>
+        <h3 class="titleText">物流信息</h3>
+        <div class="initBox">
+            <dl class="editDl">
+                <dt>物流名称：</dt>
+                <dd>
+                    <input type="hidden" name='id' value="${source.id}">
+                    <input class="input w190" type="text" name='name' value="${source.name}" required data-max='30'>
+                </dd>
+            </dl>
+            <dl class="editDl">
+                <dt>物流产品：</dt>
+                <dd>
+                    <input class="input w190" type="text" name="product" value="${source.product}" required data-max='30'>
+                </dd>
+            </dl>
+            <dl class="editDl">
+                <dt>物流公司：</dt>
+                <dd>
+                    <div class="select w190 fL" id='jd-companyName'>
+                        <input type="hidden" value="${source.companyName}" name='companyName' index-data="" required data-target='jd-companyName'>
+                        <i>请选择</i>
+                        <em class="icon-52"></em>
+                        <ul style="display: none;">
+                            <li index-data=""><span>请选择</span></li>
+                            {{each(i,company) source.logisticsData}}
+                            <li index-data="${company.id}" {{if source.companyName==company.id}} class='active' {{/if}}><span>${company.name}</span></li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                </dd>
+            </dl>
+            <dl class="editDl">
+                <dt>物流代码：</dt>
+                <dd>
+                    <input class="input w190" type="text" name='code' value="${source.code}" required data-max='30'>
+                </dd>
+            </dl>
+            <dl class="editDl">
+                <dt>查询网址：</dt>
+                <dd>
+                    <input class="input w190" type="url" name='url' value="${source.url}" required data-max='30'>
+                </dd>
+            </dl>
+            <dl class="editTXA">
+                <dt>描述：</dt>
+                <dd>
+                    <textarea class="w480 h140" name='remark' required data-max='100'>${source.remark}</textarea>
+                </dd>
+            </dl>
+        </div>
+    </form>
+</div>
+<!--中间内容区域 end-->
+<!--conts end-->
+<div class="btnMain">
+    <a class="button mR30 js-logisSubmit" href="javascript:;">提交</a>
+    <a class="buttonText" href="javascript:history.go(-1);" sdata-href='?m=xhr_id_199_240' data-title='配置管理-物流公司管理'>返回</a>
+</div>

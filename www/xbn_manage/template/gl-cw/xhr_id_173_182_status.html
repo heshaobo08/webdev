@@ -1,0 +1,103 @@
+<!--中间内容区域 begin-->
+<div class="contsBox">
+    <div class="details">
+        <div class="state">
+            <p>账单状态：
+                <span>
+                {{if source.status == "0"}}
+                    未提现
+                {{else source.status == "1"}}
+                    提现中
+                {{else source.status == "2"}}
+                    已提现
+                {{else source.status == "3"}}
+                    已补缴
+                {{/if}}
+                </span>
+                <span class="mL50"><em>账单周期：</em>${source.billName}<!--<em class="billCycle"></em>--></span></p>
+        </div>
+    </div>
+    <div class="details">
+        <h3 class="titleText">账单信息</h3>
+        <div class="pT10 billDetails">
+            <div class="details_L">
+                <dl>
+                    <dt>收入：</dt>
+                    <dd>US $ ${source.inSum}</dd>
+                </dl>
+                <dl>
+                    <dt>支出：</dt>
+                    <dd>US $ ${source.outSum}</dd>
+                </dl>
+            </div>
+            <div class="details_R">
+                <dl>
+                    <dt>应付小笨鸟佣金：</dt>
+                    <dd>US $ ${source.commisson}</dd>
+                </dl>
+                <dl>
+                    <dt>可提现金额：</dt>
+                    <dd>US $ ${source.obtainSum}</dd>
+                </dl>
+            </div>
+        </div>
+        <div class="merge">
+            <dl class="">
+                <dt class="w170">本月各币种净收入如下：</dt>
+                <dd>
+                    <em>${source.currencyDetail}</em>
+                </dd>
+            </dl>
+        </div>
+    </div>
+    <div class="details overflow">
+        <h3 class="titleText">账单明细</h3>
+        <div class="smallTable">
+            <table class="" border="0" cellspacing="0">
+                <thead>
+                <tr>
+                    <th>时间</th>
+                    <th>订单号</th>
+                    <th width="30%">商品</th>
+                    <th>SKU</th>
+                    <th>来源</th>
+                    <th>类型</th>
+                    <th>金额</th>
+                </tr>
+                </thead>
+                <tbody>
+                <script id="list" type="text/x-jquery-tmpl">
+                    _[{if list.length}]_
+                    _[{each(i,c) list}]_
+                    <tr>
+                        <td>$_[c.siteTime]_</td>
+                        <td>$_[c.orderId]_</td>
+                        <td>$_[c.itemName]_</td>
+                        <td>_[{if c.sku}]_$_[c.sku.replace(/^\w+\-/,'')]__[{/if}]_</td>
+                        <td>$_[c.source]_</td>
+                        <td>$_[c.type]_</td>
+                        <td>$$_[c.money]_</td>
+                    </tr>
+                    _[{/each}]_
+                    _[{else}]_
+                    <tr>
+                        <td colspan="7">暂无数据</td>
+                    </tr>
+                    _[{/if}]_
+                </script>
+                </tbody>
+            </table>
+        </div>
+        <div class="page" id="topPager">
+            <a href="javascript:;" class="firstPage fL" data-displace="first">首页</a>
+            <a href="javascript:;" class="prve fL icon-56" data-displace="prev"></a>
+            <ul class="pagenumber" id="pager"></ul>
+            <a href="javascript:;" class="next fL icon-55" data-displace="next"></a>
+            <a href="javascript:;" class="lastPage" data-displace="last">尾页</a>
+        </div>
+    </div>
+    </div>
+<!--中间内容区域 end-->
+<div class="btnMain">
+    <a data-title="财务管理-账单管理" data-href="?m=xhr_id_173_182" class="button" shref="javascript:history.go(-1);">返回</a>
+</div>

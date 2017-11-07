@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>汇付宝</title>
+<link href="css/base.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<script src="js/jquery.js"></script>
+<script src="js/collection.js"></script>
+</head>
+<body>
+    <div id="cover"></div>
+    <div class="ngp_pop_four">
+        <h6 class="ngp_pop_hd">提示<em><img src="images/ngp_del.png"></em></h6>
+        <p><img src="images/refund_tip.png"><em>请线下提交该银行卡的转账授权函，审核成功以后将自动转账</em></p>
+        <h3 class="ngp_pop_btn">确定</h3>
+    </div>
+    <div class="ngp_pop_five">
+        <h6 class="ngp_pop_hd">提示<em><img src="images/ngp_del.png"></em></h6>
+        <p><img src="images/error_tip.png"><em>文件上传失败，请检查文件是否符合规则重新上传</em></p>
+        <h3 class="ngp_pop_btn">确定</h3>
+    </div>
+    <div class="ngp_pop_sex">
+        <h6 class="ngp_pop_hd">提交<em><img src="images/ngp_del.png"></em></h6>
+        <img src="images/error_tip.png" class="ngp_pop_sex_img">
+        <h4>提交成功</h4>
+        <h4>批次号：89279823423</h4>
+        <p>可凭批次号查看代收进度</p>
+        <h3 class="ngp_pop_btn"><a href="collection_query.html">确定</a></h3>
+    </div>
+    <div id="ngp_warpper">
+        <!--头部开始-->
+        <div class="ngp_header">
+            <div class="ngp_top">
+                <div class="ngp_logo">
+                   <img src="images/logo.png">
+                   <span class="logo_hx"></span>
+                   <span class="logo_text">商户服务</span>
+                </div>
+                <div class="ngp_top_right">
+                    <span>您好！ Acdbm@9186.com</span>
+                    <b></b>
+                    <span>退出</span>
+                    <b></b>
+                    <span>帮助中心</span>
+                </div>
+            </div>
+        </div>
+        <div class="ngp_nav">
+            <div class="nav_list">
+                <ul>
+                    <li class="nav_ative"><a href="index.html">我的汇付宝</a></li>
+                    <li><a href="transaction.html">交易管理</a></li>
+                    <li><a href="#">结算管理</a></li>
+                    <li><a href="account_management.html">账户管理</a></li>
+                </ul>
+            </div> 
+        </div>
+        <!--头部结束-->
+        
+        <!--内容开始-->
+        <div class="ngp_content">
+            <div class="recharge_box">
+                <div class="transaction_box">
+                    <p class="reviewed_name">代收</p>
+                    <div class="transaction_query" style="display:block">
+                        <div class="transfer_upload">
+                            <p>选择付款文件</p>
+                            <div class="transfer_upload_box">
+                                <span class="tr_upload">浏览选择文件</span><span class="tr_upload_text">下载批量模版.xls</span>
+                                <p>只支持.xls格式</p>
+                                <div class="tr_upload_speck">
+                                    <h6>批量付款说明：</h6>
+                                    <p>1、按照模板格式填写文件，只支持.xls格式
+                                    <p>2、一次最多可付款到100个账户，每个账户必须是都授权过或者没授权过</p>
+                                    <p>3、一个批次付款金额限制为200万</p>
+                                    <p>4、一个批次只支持一种账户形式，对公和对私不能同时出现在表格</p>
+                                    <p>5、当前支持21个银行，详情见模板表格</p>
+                                </div>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="transfer_upload_tab">
+                            <table class="tbl_content">
+                                    <thead>
+                                        <tr class="thead">
+                                            <td width="10%">序号</td>
+                                            <td width="10%">姓名</td>
+                                            <td width="25%">银行卡号</td>
+                                            <td width="25%">银行名称</td>
+                                            <td width="20%">手机号</td>
+                                            <td width="10%">金额</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="record_list">
+                                        <tr>
+                                            <td>1</td>
+                                            <td>战三</td>
+                                            <td>62223893904982773899</td>
+                                            <td>中国建设银行</td>
+                                            <td>15911025276</td>
+                                            <td>1000</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            <div class="transaction_bt">
+                                <div class="page">
+                                    <p>
+                                        <span>首页</span>
+                                        <span>上一页</span>
+                                        <span>下一页</span>
+                                        <span>尾页</span>
+                                        <span>2/5页，</span>
+                                        <span>共30条 每页
+                                            <select class="page_select">
+                                                <option>10</option>
+                                                <option>20</option>
+                                                <option>30</option>
+                                                <option>40</option>
+                                            </select>条，
+                                        </span>
+                                        <span>到第<input type="text" class="page_input">页</span>
+                                    </p>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                        <div class="transfer_list">
+                            <p><span class="transfer_name_w">付款金额合计</span><em class="transfer_name_c">00.00</em>元 <span class="transfer_name_w">付款笔数合计</span> <span class="transfer_number">1笔</span></p>
+                            <p>
+                                <span class="transfer_name_w">手续费</span>
+                                <em class="transfer_name_c">00.00</em>元
+                            </p>
+                        </div>
+                        <p class="upload_btn">提交申请</p>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <!--内容结束-->
+        
+        <!--尾部开始-->
+        <div class="ngp_footer">
+            <p>
+                <span>关于我们</span>
+                <span>合作伙伴</span>
+                <span>商务合作</span>
+                <span>联系我们</span>
+            </p>
+            <p class="ngp_ft">Copyright © since 2008 汇元银通（北京）在线支付技术有限公司  版权所有 侵权必究</p>
+        </div>
+        <!--尾部结束-->
+        
+    </div>
+</body>
+</html>

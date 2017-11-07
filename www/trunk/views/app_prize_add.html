@@ -1,0 +1,78 @@
+		<div class="app_location">
+			<p>位置：<a href="#">我是运营编辑</a>><a href="#">摇一摇</a>><a href="#">应用管理</a>><a href="#">编辑</a>><span>增加奖品</span></p>
+		</div>
+		<div class="app_list">
+			<div class="app_prize_ct clearfix">
+				<p class="add_prize_p">增加奖品</p>
+				<div class="ipt_item add_prize_t">
+					<label for="name_number">奖品ID：</label>
+					<div class="iptCon">
+						<p><input type="text" id="name_number" placeholder="请输入奖品ID"/></p>
+					</div>
+				</div>
+				<div class="ac_serch_btn"><p><a class="ac_ser_reset">重置</a><a class="ac_ser_btn">筛选</a><a href="#/app_prize_addlist" class="ac_ser_btn">导入</a></p></div>
+				<div class="clearfix"></div>
+				<div class="app_prize_list">
+					<table class="tbl_content">
+						<thead>
+							<tr class="thead">
+								<td width="5%">选择</td>
+								<td width="25%">奖品ID</td>
+								<td width="50%">奖品名称</td>
+								<td width="20%">面值/价格</td>
+							</tr>
+						</thead>
+						<tbody class="address_list_comm">
+							<tr>
+								<td><input type="checkbox" name="app_box"></td>
+								<td>111</td>
+								<td>信诺机票优惠劵</td>
+								<td>500</td>
+							</tr>
+							<tr>
+								<td><input type="checkbox" name="app_box"></td>
+								<td>111</td>
+								<td>信诺机票优惠劵</td>
+								<td>500</td>
+							</tr>
+							<tr>
+								<td><input type="checkbox" name="app_box"></td>
+								<td>111</td>
+								<td>信诺机票优惠劵</td>
+								<td>500</td>
+							</tr>
+							<tr>
+								<td><input type="checkbox" name="app_box"></td>
+								<td>111</td>
+								<td>信诺机票优惠劵</td>
+								<td>500</td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="app_allbox">
+						<span class="mass_box"><input type="checkbox" id="comm_all"></span>
+						<span class="ct_box"></span>
+					</div>
+					<div class="page_wper">
+						<div id="page_ct"><p>共有<span id="page_count"></span>条记录</p></div>
+						<div id="pageNav"></div>
+						<div id="page_chage">
+							<span>
+								<select id="page_nav"> 
+									<option value="10">10条</option>
+									<option value="20">20条</option> 
+									<option value="30">30条</option> 
+									<option value="40">40条</option> 
+								</select> 
+							</span>
+							<span class="page_number">
+								第<input type="text" id="page_num" value="1">页
+							</span>
+						</div>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+			</div>
+	
+		</div>
+	<script src="js/controllers/app_prize_add_ctrl.js"></script>

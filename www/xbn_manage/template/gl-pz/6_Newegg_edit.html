@@ -1,0 +1,51 @@
+<!--中间内容区域 begin-->
+<div class="details siteDetail">
+    <form id='rejectEditForm'>
+    <h3 class="titleText">退货详情 <span class="mL50">上次修改时间：${source.updateTime}</span></h3>
+    <dl class="editDl mL145">
+        <dt>Newegg站点：</dt>
+        <dd>
+            <input type="hidden" name="id" value="${source.id}">
+            <input type="hidden" name="platform" value="${source.platform}">
+            <input type="hidden" name="siteId" value="${source.siteId}">
+           ${source.site[source.siteId].cnName}
+        </dd>
+    </dl>
+    <dl class="editDl mL145">
+        <dt>是否接受退货：</dt>
+        <dd>
+            <input name='isReturns' class='input' value="${source.isReturns}" required>
+        </dd>
+    </dl>
+    <dl class="editDl mL145">
+        <dt>退货方式：</dt>
+        <dd>
+            <input name='returnType' class='input' value="${source.returnType}" required>
+        </dd>
+    </dl>
+    <dl class="editDl mL145">
+        <dt>退货运费承担方：</dt>
+        <dd>
+            <input name='undertaker' class='input' value="${source.undertaker}" required>
+        </dd>
+    </dl>
+    <dl class="editDl mL145">
+        <dt>退货天数：</dt>
+        <dd>
+            <input name='returnDateNumber' class='input' value="${source.returnDateNumber}" required>
+        </dd>
+    </dl>
+    <dl class="editTXA mL145">
+        <dt>退货描述</dt>
+        <dd>
+            <textarea class="w480 h90" name="remark" required>${source.remark}</textarea>
+        </dd>
+    </dl>
+    </form>
+</div>
+<!--中间内容区域 end-->
+<!--conts end-->
+<div class="btnMain">
+    <a class="button mR30 js-rejectSaveSubmit" href="javascript:;">提交</a>
+    <a class="buttonText" href="javascript:;" data-href="?m=xhr_id_199_244&platform=3" data-title="配置管理-退货政策管理-newegg站点" data-code='${source.code}'>取消</a>
+</div>

@@ -1,0 +1,91 @@
+<div class="serch">
+	<form id="searchForm">
+    <!-- serch begin -->
+    <div class="serch_main">
+        <div class="serch_conts">
+            <dl>
+                <dt>业务名称：</dt>
+                <dd><input type="text" name="roleName" class="defaultInput" /></dd>
+            </dl>
+            <dl class="serchDl">
+                <dt>&emsp;</dt>
+                <dd><a href="javascript:;" class="button js-search">Search</a></dd>
+            </dl>
+        </div>
+    </div>
+    <!-- serch end -->
+    </form>
+    <div class="addbutton">
+        {{if source.operateData.moduleData && source.operateData.actionData && source.operateData.operate['h01070001']}}
+        <a href="javascript:;" class="button" data-href="?m=gl-xt-5-add" data-title="系统管理-业务管理-新增">${source.operateData.operate['h01070001'].menuName}</a>
+        {{/if}}
+        <em class="mL50 none">您所搜索的，共有<i id='searchTotalCount'>${source.totalCount}</i>条内容符合。</em>
+    </div>
+</div>
+<!-- conts begin -->
+<div class="contsBox">
+    <div class="bigTable">
+        <table class="layout" border="0" cellspacing="0">
+            <thead>
+                <tr>
+                    <th width="10%">编号</th>
+                    <th>业务名称</th>
+                    <th width="25%">业务描述</th>
+                    <th width="10%">创建时间</th>
+                    <th width="10%">状态</th>
+                    <th width="15%">操作</th>
+                </tr>
+            </thead>
+            <tbody id="listCon">
+            	
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="page" id="topPager">
+        
+    </div>
+    
+</div>
+<!-- conts end -->
+<script id='pageListCon' type='text/x-jquery-tmpl'>
+	<a href="javascript:;" class="firstPage fL" data-displace="first">首页</a>
+	<a href="javascript:;" class="prve fL icon-56" data-displace="prev"></a>
+	<ul class="pagenumber" id="pager"></ul>
+	<a href="javascript:;" class="next fL icon-55" data-displace="next"></a>
+	<a href="javascript:;" class="lastPage" data-displace="last">尾页</a>
+</script>
+<script id="list" type="text/x-jquery-tmpl">
+    _[{if list}]_
+	_[{each(i,c) list}]_
+	<tr>
+		<td>$_[i+1]_</td>
+		<td>$_[c.roleName]_</td>
+		<td>$_[c.remark]_</td>
+		<td>$_[c.createTime]_</td>
+		<td>_[{if c.isValid == true}]_ 启用 _[{else}]_ 禁用 _[{/if}]_ </td>
+		<td>
+			<a href="javascript:;" class="blue mR10 js-subStatus" data-id="$_[c.id]_" data-roleName="$_[c.roleName]_">_[{if c.isValid == true}]_
+                _[{if operateData.moduleData && operateData.actionData && operateData.operate['h01070004']}]_
+                    $_[operateData.operate['h01070004'].menuName]_
+                _[{/if}]_
+             _[{else}]_
+                 _[{if operateData.moduleData && operateData.actionData && operateData.operate['h01070003']}]_
+                    $_[operateData.operate['h01070003'].menuName]_
+                _[{/if}]_
+              _[{/if}]_ </a>
+              _[{if operateData.moduleData && operateData.actionData && operateData.operate['h01070002']}]_
+                <a href="javascript:void(0);" class="blue"  data-href="?m=gl-xt-5-edit&id=$_[c.id]_" data-title="系统管理-业务管理-编辑">$_[operateData.operate['h01070002'].menuName]_</a>
+            _[{/if}]_
+		</td>
+	</tr>
+	_[{/each}]_
+_[{else}]_
+    <tr>
+        <td colspan="6">暂无数据</td>
+    </tr>
+_[{/if}]_
+</script>
+						
+						
+					

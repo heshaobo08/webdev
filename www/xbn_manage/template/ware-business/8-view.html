@@ -1,0 +1,219 @@
+<div class="contsBox">
+    <div class="details">
+        <div class="stateText">
+            <p class="mB20">处理状态：<span>${getConstName("OwmsInvoiceStatusEnum",source.status)}</span></p>
+        </div>
+    </div>
+    <div class="details">
+        <ul class="tabBtn">
+            <li class="this"><a href="javascript:;">基本信息</a></li>
+            <li><a href="javascript:;">收发货信息</a></li>
+            <li><a href="javascript:;">货品信息</a></li>
+        </ul>
+        <!-- 摘要 begin -->
+        <div class="tabCon">
+            <div class="msg-con details">
+                <div class="otherConts mT20">
+                    <div class="details_L">
+                        <dl>
+                            <dt>发货单号：</dt>
+                            <dd>${source.invoiceCode}</dd>
+                        </dl>
+                        <dl>
+                            <dt>小笨鸟订单号：</dt>
+                            <dd>${source.orderCode}</dd>
+                        </dl>
+                        <dl>
+                            <dt>原始订单号：</dt>
+                            <dd>${source.originalCode}</dd>
+                        </dl>
+                        <dl>
+                            <dt>下单时间：</dt>
+                            <dd>${source.orderTime}</dd>
+                        </dl>
+                        <dl>
+                            <dt>提交时间：</dt>
+                            <dd>${source.submitTime}</dd>
+                        </dl>
+                    </div>
+                    <div class="details_R">
+                        <dl>
+                            <dt>买家名称：</dt>
+                            <dd>${source.buyerName}</dd>
+                        </dl>
+                        <dl>
+                            <dt>sku总数： </dt>
+                            <dd>${source.skuNum}</dd>
+                        </dl>
+                        <dl>
+                            <dt>应发货品总数： </dt>
+                            <dd>${source.maySendNum}</dd>
+                        </dl>
+                        <dl>
+                            <dt>实发货品总数： </dt>
+                            <dd>${source.realSendNum}</dd>
+                        </dl>
+                        <dl>
+                            <dt>来源： </dt>
+                            <dd>${getConstName("OwmsDataSourceEnum",source.source)}</dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+            <div class="msg-con details none">
+                <div class="mT20">
+                    <dl class="invoice_dl">
+                        <dt class="invoice_dt_title">收货信息</dt>
+                        <dd>
+                            <dl class="fix">
+                                <dt class="invoice_dt">收货人姓名：</dt>
+                                <dd class="invoice_dd">${source.consigneeName}</dd>
+                            </dl>
+                        </dd>
+                        <dd>
+                            <dl class="fix">
+                                <dt class="invoice_dt">收货人电话：</dt>
+                                <dd class="invoice_dd">${source.consigneePhone}</dd>
+                            </dl>
+                        </dd>
+                        <dd>
+                            <dl class="fix">
+                                <dt class="invoice_dt">收货地区：</dt>
+                                <dd class="invoice_dd">${source.consigneeContry} - ${source.consigneeCity}</dd>
+                            </dl>
+                        </dd>
+                        <dd>
+                            <dl class="fix">
+                                <dt class="invoice_dt">详细地址：</dt>
+                                <dd class="invoice_dd">${source.consigneeAddress}</dd>
+                            </dl>
+                        </dd>
+                        <dd>
+                            <dl class="fix">
+                                <dt class="invoice_dt">邮政编码：</dt>
+                                <dd class="invoice_dd">${source.consigneeZipcode}</dd>
+                            </dl>
+                        </dd>
+                    </dl>
+                    <dl class="invoice_dl">
+                        <dt class="invoice_dt_title">发货信息</dt>
+                        <dd>
+                            <dl class="fix">
+                                <dt class="invoice_dt">发货仓库：</dt>
+                                <dd class="invoice_dd">${source.sendStoreName}</dd>
+                            </dl>
+                        </dd>
+                        <dd>
+                            <dl class="fix">
+                                <dt class="invoice_dt">发货时间：</dt>
+                                <dd class="invoice_dd">${source.sendTime}</dd>
+                            </dl>
+                        </dd>
+                        <dd>
+                            <dl class="fix">
+                                <dt class="invoice_dt">包裹重量：</dt>
+                                <dd class="invoice_dd">${source.pckWeight}</dd>
+                            </dl>
+                        </dd>
+                        <dd>
+                            <dl class="fix">
+                                <dt class="invoice_dt">包裹体积：</dt>
+                                <dd class="invoice_dd">${source.pckVolume}</dd>
+                            </dl>
+                        </dd>
+                        <dd>
+                            <dl class="fix">
+                                <dt class="invoice_dt">物流公司：</dt>
+                                <dd class="invoice_dd">${source.logisticsCompany}</dd>
+                            </dl>
+                        </dd>
+                        <dd>
+                            <dl class="fix">
+                                <dt class="invoice_dt">服务类型：</dt>
+                                <dd class="invoice_dd">${source.serviceType}</dd>
+                            </dl>
+                        </dd>
+                        <dd>
+                            <dl class="fix">
+                                <dt class="invoice_dt">物流跟踪单号：</dt>
+                                <dd class="invoice_dd">${source.logisticsTrackCode}</dd>
+                            </dl>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+            <div class="msg-con details none">
+                <div class="title_cost">
+                    <span>总运费：${source.totalFreight}  CNY</span>
+                    <span>基础运费：${source.basicFreight}  CNY</span>
+                    <span>挂号费：${source.registerFee}  CNY</span>
+                    <span>订单处理费：${source.orderProcessFee}  CNY</span>
+                </div>
+                <div class="ordertable">
+                    <table class="" border="0" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <td>库存编码</td>
+                                <td>商家sku</td>
+                                <td>货品名称</td>
+                                <td>规格型号</td>
+                                <td>应发数量</td>
+                                <td>实发数量</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{if source.invoiceCommodityList.length}}
+                            {{each(i,c) source.invoiceCommodityList}}
+                            <tr>
+                                <td>${inventoryCode}</td>
+                                <td>${merchantSku}</td>
+                                <td>${commodityTitle}</td>
+                                <td>${specsModel}</td>
+                                <td>${maySendNum}</td>
+                                <td>${realSendNum}</td>
+                            </tr>
+                            {{/each}}
+                            {{else}}
+                            <tr>
+                                <td colspan="6">暂无数据</td>
+                            </tr>
+                            {{/if}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="details">
+            <h3 class="titleText">备注信息</h3>
+            <dl class="textDl pT15">
+                <dt>商家备注：</dt>
+                <dd>
+                    <div class="break">${source.merchantRemark||'暂无商家备注'}</div>
+                </dd>
+            </dl>
+            <dl class="textDl pT15">
+                <dt>小笨鸟备注：</dt>
+                <dd>
+                    <div class="textBox break">${source.remark||'暂无小笨鸟备注'}</div>
+                    <div class="textareaBox none">
+                        <form id="editRemarkForm">
+                            <textarea data-cnmax="500" name="remark" class="textarea w430 h80" style="vertical-align:top;">${source.remark}</textarea>
+                            <p class="mT15"><a href="javascript:;" class="button mR20 js-saveRemark">保存</a><a href="javascript:;" class="buttonText js-closeRemark">取消</a></p>
+                        </form>
+                    </div>
+                </dd>
+            </dl>
+        </div>
+        <div class="btnMain">
+            {{if [1,6,7].indexOf(source.status)==-1}}
+            {{if source.operateData.moduleData && source.operateData.actionData && source.operateData.operate['HWC20107005'] && source.operateData.operate['HWC20107005'].childOpt['HWC20107006']}}
+            <a href="javascript:;" class="buttonText mR20 js-cancelSend">取消发货</a>
+            {{/if}}
+            {{/if}}
+            {{if source.operateData.moduleData && source.operateData.actionData && source.operateData.operate['HWC20107005'] && source.operateData.operate['HWC20107005'].childOpt['HWC20107007']}}
+            <a href="javascript:;" class="buttonText js-editRemark mR20">修改备注</a>
+            {{/if}}
+            <a data-href="?m=xhr_id_20100000_20107000" class="buttonText" href="javascript:;">返回</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,277 @@
+<div class="serch">
+    <form id='publishSearchForm'>
+	<!-- tab 切换 begin -->
+	<div class="serch_tab">
+		<ul>
+            {{if source.operateData.moduleData && source.operateData.actionData && source.operateData.operate['h030101']}} 
+            <li class="{{if source.platform=='1'}}on{{/if}}"><a href="javascript:;" data-href='?m=xhr_id_95_96&p=1'>eBay</a></li>
+            {{/if}}
+            {{if source.operateData.moduleData && source.operateData.actionData && source.operateData.operate['h030102']}} 
+            <li class="{{if source.platform=='2'}}on{{/if}}"><a href="javascript:;" data-href='?m=xhr_id_95_96&p=2'>amazon</a></li>
+            {{/if}}
+            {{if source.operateData.moduleData && source.operateData.actionData && source.operateData.operate['h030103']}} 
+            <li class="{{if source.platform=='3'}}on{{/if}}"><a href="javascript:;" data-href='?m=xhr_id_95_96&p=3'>newegg</a></li>
+            {{/if}}
+		</ul>
+	</div>
+	<!-- tab 切换 end -->
+    <!-- serch begin -->
+    <div class="serch_main">
+        <div class="serch_conts">
+            <dl>
+                <dt>刊登标题 : </dt>
+                <dd><input type="text" value="" class="defaultInput" name='title'></dd>
+            </dl>
+            <dl>
+                <dt>商品货号/SKU : </dt>
+                <dd><input type="text" value="" class="defaultInput" name='sku'></dd>
+            </dl>
+            <dl>
+                <dt>小笨鸟用户名 :</dt>
+                <dd><input type="text" value="" class="defaultInput" name='userName'></dd>
+            </dl>
+        </div>
+        <div class="serch_conts">
+            <dl>
+                <dt>用户类型：</dt>
+                <dd>
+        					<div class="select w190">
+        						<input index-data="" type="hidden" value="请选择" name='userType'>
+        						<i class="" index-data="">请选择</i>
+        						<em class="icon-52"></em>
+        						<ul style="display: none;">
+        							<li index-data=""><span>请选择</span></li>
+        							<li index-data="1"><span>自营</span></li>
+        							<li index-data="2"><span>第三方商家(非自营)</span></li>
+        						</ul>
+        					</div>
+        				</dd>
+            </dl>
+        </div>
+		<div class="serch_conts">
+            <dl>
+                <dt>{{if source.platform=='1'}}eBay用户名{{else source.platform=='2'}}amazon用户名{{else source.platform=='3'}}newegg用户名{{/if}}：</dt>
+                <dd><input type="text" value="" class="defaultInput" name='siteUserName'></dd>
+            </dl>
+            <dl>
+                <dt>规格：</dt>
+                <dd>
+					<div class="select w190">
+                        <input index-data="" type="hidden" value="请选择" name='variationType'>
+                        <i class="" index-data="">请选择</i>
+                        <em class="icon-52"></em>
+                        <ul style="display: none;">
+                            <li index-data=""><span>请选择</span></li>
+                            <li index-data="singleVariation"><span>单规格</span></li>
+                            <li index-data="multiVariation"><span>多规格</span></li>
+                        </ul>
+                    </div>
+				</dd>
+            </dl>
+            <dl>
+                <dt>站点：</dt>
+                <dd>
+					<div class="select w190">
+                        <input index-data="" type="hidden" value="请选择" name='site'>
+                        <i class="" index-data="">请选择</i>
+                        <em class="icon-52"></em>
+                        <ul style="display: none;">
+                        {{each(i,site) source.siteList}}
+                            <li index-data="${site.id}"><span>${site.cnName}</span></li>
+                        {{/each}}
+                        </ul>
+                    </div>
+				</dd>
+            </dl>
+        </div>
+        <div class="serch_conts">
+            {{if source.platform=='1'}}
+            <dl>
+                <dt>价格方式： </dt>
+                <dd>
+					<div class="select w190">
+                        <input index-data="" type="hidden" value="请选择" name='listingType'>
+                        <i class="" index-data="">请选择</i>
+                        <em class="icon-52"></em>
+                        <ul style="display: none;">
+                            <li index-data="FixedPriceItem"><span>固价</span></li>
+                            <li index-data="Chinese"><span>竞价</span></li>
+                        </ul>
+                    </div>
+				</dd>
+            </dl>
+            {{/if}}
+            <dl>
+                <dt>上线时间：</dt>
+                <dd>
+                    <div class="defaultData">
+                        <div class="dataBegin">
+                            <span class="dataInput" id="sstartTime" name='startSubmitDate'></span>
+                            <a href="javascript:;" class="stimeStart icon-54"></a>
+                        </div>
+                        <span class="point"></span>
+                        <div class="dataEnd">
+                            <span class="dataInput" id="sendTime" name='endSubmitDate'></span>
+                            <a href="javascript:;" class="stimeEnd icon-54"></a>
+                        </div>
+                    </div>
+                </dd>
+            </dl>
+        </div>
+		<div class="serch_conts">
+			<dl>
+                <dt>更新时间：</dt>
+                <dd>
+                    <div class="defaultData">
+                        <div class="dataBegin">
+                            <span class="dataInput" id="startTime" name='startEditDate'></span>
+                            <a href="javascript:;" class="timeStart icon-54"></a>
+                        </div>
+                        <span class="point"></span>
+                        <div class="dataEnd">
+                            <span class="dataInput" id="endTime" name='endEditDate'></span>
+                            <a href="javascript:;" class="timeEnd icon-54"></a>
+                        </div>
+                    </div>
+                </dd>
+            </dl>
+			<dl>
+                <dt>&emsp;</dt>
+                <dd>
+                    {{if source.platform=='1'}}
+                        {{if source.operateData.moduleData && source.operateData.actionData && source.operateData.operate['h030101'] && source.operateData.operate['h030101'].childOpt && source.operateData.operate['h030101'].childOpt['h03010101']}} 
+                            <a href="javascript:" class="button js-publishSearch">Search</a>
+                        {{/if}}
+                    {{else  source.platform=='2'}}
+                        {{if source.operateData.moduleData && source.operateData.actionData && source.operateData.operate['h030102'] && source.operateData.operate['h030102'].childOpt && source.operateData.operate['h030102'].childOpt['h03010201']}} 
+                            <a href="javascript:" class="button js-publishSearch">Search</a>
+                        {{/if}}
+                    {{else  source.platform=='3'}}
+                        {{if source.operateData.moduleData && source.operateData.actionData && source.operateData.operate['h030103'] && source.operateData.operate['h030103'].childOpt && source.operateData.operate['h030103'].childOpt['h03010301']}} 
+                            <a href="javascript:" class="button js-publishSearch">Search</a>
+                        {{/if}}
+                    {{/if}}
+                    
+                </dd>
+            </dl>
+		</div>
+    </div>
+    </form>
+    <!-- serch end -->
+	<div class="addbutton">
+        {{if source.platform=='1'}}
+            {{if source.operateData.moduleData && source.operateData.actionData && source.operateData.operate['h030101'] && source.operateData.operate['h030101'].childOpt && source.operateData.operate['h030101'].childOpt['h03010103']}} 
+                <a href="javascript:;" class="button js-productOffLine">下线</a>
+            {{/if}}
+        {{else  source.platform=='2'}}
+            {{if source.operateData.moduleData && source.operateData.actionData && source.operateData.operate['h030102'] && source.operateData.operate['h030102'].childOpt && source.operateData.operate['h030102'].childOpt['h03010203']}} 
+                <a href="javascript:;" class="button js-productOffLine">下线</a>
+            {{/if}}
+        {{else  source.platform=='3'}}
+            {{if source.operateData.moduleData && source.operateData.actionData && source.operateData.operate['h030103'] && source.operateData.operate['h030103'].childOpt && source.operateData.operate['h030103'].childOpt['h03010303']}} 
+                <a href="javascript:;" class="button js-productOffLine">下线</a>
+            {{/if}}
+        {{/if}}
+        <em class="mL50 none">您所搜索的，共有<i id="searchTotalCount">${source.page.totalCount}</i>条内容符合。</em>
+	</div>
+</div>
+<!-- conts begin -->
+<div class="contsBox">
+    <div class="bigTable">
+        <table class="" border="0" cellspacing="0" r-box="all">
+            <thead>
+            <tr>
+                <th><input type="checkbox" value="1" name="all"></th>
+                <th>
+                {{if source.platform=='1'}}eBay用户名{{else source.platform=='2'}}amazon用户名{{else source.platform=='3'}}newegg用户名{{/if}}                
+                </th>
+                <th>图片</th>
+                <th>规格</th>
+                <th width="15%">刊登标题</th>
+                <th>小笨鸟用户名</th>
+                <th>商品货号/SKU</th>
+                <th>站点</th>
+                <th>可售数量</th>
+                <th>销售价格</th>
+				<th>上线时间</th>
+				<th>更新时间</th>
+				<th>操作</th>
+            </tr>
+            </thead>
+            <tbody class="picOn" id='publishListCon'>
+            </tbody>
+        </table>
+    </div>
+	<div class="page" id="topPager">
+    </div>
+</div>
+
+<div class="layerCon"></div>
+
+<!-- 分页模板 -->
+<script id='pageListCon' type='text/x-jquery-tmpl'>
+    <a href="javascript:;" class="firstPage fL" data-displace="first">首页</a>
+    <a href="javascript:;" class="prve fL icon-56" data-displace="prev"></a>
+    <ul class="pagenumber" id="pager"></ul>
+    <a href="javascript:;" class="next fL icon-55" data-displace="next"></a>
+    <a href="javascript:;" class="lastPage" data-displace="last">尾页</a>
+</script>
+
+<script id='publishListTmpl' type='text/x-jquery-tmpl'>
+_[{if list.length}]_
+    _[{each(i,list) list}]_
+        <tr>
+            <td>
+            _[{if platform=='1'}]_
+                <input type="checkbox" value="$_[list.id]_" name='checkId' _[{if (list.status==2 && list.commodityOperate==null) || (list.status==2 && list.operateType=='End' && list.chkStatus==2 && list.cronStatus==1 && list.endType=='EndManual' || list.endType=='EndDurationExpire') }]_ _[{else}]_disabled='disabled'_[{/if}]_>
+              _[{else}]_              
+              <!--Todo commodityCron未统一结构-->
+              <input type="checkbox" value="$_[list.id]_" name='checkId' _[{if (list.status==2 && list.commodityOperate==null) || (list.status==2 && list.operateType=='End' && list.chkStatus==2 && list.commodityCron.cronStatus==1 && list.endType=='EndManual' || list.endType=='EndDurationExpire') }]_ _[{else}]_disabled='disabled'_[{/if}]_ data-site='$_[list.site]_'>
+              _[{/if}]_
+            </td>
+            <td>$_[list.account]_</td>
+            <td><img src="images/defineImg.png" data-defaultImg='images/defineImg.png' data-fileid='$_[list.id]_' data-type='0' class="imgBorder" width='50'/></td>
+            <td>_[{if list.variationType=='multiVariation'}]_ 多<span class="mL10">$_[list.variationCount]_</span>_[{else}]_ 单 _[{/if}]_</td>
+            <td>$_[list.title]_</td>
+            <td>$_[list.userName]_</td>
+            <td style='padding-left:2px;'>_[{if list.sku.indexOf('-')!='-1'}]_$_[list.sku.slice(list.sku.indexOf('-')+1)]__[{else}]_$_[list.sku]__[{/if}]_</td>
+            <td>_[{if siteList[list.site]}]_$_[siteList[list.site].cnName]__[{/if}]_</td>
+            <td>$_[list.stock]_</td>
+            <td>_[{if list.listingType=="listingType"}]_固价_[{else list.listingType=="Chinese"}]_竞价_[{/if}]_ $_[list.price]_</td>
+            <td>$_[list.publishDate]_</td>
+            <td>$_[list.lastUpdateDate]_</td>
+            <td>
+                _[{if platform=='1'}]_
+                    _[{if operateData.moduleData && operateData.actionData && operateData.operate['h030101'] && operateData.operate['h030101'].childOpt && operateData.operate['h030101'].childOpt['h03010102']}]_
+                        <a href="javascript:;" class="blue" data-href='?m=xhr_id_95_96_view&id=$_[list.id]_&p=$_[platform]_'  data-title='商品管理-在线商品管理-查看'>查看</a>
+                    _[{/if}]_
+                _[{else platform=='2'}]_
+                    _[{if operateData.moduleData && operateData.actionData && operateData.operate['h030102'] && operateData.operate['h030102'].childOpt && operateData.operate['h030102'].childOpt['h03010202']}]_
+                        <a href="javascript:;" class="blue" data-href='?m=xhr_id_95_96_view&id=$_[list.id]_&p=$_[platform]_'  data-title='商品管理-在线商品管理-查看'>查看</a>
+                    _[{/if}]_
+                _[{else platform=='3'}]_
+                    _[{if operateData.moduleData && operateData.actionData && operateData.operate['h030103'] && operateData.operate['h030103'].childOpt && operateData.operate['h030103'].childOpt['h03010302']}]_
+                            <a href="javascript:;" class="blue" data-href='?m=xhr_id_95_96_view&id=$_[list.id]_&p=$_[platform]_'  data-title='商品管理-在线商品管理-查看'>查看</a>
+                    _[{/if}]_
+                _[{/if}]_
+                
+            </td>
+        </tr>
+    _[{/each}]_
+_[{else}]_
+    <tr><td colSpan='13'>暂无数据</td></tr>
+_[{/if}]_
+</script>
+
+<script id='layerBoxTmpl' type='text/x-jquery-tmpl'>
+<form id='productAuditLayerBox'>
+    <div class="checkupTips">
+     <dl>
+          <dt>请填写商品下线原因：</dt>
+          <dd class='mT20'> 
+               <textarea name="chkReason" cols="30" rows="10" placeholder="请填写商品下线原因" class="reject"></textarea>
+          </dd>
+     </dl>   
+</div>
+</form>
+</script>

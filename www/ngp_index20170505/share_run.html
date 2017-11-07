@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>汇付宝</title>
+<link href="css/base.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<script src="js/jquery.js"></script>
+<script src="js/plug/time/WdatePicker.js"></script>
+<script src="js/share_run.js"></script>
+</head>
+<body>
+    <div id="ngp_warpper">
+        <!--头部开始-->
+        <div class="ngp_header">
+            <div class="ngp_top">
+                <div class="ngp_logo">
+                   <img src="images/logo.png">
+                   <span class="logo_hx"></span>
+                   <span class="logo_text">商户服务</span>
+                </div>
+                <div class="ngp_top_right">
+                    <span>您好！ Acdbm@9186.com</span>
+                    <b></b>
+                    <span>退出</span>
+                    <b></b>
+                    <span>帮助中心</span>
+                </div>
+            </div>
+        </div>
+        <div class="ngp_nav">
+            <div class="nav_list">
+                <ul>
+                    <li class="nav_ative"><a href="index.html">我的汇付宝</a></li>
+                    <li><a href="transaction.html">交易管理</a></li>
+                    <li><a href="#">结算管理</a></li>
+                    <li><a href="account_management.html">账户管理</a></li>
+                </ul>
+            </div> 
+        </div>
+        <!--头部结束-->
+        
+        <!--内容开始-->
+        <div class="ngp_content">
+            <div class="recharge_box">
+                <div class="transaction_box">
+                    <div class="transaction_tab">
+                        <div class="account_tab_l">
+                            <ul>
+                                <li class="tab_active">我得到的分润</li>
+                                <li>我发起的分润</li>
+                                <li>分润明细查询</li>
+                            </ul>
+                        </div>
+                        <div class="account_tab_r"></div>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="transaction_query" style="display:block">
+                        <div class="transaction_input">
+                            <p class="record_type">
+                                <label style="padding-right:20px;text-align:right;width:100px;display:inline-block;">起止时间</label><input type="text" class="record_time_w Wdate" id="startDate2" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',maxDate:'#F{$dp.$D(\'endDate2\')}'})" readonly="readonly" ><span class="record_hx">到</span><input type="text" class="record_time_w Wdate" id="endDate2" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'#F{$dp.$D(\'startDate2\')}'})" readonly="readonly">
+                                <input type="radio" name="radio1" value="订单创建时间" class="radio" checked><label class="radio"><b>订单创建时间</b></label>
+                                <input type="radio" name="radio1" value="分润发起时间" class="radio"><label class="radio"><b>分润发起时间</b></label>
+                            </p>
+                        </div>
+                        <div class="clear"></div>
+                        <p class="real_name share_run_input">
+                            <label>原商户订单号</label><input type="text" class="record_time_w">
+                            <label>分润号</label><input type="text" class="record_time_w">
+                        </p>
+                        <p class="real_name share_run_input">
+                            <label>出款公司名称</label><input type="text" class="record_time_w">
+                            <label>出款商户账号</label><input type="text" class="record_time_w">
+                        </p>
+                        <div class="transaction_select transaction_select_top">
+                            <p style="width:100px;padding-right:10px;text-align:right;">分润状态</p>
+                            <div class="record_select" name="record_select">
+                               <input type="text" readonly placeholder="全部">
+                               <ul>
+                                  <li data-value="">全部</li>
+                                  <li data-value="">待审核</li>
+                                  <li data-value="">失败</li>
+                                  <li data-value="">成功</li>
+                               </ul>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    <div class="clear"></div>
+                    <p class="transaction_btn">
+                        <span>查询</span>
+                    </p>
+                    <div class="transaction_tabel">
+                         <table class="tbl_content">
+                            <thead>
+                                <tr class="thead">
+                                    <td width="12%">原汇付宝订单号</td>
+                                    <td width="10%">原商户订单号</td>
+                                    <td width="12%">原订单创建时间</td>
+                                    <td width="10%">分润号</td>
+                                    <td width="10%">汇付宝订单号</td>
+                                    <td width="8%">分润金额</td>
+                                    <td width="10%">出款公司名称</td>
+                                    <td width="10%">出款商户账号</td>
+                                    <td width="10%">分润发起时间</td>
+                                    <td width="8%">分润状态</td>
+                                </tr>
+                            </thead>
+                            <tbody class="record_list">
+                                <tr>
+                                    <td>123456</td>
+                                    <td>123456</td>
+                                    <td>2016-06-23 10:43:22</td>
+                                    <td>123456576</td>
+                                    <td>545454545</td>
+                                    <td>100.00</td>
+                                    <td>天下第一</td>
+                                    <td>12345667</td>
+                                    <td>2016-06-23 10:43:22</td>
+                                    <td>成功</td>
+                                </tr>
+                                <tr>
+                                    <td>123456</td>
+                                    <td>123456</td>
+                                    <td>2016-06-23 10:43:22</td>
+                                    <td>123456576</td>
+                                    <td>545454545</td>
+                                    <td>100.00</td>
+                                    <td>天下第一</td>
+                                    <td>12345667</td>
+                                    <td>2016-06-23 10:43:22</td>
+                                    <td>成功</td>
+                               </tr>
+                               <tr>
+                                    <td>123456</td>
+                                    <td>123456</td>
+                                    <td>2016-06-23 10:43:22</td>
+                                    <td>123456576</td>
+                                    <td>545454545</td>
+                                    <td>100.00</td>
+                                    <td>天下第一</td>
+                                    <td>12345667</td>
+                                    <td>2016-06-23 10:43:22</td>
+                                    <td>成功</td>
+                               </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="transaction_bt">
+                        <div class="page">
+                            <p>
+                                <span>首页</span>
+                                <span>上一页</span>
+                                <span>下一页</span>
+                                <span>尾页</span>
+                                <span>2/5页，</span>
+                                <span>共30条 每页
+                                    <select class="page_select">
+                                        <option>10</option>
+                                        <option>20</option>
+                                        <option>30</option>
+                                        <option>40</option>
+                                    </select>条，
+                                </span>
+                                <span>到第<input type="text" class="page_input">页</span>
+                            </p>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    </div>
+                    <div class="transaction_query">
+                        <div class="transaction_input">
+                            <p class="record_type">
+                                <label style="padding-right:20px;text-align:right;width:100px;display:inline-block;">起止时间</label><input type="text" class="record_time_w Wdate" id="startDate2" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',maxDate:'#F{$dp.$D(\'endDate2\')}'})" readonly="readonly" ><span class="record_hx">到</span><input type="text" class="record_time_w Wdate" id="endDate2" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'#F{$dp.$D(\'startDate2\')}'})" readonly="readonly">
+                                <input type="radio" name="radio2" value="订单创建时间" class="radio" checked><label class="radio"><b>订单创建时间</b></label>
+                                <input type="radio" name="radio2" value="分润发起时间" class="radio"><label class="radio"><b>分润发起时间</b></label>
+                            </p>
+                        </div>
+                        <div class="clear"></div>
+                        <p class="real_name share_run_input">
+                            <label>原商户订单号</label><input type="text" class="record_time_w">
+                            <label>分润号</label><input type="text" class="record_time_w">
+                        </p>
+                        <p class="real_name share_run_input">
+                            <label>分润状态</label><input type="text" class="record_time_w">
+                        </p>
+                        <div class="clear"></div>
+                        <p class="transaction_btn">
+                            <span>查询</span>
+                        </p>
+                    <div class="transaction_tabel">
+                         <table class="tbl_content">
+                            <thead>
+                                <tr class="thead">
+                                    <td width="12%">原汇付宝订单号</td>
+                                    <td width="12%">原商户订单号</td>
+                                    <td width="12%">原订单创建时间</td>
+                                    <td width="10%">分润号</td>
+                                    <td width="12%">汇付宝订单号</td>
+                                    <td width="10%">分润总金额</td>
+                                    <td width="12%">分润发起时间</td>
+                                    <td width="10%">分润状态</td>
+                                    <td width="10%">操作</td>
+                                </tr>
+                            </thead>
+                            <tbody class="record_list">
+                                <tr>
+                                    <td>123456</td>
+                                    <td>123456</td>
+                                    <td>2016-06-23 10:43:22</td>
+                                    <td>123456</td>
+                                    <td>58458</td>
+                                    <td>100</td>
+                                    <td>2016-06-23 10:43:22</td>
+                                    <td>成功</td>
+                                    <td><span class="record_look">明细</span></td>
+                                </tr>
+                                <tr>
+                                    <td>123456</td>
+                                    <td>123456</td>
+                                    <td>2016-06-23 10:43:22</td>
+                                    <td>123456</td>
+                                    <td>58458</td>
+                                    <td>100</td>
+                                    <td>2016-06-23 10:43:22</td>
+                                    <td>成功</td>
+                                    <td><span class="record_look">明细</span></td>
+                                </tr>
+                               
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="transaction_bt">
+                        <div class="page">
+                            <p>
+                                <span>首页</span>
+                                <span>上一页</span>
+                                <span>下一页</span>
+                                <span>尾页</span>
+                                <span>2/5页，</span>
+                                <span>共30条 每页
+                                    <select class="page_select">
+                                        <option>10</option>
+                                        <option>20</option>
+                                        <option>30</option>
+                                        <option>40</option>
+                                    </select>条，
+                                </span>
+                                <span>到第<input type="text" class="page_input">页</span>
+                            </p>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    </div>
+                    
+                    
+                     <div class="transaction_query">
+                        <div class="transaction_input">
+                            <p class="record_type">
+                                <label style="padding-right:20px;text-align:right;width:100px;display:inline-block;">起止时间</label><input type="text" class="record_time_w Wdate" id="startDate2" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',maxDate:'#F{$dp.$D(\'endDate2\')}'})" readonly="readonly" ><span class="record_hx">到</span><input type="text" class="record_time_w Wdate" id="endDate2" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'#F{$dp.$D(\'startDate2\')}'})" readonly="readonly">
+                                <input type="radio" name="radio" value="订单创建时间" class="radio" checked><label class="radio"><b>订单创建时间</b></label>
+                                <input type="radio" name="radio" value="分润发起时间" class="radio"><label class="radio"><b>分润发起时间</b></label>
+                            </p>
+                        </div>
+                        <div class="clear"></div>
+                        <p class="real_name share_run_input">
+                            <label>原商户订单号</label><input type="text" class="record_time_w">
+                            <label>分润号</label><input type="text" class="record_time_w">
+                        </p>
+                        <p class="real_name share_run_input">
+                            <label>入款公司名称</label><input type="text" class="record_time_w">
+                            <label>入款商户账号</label><input type="text" class="record_time_w">
+                        </p>
+                        <div class="transaction_select transaction_select_top">
+                            <p style="width:100px;padding-right:10px;text-align:right;">分润状态</p>
+                            <div class="record_select" name="record_select">
+                               <input type="text" readonly placeholder="全部">
+                               <ul>
+                                  <li data-value="">全部</li>
+                                  <li data-value="">待审核</li>
+                                  <li data-value="">失败</li>
+                                  <li data-value="">成功</li>
+                               </ul>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                        <p class="transaction_btn">
+                            <span>查询</span>
+                        </p>
+                    <div class="transaction_tabel">
+                         <table class="tbl_content">
+                            <thead>
+                                <tr class="thead">
+                                    <td width="10%">原汇付宝订单号</td>
+                                    <td width="10%">原商户订单号</td>
+                                    <td width="10%">原订单创建时间</td>
+                                    <td width="8%">分润号</td>
+                                    <td width="9%">汇付宝订单号</td>
+                                    <td width="9%">分润总金额</td>
+                                    <td width="10%">分润发起时间</td>
+                                    <td width="10%">入款公司名称</td>
+                                    <td width="10%">入款商户账号</td>
+                                    <td width="8%">分润状态</td>
+                                    <td width="6%">操作</td>
+                                </tr>
+                            </thead>
+                            <tbody class="record_list">
+                                <tr>
+                                    <td>123456</td>
+                                    <td>123456</td>
+                                    <td>2016-06-23 10:43:22</td>
+                                    <td>123456</td>
+                                    <td>58458</td>
+                                    <td>100</td>
+                                    <td>2016-06-23 10:43:22</td>
+                                    <td>天下第一</td>
+                                    <td>12345667</td>
+                                    <td>成功</td>
+                                    <td><span class="record_look">明细</span></td>
+                                </tr>
+                                <tr>
+                                    <td>123456</td>
+                                    <td>123456</td>
+                                    <td>2016-06-23 10:43:22</td>
+                                    <td>123456</td>
+                                    <td>58458</td>
+                                    <td>100</td>
+                                    <td>2016-06-23 10:43:22</td>
+                                    <td>天下第一</td>
+                                    <td>12345667</td>
+                                    <td>成功</td>
+                                    <td><span class="record_look">明细</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="transaction_bt">
+                        <div class="page">
+                            <p>
+                                <span>首页</span>
+                                <span>上一页</span>
+                                <span>下一页</span>
+                                <span>尾页</span>
+                                <span>2/5页，</span>
+                                <span>共30条 每页
+                                    <select class="page_select">
+                                        <option>10</option>
+                                        <option>20</option>
+                                        <option>30</option>
+                                        <option>40</option>
+                                    </select>条，
+                                </span>
+                                <span>到第<input type="text" class="page_input">页</span>
+                            </p>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <!--内容结束-->
+        
+        <!--尾部开始-->
+        <div class="ngp_footer">
+            <p>
+                <span>关于我们</span>
+                <span>合作伙伴</span>
+                <span>商务合作</span>
+                <span>联系我们</span>
+            </p>
+            <p class="ngp_ft">Copyright © since 2008 汇元银通（北京）在线支付技术有限公司  版权所有 侵权必究</p>
+        </div>
+        <!--尾部结束-->
+        
+    </div>
+</body>
+</html>

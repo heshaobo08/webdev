@@ -1,0 +1,90 @@
+<div class="details siteDetail">
+    <form id='rejectEditForm'>
+    <h3 class="titleText">退货详情 <span class="mL50">上次修改时间：${source.updateTime}</span></h3>
+    <dl class="editDl mL145">
+        <dt>eBay站点：</dt>
+        <dd>
+            <input type="hidden" name="id" value="${source.id}">
+            <input type="hidden" name="platform" value="${source.platform}">
+            <input type="hidden" name="siteId" value="${source.siteId}">
+            ${source.site[source.siteId].cnName}
+        </dd>
+    </dl>
+    <dl class="editDl mL145">
+        <dt>是否接受退货：</dt>
+        <dd>
+            <div class="select w190" id='jd-isReturns'>
+                <input index-data="${source.isReturns}" name='isReturns' type="hidden" value="请选择"  required data-target='jd-isReturns'>
+                <i>请选择</i>
+                <em class="icon-52"></em>
+                <ul style="">
+                    <li index-data=""><span>请选择</span></li>
+                    {{each(i,accept) source.baseReturnData["ADDITEM_RETURNPOLICY_ACCEPTED|"+source.siteCode]}}
+                    <li index-data="${accept.name}" {{if source.isReturns==accept.name}} class='active'{{/if}}><span>${accept.value}</span></li>
+                    {{/each}}
+                </ul>
+            </div>
+        </dd>
+    </dl>
+    <dl class="editDl mL145">
+        <dt>退货方式：</dt>
+        <dd>
+            <div class="select w240 fL" id='jd-returnType'>
+                <input type="hidden" name='returnType' value="" index-data="${source.returnType}" required data-target='jd-returnType'>
+                <i>请选择</i>
+                <em class="icon-52"></em>
+                <ul style="display: none;">
+                    <li index-data=""><span>请选择</span></li>
+                    {{each(i,accept) source.baseReturnData["ADDITEM_RETURNPOLICY_REFUND|"+source.siteCode]}}
+                    <li index-data="${accept.name}" {{if source.returnType==accept.name}} class='active'{{/if}}><span>${accept.value}</span></li>
+                    {{/each}}
+                </ul>
+            </div>
+        </dd>
+    </dl>
+    <dl class="editDl mL145">
+        <dt>退货运费承担方：</dt>
+        <dd>
+            <div class="select w240 fl" id='jd-undertaker'>
+                <input index-data="${source.undertaker}" name='undertaker' type="hidden" value="请选择" required data-target='jd-undertaker'>
+                <i>请选择</i>
+                <em class="icon-52"></em>
+                <ul style="">
+                    <li index-data=""><span>请选择</span></li>
+                    {{each(i,accept) source.baseReturnData["ADDITEM_RETURNPOLICY_COSTPAID|"+source.siteCode]}}
+                    <li index-data="${accept.name}" {{if source.returnType==accept.name}} class='active'{{/if}}><span>${accept.value}</span></li>
+                    {{/each}}
+                </ul>
+            </div>
+        </dd>
+    </dl>
+    <dl class="editDl mL145">
+        <dt>退货天数：</dt>
+        <dd>
+            <div class="select w190" id='jd-returnDateNumber'>
+                <input index-data="${source.returnDateNumber}" name='returnDateNumber' type="hidden" value="请选择" required data-target='jd-returnDateNumber'>
+                <i>请选择</i>
+                <em class="icon-52"></em>
+                <ul style="">
+                    <li index-data=""><span>请选择</span></li>
+                    {{each(i,accept) source.baseReturnData["ADDITEM_RETURNPOLICY_REFUNDDAYS|"+source.siteCode]}}
+                    <li index-data="${accept.name}" {{if source.returnType==accept.name}} class='active'{{/if}}><span>${accept.value}</span></li>
+                    {{/each}}
+                </ul>
+            </div>
+        </dd>
+    </dl>
+    <dl class="editTXA mL145">
+        <dt>退货描述</dt>
+        <dd>
+            <textarea class="w480 h90" name="remark" required>${source.remark}</textarea>
+        </dd>
+    </dl>
+    </form>
+</div>
+<!--中间内容区域 end-->
+<!--conts end-->
+<div class="btnMain">
+    <a class="button mR30 js-rejectSaveSubmit" href="javascript:;">提交</a>
+    <a class="buttonText" href="javascript:;" data-href="?m=xhr_id_199_244&platform=1" data-title="配置管理-退货政策管理-ebay站点" data-code='${source.code}'>取消</a>
+</div>

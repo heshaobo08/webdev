@@ -1,0 +1,67 @@
+<form id="addStoreForm">
+    <div class="contsBox">
+        <div class="details">
+            <h3 class="titleText">基本信息</h3>
+            <input type="hidden" value="${source.id}" name="storeId"/>
+            <div class="newConts pL140">
+                <dl class="neweditDl">
+                    <dt><font>*</font>仓库编码：</dt>
+                    <dd><input type="text" name="storeCode" class="input w240" required data-cnmax="50" value="${source.storeCode}"/></dd>
+                </dl>
+                <dl class="neweditDl">
+                    <dt><font>*</font>仓库名称：</dt>
+                    <dd><input type="text" name="storeName" class="input w240" required data-cnmax="50" value="${source.storeName}"/></dd>
+                </dl>
+                <dl class="neweditDl">
+                    <dt><font>*</font>仓库收货人：</dt>
+                    <dd><input type="text" name="consignee" class="input w240" required data-cnmax="50" value="${source.consignee}"/></dd>
+                </dl>
+                <dl class="neweditDl">
+                    <dt><font>*</font>联系电话：</dt>
+                    <dd>
+                        <input type="text" name="phonenumber" class="input w240" required data-cnmax="20" pattern="((\d{11})|^((\d{7,8})|(\d{4}|\d{3})-(\d{7,8})|(\d{4}|\d{3})-(\d{7,8})-(\d{4}|\d{3}|\d{2}|\d{1})|(\d{7,8})-(\d{4}|\d{3}|\d{2}|\d{1}))$)" value="${source.phonenumber}"/>
+                    </dd>
+                </dl>
+                <dl class="neweditDl">
+                    <dt><font>*</font>公司名称：</dt>
+                    <dd><input type="text" name="componyName" class="input w240" required data-cnmax="100" value="${source.componyName}"/></dd>
+                </dl>
+                <dl class="neweditDl">
+                    <dt><font>*</font>所属国家：</dt>
+                    <dd>
+                        <div class="select w240" id="countryId">
+                            <input index-data="${source.countryCurrencyId}" type="hidden"  name="countryId" data-target="countryId" required/>
+                            <i>请选择</i>
+                            <em class="icon-52"></em>
+                            <ul>
+                                <li index-data=""><span>请选择</span></li>
+                                {{each(i,item) source.countryList}}
+                                <li index-data="${item.id}" {{if item.id==source.countryCurrencyId}}class="active"{{/if}}><span>${item.country}</span></li>
+                                {{/each}}
+                            </ul>
+                        </div>
+                    </dd>
+                </dl>
+                <dl class="neweditDl" id="showUnit">
+                    <dt><font></font>货币单位：</dt>
+                    <dd><input type="text" class="input w240" readonly value="${source.currencyUnit}" name="currencyUnit"/></dd>
+                </dl>
+                <dl class="neweditDl">
+                    <dt><font>*</font>系统编码：</dt>
+                    <dd><input type="text" name="sysCode" class="input w240" required data-cnmax="50" pattern="^[a-zA-z\d]{1,50}$" value="${source.sysCode}"/></dd>
+                </dl>
+                <dl class="neweditDl">
+                    <dt><font>*</font>仓库地址：</dt>
+                    <dd>
+                        <textarea class="textarea w430 h80" required data-cnmax="50" name="address">${source.address}</textarea>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+    <div class="btnMain">
+        <a href="javascript:;" class="button js-submit">保存</a>
+        <a href="javascript:history.go(-1);" onclick="document.title='海外仓业务管理-仓库管理'" class="buttonText pad20" sdata-href="?m=xhr_id_20300000_20301000"
+           data-title="海外仓业务管理-仓库管理">返回</a>
+    </div>
+</form>

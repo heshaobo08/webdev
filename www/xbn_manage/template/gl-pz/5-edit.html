@@ -1,0 +1,342 @@
+<form id='promotForm'>
+<div class="details siteDetail promotInfo">
+    <div class="topMainPromot">
+        <input type="hidden" name='promotionId' value="${source.promotionId}">
+        <h3 class="titleText">促销信息</h3>
+        <div class="initBox">
+            <dl class="editDl">
+                <dt><font>*</font>状态：</dt>
+                <dd>
+                    <span class="mR40">
+                        <input class="mR5" type="radio" value='1' name='promotionStatus' required {{if source.promotionStatus=="1"}}checked{{/if}}/>正常</span>
+                    <span>
+                        <input class="mR5" type="radio" value="0" name='promotionStatus' {{if source.promotionStatus=="0"}}checked{{/if}}/>暂停</span>
+                </dd>
+            </dl>
+            <dl class="editDl">
+                <dt><font>*</font>活动类型：</dt>
+                <dd>
+                    <!-- <div class="select w240 fL" style="z-index: 0;">
+                        <input type="hidden" name='promotionType' value='{{if source.promotionType=="1"}}组合促销{{else source.promotionType=="0"}}单品促销{{/if}}' index-data='${source.promotionType}'>
+                        <i>请选择</i>
+                        <em class="icon-52"></em>
+                        <ul style="display: none;">
+                            <li index-data="0" {{if source.promotionType=="0"}}class='active'{{/if}}><span>单品促销</span></li>
+                            <li index-data="1" {{if source.promotionType=="1"}}class='active'{{/if}}><span>组合促销</span></li>
+                        </ul>
+                    </div> -->
+                    单品促销
+                    <input type="hidden" name='promotionType' index-data='0'>
+                </dd>
+            </dl>
+            <dl class="editDl">
+                <dt><font>*</font>促销活动名称：</dt>
+                <dd>
+                    <input class="input w240" type="text" value="${source.promotionName}" name='promotionName' required>
+                </dd>
+            </dl>
+            <dl class="editDl">
+                <dt><font>*</font>活动期限：</dt>
+                <dd>
+                    <div class="defaultData">
+                        <div class="dataBegin">
+                            <span class="dataInput" id="startTime">${source.promotionStartTime}</span>
+                            <input type="hidden" name='promotionStartTime' id='dataStart' value='${source.promotionStartTime}' required data-target='startTime'>
+                            <a href="javascript:;" class="timeStart icon-54"></a>
+                        </div>
+                        <span class="point"></span>
+                        <div class="dataEnd">
+                            <span class="dataInput" id="endTime">${source.promotionEndTime}</span>
+                            <input type="hidden" name='promotionEndTime' id='dataEnd' value='${source.promotionEndTime}' required data-target='endTime'>
+                            <a href="javascript:;" class="timeEnd icon-54"></a>
+                        </div>
+                    </div>
+                </dd>
+            </dl>
+            <dl class="product_select">
+                <dt><font>*</font>选择产品：</dt>
+                <dd id='promotProductCon'>
+                </dd>
+            </dl>
+        </div>
+        <div class="promotionWay" id='promotCssType'>
+
+        </div>
+    </div>
+</div>
+
+<!--中间内容区域 end-->
+<!--conts end-->
+<div class="btnMain">
+    <a class="button mR30 js-promotSaveSubmit" href="javascript:;">提交</a>
+    <a class="buttonText" href="javascript:;" data-href='?m=xhr_id_199_226' data-title='配置管理-促销活动管理'>取消</a>
+</div>
+</form>
+<!-- 选择产品列表 -->
+<script id='promotProductTmpl' type='text/x-jquery-tmpl'>
+    <div class="select w240 fL mR10" id='jd-productIds_$_[timeStamp]_'>
+        <input type="hidden" value="" index-data="" name='productIds' required data-target='jd-productIds_$_[timeStamp]_'>
+        <i>请选择</i>
+        <em class="icon-52"></em>
+        <ul style="display: none;">
+            <li index-data=""><span>请选择</span></li>
+            _[{each(i,list) serviceList}]_
+            <li index-data="$_[list.serviceId]_"  _[{if productIds}]__[{if productIds[list.serviceId]}]_class='active'_[{/if}]__[{/if}]_><span>$_[list.serviceName]_</span></li>
+            _[{/each}]_
+        </ul>
+    </div>
+</script>
+
+<!-- 赠送产品列表 -->
+<script id='giftProductTmpl' type='text/x-jquery-tmpl'>
+    <div class="select w240 mR10" id='jd-giftProductIds_$_[timeStamp]_'>
+        <input type="hidden" value="" index-data="" name='giftProductIds' required data-target='jd-giftProductIds_$_[timeStamp]_'>
+        <i>请选择</i>
+        <em class="icon-52"></em>
+        <ul style="display: none;">
+            <li index-data=""><span>请选择</span></li>
+            _[{each(i,list) serviceList}]_
+            <li index-data="$_[list.serviceId]_"><span>$_[list.serviceName]_</span></li>
+            _[{/each}]_
+        </ul>
+    </div>
+</script>
+
+<!-- 促销方式加载 -->
+<script id='promotTypeTmpl' type='text/x-jquery-tmpl'>
+_[{if promotionTypes}]_
+_[{each(i,promot) promotionTypes}]_
+<dl data-promotType=$_[i+1]_>
+    <dt>促销方式_[{if promotionTypes.length>1}]_ $_[i+1]_ _[{/if}]_：</dt>
+    <dd class='promotTypeDd'>
+        <div class="select w140 fL mR10"  id='jd_userGrade_$_[i+1]_'>
+            <input type="hidden" name='userGrade' value="$_[promot.userGrade]_" required index-data="$_[promot.userGrade]_" data-target='jd_userGrade_$_[i+1]_' required >
+            <i>所有等级</i>
+            <em class="icon-52"></em>
+            <ul style="display: none;">
+                <li index-data=""><span>请选择</span></li>
+                _[{each(i,user) userLevelList}]_
+                <li index-data="$_[user.id]_" _[{if promot.userGrade==user.id}]_ class='active' _[{/if}]_><span>$_[user.levelName]_</span></li>
+                _[{/each}]_
+            </ul>
+        </div>
+        _[{if i==0}]_ <a href="javascript:;" class="button js-addPromotRole">新增等级</a> _[{/if}]_
+        _[{if i>0}]_ <a href="javascript:;" class="buttonText js-delPromotRole">删除等级</a> _[{/if}]_
+        <div class='fix'></div>
+    </dd>
+    <dd>
+        <span class='singleLeft'>
+            <input type="radio" class='discountType' name='discountType_$_[i+1]_' required value='0' _[{if promot.discountType=="0"}]_ checked _[{/if}]_/>&nbsp;单一折扣
+        </span>
+        <span class='singleRight'>
+            <em class="w80 mR10 tR">折扣率</em>
+            <input type="number" class="w90 input" name='discountRate' required pattern='^(([1-9]\d?|0)(\.\d{1,2})?|100(\.0{1,2})?)$' value='_[{if promot.discountType=="0"}]_$_[promot.discount[0].discountRate]__[{/if}]_'/>%
+        </span>
+    </dd>
+    <dd>
+        <span class="fL zheLeft">
+            <input type="radio" class='discountType' name='discountType_$_[i+1]_' value='1'  _[{if promot.discountType=="1"}]_ checked _[{/if}]_/>&nbsp;阶梯折扣
+        </span>
+        <div class="stepDis zheRight">
+        <!--折扣率修改设置-->
+        _[{if promot.discountType=="1"}]_
+            _[{each(j,discount) promot.discount}]_
+                _[{if j+1!=promot.discount.length}]_
+                <p class='validatePromotP'>
+                    <span class='startValueSp'>
+                        <em class="w80 mR10 tR"><font  class='startValue'>$_[discount.startValue]_</font>~</em>
+                        <input type="number" class="w90 input endValue" pattern='^([1-9][\d]{0,7}|0)(\.[\d]{1,2})?$' required value='$_[discount.endValue]_'/>元&nbsp;
+                    </span>
+                    <span class="mR10 endValueSp">
+                        <em class="w80 mR10 tR">折扣率</em>
+                        <input type="number" class="w90 input discountRate" pattern='^(([1-9]\d?|0)(\.\d{1,2})?|100(\.0{1,2})?)$' required value='$_[discount.discountRate]_'/>&nbsp;%
+                    </span>
+                    _[{if promot.discount.length>2 && i>0 && i<promot.discount.length}]_
+                        <a href="javascript:;" class="buttonText js-deleteDiscountRate" >删除</a>
+                        _[{else i!=0}]_
+                        <a href="javascript:;" class="buttonText js-deleteDiscountRate none" >删除</a>
+                    _[{/if}]_
+                    _[{if (promot.discount.length==2 && i==0) || (promot.discount.length>2 && i+2==promot.discount.length)}]_
+                        <a href="javascript:;" class="buttonText js-addDiscountRate" >增加</a>
+                        _[{else}]_
+                        <a href="javascript:;" class="buttonText js-addDiscountRate none" >增加</a>
+                    _[{/if}]_
+                </p>
+                _[{else}]_
+                    <p class="stepDisSecP">
+                        <span class='startValueSp'>
+                            <em class="w80 mR10 tR"><font  class='startValue'>$_[discount.startValue]_</font></em>元以上&nbsp;
+                        </span>
+                        <span class="mR10 endValueSp">
+                            <em class="w80 mR10 tR">折扣率</em>
+                            <input type="number" class="w90 input discountRate" pattern='^(([1-9]\d?|0)(\.\d{1,2})?|100(\.0{1,2})?)$' required value='$_[discount.discountRate]_'/>&nbsp;%
+                        </span>
+                    </p>
+                _[{/if}]_
+                
+            _[{/each}]_
+        _[{else}]_
+            <p>
+                <span class='startValueSp'>
+                    <em class="w80 mR10 tR"><font  class='startValue'>0</font>~</em>
+                    <input type="number" class="w90 input endValue"  pattern='^([1-9][\d]{0,7}|0)(\.[\d]{1,2})?$' required/>元&nbsp;
+                </span>
+                <span class="mR10 endValueSp">
+                    <em class="w80 mR10 tR">折扣率</em>
+                    <input type="number" class="w90 input discountRate"  pattern='^(([1-9]\d?|0)(\.\d{1,2})?|100(\.0{1,2})?)$' required/>&nbsp;%
+                </span>
+                <a href="javascript:;" class="buttonText js-addDiscountRate" >增加</a>
+            </p>
+            <p>
+                <span class='startValueSp'>
+                    <em class="w80 mR10 tR"><font  class='startValue'>0</font></em>元以上&nbsp;
+                </span>
+                <span class="mR10 endValueSp">
+                    <em class="w80 mR10 tR">折扣率</em>
+                    <input type="number" class="w90 input discountRate"  pattern='^(([1-9]\d?|0)(\.\d{1,2})?|100(\.0{1,2})?)$' required/>&nbsp;%
+                </span>
+            </p>
+        _[{/if}]_
+        </div>
+    </dd>
+    <dd>
+        <span class='giftLeft'>
+            <input type="radio"  class='discountType' name='discountType_$_[i+1]_' value='2' _[{if promot.discountType=="2"}]_ checked _[{/if}]_/>&nbsp;买赠活动
+        </span>
+        <em class="w80 mR10 tR">赠送产品</em>
+        <span class="mR30 giftRight" id='giftPromotCon'>
+            
+            _[{if promot.discountType=='2'}]_
+                _[{each(m,product) promot.discount[0].giftProductIds}]_
+                    <div class="select w240 mR10" id='jd-giftProductIds_$_[i+1]__$_[m+1]_'>
+                        <input type="hidden" value="" index-data="$_[product]_" name='giftProductIds' required data-target='jd-giftProductIds_$_[i+1]__$_[m+1]_'>
+                        <i>请选择</i>
+                        <em class="icon-52"></em>
+                        <ul style="display: none;">
+                            <li index-data=""><span>请选择</span></li>
+                            _[{each(i,list) serviceList}]_
+                            <li index-data="$_[list.serviceId]_" _[{if product==list.serviceId}]_class="active"_[{/if}]_><span>$_[list.serviceName]_</span></li>
+                            _[{/each}]_
+                        </ul>
+                    </div>
+                _[{/each}]_
+            _[{else}]_
+                <div class="select w240 mR10"  id='js-giftProductIds'>
+                    <input type="hidden" value="" index-data="" name='giftProductIds' required data-target='js-giftProductIds'>
+                    <i>请选择</i>
+                    <em class="icon-52"></em>
+                    <ul style="display: none;">
+                        <li index-data=""><span>请选择</span></li>
+                        _[{each(i,list) serviceList}]_
+                        <li index-data="$_[list.serviceId]_"><span>$_[list.serviceName]_</span></li>
+                        _[{/each}]_
+                    </ul>
+                </div>
+            _[{/if}]_
+        </span>
+        <a href="javascript:;" class="buttonText js-addGiftSale">增加</a>
+    </dd>
+</dl>
+_[{/each}]_
+_[{else}]_
+<dl data-promotType>
+    <dt>促销方式：</dt>
+    <dd class='promotTypeDd'>
+        <div class="select w140 fL mR10" id='jd-userGrade_$_[timeStamp]_'>
+            <input type="hidden" name='userGrade' value="" index-data="" required data-target='jd-userGrade_$_[timeStamp]_'>
+            <i>所有等级</i>
+            <em class="icon-52"></em>
+            <ul style="display: none;">
+                <li index-data=""><span>请选择</span></li>
+                _[{each(i,user) userLevelList}]_
+                <li index-data="$_[user.id]_"><span>$_[user.levelName]_</span></li>
+                _[{/each}]_
+            </ul>
+        </div>
+        <a href="javascript:;" class="button js-addPromotRole">新增等级</a>
+        <a href="javascript:;" class="buttonText js-delPromotRole">删除等级</a>
+        <div class='fix'></div>
+    </dd>
+    <dd>
+        <span class='singleLeft'>
+            <input type="radio" class='discountType' required name='discountType_last' value='0'/>&nbsp;单一折扣
+        </span>
+        <span class='singleRight'>
+            <em class="w80 mR10 tR">折扣率</em>
+            <input type="number" class="w90 input" name='discountRate' required  pattern='^(([1-9]\d?|0)(\.\d{1,2})?|100(\.0{1,2})?)$'/>%
+        </span>
+    </dd>
+    <dd>
+        <span class="fL zheLeft">
+            <input type="radio" class='discountType input' name='discountType_last' value='1'/>&nbsp;阶梯折扣
+        </span>
+        <div class="stepDis zheRight">
+            <p class='validatePromotP'>
+                <span class='startValueSp'>
+                    <em class="w80 mR10 tR"><font class='startValue'>0</font>~</em>
+                    <input type="number" class="w90 input endValue"  pattern='^([1-9][\d]{0,7}|0)(\.[\d]{1,2})?$' required/>元&nbsp;
+                </span>
+                <span class="mR10 endValueSp">
+                    <em class="w80 mR10 tR">折扣率</em>
+                    <input type="number" class="w90 input discountRate" name='discountRate'  pattern='^(([1-9]\d?|0)(\.\d{1,2})?|100(\.0{1,2})?)$' required/>&nbsp;%
+                </span>
+                <a href="javascript:;" class="buttonText js-addDiscountRate">增加</a>
+            </p>
+            <p class="stepDisSecP">
+                <span class='startValueSp'>
+                    <em class="w80 mR10 tR"><font class='startValue'>0</font></em>元以上&nbsp;
+                </span>
+                <span class="mR10 endValueSp">
+                    <em class="w80 mR10 tR">折扣率</em>
+                    <input type="number" class="w90 input discountRate" name='discountRate'  pattern='^(([1-9]\d?|0)(\.\d{1,2})?|100(\.0{1,2})?)$' required/>&nbsp;%
+                </span>
+            </p>
+        </div>
+    </dd>
+    <dd>
+        <span class='giftLeft'>
+            <input type="radio" class='discountType' name='discountType_last' value='2'/>&nbsp;买赠活动
+        </span>
+        <em class="w80 mR10 tR">赠送产品</em>
+        <span class="mR30 giftRight" id='giftPromotCon'>
+            
+            <div class="select w240 mR10" id='jd-giftProductIds'>
+                <input type="hidden" value="" required data-target='jd-giftProductIds' index-data="" name='giftProductIds'>
+                <i>请选择</i>
+                <em class="icon-52"></em>
+                <ul style="display: none;">
+                    <li index-data=""><span>请选择</span></li>
+                    _[{each(i,list) serviceList}]_
+                    <li index-data="$_[list.serviceId]_"><span>$_[list.serviceName]_</span></li>
+                    _[{/each}]_
+                </ul>
+            </div>
+        </span>
+        <a href="javascript:;" class="buttonText js-addGiftSale">新增</a>
+    </dd>
+</dl>
+
+_[{/if}]_
+</script>
+
+
+<!-- 折扣率增加 -->
+<script id='discountRateTmpl' type='text/x-jquery-tmpl'>
+    <span>
+        <em class="w80 mR10 tR"><font class='startValue'>$_[startValue]_</font>~</em>
+        <input type="number" class="w90 input endValue"  pattern='^([1-9][\d]{0,7}|0)(\.[\d]{1,2})?$' value='$_[endValue]_' required/>元&nbsp;
+    </span>
+    <span class="mR10">
+        <em class="w80 mR10 tR">折扣率</em>
+        <input type="number" class="w90 input discountRate" name='discountRate'  pattern='^(([1-9]\d?|0)(\.\d{1,2})?|100(\.0{1,2})?)$' required/>&nbsp;%
+    </span>
+    <a href="javascript:;" class="buttonText js-deleteDiscountRate" >删除</a>
+    <a href="javascript:;" class="buttonText js-addDiscountRate">增加</a>
+</script>
+
+
+
+
+
+
+

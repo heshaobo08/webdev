@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>汇付宝</title>
+<link href="css/base.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<link href="css/upload.css" rel="stylesheet">
+<script src="js/jquery.js"></script>
+<script src="js/management_sign_look.js"></script>
+<script src="js/plug/upload/webuploader.js"></script>
+<script src="js/sign_upload.js"></script>
+</head>
+<body>
+    <div id="cover"></div>
+    <div class="ngp_pop_sign">
+        <h6 class="ngp_pop_hd">提示<em><img src="images/ngp_del.png"></em></h6>
+        <p>申请线上签约<span>pc快捷支付</span>成功，我们将在3个工作日内进行审核，审核通过并成功验签后，在“已签约产品”处查看密钥和合同并进行对接工作。</p>
+        <h3 class="ngp_pop_btn">确认</h3>
+    </div>
+     <div class="pop_sign_upload">
+        <h6 class="ngp_pop_hd">提示</h6>
+        <p><img src="images/refund_tip.png"><em></em></p>
+        <h3 class="ngp_pop_btn">确认</h3>
+    </div>
+    <div id="ngp_warpper">
+        <!--头部开始-->
+        <div class="ngp_header">
+            <div class="ngp_top">
+                <div class="ngp_logo">
+                   <img src="images/logo.png">
+                   <span class="logo_hx"></span>
+                   <span class="logo_text">商户服务</span>
+                </div>
+                <div class="ngp_top_right">
+                    <span>您好！ Acdbm@9186.com</span>
+                    <b></b>
+                    <span>退出</span>
+                    <b></b>
+                    <span>帮助中心</span>
+                </div>
+            </div>
+        </div>
+        <div class="ngp_nav">
+            <div class="nav_list">
+                <ul>
+                    <li class="nav_ative"><a href="index.html">我的汇付宝</a></li>
+                    <li><a href="transaction.html">交易管理</a></li>
+                    <li><a href="#">结算管理</a></li>
+                    <li><a href="account_management.html">账户管理</a></li>
+                </ul>
+            </div> 
+        </div>
+        <!--头部结束-->
+        
+        <!--内容开始-->
+        <div class="ngp_content">
+            <div class="recharge_box">
+                <div class="transaction_box">
+                    <div class="transaction_tab">
+                        <div class="account_tab_l">
+                            <ul>
+                                <li class="tab_active">签约管理</li>
+                                <li>员工管理</li>
+                                <li>账户安全</li>
+                            </ul>
+                        </div>
+                        <div class="account_tab_r"></div>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="transaction_query" style="display:block">
+                        <p class="sign_hd_name">快捷支付（pc）</p>
+                        <p class="sign_name"><span></span>产品简介</p>
+                        <div class="sign_product_profiles">
+                            <p>快捷支付（PC）是一种程序式支付方式，适用用户在商家PC端网站下单购买产品或服务的场景，通过浏览器选择汇付宝支付或相关汇付宝提供的银行快捷通道，跳转至汇付宝收银台进行支付。</p>
+                        </div>
+                        <p class="sign_name"><span></span>申请条件</p>
+                        <div class="sign_product_profiles">
+                            <p>1、需填写有效的需要支付功能的网站地址</p>
+                            <p>2、申请之前，您必须是汇付宝认证通过的商户。</p>
+                        </div>
+                        
+                        
+                        <div class="sign_look_box">
+                            <div class="sign_look_box_l">
+                                <p class="sign_look_hd"><img src="images/sign_tip.png"><span>提交资质</span></p>
+                                <p class="sign_look_wz"><label>网址：</label><input type="text"></p>
+                                <div class="sign_look_upload">
+                                    <div class="sign_upload_hd">应用：</div>
+                                    <div class="sign_upload">
+                                        <!--<div id="uploader">
+                                            <div class="queueList">
+                                                <div id="dndArea" class="placeholder">
+                                                    <div id="filePicker"><img src="images/sign_upload.png"></div>
+                                                </div>
+                                            </div>
+                                            <div class="statusBar clearfix" style="display:none;">
+                                                <div id="filePicker2"></div>
+                                            </div>
+                                        </div>
+                                        <p class="upload_txt">最多可添加五个文件</p>-->
+                                        
+                                        
+                                        <div id="uploader" class="wu-example">
+                                            <!--用来存放文件信息-->
+                                            <div id="thelist" class="uploader-list"></div>
+                                            <div class="btns">
+                                                <div id="picker"><img src="images/sign_upload.png"></div>
+                                                <button id="ctlBtn" class="btn btn-default">开始上传</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                                <h3 class="sign_look_btn">提交</h3>
+                            </div>
+                            <div class="sign_look_box_r">
+                                <p class="sign_look_hd"><img src="images/sign_tip1.png"><span>费率详情</span></p>
+                                <div class="transaction_tabel">
+                                    <table class="tbl_contents">
+                                        <thead>
+                                            <tr class="thead">
+                                                <td width="20%">卡类型</td>
+                                                <td width="20%">费率</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="record_list">
+                                            <tr>
+                                                <td>储蓄卡</td>
+                                                <td>
+                                                    <p>1元／笔</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>信用卡</td>
+                                                <td>
+                                                    <p>0.02%/笔</p>
+                                                    <p>上限：1元   下限：10元</p>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                    <div class="transaction_query">
+                        
+                    </div>
+                    <div class="transaction_query">
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--内容结束-->
+        
+        <!--尾部开始-->
+        <div class="ngp_footer">
+            <p>
+                <span>关于我们</span>
+                <span>合作伙伴</span>
+                <span>商务合作</span>
+                <span>联系我们</span>
+            </p>
+            <p class="ngp_ft">Copyright © since 2008 汇元银通（北京）在线支付技术有限公司  版权所有 侵权必究</p>
+        </div>
+        <!--尾部结束-->
+        
+    </div>
+</body>
+</html>
